@@ -1,0 +1,525 @@
+2023-06-25T05:05:46+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:05:50+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:05:55+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:07:55+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:08:43+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:11:46+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:11:50+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:11:55+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:12:01+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:23:41+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:23:52+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:24:40+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:29:35+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:29:56+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:31:04+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:31:08+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:31:28+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:34:01+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:34:21+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T05:52:45+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T06:52:34+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T06:52:39+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T07:03:50+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php:22
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', '/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/includes/class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(13): do_action('template_redire...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/added-to-cart-popup-woocommerce/templates/xoo-cp-content.php on line 22
+
+2023-06-25T07:13:13+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:22
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 22
+
+2023-06-25T07:22:46+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:22
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(40): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(90): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 22
+

@@ -1,0 +1,1239 @@
+2023-06-30T04:12:36+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T04:13:41+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T04:58:29+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:18:29+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:18:31+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:18:46+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:18:54+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:19:24+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:19:33+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:20:21+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:20:47+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:20:53+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:34:32+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:35:11+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:35:21+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:35:49+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:36:06+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:36:24+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:36:39+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:36:48+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:38:06+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:38:53+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:39:10+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:39:25+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:40:11+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:42:08+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:43:01+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:43:14+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:44:24+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:45:16+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:45:50+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:48:14+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:48:52+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:49:21+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:50:18+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:52:25+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:52:44+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:53:17+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:53:43+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:53:47+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:54:28+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:54:37+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:55:56+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:56:15+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:57:20+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T06:57:35+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T07:11:23+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T07:12:28+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T07:12:58+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T07:13:14+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T07:13:25+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T07:14:12+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T07:16:33+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T07:23:22+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T07:28:16+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T08:10:07+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T08:19:48+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T08:57:57+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-06-30T10:05:50+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\Development\\...')
+#2 D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\Development\htdocs\gem\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\Development\htdocs\gem\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\Development\htdocs\gem\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\Development\htdocs\gem\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\Development\htdocs\gem\GEM\wp-blog-header.php(19): require_once('D:\\Development\\...')
+#15 D:\Development\htdocs\gem\GEM\index.php(17): require('D:\\Development\\...')
+#16 {main}
+  thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
