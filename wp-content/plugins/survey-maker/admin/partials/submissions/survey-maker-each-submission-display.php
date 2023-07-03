@@ -96,14 +96,7 @@ $survey_data_formated_for_clipboard = Survey_Maker_Data::ays_survey_copy_text_fo
 ?>
 
 <div class="wrap ays_each_results_table">
-    <!-- <div class="ays-survey-heading-box">
-        <div class="ays-survey-wordpress-user-manual-box">
-            <a href="https://ays-pro.com/wordpress-survey-maker-user-manual" target="_blank" style="text-decoration: none;font-size: 13px;">
-                <i class="ays_fa ays_fa_file_text" ></i> 
-                <span style="margin-left: 3px;text-decoration: underline;">View Documentation</span>
-            </a>
-        </div>
-    </div> -->
+   
     <h1 class="wp-heading-inline" style="padding-left:15px;">
         <?php
         echo sprintf( '<a href="?page=%s" class="go_back"><span><i class="fa fa-long-arrow-left" aria-hidden="true"></i> %s</span></a>', $this->plugin_name."-submissions", __("Back to Submissions", "survey-maker") );
@@ -121,16 +114,12 @@ $survey_data_formated_for_clipboard = Survey_Maker_Data::ays_survey_copy_text_fo
                 echo "<span>". __("Reports for", "survey-maker") . "</span>" ." <a href='".esc_url($url)."' target='_blank' class='ays-survey-to-curnet-survey'>\"" .    __(esc_html($survey_name['title']), "survey-maker") . "\""."</a>";
             ?>
         </h1>
-        <!-- <div class="ays-survey-question-action-butons" style="padding: 10px; display: inline-block;">
-            <a type="button" class="button button-primary" target="_blank" href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey&utm_campaign=free" style="opacity:0.5;"><?php echo __('Export submissions', "survey-maker"); ?></a>
-            <a type="button" class="button button-primary" target="_blank" href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey&utm_campaign=free" style="opacity:0.5;"><?php echo __('Export to XLSX', "survey-maker"); ?></a>
-        </div> -->
+       
     </div>
     <div class="nav-tab-wrapper">
-        <!-- <a href="#statistics_of_answer" class="nav-tab <?php echo ($ays_survey_tab == 'statistics_of_answer') ? 'nav-tab-active' : ''; ?>"><?php echo __("Summary", "survey-maker"); ?></a> -->
         <a href="#questions" class="nav-tab <?php echo ($ays_survey_tab == 'questions') ? 'nav-tab-active' : ''; ?>"><?php echo __("Individual", "survey-maker"); ?></a>
         <a href="#poststuff" class="nav-tab <?php echo ($ays_survey_tab == 'poststuff') ? 'nav-tab-active' : ''; ?>" ><?php echo __("Submissions", "survey-maker"); ?></a>
-        <!-- <a href="#statistics" class="nav-tab <?php echo ($ays_survey_tab == 'statistics') ? 'nav-tab-active' : ''; ?>"><?php echo __("Analytics", "survey-maker"); ?></a> -->
+     
     </div>
     <div id="poststuff" class="ays-survey-tab-content <?php echo ($ays_survey_tab == 'poststuff') ? 'ays-survey-tab-content-active' : ''; ?>">
         <div id="post-body" class="metabox-holder">
@@ -153,120 +142,12 @@ $survey_data_formated_for_clipboard = Survey_Maker_Data::ays_survey_copy_text_fo
         <br class="clear">
     </div>
 
-    <!-- <div id="statistics" class="ays-survey-tab-content <?php echo ($ays_survey_tab == 'statistics') ? 'ays-survey-tab-content-active' : ''; ?>">
-        <div class="wrap only_pro" style="padding:10px 0 5px 10px;">
-            <div class="pro_features">
-                <div>
-                    <p>
-                        <?php echo __("This feature is available only in ", "survey-maker"); ?>
-                        <a href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey&utm_campaign=free" target="_blank" title="PRO feature"><?php echo __("PRO version!!!", "survey-maker"); ?></a>
-                    </p>
-                    <p style="position: absolute;top: 0;">
-                        <?php echo __("This feature is available only in ", "survey-maker"); ?>
-                        <a href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey&utm_campaign=free" target="_blank" title="PRO feature"><?php echo __("PRO version!!!", "survey-maker"); ?></a>
-                    </p>
-                </div>
-            </div>
-            <div class="ays-survey-submission-summary-question-container">
-                <div class="ays-survey-submission-summary-question-header">
-                    <div class="ays-survey-submission-summary-question-header-content">
-                        <h1 style="text-align:center;"><?php echo __("Submission count per day", "survey-maker"); ?></h1>
-                    </div>
-                </div>
-                <div class="ays-survey-submission-summary-question-content">
-                    <div id="survey_chart1_div" class="chart_div"></div>
-                </div>
-            </div>
-            <div class="ays-survey-submission-summary-question-container">
-                <div class="ays-survey-submission-summary-question-header">
-                    <div class="ays-survey-submission-summary-question-header-content">
-                        <h1 style="text-align:center;"><?php echo __("Survey passed users by user role", "survey-maker"); ?></h1>
-                    </div>
-                </div>
-                <div class="ays-survey-submission-summary-question-content">
-                    <div id="survey_chart2_div" class="chart_div"></div>
-                </div>
-            </div>
-            <div class="ays-survey-submission-summary-question-container">
-                <div class="ays-survey-submission-summary-question-header">
-                    <div class="ays-survey-submission-summary-question-header-content">
-                        <h1 style="text-align:center;"><?php echo __("Detected device", "survey-maker"); ?></h1>
-                    </div>
-                </div>
-                <div class="ays-survey-submission-summary-question-content">
-                    <div id="survey_chart3_div" class="chart_div"></div>
-                </div>
-            </div>
-            <div class="ays-survey-submission-summary-question-container">
-                <div class="ays-survey-submission-summary-question-header">
-                    <div class="ays-survey-submission-summary-question-header-content">
-                        <h1 style="text-align:center;"><?php echo __("Detected Countries", "survey-maker"); ?></h1>
-                    </div>
-                </div>
-                <div class="ays-survey-submission-summary-question-content">
-                    <div id="survey_chart4_div" class="chart_div"></div>
-                </div>
-            </div>
-        </div>
-    </div> -->
+   
 
     <div id="questions" class="ays-survey-tab-content <?php echo ($ays_survey_tab == 'questions') ? 'ays-survey-tab-content-active' : ''; ?>">
         <div class="wrap">
             <div class="ays_survey_container_each_result">
-                <!-- <div class="ays_survey_response_count">
-                    <div class="form-group row">
-                        <div class="col-sm-6" style="font-size: 13px;"><?php echo __('Responses cannot be edited',"survey-maker"); ?></div>
-                        <div class="col-sm-6 ays-survey-question-action-butons" style="align-items: center;">
-                            <span style="min-width: 70px;"><?php echo __("Export to", "survey-maker"); ?></span>
-                            <a download="" id="downloadFile" hidden href=""></a>
-                            <a href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey&utm_campaign=free" target="_blank" type="button" class="button button-primary ays-survey-export-button" style="opacity: 0.5;"><?php echo __("PDF", "survey-maker"); ?></a>
-                            <a href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey&utm_campaign=free" target="_blank" type="button" class="button button-primary ays-survey-export-button" style="opacity: 0.5;"><?php echo __("XLSX", "survey-maker"); ?></a>
-                        </div>
-                    </div>
-                    <?php
-                    if(intval($submission_count_and_ids['submission_count']) > 0):
-                    ?>
-                    <div class="form-group row">
-                        <div class="col-sm-6">
-                            <h1><?php 
-                                echo esc_attr($submission_count_and_ids['submission_count']);
-                                echo __(" Responses","survey-maker");
-                            ?></h1>
-                        </div>
-                        <div class="col-sm-6 ays-survey-question-action-butons">
-                            <a href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey&utm_campaign=free" target="_blank" type="button" class="button button-primary" style="opacity: 0.5;"><?php echo __( 'Print', "survey-maker"); ?></a>
-                        </div>
-                    </div>
-                    <div class="ays_survey_previous_next_conteiner">
-                        <div class="ays_survey_previous_next ays_survey_previous" data-name="ays_survey_previous">
-                            <div class="appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo __('Previous response',"survey-maker"); ?>">
-                                <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/arrow-left.svg">
-                            </div>
-                        </div>
-                        <div class="ays_submissions_input_box">
-                            <div class="" style="position: relative;margin-right: 10px;">
-                                <input type="number" class="ays_number_of_result ays-survey-question-input ays-survey-input" value="<?php echo esc_attr($submission_count_and_ids['submission_count']); ?>" min="1" max="<?php echo esc_attr($submission_count_and_ids['submission_count']); ?>" badinput="false" autocomplete="off" data-id="<?php echo esc_attr($survey_id); ?>">
-                                <div class="ays-survey-input-underline" style="margin:0;"></div>
-                                <div class="ays-survey-input-underline-animation" style="margin:0;"></div>
-                            </div>
-                            <input type="hidden" class="ays_submissions_id_str" value="<?php echo esc_attr($submission_count_and_ids['submission_ids']); ?>">
-                            <span>of <?php echo esc_attr($submission_count_and_ids['submission_count']); ?></span>
-                        </div>
-                        <div class="ays_survey_previous_next ays_survey_next" data-name="ays_survey_next">
-                            <div class="appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo __('Next response',"survey-maker"); ?>">
-                                <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/arrow-right.svg">
-                            </div>
-                        </div>
-                    </div>
-                    <?php
-                    else:?>
-                        <h1 style="width:100%;text-align:center;"><?php
-                        echo __("There are no responses yet.","survey-maker");
-                        ?></h1>
-                    <?php
-                    endif;
-                    ?>
-                </div> -->
+               
                 <?php if( intval($submission_count_and_ids['submission_count']) > 0 ):?>
                 <div class="ays_survey_each_sub_user_info">
                     <div class="ays_survey_each_sub_user_info_header">
@@ -301,6 +182,70 @@ $survey_data_formated_for_clipboard = Survey_Maker_Data::ays_survey_copy_text_fo
                     </div>
                 </div>
                 <?php endif;?>
+               <?php 
+                if(isset($_POST['submission_id']) && $_POST['submission_id']!=''){
+                    global $wpdb;
+
+
+                    $submission_id = $_POST['submission_id'];
+                   
+                    foreach ($_POST['ays-survey-answers'] as $key => $value) {
+                            $questions_ids[] = $key;
+                            $dataSubmOptions='';
+                            $SQL="SELECT * FROM wp_ayssurvey_submissions_questions WHERE submission_id='".$submission_id."' AND question_id='".$key."'";
+
+
+                            $result = $wpdb->get_row($SQL);
+                            
+                            if(isset($result->id)){
+                                
+                                if(empty($value['answer'])){
+                                    $user_answer ='';
+                                }else if(count($value['answer']) > 1){
+                                   $user_answer = implode(',',$value['answer']); 
+                                }else{
+                                    $user_answer = $value['answer'][0]; 
+                                }
+
+                                $dataSubmOptions = array('user_answer' => $user_answer);
+
+                                if($value['other'][0]){
+                                   $dataSubmOptions['user_variant'] =  $value['other'][0];
+                                }else{
+                                  $dataSubmOptions['user_variant'] ='';  
+                                }
+                           
+                    $wpdb->update('wp_ayssurvey_submissions_questions',$dataSubmOptions, array('submission_id' =>$submission_id,'question_id'=>$key));
+
+                            }else{
+                                      
+                
+                            }
+                            
+
+
+                    }
+                    
+                    $dataSubm = array(
+                                'questions_ids'=> implode(',',$questions_ids),
+                                'title' => $title,
+                                'your_name' => $your_name,
+                                'company' => $company,
+                                'job_title' => $job_title,
+                                'mobile' => $mobile,
+                                'message'=>$message
+                            );
+
+                    $result = $wpdb->update('wp_ayssurvey_submissions',$dataSubm, array('id' =>$submission_id));
+
+
+                    
+
+                }
+             
+               ?>
+                <form class="ays-survey-form" action="" method="post">
+                <input type="hidden" name="submission_id" value="<?php echo $individual_user_sub_id;?>">
                 <div class="question_result_container">
                     <div class="ays_question_answer" style="position:relative;">
                         <div class="ays-survey-submission-sections">
@@ -343,13 +288,13 @@ $survey_data_formated_for_clipboard = Survey_Maker_Data::ays_survey_copy_text_fo
                                     $question_type_content = '';
                                     if( $question['type'] == 'select' ){
                                         $question_type_content .= '<div class="ays_each_question_answer">
-                                            <select class="ays-survey-submission-select" >
+                                            <select class="ays-survey-submission-select" name="ays-survey-answers['.$question['id'].'][answer][]" >
                                                 <option value="">' . __( "Choose", "survey-maker" ) . '</option>';
                                     }
 
                                     if( in_array( $question['type'], $text_types ) ){
                                         $question_type_content .= '<div class="ays_each_question_answer">                                           
-                                            <textarea class="ays_text_answer" name="w3review" rows="4" cols="50">' . $user_answer . '</textarea>
+                                            <textarea class="ays_text_answer" name="ays-survey-answers['.$question['id'].'][answer][]" rows="4" cols="50">' . $user_answer . '</textarea>
                                         </div>';
                                     }
 
@@ -370,7 +315,7 @@ $survey_data_formated_for_clipboard = Survey_Maker_Data::ays_survey_copy_text_fo
                                                 }
                                                 $question_type_content .= '<div class="ays_each_question_answer">
                                                     <label style="color:' . $color . '">
-                                                        <input type="radio" ' . $checked . ' ' . $disabled . ' data-id="' . $answer['id'] . '"/>
+                                                        <input type="radio" ' . $checked . ' ' . $disabled . ' data-id="' . $answer['id'] . ' name="ays-survey-answers['.$question['id'].'][answer][]" value="'.$answer['id'].'"/>
                                                         <div class="ays-survey-answer-label-content">
                                                             <div class="ays-survey-answer-icon-content">
                                                                 <div class="ays-survey-answer-icon-ink"></div>
@@ -391,7 +336,7 @@ $survey_data_formated_for_clipboard = Survey_Maker_Data::ays_survey_copy_text_fo
                                                 }
                                                 $question_type_content .= '<div class="ays_each_question_answer">
                                                     <label style="color:' . $color . '">
-                                                        <input type="checkbox" ' . $checked . ' ' . $disabled . ' data-id="' . $answer['id'] . '"/>
+                                                        <input type="checkbox" ' . $checked . ' ' . $disabled . ' data-id="' . $answer['id'] . '" name="ays-survey-answers['.$question['id'].'][answer][]" value="'.$answer['id'].'"/>
                                                         <div class="ays-survey-answer-label-content">
                                                             <div class="ays-survey-answer-icon-content">
                                                                 <div class="ays-survey-answer-icon-ink"></div>
@@ -435,7 +380,7 @@ $survey_data_formated_for_clipboard = Survey_Maker_Data::ays_survey_copy_text_fo
 
                                         $question_type_content .= '<div class="ays_each_question_answer ays-survey-answer-label-other">
                                             <label style="color:' . $color . '">
-                                                <input type="'. $input_type .'" ' . $checked . ' ' . $disabled . ' data-id="0"/>
+                                                <input type="'. $input_type .'" ' . $checked . ' ' . $disabled . ' data-id="0" name="ays-survey-answers['.$question['id'].'][answer][]" value="0"/>
                                                 <div class="ays-survey-answer-label-content">
                                                     <div class="ays-survey-answer-icon-content">
                                                         <div class="ays-survey-answer-icon-ink"></div>
@@ -449,7 +394,8 @@ $survey_data_formated_for_clipboard = Survey_Maker_Data::ays_survey_copy_text_fo
                                                 </div>
                                             </label>
                                             <div class="ays-survey-answer-other-text">
-                                                <span style="display: inline-block;" class="ays-survey-answer-other-input ays-survey-question-input ays-survey-input" tabindex="0">' . ($other_answer) . '</span>
+                                                
+                                                <input type="text" name="ays-survey-answers['.$question['id'].'][other][]" value="' . ($other_answer) . '">
                                                 <div class="ays-survey-input-underline" style="margin:0;"></div>
                                                 <div class="ays-survey-input-underline-animation" style="margin:0;background-color: '.$survey_for_charts.';"></div>
                                             </div>
@@ -472,233 +418,36 @@ $survey_data_formated_for_clipboard = Survey_Maker_Data::ays_survey_copy_text_fo
                         ?>
                         </div>
                     </div>
+
+                    
                     <div class="ays_survey_preloader" style="display:none;">
                         <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) ; ?>/images/loaders/tail-spin-result.svg" alt="" width="100">
                     </div>
                 </div>
+
                 <?php
                 if(intval($submission_count_and_ids['submission_count']) > 0):
                 ?>
                 <div class="ays_survey_response_count">
-                    <!-- <div class="form-group row">
-                        <div class="col-sm-6" style="font-size: 13px;"><?php echo __('Responses cannot be edited',"survey-maker"); ?></div>
-                        <div class="col-sm-6 ays-survey-question-action-butons" style="align-items: center;">
-                            <span style="min-width: 70px;"><?php echo __("Export to", "survey-maker"); ?></span>
-                            <a download="" id="downloadFile" hidden href=""></a>
-                            <a href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey&utm_campaign=free" target="_blank" type="button" class="button button-primary ays-survey-export-button" style="opacity: 0.5;"><?php echo __("PDF", "survey-maker"); ?></a>
-                            <a href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey&utm_campaign=free" target="_blank" type="button" class="button button-primary ays-survey-export-button" style="opacity: 0.5;"><?php echo __("XLSX", "survey-maker"); ?></a>
-                        </div>
-                    </div> -->
+                    
                     <div class="form-group row">
-                        <div class="col-sm-6">
-                            <h1><?php 
-                                echo esc_attr($submission_count_and_ids['submission_count']);
-                                echo __(" Responses","survey-maker");
-                            ?></h1>
-                        </div>
+                       
                         <div class="col-sm-6 ays-survey-question-action-butons">
-                            <a href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey&utm_campaign=free" target="_blank" type="button" class="button button-primary" style="opacity: 0.5;"><?php echo __( 'Print', "survey-maker"); ?></a>
+                           
+                            <button type="submit" class="button button-primary"><?php echo __( 'Update', "survey-maker"); ?></button>
                         </div>
+
                     </div>
-                    <!-- <div class="ays_survey_previous_next_conteiner">
-                        <div class="ays_survey_previous_next ays_survey_previous" data-name="ays_survey_previous">
-                            <div class="appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo __('Previous response',"survey-maker"); ?>">
-                                <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/arrow-left.svg">
-                            </div>
-                        </div>
-                        <div class="ays_submissions_input_box">
-                            <div class="" style="position: relative;margin-right: 10px;">
-                                <input type="number" class="ays_number_of_result ays-survey-question-input ays-survey-input" value="<?php echo esc_attr($submission_count_and_ids['submission_count']); ?>" min="1" max="<?php echo esc_attr($submission_count_and_ids['submission_count']); ?>" badinput="false" autocomplete="off" data-id="<?php echo esc_attr($survey_id); ?>">
-                                <div class="ays-survey-input-underline" style="margin:0;"></div>
-                                <div class="ays-survey-input-underline-animation" style="margin:0;"></div>
-                            </div>
-                            <input type="hidden" class="ays_submissions_id_str" value="<?php echo esc_attr($submission_count_and_ids['submission_ids']); ?>">
-                            <span>of <?php echo esc_attr($submission_count_and_ids['submission_count']); ?></span>
-                        </div>
-                        <div class="ays_survey_previous_next ays_survey_next" data-name="ays_survey_next">
-                            <div class="appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo __('Next response',"survey-maker"); ?>">
-                                <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/arrow-right.svg">
-                            </div>
-                        </div>
-                    </div> -->
+                    
                     <?php
                     endif;
                     ?>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- <div id="statistics_of_answer" class="ays-survey-tab-content <?php echo ($ays_survey_tab == 'statistics_of_answer') ? 'ays-survey-tab-content-active' : ''; ?>">
-        <div class="wrap">
-            <div class="ays-survey-submission-summary-question-container ays-survey-submission-summary-header-container" style="padding: 20px;">
-                <div class="ays-survey-submission-summary-question-container-title">
-                    <h2 style="margin: 0;"><?php echo sprintf( __( 'In total %s submission', "survey-maker" ), intval( esc_attr($submission_count_and_ids['submission_count']) ) ); ?></h2>
-                </div>
-                <div class="ays-survey-submission-summary-question-container-buttons">
-                    <a type="button" class="button button-primary" target="_blank" href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey&utm_campaign=free" style="opacity:0.5;"><?php echo __( 'Print', "survey-maker"); ?></a>
-                </div>
-            </div>
-            <?php
-            if( is_array( $ays_survey_individual_questions['sections'] ) ):
-                foreach ($ays_survey_individual_questions['sections'] as $section_key => $section) {
-                    ?>
-                    <div class="ays-survey-submission-section ays-survey-submission-summary-section">
-                        <?php if($section['title'] != "" || $section['description'] != ""):?>
-                        <div class="ays_survey_name ays-survey-submission-summary-section-header" style="border-top-color: <?php echo esc_attr($survey_for_charts); ?>;">
-                            <h3><?php echo esc_attr($section['title']); ?></h3>
-                            <p><?php echo ($survey_allow_html_in_section_description) ? strip_tags(htmlspecialchars_decode($section['description'] )) : nl2br( $section['description'] ) ?></p>
-                        </div>
-                        <?php else:?>
-                        <div class="ays_survey_name ays-survey-submission-summary-section-header" style="border-top-color: <?php echo esc_attr($survey_for_charts); ?>;">
-                            <h3><?php echo __( 'Untitled section' , "survey-maker" );; ?></h3>
-                        </div>
-                        <?php endif; ?>
-                        <?php
-                        foreach ( $section['questions'] as $q_key => $question ) {
-                            ?>
-                            <div class="ays-survey-submission-summary-question-container">
-                                <div class="ays-survey-submission-summary-question-header">
-                                    <div class="ays-survey-submission-summary-question-header-content">
-                                        <?php if(!$survey_show_questions_as_html): ?>
-                                            <div style="padding: 9px 0 4px 0;"><?php echo Survey_Maker_Data::ays_autoembed( nl2br( htmlentities( $question_results[ $question['id'] ]['question'] ) ) ); ?></div>
-                                        <?php else: 
-                                            $question_title_text = (strpos($question['question'], '<script>') !== false ) ? Survey_Maker_Data::ays_autoembed(preg_replace('#<script(.*?)>(.*?)</script>#is', '$2', $question['question'])) : Survey_Maker_Data::ays_autoembed( $question['question'] );                                                                                     
-                                        ?>                                            
-                                        <div style="padding: 9px 0 4px 0;"><?php echo $question_title_text; ?></div>
-                                        <?php endif?>
-                                        <p style="text-align:center;"><?php echo esc_attr($question_results[ $question['id'] ]['sum_of_answers_count']); echo __(' submissions',"survey-maker"); ?></p>
-                                    </div>
-                                    <div class="ays-survey-submission-summary-question-container-buttons">
-                                        <a href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey&utm_campaign=free" target="_blank" title="Export to PNG (PRO feature)"  style='outline: none;box-shadow: none;opacity: 0.5;'>
-                                            <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/download-file.svg" alt="Export to PNG (PRO feature)">
-                                        </a>
-                                    </div>
-                                </div>
-                                
-                                <div class="ays-survey-submission-summary-question-content">
-                                    <?php
-                                        if( in_array( $question_results[ $question['id'] ]['question_type'], $text_types ) ):
-                                    ?>
-                                    <div class="ays-survey-submission-text-answers-div">
-                                        <?php
-                                            if( isset( $question_results[ $question['id'] ]['answers'] ) && !empty( $question_results[ $question['id'] ]['answers'] ) ):
-                                                if( isset( $question_results[ $question['id'] ]['answers'][ $question['id'] ] ) && !empty( $question_results[ $question['id'] ]['answers'][ $question['id'] ] ) ):
-                                                    $filtered_text_answers = array_values(array_unique($question_results[ $question['id'] ]['answers'][ $question['id'] ]));
-                                                    foreach( $filtered_text_answers as $aid => $answer ):
-                                                        $text_answer_count = isset($question_results[ $question['id'] ]['sum_of_same_answers'][$answer]) && $question_results[ $question['id'] ]['sum_of_same_answers'][$answer] != "" ? $question_results[ $question['id'] ]['sum_of_same_answers'][$answer] : "";
-                                                        ?>
-                                                        <div class="ays-survey-submission-text-answer">
-                                                            <div class="ays-survey-submission-text-answer-each"><?php echo stripslashes(nl2br( htmlentities( $answer )) ); ?></div>
-                                                            <div><?php echo stripslashes(nl2br( $text_answer_count) ); ?></div>
-                                                        </div>
-                                                        <?php
-                                                    endforeach;
-                                                endif;
-                                            endif;
-                                        ?>
-                                    </div>
-                                    <?php
-                                        else:
-                                        ?>
-                                        <div id="survey_answer_chart_<?php echo esc_attr($question_results[ $question['id'] ]['question_id']); ?>" style="width: 100%;" class="chart_div"></div>
-                                        <?php
-                                            if( !empty( $question_results[ $question['id'] ]['otherAnswers'] ) ):
-                                        ?>
-                                        <h2 class="ays-survey-subtitle"><?php echo __( '"Other" answers', "survey-maker" ); ?></h2>
-                                        <div class="ays-survey-submission-text-answers-div">
-                                            <?php
-                                                if( isset( $question_results[ $question['id'] ]['otherAnswers'] ) && !empty( $question_results[ $question['id'] ]['otherAnswers'] ) ):
-                                                    $filtered_other_answers = array_values(array_unique($question_results[ $question['id'] ]['otherAnswers']));
-                                                    foreach( $filtered_other_answers as $aid => $answer ):
-                                                        $other_answer_count = isset($question_results[ $question['id'] ]['same_other_count'][$answer]) && $question_results[ $question['id'] ]['same_other_count'][$answer] != "" ? $question_results[ $question['id'] ]['same_other_count'][$answer] : "";
-                                                        ?>
-                                                        <div class="ays-survey-submission-text-answer">
-                                                            <div><?php echo stripslashes(nl2br( htmlentities( $answer )) ); ?></div>
-                                                            <div><?php echo stripslashes($other_answer_count); ?></div>
-                                                        </div>
-                                                        
-                                                        <?php
-                                                    endforeach;
-                                                endif;
-                                            ?>
-                                        </div>
-                                        <?php
-                                            endif;
-                                        endif;
-                                    ?>
-                                </div>
-                            </div>
-                        <?php
-                        }
-                        ?>
-                    </div>
-                <?php
-                }
-            endif;
-            ?> 
-        </div>
-    </div> -->
-
-    <div id="ays-results-modal" class="ays-modal">
-        <div class="ays-modal-content">
-            <div class="ays-preloader">
-                <img class="loader" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/loaders/3-1.svg">
-            </div>
-            <div class="ays-modal-header">
-                <span class="ays-close" id="ays-close-results">&times;</span>
-                <h2><?php echo __("Detailed report", "survey-maker"); ?></h2>
-            </div>
-            <div class="ays-modal-body" id="ays-results-body">
-            </div>
-        </div>
-    </div>
-
-    <div class="ays-modal" id="export-answers-filters">
-        <div class="ays-modal-content">
-            <div class="ays-preloader">
-                <img class="loader" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/loaders/3-1.svg">
-            </div>
-          <!-- Modal Header -->
-            <div class="ays-modal-header">
-                <span class="ays-close">&times;</span>
-                <h2><?=__('Export Filter', "survey-maker")?></h2>
-            </div>
-
-          <!-- Modal body -->
-            <div class="ays-modal-body">
-                <form method="post" id="ays_export_answers_filter">
-                    <div class="filter-col">
-                        <label for="user_id-answers-filter"><?=__("Users", "survey-maker")?></label>
-                        <button type="button" class="ays_userid_clear button button-small wp-picker-default"><?=__("Clear", "survey-maker")?></button>
-                        <select name="user_id-select[]" id="user_id-answers-filter" multiple="multiple"></select>
-                        <input type="hidden" name="quiz_id-answers-filter" id="quiz_id-answers-filter" value="<?php echo esc_attr($survey_id); ?>">
-                    </div>
-                    <div class="filter-block">
-                        <div class="filter-block filter-col">
-                            <label for="start-date-answers-filter"><?=__("Start Date from", "survey-maker")?></label>
-                            <input type="date" name="start-date-filter" id="start-date-answers-filter">
-                        </div>
-                        <div class="filter-block filter-col">
-                            <label for="end-date-answers-filter"><?=__("Start Date to", "survey-maker")?></label>
-                            <input type="date" name="end-date-filter" id="end-date-answers-filter">
-                        </div>
-                    </div>
                 </form>
             </div>
-
-          <!-- Modal footer -->
-            <div class="ays-modal-footer">
-                <div class="export_results_count">
-                    <p>Matched <span></span> results</p>
-                </div>
-                <span><?php echo __('Export to', "survey-maker"); ?></span>
-                <button type="button" class="button button-primary export-anwers-action" data-type="xlsx" quiz-id="<?php echo esc_attr($survey_id); ?>"><?=__('XLSX', "survey-maker")?></button>
-                <a download="" id="downloadFile" hidden href=""></a>
-            </div>
-
         </div>
     </div>
+
 
 </div>
 

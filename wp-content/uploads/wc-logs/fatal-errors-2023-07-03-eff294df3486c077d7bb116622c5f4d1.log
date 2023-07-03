@@ -817,3 +817,317 @@ Stack trace:
 #16 {main}
   thrown in D:\Development\htdocs\gem\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
 
+2023-07-03T16:55:06+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\xampp\htdocs\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\xampp\htdocs\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\xampp\htdocs\GEM\wp-blog-header.php(19): require_once('D:\\xampp\\htdocs...')
+#15 D:\xampp\htdocs\GEM\index.php(17): require('D:\\xampp\\htdocs...')
+#16 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-07-03T16:55:15+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\xampp\htdocs\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\xampp\htdocs\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\xampp\htdocs\GEM\wp-blog-header.php(19): require_once('D:\\xampp\\htdocs...')
+#15 D:\xampp\htdocs\GEM\index.php(17): require('D:\\xampp\\htdocs...')
+#16 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-07-03T17:13:57+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\xampp\htdocs\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\xampp\htdocs\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\xampp\htdocs\GEM\wp-blog-header.php(19): require_once('D:\\xampp\\htdocs...')
+#15 D:\xampp\htdocs\GEM\index.php(17): require('D:\\xampp\\htdocs...')
+#16 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-07-03T17:14:49+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\xampp\htdocs\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\xampp\htdocs\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\xampp\htdocs\GEM\wp-blog-header.php(19): require_once('D:\\xampp\\htdocs...')
+#15 D:\xampp\htdocs\GEM\index.php(17): require('D:\\xampp\\htdocs...')
+#16 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-07-03T17:14:55+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\xampp\htdocs\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\xampp\htdocs\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\xampp\htdocs\GEM\wp-blog-header.php(19): require_once('D:\\xampp\\htdocs...')
+#15 D:\xampp\htdocs\GEM\index.php(17): require('D:\\xampp\\htdocs...')
+#16 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-07-03T17:38:10+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\xampp\htdocs\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\xampp\htdocs\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\xampp\htdocs\GEM\wp-blog-header.php(19): require_once('D:\\xampp\\htdocs...')
+#15 D:\xampp\htdocs\GEM\index.php(17): require('D:\\xampp\\htdocs...')
+#16 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-07-03T17:49:03+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\xampp\htdocs\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\xampp\htdocs\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\xampp\htdocs\GEM\wp-blog-header.php(19): require_once('D:\\xampp\\htdocs...')
+#15 D:\xampp\htdocs\GEM\index.php(17): require('D:\\xampp\\htdocs...')
+#16 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-07-03T17:50:13+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\xampp\htdocs\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\xampp\htdocs\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\xampp\htdocs\GEM\wp-blog-header.php(19): require_once('D:\\xampp\\htdocs...')
+#15 D:\xampp\htdocs\GEM\index.php(17): require('D:\\xampp\\htdocs...')
+#16 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-07-03T17:50:57+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\xampp\htdocs\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\xampp\htdocs\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\xampp\htdocs\GEM\wp-blog-header.php(19): require_once('D:\\xampp\\htdocs...')
+#15 D:\xampp\htdocs\GEM\index.php(17): require('D:\\xampp\\htdocs...')
+#16 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-07-03T17:58:32+00:00 CRITICAL Uncaught Error: Call to a member function is_visible() on null in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php:23
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(42): wc_get_template('xoo-cp-content....', Array, '', 'D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\includes\class-xoo-cp-core.php(92): Xoo_CP_Core->get_cart_content()
+#3 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Xoo_CP_Core->set_ajax_fragments(Array)
+#4 D:\xampp\htdocs\GEM\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#5 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(214): apply_filters('woocommerce_add...', Array)
+#6 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::get_refreshed_fragments('')
+#7 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#8 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#9 D:\xampp\htdocs\GEM\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(96): do_action('wc_ajax_get_ref...')
+#10 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#11 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#12 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#13 D:\xampp\htdocs\GEM\wp-includes\template-loader.php(13): do_action('template_redire...')
+#14 D:\xampp\htdocs\GEM\wp-blog-header.php(19): require_once('D:\\xampp\\htdocs...')
+#15 D:\xampp\htdocs\GEM\index.php(17): require('D:\\xampp\\htdocs...')
+#16 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\added-to-cart-popup-woocommerce\templates\xoo-cp-content.php on line 23
+
+2023-07-03T19:13:10+00:00 CRITICAL syntax error, unexpected token "," in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php on line 193
+
+2023-07-03T19:13:15+00:00 CRITICAL syntax error, unexpected token "," in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php on line 193
+
+2023-07-03T19:13:28+00:00 CRITICAL syntax error, unexpected token ")" in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php on line 193
+
+2023-07-03T19:13:43+00:00 CRITICAL syntax error, unexpected token "," in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php on line 195
+
+2023-07-03T19:22:40+00:00 CRITICAL syntax error, unexpected single-quoted string ".$submission_id.", expecting "," or ";" in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php on line 195
+
+2023-07-03T19:24:32+00:00 CRITICAL Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, stdClass given in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php:199
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\class-survey-maker-admin.php(666): include_once()
+#1 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Survey_Maker_Admin->display_plugin_each_submission_page('')
+#2 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#3 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 D:\xampp\htdocs\GEM\wp-admin\admin.php(259): do_action('admin_page_surv...')
+#5 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php on line 199
+
+2023-07-03T19:26:50+00:00 CRITICAL Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, stdClass given in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php:200
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\class-survey-maker-admin.php(666): include_once()
+#1 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Survey_Maker_Admin->display_plugin_each_submission_page('')
+#2 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#3 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 D:\xampp\htdocs\GEM\wp-admin\admin.php(259): do_action('admin_page_surv...')
+#5 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php on line 200
+
+2023-07-03T19:29:54+00:00 CRITICAL Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, stdClass given in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php:197
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\class-survey-maker-admin.php(666): include_once()
+#1 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Survey_Maker_Admin->display_plugin_each_submission_page('')
+#2 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#3 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 D:\xampp\htdocs\GEM\wp-admin\admin.php(259): do_action('admin_page_surv...')
+#5 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php on line 197
+
+2023-07-03T19:31:01+00:00 CRITICAL Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, stdClass given in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php:197
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\class-survey-maker-admin.php(666): include_once()
+#1 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Survey_Maker_Admin->display_plugin_each_submission_page('')
+#2 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#3 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 D:\xampp\htdocs\GEM\wp-admin\admin.php(259): do_action('admin_page_surv...')
+#5 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php on line 197
+
+2023-07-03T19:33:18+00:00 CRITICAL Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, stdClass given in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php:198
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\class-survey-maker-admin.php(666): include_once()
+#1 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Survey_Maker_Admin->display_plugin_each_submission_page('')
+#2 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#3 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 D:\xampp\htdocs\GEM\wp-admin\admin.php(259): do_action('admin_page_surv...')
+#5 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php on line 198
+
+2023-07-03T19:36:17+00:00 CRITICAL Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, stdClass given in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php:198
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\class-survey-maker-admin.php(666): include_once()
+#1 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Survey_Maker_Admin->display_plugin_each_submission_page('')
+#2 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#3 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 D:\xampp\htdocs\GEM\wp-admin\admin.php(259): do_action('admin_page_surv...')
+#5 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php on line 198
+
+2023-07-03T20:04:35+00:00 CRITICAL Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, null given in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php:202
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\class-survey-maker-admin.php(666): include_once()
+#1 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Survey_Maker_Admin->display_plugin_each_submission_page('')
+#2 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#3 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 D:\xampp\htdocs\GEM\wp-admin\admin.php(259): do_action('admin_page_surv...')
+#5 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php on line 202
+
+2023-07-03T20:05:40+00:00 CRITICAL Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, null given in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php:202
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\class-survey-maker-admin.php(666): include_once()
+#1 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Survey_Maker_Admin->display_plugin_each_submission_page('')
+#2 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#3 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 D:\xampp\htdocs\GEM\wp-admin\admin.php(259): do_action('admin_page_surv...')
+#5 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php on line 202
+
+2023-07-03T20:06:41+00:00 CRITICAL Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, null given in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php:204
+Stack trace:
+#0 D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\class-survey-maker-admin.php(666): include_once()
+#1 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(308): Survey_Maker_Admin->display_plugin_each_submission_page('')
+#2 D:\xampp\htdocs\GEM\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#3 D:\xampp\htdocs\GEM\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 D:\xampp\htdocs\GEM\wp-admin\admin.php(259): do_action('admin_page_surv...')
+#5 {main}
+  thrown in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php on line 204
+
+2023-07-03T20:09:53+00:00 CRITICAL syntax error, unexpected token "{" in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php on line 204
+
+2023-07-03T20:10:04+00:00 CRITICAL syntax error, unexpected token "{" in D:\xampp\htdocs\GEM\wp-content\plugins\survey-maker\admin\partials\submissions\survey-maker-each-submission-display.php on line 204
+
