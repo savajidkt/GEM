@@ -2348,10 +2348,11 @@ section#breadcrumb {
 @media only screen and (max-width: 991px)  {
    
     .legal-page-content {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          padding: 2.3% 0 0;
+        }
     .legal-page-rt {
         display: flex;
         flex-direction: column;
@@ -2551,8 +2552,8 @@ section.desktop-blog-sec.our_lr .gallery_title_content .gallery-left-btn-event .
 }
 
 .gallery_title_content div h3 {
-    font-size: 24px;
-    line-height: 40px;
+  font-size: 30px;
+  line-height: 40px;
 }
 .gallery-left-btn-event {
    
@@ -2703,6 +2704,33 @@ a.lmp_button, a.lmp_button:hover {
     font-size: 14px !important;
     
 }
-    
+.banner-text-slider a > button {
+  
+  font-size: 14px;
+ 
+}
+p{
+   font-size: 14px !important; 
+}
+.resource-left-content input[type="checkbox"] + label, input[type="radio"] + label {
+  
+  font-size: 14px !important;
+  
+}
+a.btn,button {
+ 
+  font-size: 14px;
+  
+}
+ 
+ section.ourpeople {
+  padding: 50px 0 0px;
+}   
+
+ection#wbs {
+  padding: 0px 0 0px;
+  background-color: #EAEAEA;
+  margin-bottom: 50px;
+}
     
 }

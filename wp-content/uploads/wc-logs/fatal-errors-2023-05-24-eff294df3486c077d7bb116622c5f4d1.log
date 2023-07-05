@@ -1,0 +1,20 @@
+2023-05-24T06:48:39+00:00 CRITICAL Uncaught Error: Failed opening required '/home/gemaincdadevelop/public_html/wp-content/themes/GlobalEngage/content-single-product-custom.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/gemaincdadevelop/public_html/wp-includes/template.php:785
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/home/gemaincda...', false)
+#1 /home/gemaincdadevelop/public_html/wp-content/themes/GlobalEngage/woocommerce/single-product.php(37): wc_get_template_part('content', 'single-product')
+#2 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(106): include('/home/gemaincda...')
+#3 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#4 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#5 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-includes/template.php on line 785
+
+2023-05-24T06:49:01+00:00 CRITICAL Uncaught Error: Failed opening required '/home/gemaincdadevelop/public_html/wp-content/themes/GlobalEngage/content-single-product-custom.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/gemaincdadevelop/public_html/wp-includes/template.php:785
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/home/gemaincda...', false)
+#1 /home/gemaincdadevelop/public_html/wp-content/themes/GlobalEngage/woocommerce/single-product.php(37): wc_get_template_part('content', 'single-product')
+#2 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(106): include('/home/gemaincda...')
+#3 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#4 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#5 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-includes/template.php on line 785
+

@@ -223,7 +223,7 @@
             if($(this).val() != ''){
                 if (!(_this.emailValivatePattern.test($(this).val()))) {
                     var errorMessage = '<img src="' + aysSurveyMakerAjaxPublic.warningIcon + '" alt="error">';
-                    errorMessage += '<span>' + aysSurveyLangObj.emailValidationError + '</span>';
+                    errorMessage += '<span class="1">' + aysSurveyLangObj.emailValidationError + '</span>';
                     $(this).parents('.' + _this.htmlClassPrefix + 'question').addClass('ays-has-error');
                     $(this).parents('.' + _this.htmlClassPrefix + 'question').find('.' + _this.htmlClassPrefix + 'question-validation-error').html(errorMessage);
                     $(this).parents('.' + _this.htmlClassPrefix + 'question').find('.' + _this.htmlClassPrefix + 'question-validation-error').show();
@@ -1028,7 +1028,7 @@
                 if( item.data('type') == 'text' || item.data('type') == 'email' || item.data('type') == 'name' || item.data('type') == 'short_text' || item.data('type') == 'number' ){
                     var errorMessage = '<img src="' + aysSurveyMakerAjaxPublic.warningIcon + '" alt="error">';
                     if( item.find( '.' + _this.htmlClassPrefix + 'input' ).val() == '' ){
-                        errorMessage += '<span>' + _this.dbOptions.survey_required_questions_message + '</span>';
+                        errorMessage += '<span class="2">' + _this.dbOptions.survey_required_questions_message + '</span>';
                         item.addClass('ays-has-error');
                         item.find('.' + _this.htmlClassPrefix + 'question-validation-error').html(errorMessage);
                         item.find('.' + _this.htmlClassPrefix + 'question-validation-error').show();
@@ -1039,7 +1039,7 @@
                     }else{
                         if( item.data('type') == 'email' ){
                             if ( ! (_this.emailValivatePattern.test( item.find( '.' + _this.htmlClassPrefix + 'input' ).val() ) ) ) {
-                                errorMessage += '<span>' + aysSurveyLangObj.emailValidationError + '</span>';
+                                errorMessage += '<span  class="3">' + aysSurveyLangObj.emailValidationError + '</span>';
                                 item.addClass('ays-has-error');
                                 item.find('.' + _this.htmlClassPrefix + 'question-validation-error').html(errorMessage);
                                 item.find('.' + _this.htmlClassPrefix + 'question-validation-error').show();
@@ -1076,7 +1076,7 @@
 
                     if( errorFlag ){
                         var errorMessage = '<img src="' + aysSurveyMakerAjaxPublic.warningIcon + '" alt="error">';
-                        errorMessage += '<span>' + _this.dbOptions.survey_required_questions_message + '</span>';
+                        errorMessage += '<span  class="4">' + _this.dbOptions.survey_required_questions_message + '</span>';
                         item.addClass('ays-has-error');
                         item.find('.' + _this.htmlClassPrefix + 'question-validation-error').html(errorMessage);
                         item.find('.' + _this.htmlClassPrefix + 'question-validation-error').show();
@@ -1091,7 +1091,7 @@
                 if ( item.data('type') == 'select' ) {
                     if( item.find('.' + _this.htmlClassPrefix + 'question-select').aysDropdown('get value') == '' ){
                         var errorMessage = '<img src="' + aysSurveyMakerAjaxPublic.warningIcon + '" alt="error">';
-                        errorMessage += '<span>' + _this.dbOptions.survey_required_questions_message + '</span>';
+                        errorMessage += '<span  class="5">' + _this.dbOptions.survey_required_questions_message + '</span>';
                         item.addClass('ays-has-error');
                         item.find('.' + _this.htmlClassPrefix + 'question-validation-error').html(errorMessage);
                         item.find('.' + _this.htmlClassPrefix + 'question-validation-error').show();
@@ -1118,7 +1118,7 @@
                 if( item.data('type') == 'email' ){
                     if( ! (_this.emailValivatePattern.test( item.find( '.' + _this.htmlClassPrefix + 'input' ).val() ) ) ){
                         var errorMessage = '<img src="' + aysSurveyMakerAjaxPublic.warningIcon + '" alt="error">';
-                        errorMessage += '<span>' + aysSurveyLangObj.emailValidationError + '</span>';
+                        errorMessage += '<span  class="6">' + aysSurveyLangObj.emailValidationError + '</span>';
 
                         item.addClass('ays-has-error');
                         item.find('.' + _this.htmlClassPrefix + 'question-validation-error').html(errorMessage);
@@ -1147,7 +1147,7 @@
                 if( item.data('type') == 'email' ){
                     if( ! (_this.emailValivatePattern.test( item.find( '.' + _this.htmlClassPrefix + 'input' ).val() ) ) ){
                         var errorMessage = '<img src="' + aysSurveyMakerAjaxPublic.warningIcon + '" alt="error">';
-                        errorMessage += '<span>' + aysSurveyLangObj.emailValidationError + '</span>';
+                        errorMessage += '<span  class="7">' + aysSurveyLangObj.emailValidationError + '</span>';
 
                         item.addClass('ays-has-error');
                         item.find('.' + _this.htmlClassPrefix + 'question-validation-error').html(errorMessage);

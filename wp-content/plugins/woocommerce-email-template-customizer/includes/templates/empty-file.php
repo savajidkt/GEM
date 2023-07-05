@@ -1,2 +1,2 @@
-<?php
-//Important: To remove other file
+<?php
+//Important: To remove other file

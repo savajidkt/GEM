@@ -1,0 +1,22 @@
+2023-05-29T08:56:54+00:00 CRITICAL Uncaught ArgumentCountError: 3 arguments are required, 1 given in /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce-wholesale-prices/views/view-wwp-free-training-guide.php:26
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce-wholesale-prices/views/view-wwp-free-training-guide.php(26): sprintf('If you've ever ...')
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce-wholesale-prices/includes/class-wwp-settings.php(835): require_once('/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WWP_Settings->render_plugin_settings_free_training_guide(Array)
+#3 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/admin/class-wc-admin-settings.php(744): do_action('woocommerce_adm...', Array)
+#6 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce-wholesale-prices/includes/class-wwp-settings.php(98): WC_Admin_Settings::output_fields(Array)
+#7 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WWP_Settings->output('')
+#8 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#9 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#10 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/admin/views/html-admin-settings.php(40): do_action('woocommerce_set...')
+#11 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/admin/class-wc-admin-settings.php(153): include('/home/gemaincda...')
+#12 /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce/includes/admin/class-wc-admin-menus.php(291): WC_Admin_Settings::output()
+#13 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(308): WC_Admin_Menus->settings_page('')
+#14 /home/gemaincdadevelop/public_html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#15 /home/gemaincdadevelop/public_html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#16 /home/gemaincdadevelop/public_html/wp-admin/admin.php(259): do_action('woocommerce_pag...')
+#17 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/woocommerce-wholesale-prices/views/view-wwp-free-training-guide.php on line 26
+

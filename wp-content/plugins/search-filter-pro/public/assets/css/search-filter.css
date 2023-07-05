@@ -1528,10 +1528,10 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 .searchandfilter.search-filter-disabled .noUi-connect {
   opacity: 0.7; }
 
-/*
-.searchandfilter .noUi-connect[disabled="disabled"]
-{
-	background-color:#666666;
+/*
+.searchandfilter .noUi-connect[disabled="disabled"]
+{
+	background-color:#666666;
 }*/
 .searchandfilter .noUi-horizontal.noUi-extended {
   padding: 0 10px; }

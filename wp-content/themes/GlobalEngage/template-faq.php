@@ -76,7 +76,7 @@ $myPostID = $post->ID;
     margin: 0;
     padding-bottom: 30px;
     padding-top: 30px;
-    border-bottom: 1px solid rgba(51,51,51, 0.8) ;
+    border-bottom: 1px solid rgba(51,51,51, 0.10) !important;
 }
 .accordionUL li:nth-of-type(1) {
   animation-delay: 0.5s;

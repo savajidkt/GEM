@@ -1,301 +1,301 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
-
-var fields = require('./includes/fields');
-var pagination = require('./includes/pagination');
-var state = require('./includes/state');
-var plugin = require('./includes/plugin');
-
-
-(function ( $ ) {
-
-	"use strict";
-
-	$(function () {
-
-		String.prototype.replaceAll = function(str1, str2, ignore)
-		{
-			return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
-		}
-
-		if (!Object.keys) {
-		  Object.keys = (function () {
-			'use strict';
-			var hasOwnProperty = Object.prototype.hasOwnProperty,
-				hasDontEnumBug = !({toString: null}).propertyIsEnumerable('toString'),
-				dontEnums = [
-				  'toString',
-				  'toLocaleString',
-				  'valueOf',
-				  'hasOwnProperty',
-				  'isPrototypeOf',
-				  'propertyIsEnumerable',
-				  'constructor'
-				],
-				dontEnumsLength = dontEnums.length;
-
-			return function (obj) {
-			  if (typeof obj !== 'object' && (typeof obj !== 'function' || obj === null)) {
-				throw new TypeError('Object.keys called on non-object');
-			  }
-
-			  var result = [], prop, i;
-
-			  for (prop in obj) {
-				if (hasOwnProperty.call(obj, prop)) {
-				  result.push(prop);
-				}
-			  }
-
-			  if (hasDontEnumBug) {
-				for (i = 0; i < dontEnumsLength; i++) {
-				  if (hasOwnProperty.call(obj, dontEnums[i])) {
-					result.push(dontEnums[i]);
-				  }
-				}
-			  }
-			  return result;
-			};
-		  }());
-		}
-
-		/* Search & Filter jQuery Plugin */
-		$.fn.searchAndFilter = plugin;
-
-		/* init */
-		$(".searchandfilter").searchAndFilter();
-
-		/* external controls */
-		$(document).on("click", ".search-filter-reset", function(e){
-
-			e.preventDefault();
-
-			var searchFormID = typeof($(this).attr("data-search-form-id"))!="undefined" ? $(this).attr("data-search-form-id") : "";
-			var submitForm = typeof($(this).attr("data-sf-submit-form"))!="undefined" ? $(this).attr("data-sf-submit-form") : "";
-
-			state.getSearchForm(searchFormID).reset(submitForm);
-
-			//var $linked = $("#search-filter-form-"+searchFormID).searchFilterForm({action: "reset"});
-
-			return false;
-
-		});
-
-	});
-
-
-/*
- * jQuery Easing v1.4.1 - http://gsgd.co.uk/sandbox/jquery/easing/
- * Open source under the BSD License.
- * Copyright © 2008 George McGinley Smith
- * All rights reserved.
- * https://raw.github.com/gdsmith/jquery.easing/master/LICENSE
-*/
-
-/* globals jQuery, define, module, require */
-(function (factory) {
-	if (typeof define === "function" && define.amd) {
-		define(['jquery'], function ($) {
-			return factory($);
-		});
-	} else if (typeof module === "object" && typeof module.exports === "object") {
-		module.exports = factory((typeof window !== "undefined" ? window['jQuery'] : typeof global !== "undefined" ? global['jQuery'] : null));
-	} else {
-		factory(jQuery);
-	}
-})(function($){
-
-	// Preserve the original jQuery "swing" easing as "jswing"
-	if (typeof $.easing !== 'undefined') {
-		$.easing['jswing'] = $.easing['swing'];
-	}
-
-	var pow = Math.pow,
-		sqrt = Math.sqrt,
-		sin = Math.sin,
-		cos = Math.cos,
-		PI = Math.PI,
-		c1 = 1.70158,
-		c2 = c1 * 1.525,
-		c3 = c1 + 1,
-		c4 = ( 2 * PI ) / 3,
-		c5 = ( 2 * PI ) / 4.5;
-
-	// x is the fraction of animation progress, in the range 0..1
-	function bounceOut(x) {
-		var n1 = 7.5625,
-			d1 = 2.75;
-		if ( x < 1/d1 ) {
-			return n1*x*x;
-		} else if ( x < 2/d1 ) {
-			return n1*(x-=(1.5/d1))*x + .75;
-		} else if ( x < 2.5/d1 ) {
-			return n1*(x-=(2.25/d1))*x + .9375;
-		} else {
-			return n1*(x-=(2.625/d1))*x + .984375;
-		}
-	}
-
-	$.extend( $.easing, {
-		def: 'easeOutQuad',
-		swing: function (x) {
-			return $.easing[$.easing.def](x);
-		},
-		easeInQuad: function (x) {
-			return x * x;
-		},
-		easeOutQuad: function (x) {
-			return 1 - ( 1 - x ) * ( 1 - x );
-		},
-		easeInOutQuad: function (x) {
-			return x < 0.5 ?
-				2 * x * x :
-				1 - pow( -2 * x + 2, 2 ) / 2;
-		},
-		easeInCubic: function (x) {
-			return x * x * x;
-		},
-		easeOutCubic: function (x) {
-			return 1 - pow( 1 - x, 3 );
-		},
-		easeInOutCubic: function (x) {
-			return x < 0.5 ?
-				4 * x * x * x :
-				1 - pow( -2 * x + 2, 3 ) / 2;
-		},
-		easeInQuart: function (x) {
-			return x * x * x * x;
-		},
-		easeOutQuart: function (x) {
-			return 1 - pow( 1 - x, 4 );
-		},
-		easeInOutQuart: function (x) {
-			return x < 0.5 ?
-				8 * x * x * x * x :
-				1 - pow( -2 * x + 2, 4 ) / 2;
-		},
-		easeInQuint: function (x) {
-			return x * x * x * x * x;
-		},
-		easeOutQuint: function (x) {
-			return 1 - pow( 1 - x, 5 );
-		},
-		easeInOutQuint: function (x) {
-			return x < 0.5 ?
-				16 * x * x * x * x * x :
-				1 - pow( -2 * x + 2, 5 ) / 2;
-		},
-		easeInSine: function (x) {
-			return 1 - cos( x * PI/2 );
-		},
-		easeOutSine: function (x) {
-			return sin( x * PI/2 );
-		},
-		easeInOutSine: function (x) {
-			return -( cos( PI * x ) - 1 ) / 2;
-		},
-		easeInExpo: function (x) {
-			return x === 0 ? 0 : pow( 2, 10 * x - 10 );
-		},
-		easeOutExpo: function (x) {
-			return x === 1 ? 1 : 1 - pow( 2, -10 * x );
-		},
-		easeInOutExpo: function (x) {
-			return x === 0 ? 0 : x === 1 ? 1 : x < 0.5 ?
-				pow( 2, 20 * x - 10 ) / 2 :
-				( 2 - pow( 2, -20 * x + 10 ) ) / 2;
-		},
-		easeInCirc: function (x) {
-			return 1 - sqrt( 1 - pow( x, 2 ) );
-		},
-		easeOutCirc: function (x) {
-			return sqrt( 1 - pow( x - 1, 2 ) );
-		},
-		easeInOutCirc: function (x) {
-			return x < 0.5 ?
-				( 1 - sqrt( 1 - pow( 2 * x, 2 ) ) ) / 2 :
-				( sqrt( 1 - pow( -2 * x + 2, 2 ) ) + 1 ) / 2;
-		},
-		easeInElastic: function (x) {
-			return x === 0 ? 0 : x === 1 ? 1 :
-				-pow( 2, 10 * x - 10 ) * sin( ( x * 10 - 10.75 ) * c4 );
-		},
-		easeOutElastic: function (x) {
-			return x === 0 ? 0 : x === 1 ? 1 :
-				pow( 2, -10 * x ) * sin( ( x * 10 - 0.75 ) * c4 ) + 1;
-		},
-		easeInOutElastic: function (x) {
-			return x === 0 ? 0 : x === 1 ? 1 : x < 0.5 ?
-				-( pow( 2, 20 * x - 10 ) * sin( ( 20 * x - 11.125 ) * c5 )) / 2 :
-				pow( 2, -20 * x + 10 ) * sin( ( 20 * x - 11.125 ) * c5 ) / 2 + 1;
-		},
-		easeInBack: function (x) {
-			return c3 * x * x * x - c1 * x * x;
-		},
-		easeOutBack: function (x) {
-			return 1 + c3 * pow( x - 1, 3 ) + c1 * pow( x - 1, 2 );
-		},
-		easeInOutBack: function (x) {
-			return x < 0.5 ?
-				( pow( 2 * x, 2 ) * ( ( c2 + 1 ) * 2 * x - c2 ) ) / 2 :
-				( pow( 2 * x - 2, 2 ) *( ( c2 + 1 ) * ( x * 2 - 2 ) + c2 ) + 2 ) / 2;
-		},
-		easeInBounce: function (x) {
-			return 1 - bounceOut( 1 - x );
-		},
-		easeOutBounce: bounceOut,
-		easeInOutBounce: function (x) {
-			return x < 0.5 ?
-				( 1 - bounceOut( 1 - 2 * x ) ) / 2 :
-				( 1 + bounceOut( 2 * x - 1 ) ) / 2;
-		}
-	});
-	return $;
-});
-
-}(jQuery));
-
-//safari back button fix
-jQuery( window ).on( "pageshow", function(event) {
-    if (event.originalEvent.persisted) {
-        jQuery(".searchandfilter").off();
-        jQuery(".searchandfilter").searchAndFilter();
-    }
-});
-
-/* wpnumb - nouislider number formatting */
-!function(){"use strict";function e(e){return e.split("").reverse().join("")}function n(e,n){return e.substring(0,n.length)===n}function r(e,n){return e.slice(-1*n.length)===n}function t(e,n,r){if((e[n]||e[r])&&e[n]===e[r])throw new Error(n)}function i(e){return"number"==typeof e&&isFinite(e)}function o(e,n){var r=Math.pow(10,n);return(Math.round(e*r)/r).toFixed(n)}function u(n,r,t,u,f,a,c,s,p,d,l,h){var g,v,w,m=h,x="",b="";return a&&(h=a(h)),i(h)?(n!==!1&&0===parseFloat(h.toFixed(n))&&(h=0),0>h&&(g=!0,h=Math.abs(h)),n!==!1&&(h=o(h,n)),h=h.toString(),-1!==h.indexOf(".")?(v=h.split("."),w=v[0],t&&(x=t+v[1])):w=h,r&&(w=e(w).match(/.{1,3}/g),w=e(w.join(e(r)))),g&&s&&(b+=s),u&&(b+=u),g&&p&&(b+=p),b+=w,b+=x,f&&(b+=f),d&&(b=d(b,m)),b):!1}function f(e,t,o,u,f,a,c,s,p,d,l,h){var g,v="";return l&&(h=l(h)),h&&"string"==typeof h?(s&&n(h,s)&&(h=h.replace(s,""),g=!0),u&&n(h,u)&&(h=h.replace(u,"")),p&&n(h,p)&&(h=h.replace(p,""),g=!0),f&&r(h,f)&&(h=h.slice(0,-1*f.length)),t&&(h=h.split(t).join("")),o&&(h=h.replace(o,".")),g&&(v+="-"),v+=h,v=v.replace(/[^0-9\.\-.]/g,""),""===v?!1:(v=Number(v),c&&(v=c(v)),i(v)?v:!1)):!1}function a(e){var n,r,i,o={};for(n=0;n<p.length;n+=1)if(r=p[n],i=e[r],void 0===i)"negative"!==r||o.negativeBefore?"mark"===r&&"."!==o.thousand?o[r]=".":o[r]=!1:o[r]="-";else if("decimals"===r){if(!(i>=0&&8>i))throw new Error(r);o[r]=i}else if("encoder"===r||"decoder"===r||"edit"===r||"undo"===r){if("function"!=typeof i)throw new Error(r);o[r]=i}else{if("string"!=typeof i)throw new Error(r);o[r]=i}return t(o,"mark","thousand"),t(o,"prefix","negative"),t(o,"prefix","negativeBefore"),o}function c(e,n,r){var t,i=[];for(t=0;t<p.length;t+=1)i.push(e[p[t]]);return i.push(r),n.apply("",i)}function s(e){return this instanceof s?void("object"==typeof e&&(e=a(e),this.to=function(n){return c(e,u,n)},this.from=function(n){return c(e,f,n)})):new s(e)}var p=["decimals","thousand","mark","prefix","postfix","encoder","decoder","negativeBefore","negative","edit","undo"];window.wNumb=s}();
-
+
+var fields = require('./includes/fields');
+var pagination = require('./includes/pagination');
+var state = require('./includes/state');
+var plugin = require('./includes/plugin');
+
+
+(function ( $ ) {
+
+	"use strict";
+
+	$(function () {
+
+		String.prototype.replaceAll = function(str1, str2, ignore)
+		{
+			return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+		}
+
+		if (!Object.keys) {
+		  Object.keys = (function () {
+			'use strict';
+			var hasOwnProperty = Object.prototype.hasOwnProperty,
+				hasDontEnumBug = !({toString: null}).propertyIsEnumerable('toString'),
+				dontEnums = [
+				  'toString',
+				  'toLocaleString',
+				  'valueOf',
+				  'hasOwnProperty',
+				  'isPrototypeOf',
+				  'propertyIsEnumerable',
+				  'constructor'
+				],
+				dontEnumsLength = dontEnums.length;
+
+			return function (obj) {
+			  if (typeof obj !== 'object' && (typeof obj !== 'function' || obj === null)) {
+				throw new TypeError('Object.keys called on non-object');
+			  }
+
+			  var result = [], prop, i;
+
+			  for (prop in obj) {
+				if (hasOwnProperty.call(obj, prop)) {
+				  result.push(prop);
+				}
+			  }
+
+			  if (hasDontEnumBug) {
+				for (i = 0; i < dontEnumsLength; i++) {
+				  if (hasOwnProperty.call(obj, dontEnums[i])) {
+					result.push(dontEnums[i]);
+				  }
+				}
+			  }
+			  return result;
+			};
+		  }());
+		}
+
+		/* Search & Filter jQuery Plugin */
+		$.fn.searchAndFilter = plugin;
+
+		/* init */
+		$(".searchandfilter").searchAndFilter();
+
+		/* external controls */
+		$(document).on("click", ".search-filter-reset", function(e){
+
+			e.preventDefault();
+
+			var searchFormID = typeof($(this).attr("data-search-form-id"))!="undefined" ? $(this).attr("data-search-form-id") : "";
+			var submitForm = typeof($(this).attr("data-sf-submit-form"))!="undefined" ? $(this).attr("data-sf-submit-form") : "";
+
+			state.getSearchForm(searchFormID).reset(submitForm);
+
+			//var $linked = $("#search-filter-form-"+searchFormID).searchFilterForm({action: "reset"});
+
+			return false;
+
+		});
+
+	});
+
+
+/*
+ * jQuery Easing v1.4.1 - http://gsgd.co.uk/sandbox/jquery/easing/
+ * Open source under the BSD License.
+ * Copyright © 2008 George McGinley Smith
+ * All rights reserved.
+ * https://raw.github.com/gdsmith/jquery.easing/master/LICENSE
+*/
+
+/* globals jQuery, define, module, require */
+(function (factory) {
+	if (typeof define === "function" && define.amd) {
+		define(['jquery'], function ($) {
+			return factory($);
+		});
+	} else if (typeof module === "object" && typeof module.exports === "object") {
+		module.exports = factory((typeof window !== "undefined" ? window['jQuery'] : typeof global !== "undefined" ? global['jQuery'] : null));
+	} else {
+		factory(jQuery);
+	}
+})(function($){
+
+	// Preserve the original jQuery "swing" easing as "jswing"
+	if (typeof $.easing !== 'undefined') {
+		$.easing['jswing'] = $.easing['swing'];
+	}
+
+	var pow = Math.pow,
+		sqrt = Math.sqrt,
+		sin = Math.sin,
+		cos = Math.cos,
+		PI = Math.PI,
+		c1 = 1.70158,
+		c2 = c1 * 1.525,
+		c3 = c1 + 1,
+		c4 = ( 2 * PI ) / 3,
+		c5 = ( 2 * PI ) / 4.5;
+
+	// x is the fraction of animation progress, in the range 0..1
+	function bounceOut(x) {
+		var n1 = 7.5625,
+			d1 = 2.75;
+		if ( x < 1/d1 ) {
+			return n1*x*x;
+		} else if ( x < 2/d1 ) {
+			return n1*(x-=(1.5/d1))*x + .75;
+		} else if ( x < 2.5/d1 ) {
+			return n1*(x-=(2.25/d1))*x + .9375;
+		} else {
+			return n1*(x-=(2.625/d1))*x + .984375;
+		}
+	}
+
+	$.extend( $.easing, {
+		def: 'easeOutQuad',
+		swing: function (x) {
+			return $.easing[$.easing.def](x);
+		},
+		easeInQuad: function (x) {
+			return x * x;
+		},
+		easeOutQuad: function (x) {
+			return 1 - ( 1 - x ) * ( 1 - x );
+		},
+		easeInOutQuad: function (x) {
+			return x < 0.5 ?
+				2 * x * x :
+				1 - pow( -2 * x + 2, 2 ) / 2;
+		},
+		easeInCubic: function (x) {
+			return x * x * x;
+		},
+		easeOutCubic: function (x) {
+			return 1 - pow( 1 - x, 3 );
+		},
+		easeInOutCubic: function (x) {
+			return x < 0.5 ?
+				4 * x * x * x :
+				1 - pow( -2 * x + 2, 3 ) / 2;
+		},
+		easeInQuart: function (x) {
+			return x * x * x * x;
+		},
+		easeOutQuart: function (x) {
+			return 1 - pow( 1 - x, 4 );
+		},
+		easeInOutQuart: function (x) {
+			return x < 0.5 ?
+				8 * x * x * x * x :
+				1 - pow( -2 * x + 2, 4 ) / 2;
+		},
+		easeInQuint: function (x) {
+			return x * x * x * x * x;
+		},
+		easeOutQuint: function (x) {
+			return 1 - pow( 1 - x, 5 );
+		},
+		easeInOutQuint: function (x) {
+			return x < 0.5 ?
+				16 * x * x * x * x * x :
+				1 - pow( -2 * x + 2, 5 ) / 2;
+		},
+		easeInSine: function (x) {
+			return 1 - cos( x * PI/2 );
+		},
+		easeOutSine: function (x) {
+			return sin( x * PI/2 );
+		},
+		easeInOutSine: function (x) {
+			return -( cos( PI * x ) - 1 ) / 2;
+		},
+		easeInExpo: function (x) {
+			return x === 0 ? 0 : pow( 2, 10 * x - 10 );
+		},
+		easeOutExpo: function (x) {
+			return x === 1 ? 1 : 1 - pow( 2, -10 * x );
+		},
+		easeInOutExpo: function (x) {
+			return x === 0 ? 0 : x === 1 ? 1 : x < 0.5 ?
+				pow( 2, 20 * x - 10 ) / 2 :
+				( 2 - pow( 2, -20 * x + 10 ) ) / 2;
+		},
+		easeInCirc: function (x) {
+			return 1 - sqrt( 1 - pow( x, 2 ) );
+		},
+		easeOutCirc: function (x) {
+			return sqrt( 1 - pow( x - 1, 2 ) );
+		},
+		easeInOutCirc: function (x) {
+			return x < 0.5 ?
+				( 1 - sqrt( 1 - pow( 2 * x, 2 ) ) ) / 2 :
+				( sqrt( 1 - pow( -2 * x + 2, 2 ) ) + 1 ) / 2;
+		},
+		easeInElastic: function (x) {
+			return x === 0 ? 0 : x === 1 ? 1 :
+				-pow( 2, 10 * x - 10 ) * sin( ( x * 10 - 10.75 ) * c4 );
+		},
+		easeOutElastic: function (x) {
+			return x === 0 ? 0 : x === 1 ? 1 :
+				pow( 2, -10 * x ) * sin( ( x * 10 - 0.75 ) * c4 ) + 1;
+		},
+		easeInOutElastic: function (x) {
+			return x === 0 ? 0 : x === 1 ? 1 : x < 0.5 ?
+				-( pow( 2, 20 * x - 10 ) * sin( ( 20 * x - 11.125 ) * c5 )) / 2 :
+				pow( 2, -20 * x + 10 ) * sin( ( 20 * x - 11.125 ) * c5 ) / 2 + 1;
+		},
+		easeInBack: function (x) {
+			return c3 * x * x * x - c1 * x * x;
+		},
+		easeOutBack: function (x) {
+			return 1 + c3 * pow( x - 1, 3 ) + c1 * pow( x - 1, 2 );
+		},
+		easeInOutBack: function (x) {
+			return x < 0.5 ?
+				( pow( 2 * x, 2 ) * ( ( c2 + 1 ) * 2 * x - c2 ) ) / 2 :
+				( pow( 2 * x - 2, 2 ) *( ( c2 + 1 ) * ( x * 2 - 2 ) + c2 ) + 2 ) / 2;
+		},
+		easeInBounce: function (x) {
+			return 1 - bounceOut( 1 - x );
+		},
+		easeOutBounce: bounceOut,
+		easeInOutBounce: function (x) {
+			return x < 0.5 ?
+				( 1 - bounceOut( 1 - 2 * x ) ) / 2 :
+				( 1 + bounceOut( 2 * x - 1 ) ) / 2;
+		}
+	});
+	return $;
+});
+
+}(jQuery));
+
+//safari back button fix
+jQuery( window ).on( "pageshow", function(event) {
+    if (event.originalEvent.persisted) {
+        jQuery(".searchandfilter").off();
+        jQuery(".searchandfilter").searchAndFilter();
+    }
+});
+
+/* wpnumb - nouislider number formatting */
+!function(){"use strict";function e(e){return e.split("").reverse().join("")}function n(e,n){return e.substring(0,n.length)===n}function r(e,n){return e.slice(-1*n.length)===n}function t(e,n,r){if((e[n]||e[r])&&e[n]===e[r])throw new Error(n)}function i(e){return"number"==typeof e&&isFinite(e)}function o(e,n){var r=Math.pow(10,n);return(Math.round(e*r)/r).toFixed(n)}function u(n,r,t,u,f,a,c,s,p,d,l,h){var g,v,w,m=h,x="",b="";return a&&(h=a(h)),i(h)?(n!==!1&&0===parseFloat(h.toFixed(n))&&(h=0),0>h&&(g=!0,h=Math.abs(h)),n!==!1&&(h=o(h,n)),h=h.toString(),-1!==h.indexOf(".")?(v=h.split("."),w=v[0],t&&(x=t+v[1])):w=h,r&&(w=e(w).match(/.{1,3}/g),w=e(w.join(e(r)))),g&&s&&(b+=s),u&&(b+=u),g&&p&&(b+=p),b+=w,b+=x,f&&(b+=f),d&&(b=d(b,m)),b):!1}function f(e,t,o,u,f,a,c,s,p,d,l,h){var g,v="";return l&&(h=l(h)),h&&"string"==typeof h?(s&&n(h,s)&&(h=h.replace(s,""),g=!0),u&&n(h,u)&&(h=h.replace(u,"")),p&&n(h,p)&&(h=h.replace(p,""),g=!0),f&&r(h,f)&&(h=h.slice(0,-1*f.length)),t&&(h=h.split(t).join("")),o&&(h=h.replace(o,".")),g&&(v+="-"),v+=h,v=v.replace(/[^0-9\.\-.]/g,""),""===v?!1:(v=Number(v),c&&(v=c(v)),i(v)?v:!1)):!1}function a(e){var n,r,i,o={};for(n=0;n<p.length;n+=1)if(r=p[n],i=e[r],void 0===i)"negative"!==r||o.negativeBefore?"mark"===r&&"."!==o.thousand?o[r]=".":o[r]=!1:o[r]="-";else if("decimals"===r){if(!(i>=0&&8>i))throw new Error(r);o[r]=i}else if("encoder"===r||"decoder"===r||"edit"===r||"undo"===r){if("function"!=typeof i)throw new Error(r);o[r]=i}else{if("string"!=typeof i)throw new Error(r);o[r]=i}return t(o,"mark","thousand"),t(o,"prefix","negative"),t(o,"prefix","negativeBefore"),o}function c(e,n,r){var t,i=[];for(t=0;t<p.length;t+=1)i.push(e[p[t]]);return i.push(r),n.apply("",i)}function s(e){return this instanceof s?void("object"==typeof e&&(e=a(e),this.to=function(n){return c(e,u,n)},this.from=function(n){return c(e,f,n)})):new s(e)}var p=["decimals","thousand","mark","prefix","postfix","encoder","decoder","negativeBefore","negative","edit","undo"];window.wNumb=s}();
+
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 //# sourceMappingURL=data:application/json;charset:utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9wdWJsaWMvYXNzZXRzL2pzL2FwcC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBIiwiZmlsZSI6ImdlbmVyYXRlZC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzQ29udGVudCI6WyJcclxudmFyIGZpZWxkcyA9IHJlcXVpcmUoJy4vaW5jbHVkZXMvZmllbGRzJyk7XHJcbnZhciBwYWdpbmF0aW9uID0gcmVxdWlyZSgnLi9pbmNsdWRlcy9wYWdpbmF0aW9uJyk7XHJcbnZhciBzdGF0ZSA9IHJlcXVpcmUoJy4vaW5jbHVkZXMvc3RhdGUnKTtcclxudmFyIHBsdWdpbiA9IHJlcXVpcmUoJy4vaW5jbHVkZXMvcGx1Z2luJyk7XHJcblxyXG5cclxuKGZ1bmN0aW9uICggJCApIHtcclxuXHJcblx0XCJ1c2Ugc3RyaWN0XCI7XHJcblxyXG5cdCQoZnVuY3Rpb24gKCkge1xyXG5cclxuXHRcdFN0cmluZy5wcm90b3R5cGUucmVwbGFjZUFsbCA9IGZ1bmN0aW9uKHN0cjEsIHN0cjIsIGlnbm9yZSlcclxuXHRcdHtcclxuXHRcdFx0cmV0dXJuIHRoaXMucmVwbGFjZShuZXcgUmVnRXhwKHN0cjEucmVwbGFjZSgvKFtcXC9cXCxcXCFcXFxcXFxeXFwkXFx7XFx9XFxbXFxdXFwoXFwpXFwuXFwqXFwrXFw/XFx8XFw8XFw+XFwtXFwmXSkvZyxcIlxcXFwkJlwiKSwoaWdub3JlP1wiZ2lcIjpcImdcIikpLCh0eXBlb2Yoc3RyMik9PVwic3RyaW5nXCIpP3N0cjIucmVwbGFjZSgvXFwkL2csXCIkJCQkXCIpOnN0cjIpO1xyXG5cdFx0fVxyXG5cclxuXHRcdGlmICghT2JqZWN0LmtleXMpIHtcclxuXHRcdCAgT2JqZWN0LmtleXMgPSAoZnVuY3Rpb24gKCkge1xyXG5cdFx0XHQndXNlIHN0cmljdCc7XHJcblx0XHRcdHZhciBoYXNPd25Qcm9wZXJ0eSA9IE9iamVjdC5wcm90b3R5cGUuaGFzT3duUHJvcGVydHksXHJcblx0XHRcdFx0aGFzRG9udEVudW1CdWcgPSAhKHt0b1N0cmluZzogbnVsbH0pLnByb3BlcnR5SXNFbnVtZXJhYmxlKCd0b1N0cmluZycpLFxyXG5cdFx0XHRcdGRvbnRFbnVtcyA9IFtcclxuXHRcdFx0XHQgICd0b1N0cmluZycsXHJcblx0XHRcdFx0ICAndG9Mb2NhbGVTdHJpbmcnLFxyXG5cdFx0XHRcdCAgJ3ZhbHVlT2YnLFxyXG5cdFx0XHRcdCAgJ2hhc093blByb3BlcnR5JyxcclxuXHRcdFx0XHQgICdpc1Byb3RvdHlwZU9mJyxcclxuXHRcdFx0XHQgICdwcm9wZXJ0eUlzRW51bWVyYWJsZScsXHJcblx0XHRcdFx0ICAnY29uc3RydWN0b3InXHJcblx0XHRcdFx0XSxcclxuXHRcdFx0XHRkb250RW51bXNMZW5ndGggPSBkb250RW51bXMubGVuZ3RoO1xyXG5cclxuXHRcdFx0cmV0dXJuIGZ1bmN0aW9uIChvYmopIHtcclxuXHRcdFx0ICBpZiAodHlwZW9mIG9iaiAhPT0gJ29iamVjdCcgJiYgKHR5cGVvZiBvYmogIT09ICdmdW5jdGlvbicgfHwgb2JqID09PSBudWxsKSkge1xyXG5cdFx0XHRcdHRocm93IG5ldyBUeXBlRXJyb3IoJ09iamVjdC5rZXlzIGNhbGxlZCBvbiBub24tb2JqZWN0Jyk7XHJcblx0XHRcdCAgfVxyXG5cclxuXHRcdFx0ICB2YXIgcmVzdWx0ID0gW10sIHByb3AsIGk7XHJcblxyXG5cdFx0XHQgIGZvciAocHJvcCBpbiBvYmopIHtcclxuXHRcdFx0XHRpZiAoaGFzT3duUHJvcGVydHkuY2FsbChvYmosIHByb3ApKSB7XHJcblx0XHRcdFx0ICByZXN1bHQucHVzaChwcm9wKTtcclxuXHRcdFx0XHR9XHJcblx0XHRcdCAgfVxyXG5cclxuXHRcdFx0ICBpZiAoaGFzRG9udEVudW1CdWcpIHtcclxuXHRcdFx0XHRmb3IgKGkgPSAwOyBpIDwgZG9udEVudW1zTGVuZ3RoOyBpKyspIHtcclxuXHRcdFx0XHQgIGlmIChoYXNPd25Qcm9wZXJ0eS5jYWxsKG9iaiwgZG9udEVudW1zW2ldKSkge1xyXG5cdFx0XHRcdFx0cmVzdWx0LnB1c2goZG9udEVudW1zW2ldKTtcclxuXHRcdFx0XHQgIH1cclxuXHRcdFx0XHR9XHJcblx0XHRcdCAgfVxyXG5cdFx0XHQgIHJldHVybiByZXN1bHQ7XHJcblx0XHRcdH07XHJcblx0XHQgIH0oKSk7XHJcblx0XHR9XHJcblxyXG5cdFx0LyogU2VhcmNoICYgRmlsdGVyIGpRdWVyeSBQbHVnaW4gKi9cclxuXHRcdCQuZm4uc2VhcmNoQW5kRmlsdGVyID0gcGx1Z2luO1xyXG5cclxuXHRcdC8qIGluaXQgKi9cclxuXHRcdCQoXCIuc2VhcmNoYW5kZmlsdGVyXCIpLnNlYXJjaEFuZEZpbHRlcigpO1xyXG5cclxuXHRcdC8qIGV4dGVybmFsIGNvbnRyb2xzICovXHJcblx0XHQkKGRvY3VtZW50KS5vbihcImNsaWNrXCIsIFwiLnNlYXJjaC1maWx0ZXItcmVzZXRcIiwgZnVuY3Rpb24oZSl7XHJcblxyXG5cdFx0XHRlLnByZXZlbnREZWZhdWx0KCk7XHJcblxyXG5cdFx0XHR2YXIgc2VhcmNoRm9ybUlEID0gdHlwZW9mKCQodGhpcykuYXR0cihcImRhdGEtc2VhcmNoLWZvcm0taWRcIikpIT1cInVuZGVmaW5lZFwiID8gJCh0aGlzKS5hdHRyKFwiZGF0YS1zZWFyY2gtZm9ybS1pZFwiKSA6IFwiXCI7XHJcblx0XHRcdHZhciBzdWJtaXRGb3JtID0gdHlwZW9mKCQodGhpcykuYXR0cihcImRhdGEtc2Ytc3VibWl0LWZvcm1cIikpIT1cInVuZGVmaW5lZFwiID8gJCh0aGlzKS5hdHRyKFwiZGF0YS1zZi1zdWJtaXQtZm9ybVwiKSA6IFwiXCI7XHJcblxyXG5cdFx0XHRzdGF0ZS5nZXRTZWFyY2hGb3JtKHNlYXJjaEZvcm1JRCkucmVzZXQoc3VibWl0Rm9ybSk7XHJcblxyXG5cdFx0XHQvL3ZhciAkbGlua2VkID0gJChcIiNzZWFyY2gtZmlsdGVyLWZvcm0tXCIrc2VhcmNoRm9ybUlEKS5zZWFyY2hGaWx0ZXJGb3JtKHthY3Rpb246IFwicmVzZXRcIn0pO1xyXG5cclxuXHRcdFx0cmV0dXJuIGZhbHNlO1xyXG5cclxuXHRcdH0pO1xyXG5cclxuXHR9KTtcclxuXHJcblxyXG4vKlxyXG4gKiBqUXVlcnkgRWFzaW5nIHYxLjQuMSAtIGh0dHA6Ly9nc2dkLmNvLnVrL3NhbmRib3gvanF1ZXJ5L2Vhc2luZy9cclxuICogT3BlbiBzb3VyY2UgdW5kZXIgdGhlIEJTRCBMaWNlbnNlLlxyXG4gKiBDb3B5cmlnaHQgwqkgMjAwOCBHZW9yZ2UgTWNHaW5sZXkgU21pdGhcclxuICogQWxsIHJpZ2h0cyByZXNlcnZlZC5cclxuICogaHR0cHM6Ly9yYXcuZ2l0aHViLmNvbS9nZHNtaXRoL2pxdWVyeS5lYXNpbmcvbWFzdGVyL0xJQ0VOU0VcclxuKi9cclxuXHJcbi8qIGdsb2JhbHMgalF1ZXJ5LCBkZWZpbmUsIG1vZHVsZSwgcmVxdWlyZSAqL1xyXG4oZnVuY3Rpb24gKGZhY3RvcnkpIHtcclxuXHRpZiAodHlwZW9mIGRlZmluZSA9PT0gXCJmdW5jdGlvblwiICYmIGRlZmluZS5hbWQpIHtcclxuXHRcdGRlZmluZShbJ2pxdWVyeSddLCBmdW5jdGlvbiAoJCkge1xyXG5cdFx0XHRyZXR1cm4gZmFjdG9yeSgkKTtcclxuXHRcdH0pO1xyXG5cdH0gZWxzZSBpZiAodHlwZW9mIG1vZHVsZSA9PT0gXCJvYmplY3RcIiAmJiB0eXBlb2YgbW9kdWxlLmV4cG9ydHMgPT09IFwib2JqZWN0XCIpIHtcclxuXHRcdG1vZHVsZS5leHBvcnRzID0gZmFjdG9yeSgodHlwZW9mIHdpbmRvdyAhPT0gXCJ1bmRlZmluZWRcIiA/IHdpbmRvd1snalF1ZXJ5J10gOiB0eXBlb2YgZ2xvYmFsICE9PSBcInVuZGVmaW5lZFwiID8gZ2xvYmFsWydqUXVlcnknXSA6IG51bGwpKTtcclxuXHR9IGVsc2Uge1xyXG5cdFx0ZmFjdG9yeShqUXVlcnkpO1xyXG5cdH1cclxufSkoZnVuY3Rpb24oJCl7XHJcblxyXG5cdC8vIFByZXNlcnZlIHRoZSBvcmlnaW5hbCBqUXVlcnkgXCJzd2luZ1wiIGVhc2luZyBhcyBcImpzd2luZ1wiXHJcblx0aWYgKHR5cGVvZiAkLmVhc2luZyAhPT0gJ3VuZGVmaW5lZCcpIHtcclxuXHRcdCQuZWFzaW5nWydqc3dpbmcnXSA9ICQuZWFzaW5nWydzd2luZyddO1xyXG5cdH1cclxuXHJcblx0dmFyIHBvdyA9IE1hdGgucG93LFxyXG5cdFx0c3FydCA9IE1hdGguc3FydCxcclxuXHRcdHNpbiA9IE1hdGguc2luLFxyXG5cdFx0Y29zID0gTWF0aC5jb3MsXHJcblx0XHRQSSA9IE1hdGguUEksXHJcblx0XHRjMSA9IDEuNzAxNTgsXHJcblx0XHRjMiA9IGMxICogMS41MjUsXHJcblx0XHRjMyA9IGMxICsgMSxcclxuXHRcdGM0ID0gKCAyICogUEkgKSAvIDMsXHJcblx0XHRjNSA9ICggMiAqIFBJICkgLyA0LjU7XHJcblxyXG5cdC8vIHggaXMgdGhlIGZyYWN0aW9uIG9mIGFuaW1hdGlvbiBwcm9ncmVzcywgaW4gdGhlIHJhbmdlIDAuLjFcclxuXHRmdW5jdGlvbiBib3VuY2VPdXQoeCkge1xyXG5cdFx0dmFyIG4xID0gNy41NjI1LFxyXG5cdFx0XHRkMSA9IDIuNzU7XHJcblx0XHRpZiAoIHggPCAxL2QxICkge1xyXG5cdFx0XHRyZXR1cm4gbjEqeCp4O1xyXG5cdFx0fSBlbHNlIGlmICggeCA8IDIvZDEgKSB7XHJcblx0XHRcdHJldHVybiBuMSooeC09KDEuNS9kMSkpKnggKyAuNzU7XHJcblx0XHR9IGVsc2UgaWYgKCB4IDwgMi41L2QxICkge1xyXG5cdFx0XHRyZXR1cm4gbjEqKHgtPSgyLjI1L2QxKSkqeCArIC45Mzc1O1xyXG5cdFx0fSBlbHNlIHtcclxuXHRcdFx0cmV0dXJuIG4xKih4LT0oMi42MjUvZDEpKSp4ICsgLjk4NDM3NTtcclxuXHRcdH1cclxuXHR9XHJcblxyXG5cdCQuZXh0ZW5kKCAkLmVhc2luZywge1xyXG5cdFx0ZGVmOiAnZWFzZU91dFF1YWQnLFxyXG5cdFx0c3dpbmc6IGZ1bmN0aW9uICh4KSB7XHJcblx0XHRcdHJldHVybiAkLmVhc2luZ1skLmVhc2luZy5kZWZdKHgpO1xyXG5cdFx0fSxcclxuXHRcdGVhc2VJblF1YWQ6IGZ1bmN0aW9uICh4KSB7XHJcblx0XHRcdHJldHVybiB4ICogeDtcclxuXHRcdH0sXHJcblx0XHRlYXNlT3V0UXVhZDogZnVuY3Rpb24gKHgpIHtcclxuXHRcdFx0cmV0dXJuIDEgLSAoIDEgLSB4ICkgKiAoIDEgLSB4ICk7XHJcblx0XHR9LFxyXG5cdFx0ZWFzZUluT3V0UXVhZDogZnVuY3Rpb24gKHgpIHtcclxuXHRcdFx0cmV0dXJuIHggPCAwLjUgP1xyXG5cdFx0XHRcdDIgKiB4ICogeCA6XHJcblx0XHRcdFx0MSAtIHBvdyggLTIgKiB4ICsgMiwgMiApIC8gMjtcclxuXHRcdH0sXHJcblx0XHRlYXNlSW5DdWJpYzogZnVuY3Rpb24gKHgpIHtcclxuXHRcdFx0cmV0dXJuIHggKiB4ICogeDtcclxuXHRcdH0sXHJcblx0XHRlYXNlT3V0Q3ViaWM6IGZ1bmN0aW9uICh4KSB7XHJcblx0XHRcdHJldHVybiAxIC0gcG93KCAxIC0geCwgMyApO1xyXG5cdFx0fSxcclxuXHRcdGVhc2VJbk91dEN1YmljOiBmdW5jdGlvbiAoeCkge1xyXG5cdFx0XHRyZXR1cm4geCA8IDAuNSA/XHJcblx0XHRcdFx0NCAqIHggKiB4ICogeCA6XHJcblx0XHRcdFx0MSAtIHBvdyggLTIgKiB4ICsgMiwgMyApIC8gMjtcclxuXHRcdH0sXHJcblx0XHRlYXNlSW5RdWFydDogZnVuY3Rpb24gKHgpIHtcclxuXHRcdFx0cmV0dXJuIHggKiB4ICogeCAqIHg7XHJcblx0XHR9LFxyXG5cdFx0ZWFzZU91dFF1YXJ0OiBmdW5jdGlvbiAoeCkge1xyXG5cdFx0XHRyZXR1cm4gMSAtIHBvdyggMSAtIHgsIDQgKTtcclxuXHRcdH0sXHJcblx0XHRlYXNlSW5PdXRRdWFydDogZnVuY3Rpb24gKHgpIHtcclxuXHRcdFx0cmV0dXJuIHggPCAwLjUgP1xyXG5cdFx0XHRcdDggKiB4ICogeCAqIHggKiB4IDpcclxuXHRcdFx0XHQxIC0gcG93KCAtMiAqIHggKyAyLCA0ICkgLyAyO1xyXG5cdFx0fSxcclxuXHRcdGVhc2VJblF1aW50OiBmdW5jdGlvbiAoeCkge1xyXG5cdFx0XHRyZXR1cm4geCAqIHggKiB4ICogeCAqIHg7XHJcblx0XHR9LFxyXG5cdFx0ZWFzZU91dFF1aW50OiBmdW5jdGlvbiAoeCkge1xyXG5cdFx0XHRyZXR1cm4gMSAtIHBvdyggMSAtIHgsIDUgKTtcclxuXHRcdH0sXHJcblx0XHRlYXNlSW5PdXRRdWludDogZnVuY3Rpb24gKHgpIHtcclxuXHRcdFx0cmV0dXJuIHggPCAwLjUgP1xyXG5cdFx0XHRcdDE2ICogeCAqIHggKiB4ICogeCAqIHggOlxyXG5cdFx0XHRcdDEgLSBwb3coIC0yICogeCArIDIsIDUgKSAvIDI7XHJcblx0XHR9LFxyXG5cdFx0ZWFzZUluU2luZTogZnVuY3Rpb24gKHgpIHtcclxuXHRcdFx0cmV0dXJuIDEgLSBjb3MoIHggKiBQSS8yICk7XHJcblx0XHR9LFxyXG5cdFx0ZWFzZU91dFNpbmU6IGZ1bmN0aW9uICh4KSB7XHJcblx0XHRcdHJldHVybiBzaW4oIHggKiBQSS8yICk7XHJcblx0XHR9LFxyXG5cdFx0ZWFzZUluT3V0U2luZTogZnVuY3Rpb24gKHgpIHtcclxuXHRcdFx0cmV0dXJuIC0oIGNvcyggUEkgKiB4ICkgLSAxICkgLyAyO1xyXG5cdFx0fSxcclxuXHRcdGVhc2VJbkV4cG86IGZ1bmN0aW9uICh4KSB7XHJcblx0XHRcdHJldHVybiB4ID09PSAwID8gMCA6IHBvdyggMiwgMTAgKiB4IC0gMTAgKTtcclxuXHRcdH0sXHJcblx0XHRlYXNlT3V0RXhwbzogZnVuY3Rpb24gKHgpIHtcclxuXHRcdFx0cmV0dXJuIHggPT09IDEgPyAxIDogMSAtIHBvdyggMiwgLTEwICogeCApO1xyXG5cdFx0fSxcclxuXHRcdGVhc2VJbk91dEV4cG86IGZ1bmN0aW9uICh4KSB7XHJcblx0XHRcdHJldHVybiB4ID09PSAwID8gMCA6IHggPT09IDEgPyAxIDogeCA8IDAuNSA/XHJcblx0XHRcdFx0cG93KCAyLCAyMCAqIHggLSAxMCApIC8gMiA6XHJcblx0XHRcdFx0KCAyIC0gcG93KCAyLCAtMjAgKiB4ICsgMTAgKSApIC8gMjtcclxuXHRcdH0sXHJcblx0XHRlYXNlSW5DaXJjOiBmdW5jdGlvbiAoeCkge1xyXG5cdFx0XHRyZXR1cm4gMSAtIHNxcnQoIDEgLSBwb3coIHgsIDIgKSApO1xyXG5cdFx0fSxcclxuXHRcdGVhc2VPdXRDaXJjOiBmdW5jdGlvbiAoeCkge1xyXG5cdFx0XHRyZXR1cm4gc3FydCggMSAtIHBvdyggeCAtIDEsIDIgKSApO1xyXG5cdFx0fSxcclxuXHRcdGVhc2VJbk91dENpcmM6IGZ1bmN0aW9uICh4KSB7XHJcblx0XHRcdHJldHVybiB4IDwgMC41ID9cclxuXHRcdFx0XHQoIDEgLSBzcXJ0KCAxIC0gcG93KCAyICogeCwgMiApICkgKSAvIDIgOlxyXG5cdFx0XHRcdCggc3FydCggMSAtIHBvdyggLTIgKiB4ICsgMiwgMiApICkgKyAxICkgLyAyO1xyXG5cdFx0fSxcclxuXHRcdGVhc2VJbkVsYXN0aWM6IGZ1bmN0aW9uICh4KSB7XHJcblx0XHRcdHJldHVybiB4ID09PSAwID8gMCA6IHggPT09IDEgPyAxIDpcclxuXHRcdFx0XHQtcG93KCAyLCAxMCAqIHggLSAxMCApICogc2luKCAoIHggKiAxMCAtIDEwLjc1ICkgKiBjNCApO1xyXG5cdFx0fSxcclxuXHRcdGVhc2VPdXRFbGFzdGljOiBmdW5jdGlvbiAoeCkge1xyXG5cdFx0XHRyZXR1cm4geCA9PT0gMCA/IDAgOiB4ID09PSAxID8gMSA6XHJcblx0XHRcdFx0cG93KCAyLCAtMTAgKiB4ICkgKiBzaW4oICggeCAqIDEwIC0gMC43NSApICogYzQgKSArIDE7XHJcblx0XHR9LFxyXG5cdFx0ZWFzZUluT3V0RWxhc3RpYzogZnVuY3Rpb24gKHgpIHtcclxuXHRcdFx0cmV0dXJuIHggPT09IDAgPyAwIDogeCA9PT0gMSA/IDEgOiB4IDwgMC41ID9cclxuXHRcdFx0XHQtKCBwb3coIDIsIDIwICogeCAtIDEwICkgKiBzaW4oICggMjAgKiB4IC0gMTEuMTI1ICkgKiBjNSApKSAvIDIgOlxyXG5cdFx0XHRcdHBvdyggMiwgLTIwICogeCArIDEwICkgKiBzaW4oICggMjAgKiB4IC0gMTEuMTI1ICkgKiBjNSApIC8gMiArIDE7XHJcblx0XHR9LFxyXG5cdFx0ZWFzZUluQmFjazogZnVuY3Rpb24gKHgpIHtcclxuXHRcdFx0cmV0dXJuIGMzICogeCAqIHggKiB4IC0gYzEgKiB4ICogeDtcclxuXHRcdH0sXHJcblx0XHRlYXNlT3V0QmFjazogZnVuY3Rpb24gKHgpIHtcclxuXHRcdFx0cmV0dXJuIDEgKyBjMyAqIHBvdyggeCAtIDEsIDMgKSArIGMxICogcG93KCB4IC0gMSwgMiApO1xyXG5cdFx0fSxcclxuXHRcdGVhc2VJbk91dEJhY2s6IGZ1bmN0aW9uICh4KSB7XHJcblx0XHRcdHJldHVybiB4IDwgMC41ID9cclxuXHRcdFx0XHQoIHBvdyggMiAqIHgsIDIgKSAqICggKCBjMiArIDEgKSAqIDIgKiB4IC0gYzIgKSApIC8gMiA6XHJcblx0XHRcdFx0KCBwb3coIDIgKiB4IC0gMiwgMiApICooICggYzIgKyAxICkgKiAoIHggKiAyIC0gMiApICsgYzIgKSArIDIgKSAvIDI7XHJcblx0XHR9LFxyXG5cdFx0ZWFzZUluQm91bmNlOiBmdW5jdGlvbiAoeCkge1xyXG5cdFx0XHRyZXR1cm4gMSAtIGJvdW5jZU91dCggMSAtIHggKTtcclxuXHRcdH0sXHJcblx0XHRlYXNlT3V0Qm91bmNlOiBib3VuY2VPdXQsXHJcblx0XHRlYXNlSW5PdXRCb3VuY2U6IGZ1bmN0aW9uICh4KSB7XHJcblx0XHRcdHJldHVybiB4IDwgMC41ID9cclxuXHRcdFx0XHQoIDEgLSBib3VuY2VPdXQoIDEgLSAyICogeCApICkgLyAyIDpcclxuXHRcdFx0XHQoIDEgKyBib3VuY2VPdXQoIDIgKiB4IC0gMSApICkgLyAyO1xyXG5cdFx0fVxyXG5cdH0pO1xyXG5cdHJldHVybiAkO1xyXG59KTtcclxuXHJcbn0oalF1ZXJ5KSk7XHJcblxyXG4vL3NhZmFyaSBiYWNrIGJ1dHRvbiBmaXhcclxualF1ZXJ5KCB3aW5kb3cgKS5vbiggXCJwYWdlc2hvd1wiLCBmdW5jdGlvbihldmVudCkge1xyXG4gICAgaWYgKGV2ZW50Lm9yaWdpbmFsRXZlbnQucGVyc2lzdGVkKSB7XHJcbiAgICAgICAgalF1ZXJ5KFwiLnNlYXJjaGFuZGZpbHRlclwiKS5vZmYoKTtcclxuICAgICAgICBqUXVlcnkoXCIuc2VhcmNoYW5kZmlsdGVyXCIpLnNlYXJjaEFuZEZpbHRlcigpO1xyXG4gICAgfVxyXG59KTtcclxuXHJcbi8qIHdwbnVtYiAtIG5vdWlzbGlkZXIgbnVtYmVyIGZvcm1hdHRpbmcgKi9cclxuIWZ1bmN0aW9uKCl7XCJ1c2Ugc3RyaWN0XCI7ZnVuY3Rpb24gZShlKXtyZXR1cm4gZS5zcGxpdChcIlwiKS5yZXZlcnNlKCkuam9pbihcIlwiKX1mdW5jdGlvbiBuKGUsbil7cmV0dXJuIGUuc3Vic3RyaW5nKDAsbi5sZW5ndGgpPT09bn1mdW5jdGlvbiByKGUsbil7cmV0dXJuIGUuc2xpY2UoLTEqbi5sZW5ndGgpPT09bn1mdW5jdGlvbiB0KGUsbixyKXtpZigoZVtuXXx8ZVtyXSkmJmVbbl09PT1lW3JdKXRocm93IG5ldyBFcnJvcihuKX1mdW5jdGlvbiBpKGUpe3JldHVyblwibnVtYmVyXCI9PXR5cGVvZiBlJiZpc0Zpbml0ZShlKX1mdW5jdGlvbiBvKGUsbil7dmFyIHI9TWF0aC5wb3coMTAsbik7cmV0dXJuKE1hdGgucm91bmQoZSpyKS9yKS50b0ZpeGVkKG4pfWZ1bmN0aW9uIHUobixyLHQsdSxmLGEsYyxzLHAsZCxsLGgpe3ZhciBnLHYsdyxtPWgseD1cIlwiLGI9XCJcIjtyZXR1cm4gYSYmKGg9YShoKSksaShoKT8obiE9PSExJiYwPT09cGFyc2VGbG9hdChoLnRvRml4ZWQobikpJiYoaD0wKSwwPmgmJihnPSEwLGg9TWF0aC5hYnMoaCkpLG4hPT0hMSYmKGg9byhoLG4pKSxoPWgudG9TdHJpbmcoKSwtMSE9PWguaW5kZXhPZihcIi5cIik/KHY9aC5zcGxpdChcIi5cIiksdz12WzBdLHQmJih4PXQrdlsxXSkpOnc9aCxyJiYodz1lKHcpLm1hdGNoKC8uezEsM30vZyksdz1lKHcuam9pbihlKHIpKSkpLGcmJnMmJihiKz1zKSx1JiYoYis9dSksZyYmcCYmKGIrPXApLGIrPXcsYis9eCxmJiYoYis9ZiksZCYmKGI9ZChiLG0pKSxiKTohMX1mdW5jdGlvbiBmKGUsdCxvLHUsZixhLGMscyxwLGQsbCxoKXt2YXIgZyx2PVwiXCI7cmV0dXJuIGwmJihoPWwoaCkpLGgmJlwic3RyaW5nXCI9PXR5cGVvZiBoPyhzJiZuKGgscykmJihoPWgucmVwbGFjZShzLFwiXCIpLGc9ITApLHUmJm4oaCx1KSYmKGg9aC5yZXBsYWNlKHUsXCJcIikpLHAmJm4oaCxwKSYmKGg9aC5yZXBsYWNlKHAsXCJcIiksZz0hMCksZiYmcihoLGYpJiYoaD1oLnNsaWNlKDAsLTEqZi5sZW5ndGgpKSx0JiYoaD1oLnNwbGl0KHQpLmpvaW4oXCJcIikpLG8mJihoPWgucmVwbGFjZShvLFwiLlwiKSksZyYmKHYrPVwiLVwiKSx2Kz1oLHY9di5yZXBsYWNlKC9bXjAtOVxcLlxcLS5dL2csXCJcIiksXCJcIj09PXY/ITE6KHY9TnVtYmVyKHYpLGMmJih2PWModikpLGkodik/djohMSkpOiExfWZ1bmN0aW9uIGEoZSl7dmFyIG4scixpLG89e307Zm9yKG49MDtuPHAubGVuZ3RoO24rPTEpaWYocj1wW25dLGk9ZVtyXSx2b2lkIDA9PT1pKVwibmVnYXRpdmVcIiE9PXJ8fG8ubmVnYXRpdmVCZWZvcmU/XCJtYXJrXCI9PT1yJiZcIi5cIiE9PW8udGhvdXNhbmQ/b1tyXT1cIi5cIjpvW3JdPSExOm9bcl09XCItXCI7ZWxzZSBpZihcImRlY2ltYWxzXCI9PT1yKXtpZighKGk+PTAmJjg+aSkpdGhyb3cgbmV3IEVycm9yKHIpO29bcl09aX1lbHNlIGlmKFwiZW5jb2RlclwiPT09cnx8XCJkZWNvZGVyXCI9PT1yfHxcImVkaXRcIj09PXJ8fFwidW5kb1wiPT09cil7aWYoXCJmdW5jdGlvblwiIT10eXBlb2YgaSl0aHJvdyBuZXcgRXJyb3Iocik7b1tyXT1pfWVsc2V7aWYoXCJzdHJpbmdcIiE9dHlwZW9mIGkpdGhyb3cgbmV3IEVycm9yKHIpO29bcl09aX1yZXR1cm4gdChvLFwibWFya1wiLFwidGhvdXNhbmRcIiksdChvLFwicHJlZml4XCIsXCJuZWdhdGl2ZVwiKSx0KG8sXCJwcmVmaXhcIixcIm5lZ2F0aXZlQmVmb3JlXCIpLG99ZnVuY3Rpb24gYyhlLG4scil7dmFyIHQsaT1bXTtmb3IodD0wO3Q8cC5sZW5ndGg7dCs9MSlpLnB1c2goZVtwW3RdXSk7cmV0dXJuIGkucHVzaChyKSxuLmFwcGx5KFwiXCIsaSl9ZnVuY3Rpb24gcyhlKXtyZXR1cm4gdGhpcyBpbnN0YW5jZW9mIHM/dm9pZChcIm9iamVjdFwiPT10eXBlb2YgZSYmKGU9YShlKSx0aGlzLnRvPWZ1bmN0aW9uKG4pe3JldHVybiBjKGUsdSxuKX0sdGhpcy5mcm9tPWZ1bmN0aW9uKG4pe3JldHVybiBjKGUsZixuKX0pKTpuZXcgcyhlKX12YXIgcD1bXCJkZWNpbWFsc1wiLFwidGhvdXNhbmRcIixcIm1hcmtcIixcInByZWZpeFwiLFwicG9zdGZpeFwiLFwiZW5jb2RlclwiLFwiZGVjb2RlclwiLFwibmVnYXRpdmVCZWZvcmVcIixcIm5lZ2F0aXZlXCIsXCJlZGl0XCIsXCJ1bmRvXCJdO3dpbmRvdy53TnVtYj1zfSgpO1xyXG5cclxuIl19
 },{"./includes/fields":3,"./includes/pagination":4,"./includes/plugin":5,"./includes/state":7}],2:[function(require,module,exports){
-/*! nouislider - 11.1.0 - 2018-04-02 11:18:13 */
-
-(function (factory) {
-
-    if ( typeof define === 'function' && define.amd ) {
-
-        // AMD. Register as an anonymous module.
-        define([], factory);
-
-    } else if ( typeof exports === 'object' ) {
-
-        // Node/CommonJS
-        module.exports = factory();
-
-    } else {
-
-        // Browser globals
-        window.noUiSlider = factory();
-    }
-
-}(function( ){
-
-	'use strict';
-
-	var VERSION = '11.1.0';
-
+/*! nouislider - 11.1.0 - 2018-04-02 11:18:13 */
+
+(function (factory) {
+
+    if ( typeof define === 'function' && define.amd ) {
+
+        // AMD. Register as an anonymous module.
+        define([], factory);
+
+    } else if ( typeof exports === 'object' ) {
+
+        // Node/CommonJS
+        module.exports = factory();
+
+    } else {
+
+        // Browser globals
+        window.noUiSlider = factory();
+    }
+
+}(function( ){
+
+	'use strict';
+
+	var VERSION = '11.1.0';
+
 
 	function isValidFormatter ( entry ) {
 		return typeof entry === 'object' && typeof entry.to === 'function' && typeof entry.from === 'function';
@@ -413,321 +413,321 @@ jQuery( window ).on( "pageshow", function(event) {
 			y: y
 		};
 	}
-
-	// we provide a function to compute constants instead
-	// of accessing window.* as soon as the module needs it
-	// so that we do not compute anything if not needed
-	function getActions ( ) {
-
-		// Determine the events to bind. IE11 implements pointerEvents without
-		// a prefix, which breaks compatibility with the IE10 implementation.
-		return window.navigator.pointerEnabled ? {
-			start: 'pointerdown',
-			move: 'pointermove',
-			end: 'pointerup'
-		} : window.navigator.msPointerEnabled ? {
-			start: 'MSPointerDown',
-			move: 'MSPointerMove',
-			end: 'MSPointerUp'
-		} : {
-			start: 'mousedown touchstart',
-			move: 'mousemove touchmove',
-			end: 'mouseup touchend'
-		};
-	}
-
-	// https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md
-	// Issue #785
-	function getSupportsPassive ( ) {
-
-		var supportsPassive = false;
-
-		try {
-
-			var opts = Object.defineProperty({}, 'passive', {
-				get: function() {
-					supportsPassive = true;
-				}
-			});
-
-			window.addEventListener('test', null, opts);
-
-		} catch (e) {}
-
-		return supportsPassive;
-	}
-
-	function getSupportsTouchActionNone ( ) {
-		return window.CSS && CSS.supports && CSS.supports('touch-action', 'none');
-	}
-
-
-// Value calculation
-
-	// Determine the size of a sub-range in relation to a full range.
-	function subRangeRatio ( pa, pb ) {
-		return (100 / (pb - pa));
-	}
-
-	// (percentage) How many percent is this value of this range?
-	function fromPercentage ( range, value ) {
-		return (value * 100) / ( range[1] - range[0] );
-	}
-
-	// (percentage) Where is this value on this range?
-	function toPercentage ( range, value ) {
-		return fromPercentage( range, range[0] < 0 ?
-			value + Math.abs(range[0]) :
-				value - range[0] );
-	}
-
-	// (value) How much is this percentage on this range?
-	function isPercentage ( range, value ) {
-		return ((value * ( range[1] - range[0] )) / 100) + range[0];
-	}
-
-
-// Range conversion
-
-	function getJ ( value, arr ) {
-
-		var j = 1;
-
-		while ( value >= arr[j] ){
-			j += 1;
-		}
-
-		return j;
-	}
-
-	// (percentage) Input a value, find where, on a scale of 0-100, it applies.
-	function toStepping ( xVal, xPct, value ) {
-
-		if ( value >= xVal.slice(-1)[0] ){
-			return 100;
-		}
-
-		var j = getJ( value, xVal );
-		var va = xVal[j-1];
-		var vb = xVal[j];
-		var pa = xPct[j-1];
-		var pb = xPct[j];
-
-		return pa + (toPercentage([va, vb], value) / subRangeRatio (pa, pb));
-	}
-
-	// (value) Input a percentage, find where it is on the specified range.
-	function fromStepping ( xVal, xPct, value ) {
-
-		// There is no range group that fits 100
-		if ( value >= 100 ){
-			return xVal.slice(-1)[0];
-		}
-
-		var j = getJ( value, xPct );
-		var va = xVal[j-1];
-		var vb = xVal[j];
-		var pa = xPct[j-1];
-		var pb = xPct[j];
-
-		return isPercentage([va, vb], (value - pa) * subRangeRatio (pa, pb));
-	}
-
-	// (percentage) Get the step that applies at a certain value.
-	function getStep ( xPct, xSteps, snap, value ) {
-
-		if ( value === 100 ) {
-			return value;
-		}
-
-		var j = getJ( value, xPct );
-		var a = xPct[j-1];
-		var b = xPct[j];
-
-		// If 'snap' is set, steps are used as fixed points on the slider.
-		if ( snap ) {
-
-			// Find the closest position, a or b.
-			if ((value - a) > ((b-a)/2)){
-				return b;
-			}
-
-			return a;
-		}
-
-		if ( !xSteps[j-1] ){
-			return value;
-		}
-
-		return xPct[j-1] + closest(
-			value - xPct[j-1],
-			xSteps[j-1]
-		);
-	}
-
-
-// Entry parsing
-
-	function handleEntryPoint ( index, value, that ) {
-
-		var percentage;
-
-		// Wrap numerical input in an array.
-		if ( typeof value === "number" ) {
-			value = [value];
-		}
-
-		// Reject any invalid input, by testing whether value is an array.
-		if ( !Array.isArray(value) ){
-			throw new Error("noUiSlider (" + VERSION + "): 'range' contains invalid value.");
-		}
-
-		// Covert min/max syntax to 0 and 100.
-		if ( index === 'min' ) {
-			percentage = 0;
-		} else if ( index === 'max' ) {
-			percentage = 100;
-		} else {
-			percentage = parseFloat( index );
-		}
-
-		// Check for correct input.
-		if ( !isNumeric( percentage ) || !isNumeric( value[0] ) ) {
-			throw new Error("noUiSlider (" + VERSION + "): 'range' value isn't numeric.");
-		}
-
-		// Store values.
-		that.xPct.push( percentage );
-		that.xVal.push( value[0] );
-
-		// NaN will evaluate to false too, but to keep
-		// logging clear, set step explicitly. Make sure
-		// not to override the 'step' setting with false.
-		if ( !percentage ) {
-			if ( !isNaN( value[1] ) ) {
-				that.xSteps[0] = value[1];
-			}
-		} else {
-			that.xSteps.push( isNaN(value[1]) ? false : value[1] );
-		}
-
-		that.xHighestCompleteStep.push(0);
-	}
-
-	function handleStepPoint ( i, n, that ) {
-
-		// Ignore 'false' stepping.
-		if ( !n ) {
-			return true;
-		}
-
-		// Factor to range ratio
-		that.xSteps[i] = fromPercentage([that.xVal[i], that.xVal[i+1]], n) / subRangeRatio(that.xPct[i], that.xPct[i+1]);
-
-		var totalSteps = (that.xVal[i+1] - that.xVal[i]) / that.xNumSteps[i];
-		var highestStep = Math.ceil(Number(totalSteps.toFixed(3)) - 1);
-		var step = that.xVal[i] + (that.xNumSteps[i] * highestStep);
-
-		that.xHighestCompleteStep[i] = step;
-	}
-
-
-// Interface
-
-	function Spectrum ( entry, snap, singleStep ) {
-
-		this.xPct = [];
-		this.xVal = [];
-		this.xSteps = [ singleStep || false ];
-		this.xNumSteps = [ false ];
-		this.xHighestCompleteStep = [];
-
-		this.snap = snap;
-
-		var index;
-		var ordered = []; // [0, 'min'], [1, '50%'], [2, 'max']
-
-		// Map the object keys to an array.
-		for ( index in entry ) {
-			if ( entry.hasOwnProperty(index) ) {
-				ordered.push([entry[index], index]);
-			}
-		}
-
-		// Sort all entries by value (numeric sort).
-		if ( ordered.length && typeof ordered[0][0] === "object" ) {
-			ordered.sort(function(a, b) { return a[0][0] - b[0][0]; });
-		} else {
-			ordered.sort(function(a, b) { return a[0] - b[0]; });
-		}
-
-
-		// Convert all entries to subranges.
-		for ( index = 0; index < ordered.length; index++ ) {
-			handleEntryPoint(ordered[index][1], ordered[index][0], this);
-		}
-
-		// Store the actual step values.
-		// xSteps is sorted in the same order as xPct and xVal.
-		this.xNumSteps = this.xSteps.slice(0);
-
-		// Convert all numeric steps to the percentage of the subrange they represent.
-		for ( index = 0; index < this.xNumSteps.length; index++ ) {
-			handleStepPoint(index, this.xNumSteps[index], this);
-		}
-	}
-
-	Spectrum.prototype.getMargin = function ( value ) {
-
-		var step = this.xNumSteps[0];
-
-		if ( step && ((value / step) % 1) !== 0 ) {
-			throw new Error("noUiSlider (" + VERSION + "): 'limit', 'margin' and 'padding' must be divisible by step.");
-		}
-
-		return this.xPct.length === 2 ? fromPercentage(this.xVal, value) : false;
-	};
-
-	Spectrum.prototype.toStepping = function ( value ) {
-
-		value = toStepping( this.xVal, this.xPct, value );
-
-		return value;
-	};
-
-	Spectrum.prototype.fromStepping = function ( value ) {
-
-		return fromStepping( this.xVal, this.xPct, value );
-	};
-
-	Spectrum.prototype.getStep = function ( value ) {
-
-		value = getStep(this.xPct, this.xSteps, this.snap, value );
-
-		return value;
-	};
-
-	Spectrum.prototype.getNearbySteps = function ( value ) {
-
-		var j = getJ(value, this.xPct);
-
-		return {
-			stepBefore: { startValue: this.xVal[j-2], step: this.xNumSteps[j-2], highestStep: this.xHighestCompleteStep[j-2] },
-			thisStep: { startValue: this.xVal[j-1], step: this.xNumSteps[j-1], highestStep: this.xHighestCompleteStep[j-1] },
-			stepAfter: { startValue: this.xVal[j-0], step: this.xNumSteps[j-0], highestStep: this.xHighestCompleteStep[j-0] }
-		};
-	};
-
-	Spectrum.prototype.countStepDecimals = function () {
-		var stepDecimals = this.xNumSteps.map(countDecimals);
-		return Math.max.apply(null, stepDecimals);
-	};
-
-	// Outside testing
-	Spectrum.prototype.convert = function ( value ) {
-		return this.getStep(this.toStepping(value));
-	};
-
+
+	// we provide a function to compute constants instead
+	// of accessing window.* as soon as the module needs it
+	// so that we do not compute anything if not needed
+	function getActions ( ) {
+
+		// Determine the events to bind. IE11 implements pointerEvents without
+		// a prefix, which breaks compatibility with the IE10 implementation.
+		return window.navigator.pointerEnabled ? {
+			start: 'pointerdown',
+			move: 'pointermove',
+			end: 'pointerup'
+		} : window.navigator.msPointerEnabled ? {
+			start: 'MSPointerDown',
+			move: 'MSPointerMove',
+			end: 'MSPointerUp'
+		} : {
+			start: 'mousedown touchstart',
+			move: 'mousemove touchmove',
+			end: 'mouseup touchend'
+		};
+	}
+
+	// https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md
+	// Issue #785
+	function getSupportsPassive ( ) {
+
+		var supportsPassive = false;
+
+		try {
+
+			var opts = Object.defineProperty({}, 'passive', {
+				get: function() {
+					supportsPassive = true;
+				}
+			});
+
+			window.addEventListener('test', null, opts);
+
+		} catch (e) {}
+
+		return supportsPassive;
+	}
+
+	function getSupportsTouchActionNone ( ) {
+		return window.CSS && CSS.supports && CSS.supports('touch-action', 'none');
+	}
+
+
+// Value calculation
+
+	// Determine the size of a sub-range in relation to a full range.
+	function subRangeRatio ( pa, pb ) {
+		return (100 / (pb - pa));
+	}
+
+	// (percentage) How many percent is this value of this range?
+	function fromPercentage ( range, value ) {
+		return (value * 100) / ( range[1] - range[0] );
+	}
+
+	// (percentage) Where is this value on this range?
+	function toPercentage ( range, value ) {
+		return fromPercentage( range, range[0] < 0 ?
+			value + Math.abs(range[0]) :
+				value - range[0] );
+	}
+
+	// (value) How much is this percentage on this range?
+	function isPercentage ( range, value ) {
+		return ((value * ( range[1] - range[0] )) / 100) + range[0];
+	}
+
+
+// Range conversion
+
+	function getJ ( value, arr ) {
+
+		var j = 1;
+
+		while ( value >= arr[j] ){
+			j += 1;
+		}
+
+		return j;
+	}
+
+	// (percentage) Input a value, find where, on a scale of 0-100, it applies.
+	function toStepping ( xVal, xPct, value ) {
+
+		if ( value >= xVal.slice(-1)[0] ){
+			return 100;
+		}
+
+		var j = getJ( value, xVal );
+		var va = xVal[j-1];
+		var vb = xVal[j];
+		var pa = xPct[j-1];
+		var pb = xPct[j];
+
+		return pa + (toPercentage([va, vb], value) / subRangeRatio (pa, pb));
+	}
+
+	// (value) Input a percentage, find where it is on the specified range.
+	function fromStepping ( xVal, xPct, value ) {
+
+		// There is no range group that fits 100
+		if ( value >= 100 ){
+			return xVal.slice(-1)[0];
+		}
+
+		var j = getJ( value, xPct );
+		var va = xVal[j-1];
+		var vb = xVal[j];
+		var pa = xPct[j-1];
+		var pb = xPct[j];
+
+		return isPercentage([va, vb], (value - pa) * subRangeRatio (pa, pb));
+	}
+
+	// (percentage) Get the step that applies at a certain value.
+	function getStep ( xPct, xSteps, snap, value ) {
+
+		if ( value === 100 ) {
+			return value;
+		}
+
+		var j = getJ( value, xPct );
+		var a = xPct[j-1];
+		var b = xPct[j];
+
+		// If 'snap' is set, steps are used as fixed points on the slider.
+		if ( snap ) {
+
+			// Find the closest position, a or b.
+			if ((value - a) > ((b-a)/2)){
+				return b;
+			}
+
+			return a;
+		}
+
+		if ( !xSteps[j-1] ){
+			return value;
+		}
+
+		return xPct[j-1] + closest(
+			value - xPct[j-1],
+			xSteps[j-1]
+		);
+	}
+
+
+// Entry parsing
+
+	function handleEntryPoint ( index, value, that ) {
+
+		var percentage;
+
+		// Wrap numerical input in an array.
+		if ( typeof value === "number" ) {
+			value = [value];
+		}
+
+		// Reject any invalid input, by testing whether value is an array.
+		if ( !Array.isArray(value) ){
+			throw new Error("noUiSlider (" + VERSION + "): 'range' contains invalid value.");
+		}
+
+		// Covert min/max syntax to 0 and 100.
+		if ( index === 'min' ) {
+			percentage = 0;
+		} else if ( index === 'max' ) {
+			percentage = 100;
+		} else {
+			percentage = parseFloat( index );
+		}
+
+		// Check for correct input.
+		if ( !isNumeric( percentage ) || !isNumeric( value[0] ) ) {
+			throw new Error("noUiSlider (" + VERSION + "): 'range' value isn't numeric.");
+		}
+
+		// Store values.
+		that.xPct.push( percentage );
+		that.xVal.push( value[0] );
+
+		// NaN will evaluate to false too, but to keep
+		// logging clear, set step explicitly. Make sure
+		// not to override the 'step' setting with false.
+		if ( !percentage ) {
+			if ( !isNaN( value[1] ) ) {
+				that.xSteps[0] = value[1];
+			}
+		} else {
+			that.xSteps.push( isNaN(value[1]) ? false : value[1] );
+		}
+
+		that.xHighestCompleteStep.push(0);
+	}
+
+	function handleStepPoint ( i, n, that ) {
+
+		// Ignore 'false' stepping.
+		if ( !n ) {
+			return true;
+		}
+
+		// Factor to range ratio
+		that.xSteps[i] = fromPercentage([that.xVal[i], that.xVal[i+1]], n) / subRangeRatio(that.xPct[i], that.xPct[i+1]);
+
+		var totalSteps = (that.xVal[i+1] - that.xVal[i]) / that.xNumSteps[i];
+		var highestStep = Math.ceil(Number(totalSteps.toFixed(3)) - 1);
+		var step = that.xVal[i] + (that.xNumSteps[i] * highestStep);
+
+		that.xHighestCompleteStep[i] = step;
+	}
+
+
+// Interface
+
+	function Spectrum ( entry, snap, singleStep ) {
+
+		this.xPct = [];
+		this.xVal = [];
+		this.xSteps = [ singleStep || false ];
+		this.xNumSteps = [ false ];
+		this.xHighestCompleteStep = [];
+
+		this.snap = snap;
+
+		var index;
+		var ordered = []; // [0, 'min'], [1, '50%'], [2, 'max']
+
+		// Map the object keys to an array.
+		for ( index in entry ) {
+			if ( entry.hasOwnProperty(index) ) {
+				ordered.push([entry[index], index]);
+			}
+		}
+
+		// Sort all entries by value (numeric sort).
+		if ( ordered.length && typeof ordered[0][0] === "object" ) {
+			ordered.sort(function(a, b) { return a[0][0] - b[0][0]; });
+		} else {
+			ordered.sort(function(a, b) { return a[0] - b[0]; });
+		}
+
+
+		// Convert all entries to subranges.
+		for ( index = 0; index < ordered.length; index++ ) {
+			handleEntryPoint(ordered[index][1], ordered[index][0], this);
+		}
+
+		// Store the actual step values.
+		// xSteps is sorted in the same order as xPct and xVal.
+		this.xNumSteps = this.xSteps.slice(0);
+
+		// Convert all numeric steps to the percentage of the subrange they represent.
+		for ( index = 0; index < this.xNumSteps.length; index++ ) {
+			handleStepPoint(index, this.xNumSteps[index], this);
+		}
+	}
+
+	Spectrum.prototype.getMargin = function ( value ) {
+
+		var step = this.xNumSteps[0];
+
+		if ( step && ((value / step) % 1) !== 0 ) {
+			throw new Error("noUiSlider (" + VERSION + "): 'limit', 'margin' and 'padding' must be divisible by step.");
+		}
+
+		return this.xPct.length === 2 ? fromPercentage(this.xVal, value) : false;
+	};
+
+	Spectrum.prototype.toStepping = function ( value ) {
+
+		value = toStepping( this.xVal, this.xPct, value );
+
+		return value;
+	};
+
+	Spectrum.prototype.fromStepping = function ( value ) {
+
+		return fromStepping( this.xVal, this.xPct, value );
+	};
+
+	Spectrum.prototype.getStep = function ( value ) {
+
+		value = getStep(this.xPct, this.xSteps, this.snap, value );
+
+		return value;
+	};
+
+	Spectrum.prototype.getNearbySteps = function ( value ) {
+
+		var j = getJ(value, this.xPct);
+
+		return {
+			stepBefore: { startValue: this.xVal[j-2], step: this.xNumSteps[j-2], highestStep: this.xHighestCompleteStep[j-2] },
+			thisStep: { startValue: this.xVal[j-1], step: this.xNumSteps[j-1], highestStep: this.xHighestCompleteStep[j-1] },
+			stepAfter: { startValue: this.xVal[j-0], step: this.xNumSteps[j-0], highestStep: this.xHighestCompleteStep[j-0] }
+		};
+	};
+
+	Spectrum.prototype.countStepDecimals = function () {
+		var stepDecimals = this.xNumSteps.map(countDecimals);
+		return Math.max.apply(null, stepDecimals);
+	};
+
+	// Outside testing
+	Spectrum.prototype.convert = function ( value ) {
+		return this.getStep(this.toStepping(value));
+	};
+
 /*	Every input option is tested and parsed. This'll prevent
 	endless validation in internal methods. These tests are
 	structured with an item for every option available. An
@@ -1195,4714 +1195,4714 @@ jQuery( window ).on( "pageshow", function(event) {
 
 		return parsed;
 	}
-
-
-function scope ( target, options, originalOptions ){
-
-	var actions = getActions();
-	var supportsTouchActionNone = getSupportsTouchActionNone();
-	var supportsPassive = supportsTouchActionNone && getSupportsPassive();
-
-	// All variables local to 'scope' are prefixed with 'scope_'
-	var scope_Target = target;
-	var scope_Locations = [];
-	var scope_Base;
-	var scope_Handles;
-	var scope_HandleNumbers = [];
-	var scope_ActiveHandlesCount = 0;
-	var scope_Connects;
-	var scope_Spectrum = options.spectrum;
-	var scope_Values = [];
-	var scope_Events = {};
-	var scope_Self;
-	var scope_Pips;
-	var scope_Document = target.ownerDocument;
-	var scope_DocumentElement = scope_Document.documentElement;
-	var scope_Body = scope_Document.body;
-
-
-	// For horizontal sliders in standard ltr documents,
-	// make .noUi-origin overflow to the left so the document doesn't scroll.
-	var scope_DirOffset = (scope_Document.dir === 'rtl') || (options.ort === 1) ? 0 : 100;
-
-/*! In this file: Construction of DOM elements; */
-
-	// Creates a node, adds it to target, returns the new node.
-	function addNodeTo ( addTarget, className ) {
-
-		var div = scope_Document.createElement('div');
-
-		if ( className ) {
-			addClass(div, className);
-		}
-
-		addTarget.appendChild(div);
-
-		return div;
-	}
-
-	// Append a origin to the base
-	function addOrigin ( base, handleNumber ) {
-
-		var origin = addNodeTo(base, options.cssClasses.origin);
-		var handle = addNodeTo(origin, options.cssClasses.handle);
-
-		handle.setAttribute('data-handle', handleNumber);
-
-		// https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
-		// 0 = focusable and reachable
-		handle.setAttribute('tabindex', '0');
-		handle.setAttribute('role', 'slider');
-		handle.setAttribute('aria-orientation', options.ort ? 'vertical' : 'horizontal');
-
-		if ( handleNumber === 0 ) {
-			addClass(handle, options.cssClasses.handleLower);
-		}
-
-		else if ( handleNumber === options.handles - 1 ) {
-			addClass(handle, options.cssClasses.handleUpper);
-		}
-
-		return origin;
-	}
-
-	// Insert nodes for connect elements
-	function addConnect ( base, add ) {
-
-		if ( !add ) {
-			return false;
-		}
-
-		return addNodeTo(base, options.cssClasses.connect);
-	}
-
-	// Add handles to the slider base.
-	function addElements ( connectOptions, base ) {
-
-		var connectBase = addNodeTo(base, options.cssClasses.connects);
-
-		scope_Handles = [];
-		scope_Connects = [];
-
-		scope_Connects.push(addConnect(connectBase, connectOptions[0]));
-
-		// [::::O====O====O====]
-		// connectOptions = [0, 1, 1, 1]
-
-		for ( var i = 0; i < options.handles; i++ ) {
-			// Keep a list of all added handles.
-			scope_Handles.push(addOrigin(base, i));
-			scope_HandleNumbers[i] = i;
-			scope_Connects.push(addConnect(connectBase, connectOptions[i + 1]));
-		}
-	}
-
-	// Initialize a single slider.
-	function addSlider ( addTarget ) {
-
-		// Apply classes and data to the target.
-		addClass(addTarget, options.cssClasses.target);
-
-		if ( options.dir === 0 ) {
-			addClass(addTarget, options.cssClasses.ltr);
-		} else {
-			addClass(addTarget, options.cssClasses.rtl);
-		}
-
-		if ( options.ort === 0 ) {
-			addClass(addTarget, options.cssClasses.horizontal);
-		} else {
-			addClass(addTarget, options.cssClasses.vertical);
-		}
-
-		scope_Base = addNodeTo(addTarget, options.cssClasses.base);
-	}
-
-
-	function addTooltip ( handle, handleNumber ) {
-
-		if ( !options.tooltips[handleNumber] ) {
-			return false;
-		}
-
-		return addNodeTo(handle.firstChild, options.cssClasses.tooltip);
-	}
-
-	// The tooltips option is a shorthand for using the 'update' event.
-	function tooltips ( ) {
-
-		// Tooltips are added with options.tooltips in original order.
-		var tips = scope_Handles.map(addTooltip);
-
-		bindEvent('update', function(values, handleNumber, unencoded) {
-
-			if ( !tips[handleNumber] ) {
-				return;
-			}
-
-			var formattedValue = values[handleNumber];
-
-			if ( options.tooltips[handleNumber] !== true ) {
-				formattedValue = options.tooltips[handleNumber].to(unencoded[handleNumber]);
-			}
-
-			tips[handleNumber].innerHTML = formattedValue;
-		});
-	}
-
-
-	function aria ( ) {
-
-		bindEvent('update', function ( values, handleNumber, unencoded, tap, positions ) {
-
-			// Update Aria Values for all handles, as a change in one changes min and max values for the next.
-			scope_HandleNumbers.forEach(function( index ){
-
-				var handle = scope_Handles[index];
-
-				var min = checkHandlePosition(scope_Locations, index, 0, true, true, true);
-				var max = checkHandlePosition(scope_Locations, index, 100, true, true, true);
-
-				var now = positions[index];
-				var text = options.ariaFormat.to(unencoded[index]);
-
-				handle.children[0].setAttribute('aria-valuemin', min.toFixed(1));
-				handle.children[0].setAttribute('aria-valuemax', max.toFixed(1));
-				handle.children[0].setAttribute('aria-valuenow', now.toFixed(1));
-				handle.children[0].setAttribute('aria-valuetext', text);
-			});
-		});
-	}
-
-
-	function getGroup ( mode, values, stepped ) {
-
-		// Use the range.
-		if ( mode === 'range' || mode === 'steps' ) {
-			return scope_Spectrum.xVal;
-		}
-
-		if ( mode === 'count' ) {
-
-			if ( values < 2 ) {
-				throw new Error("noUiSlider (" + VERSION + "): 'values' (>= 2) required for mode 'count'.");
-			}
-
-			// Divide 0 - 100 in 'count' parts.
-			var interval = values - 1;
-			var spread = ( 100 / interval );
-
-			values = [];
-
-			// List these parts and have them handled as 'positions'.
-			while ( interval-- ) {
-				values[ interval ] = ( interval * spread );
-			}
-
-			values.push(100);
-
-			mode = 'positions';
-		}
-
-		if ( mode === 'positions' ) {
-
-			// Map all percentages to on-range values.
-			return values.map(function( value ){
-				return scope_Spectrum.fromStepping( stepped ? scope_Spectrum.getStep( value ) : value );
-			});
-		}
-
-		if ( mode === 'values' ) {
-
-			// If the value must be stepped, it needs to be converted to a percentage first.
-			if ( stepped ) {
-
-				return values.map(function( value ){
-
-					// Convert to percentage, apply step, return to value.
-					return scope_Spectrum.fromStepping( scope_Spectrum.getStep( scope_Spectrum.toStepping( value ) ) );
-				});
-
-			}
-
-			// Otherwise, we can simply use the values.
-			return values;
-		}
-	}
-
-	function generateSpread ( density, mode, group ) {
-
-		function safeIncrement(value, increment) {
-			// Avoid floating point variance by dropping the smallest decimal places.
-			return (value + increment).toFixed(7) / 1;
-		}
-
-		var indexes = {};
-		var firstInRange = scope_Spectrum.xVal[0];
-		var lastInRange = scope_Spectrum.xVal[scope_Spectrum.xVal.length-1];
-		var ignoreFirst = false;
-		var ignoreLast = false;
-		var prevPct = 0;
-
-		// Create a copy of the group, sort it and filter away all duplicates.
-		group = unique(group.slice().sort(function(a, b){ return a - b; }));
-
-		// Make sure the range starts with the first element.
-		if ( group[0] !== firstInRange ) {
-			group.unshift(firstInRange);
-			ignoreFirst = true;
-		}
-
-		// Likewise for the last one.
-		if ( group[group.length - 1] !== lastInRange ) {
-			group.push(lastInRange);
-			ignoreLast = true;
-		}
-
-		group.forEach(function ( current, index ) {
-
-			// Get the current step and the lower + upper positions.
-			var step;
-			var i;
-			var q;
-			var low = current;
-			var high = group[index+1];
-			var newPct;
-			var pctDifference;
-			var pctPos;
-			var type;
-			var steps;
-			var realSteps;
-			var stepsize;
-
-			// When using 'steps' mode, use the provided steps.
-			// Otherwise, we'll step on to the next subrange.
-			if ( mode === 'steps' ) {
-				step = scope_Spectrum.xNumSteps[ index ];
-			}
-
-			// Default to a 'full' step.
-			if ( !step ) {
-				step = high-low;
-			}
-
-			// Low can be 0, so test for false. If high is undefined,
-			// we are at the last subrange. Index 0 is already handled.
-			if ( low === false || high === undefined ) {
-				return;
-			}
-
-			// Make sure step isn't 0, which would cause an infinite loop (#654)
-			step = Math.max(step, 0.0000001);
-
-			// Find all steps in the subrange.
-			for ( i = low; i <= high; i = safeIncrement(i, step) ) {
-
-				// Get the percentage value for the current step,
-				// calculate the size for the subrange.
-				newPct = scope_Spectrum.toStepping( i );
-				pctDifference = newPct - prevPct;
-
-				steps = pctDifference / density;
-				realSteps = Math.round(steps);
-
-				// This ratio represents the amount of percentage-space a point indicates.
-				// For a density 1 the points/percentage = 1. For density 2, that percentage needs to be re-devided.
-				// Round the percentage offset to an even number, then divide by two
-				// to spread the offset on both sides of the range.
-				stepsize = pctDifference/realSteps;
-
-				// Divide all points evenly, adding the correct number to this subrange.
-				// Run up to <= so that 100% gets a point, event if ignoreLast is set.
-				for ( q = 1; q <= realSteps; q += 1 ) {
-
-					// The ratio between the rounded value and the actual size might be ~1% off.
-					// Correct the percentage offset by the number of points
-					// per subrange. density = 1 will result in 100 points on the
-					// full range, 2 for 50, 4 for 25, etc.
-					pctPos = prevPct + ( q * stepsize );
-					indexes[pctPos.toFixed(5)] = ['x', 0];
-				}
-
-				// Determine the point type.
-				type = (group.indexOf(i) > -1) ? 1 : ( mode === 'steps' ? 2 : 0 );
-
-				// Enforce the 'ignoreFirst' option by overwriting the type for 0.
-				if ( !index && ignoreFirst ) {
-					type = 0;
-				}
-
-				if ( !(i === high && ignoreLast)) {
-					// Mark the 'type' of this point. 0 = plain, 1 = real value, 2 = step value.
-					indexes[newPct.toFixed(5)] = [i, type];
-				}
-
-				// Update the percentage count.
-				prevPct = newPct;
-			}
-		});
-
-		return indexes;
-	}
-
-	function addMarking ( spread, filterFunc, formatter ) {
-
-		var element = scope_Document.createElement('div');
-
-		var valueSizeClasses = [
-			options.cssClasses.valueNormal,
-			options.cssClasses.valueLarge,
-			options.cssClasses.valueSub
-		];
-		var markerSizeClasses = [
-			options.cssClasses.markerNormal,
-			options.cssClasses.markerLarge,
-			options.cssClasses.markerSub
-		];
-		var valueOrientationClasses = [
-			options.cssClasses.valueHorizontal,
-			options.cssClasses.valueVertical
-		];
-		var markerOrientationClasses = [
-			options.cssClasses.markerHorizontal,
-			options.cssClasses.markerVertical
-		];
-
-		addClass(element, options.cssClasses.pips);
-		addClass(element, options.ort === 0 ? options.cssClasses.pipsHorizontal : options.cssClasses.pipsVertical);
-
-		function getClasses( type, source ){
-			var a = source === options.cssClasses.value;
-			var orientationClasses = a ? valueOrientationClasses : markerOrientationClasses;
-			var sizeClasses = a ? valueSizeClasses : markerSizeClasses;
-
-			return source + ' ' + orientationClasses[options.ort] + ' ' + sizeClasses[type];
-		}
-
-		function addSpread ( offset, values ){
-
-			// Apply the filter function, if it is set.
-			values[1] = (values[1] && filterFunc) ? filterFunc(values[0], values[1]) : values[1];
-
-			// Add a marker for every point
-			var node = addNodeTo(element, false);
-				node.className = getClasses(values[1], options.cssClasses.marker);
-				node.style[options.style] = offset + '%';
-
-			// Values are only appended for points marked '1' or '2'.
-			if ( values[1] ) {
-				node = addNodeTo(element, false);
-				node.className = getClasses(values[1], options.cssClasses.value);
-				node.setAttribute('data-value', values[0]);
-				node.style[options.style] = offset + '%';
-				node.innerText = formatter.to(values[0]);
-			}
-		}
-
-		// Append all points.
-		Object.keys(spread).forEach(function(a){
-			addSpread(a, spread[a]);
-		});
-
-		return element;
-	}
-
-	function removePips ( ) {
-		if ( scope_Pips ) {
-			removeElement(scope_Pips);
-			scope_Pips = null;
-		}
-	}
-
-	function pips ( grid ) {
-
-		// Fix #669
-		removePips();
-
-		var mode = grid.mode;
-		var density = grid.density || 1;
-		var filter = grid.filter || false;
-		var values = grid.values || false;
-		var stepped = grid.stepped || false;
-		var group = getGroup( mode, values, stepped );
-		var spread = generateSpread( density, mode, group );
-		var format = grid.format || {
-			to: Math.round
-		};
-
-		scope_Pips = scope_Target.appendChild(addMarking(
-			spread,
-			filter,
-			format
-		));
-
-		return scope_Pips;
-	}
-
-/*! In this file: Browser events (not slider events like slide, change); */
-
-	// Shorthand for base dimensions.
-	function baseSize ( ) {
-		var rect = scope_Base.getBoundingClientRect();
-		var alt = 'offset' + ['Width', 'Height'][options.ort];
-		return options.ort === 0 ? (rect.width||scope_Base[alt]) : (rect.height||scope_Base[alt]);
-	}
-
-	// Handler for attaching events trough a proxy.
-	function attachEvent ( events, element, callback, data ) {
-
-		// This function can be used to 'filter' events to the slider.
-		// element is a node, not a nodeList
-
-		var method = function ( e ){
-
-			e = fixEvent(e, data.pageOffset, data.target || element);
-
-			// fixEvent returns false if this event has a different target
-			// when handling (multi-) touch events;
-			if ( !e ) {
-				return false;
-			}
-
-			// doNotReject is passed by all end events to make sure released touches
-			// are not rejected, leaving the slider "stuck" to the cursor;
-			if ( scope_Target.hasAttribute('disabled') && !data.doNotReject ) {
-				return false;
-			}
-
-			// Stop if an active 'tap' transition is taking place.
-			if ( hasClass(scope_Target, options.cssClasses.tap) && !data.doNotReject ) {
-				return false;
-			}
-
-			// Ignore right or middle clicks on start #454
-			if ( events === actions.start && e.buttons !== undefined && e.buttons > 1 ) {
-				return false;
-			}
-
-			// Ignore right or middle clicks on start #454
-			if ( data.hover && e.buttons ) {
-				return false;
-			}
-
-			// 'supportsPassive' is only true if a browser also supports touch-action: none in CSS.
-			// iOS safari does not, so it doesn't get to benefit from passive scrolling. iOS does support
-			// touch-action: manipulation, but that allows panning, which breaks
-			// sliders after zooming/on non-responsive pages.
-			// See: https://bugs.webkit.org/show_bug.cgi?id=133112
-			if ( !supportsPassive ) {
-				e.preventDefault();
-			}
-
-			e.calcPoint = e.points[ options.ort ];
-
-			// Call the event handler with the event [ and additional data ].
-			callback ( e, data );
-		};
-
-		var methods = [];
-
-		// Bind a closure on the target for every event type.
-		events.split(' ').forEach(function( eventName ){
-			element.addEventListener(eventName, method, supportsPassive ? { passive: true } : false);
-			methods.push([eventName, method]);
-		});
-
-		return methods;
-	}
-
-	// Provide a clean event with standardized offset values.
-	function fixEvent ( e, pageOffset, eventTarget ) {
-
-		// Filter the event to register the type, which can be
-		// touch, mouse or pointer. Offset changes need to be
-		// made on an event specific basis.
-		var touch = e.type.indexOf('touch') === 0;
-		var mouse = e.type.indexOf('mouse') === 0;
-		var pointer = e.type.indexOf('pointer') === 0;
-
-		var x;
-		var y;
-
-		// IE10 implemented pointer events with a prefix;
-		if ( e.type.indexOf('MSPointer') === 0 ) {
-			pointer = true;
-		}
-
-		// In the event that multitouch is activated, the only thing one handle should be concerned
-		// about is the touches that originated on top of it.
-		if ( touch ) {
-
-			// Returns true if a touch originated on the target.
-			var isTouchOnTarget = function (checkTouch) {
-				return checkTouch.target === eventTarget || eventTarget.contains(checkTouch.target);
-			};
-
-			// In the case of touchstart events, we need to make sure there is still no more than one
-			// touch on the target so we look amongst all touches.
-			if (e.type === 'touchstart') {
-
-				var targetTouches = Array.prototype.filter.call(e.touches, isTouchOnTarget);
-
-				// Do not support more than one touch per handle.
-				if ( targetTouches.length > 1 ) {
-					return false;
-				}
-
-				x = targetTouches[0].pageX;
-				y = targetTouches[0].pageY;
-
-			} else {
-
-				// In the other cases, find on changedTouches is enough.
-				var targetTouch = Array.prototype.find.call(e.changedTouches, isTouchOnTarget);
-
-				// Cancel if the target touch has not moved.
-				if ( !targetTouch ) {
-					return false;
-				}
-
-				x = targetTouch.pageX;
-				y = targetTouch.pageY;
-			}
-		}
-
-		pageOffset = pageOffset || getPageOffset(scope_Document);
-
-		if ( mouse || pointer ) {
-			x = e.clientX + pageOffset.x;
-			y = e.clientY + pageOffset.y;
-		}
-
-		e.pageOffset = pageOffset;
-		e.points = [x, y];
-		e.cursor = mouse || pointer; // Fix #435
-
-		return e;
-	}
-
-	// Translate a coordinate in the document to a percentage on the slider
-	function calcPointToPercentage ( calcPoint ) {
-		var location = calcPoint - offset(scope_Base, options.ort);
-		var proposal = ( location * 100 ) / baseSize();
-
-		// Clamp proposal between 0% and 100%
-		// Out-of-bound coordinates may occur when .noUi-base pseudo-elements
-		// are used (e.g. contained handles feature)
-		proposal = limit(proposal);
-
-		return options.dir ? 100 - proposal : proposal;
-	}
-
-	// Find handle closest to a certain percentage on the slider
-	function getClosestHandle ( proposal ) {
-
-		var closest = 100;
-		var handleNumber = false;
-
-		scope_Handles.forEach(function(handle, index){
-
-			// Disabled handles are ignored
-			if ( handle.hasAttribute('disabled') ) {
-				return;
-			}
-
-			var pos = Math.abs(scope_Locations[index] - proposal);
-
-			if ( pos < closest || (pos === 100 && closest === 100) ) {
-				handleNumber = index;
-				closest = pos;
-			}
-		});
-
-		return handleNumber;
-	}
-
-	// Fire 'end' when a mouse or pen leaves the document.
-	function documentLeave ( event, data ) {
-		if ( event.type === "mouseout" && event.target.nodeName === "HTML" && event.relatedTarget === null ){
-			eventEnd (event, data);
-		}
-	}
-
-	// Handle movement on document for handle and range drag.
-	function eventMove ( event, data ) {
-
-		// Fix #498
-		// Check value of .buttons in 'start' to work around a bug in IE10 mobile (data.buttonsProperty).
-		// https://connect.microsoft.com/IE/feedback/details/927005/mobile-ie10-windows-phone-buttons-property-of-pointermove-event-always-zero
-		// IE9 has .buttons and .which zero on mousemove.
-		// Firefox breaks the spec MDN defines.
-		if ( navigator.appVersion.indexOf("MSIE 9") === -1 && event.buttons === 0 && data.buttonsProperty !== 0 ) {
-			return eventEnd(event, data);
-		}
-
-		// Check if we are moving up or down
-		var movement = (options.dir ? -1 : 1) * (event.calcPoint - data.startCalcPoint);
-
-		// Convert the movement into a percentage of the slider width/height
-		var proposal = (movement * 100) / data.baseSize;
-
-		moveHandles(movement > 0, proposal, data.locations, data.handleNumbers);
-	}
-
-	// Unbind move events on document, call callbacks.
-	function eventEnd ( event, data ) {
-
-		// The handle is no longer active, so remove the class.
-		if ( data.handle ) {
-			removeClass(data.handle, options.cssClasses.active);
-			scope_ActiveHandlesCount -= 1;
-		}
-
-		// Unbind the move and end events, which are added on 'start'.
-		data.listeners.forEach(function( c ) {
-			scope_DocumentElement.removeEventListener(c[0], c[1]);
-		});
-
-		if ( scope_ActiveHandlesCount === 0 ) {
-			// Remove dragging class.
-			removeClass(scope_Target, options.cssClasses.drag);
-			setZindex();
-
-			// Remove cursor styles and text-selection events bound to the body.
-			if ( event.cursor ) {
-				scope_Body.style.cursor = '';
-				scope_Body.removeEventListener('selectstart', preventDefault);
-			}
-		}
-
-		data.handleNumbers.forEach(function(handleNumber){
-			fireEvent('change', handleNumber);
-			fireEvent('set', handleNumber);
-			fireEvent('end', handleNumber);
-		});
-	}
-
-	// Bind move events on document.
-	function eventStart ( event, data ) {
-
-		var handle;
-		if ( data.handleNumbers.length === 1 ) {
-
-			var handleOrigin = scope_Handles[data.handleNumbers[0]];
-
-			// Ignore 'disabled' handles
-			if ( handleOrigin.hasAttribute('disabled') ) {
-				return false;
-			}
-
-			handle = handleOrigin.children[0];
-			scope_ActiveHandlesCount += 1;
-
-			// Mark the handle as 'active' so it can be styled.
-			addClass(handle, options.cssClasses.active);
-		}
-
-		// A drag should never propagate up to the 'tap' event.
-		event.stopPropagation();
-
-		// Record the event listeners.
-		var listeners = [];
-
-		// Attach the move and end events.
-		var moveEvent = attachEvent(actions.move, scope_DocumentElement, eventMove, {
-			// The event target has changed so we need to propagate the original one so that we keep
-			// relying on it to extract target touches.
-			target: event.target,
-			handle: handle,
-			listeners: listeners,
-			startCalcPoint: event.calcPoint,
-			baseSize: baseSize(),
-			pageOffset: event.pageOffset,
-			handleNumbers: data.handleNumbers,
-			buttonsProperty: event.buttons,
-			locations: scope_Locations.slice()
-		});
-
-		var endEvent = attachEvent(actions.end, scope_DocumentElement, eventEnd, {
-			target: event.target,
-			handle: handle,
-			listeners: listeners,
-			doNotReject: true,
-			handleNumbers: data.handleNumbers
-		});
-
-		var outEvent = attachEvent("mouseout", scope_DocumentElement, documentLeave, {
-			target: event.target,
-			handle: handle,
-			listeners: listeners,
-			doNotReject: true,
-			handleNumbers: data.handleNumbers
-		});
-
-		// We want to make sure we pushed the listeners in the listener list rather than creating
-		// a new one as it has already been passed to the event handlers.
-		listeners.push.apply(listeners, moveEvent.concat(endEvent, outEvent));
-
-		// Text selection isn't an issue on touch devices,
-		// so adding cursor styles can be skipped.
-		if ( event.cursor ) {
-
-			// Prevent the 'I' cursor and extend the range-drag cursor.
-			scope_Body.style.cursor = getComputedStyle(event.target).cursor;
-
-			// Mark the target with a dragging state.
-			if ( scope_Handles.length > 1 ) {
-				addClass(scope_Target, options.cssClasses.drag);
-			}
-
-			// Prevent text selection when dragging the handles.
-			// In noUiSlider <= 9.2.0, this was handled by calling preventDefault on mouse/touch start/move,
-			// which is scroll blocking. The selectstart event is supported by FireFox starting from version 52,
-			// meaning the only holdout is iOS Safari. This doesn't matter: text selection isn't triggered there.
-			// The 'cursor' flag is false.
-			// See: http://caniuse.com/#search=selectstart
-			scope_Body.addEventListener('selectstart', preventDefault, false);
-		}
-
-		data.handleNumbers.forEach(function(handleNumber){
-			fireEvent('start', handleNumber);
-		});
-	}
-
-	// Move closest handle to tapped location.
-	function eventTap ( event ) {
-
-		// The tap event shouldn't propagate up
-		event.stopPropagation();
-
-		var proposal = calcPointToPercentage(event.calcPoint);
-		var handleNumber = getClosestHandle(proposal);
-
-		// Tackle the case that all handles are 'disabled'.
-		if ( handleNumber === false ) {
-			return false;
-		}
-
-		// Flag the slider as it is now in a transitional state.
-		// Transition takes a configurable amount of ms (default 300). Re-enable the slider after that.
-		if ( !options.events.snap ) {
-			addClassFor(scope_Target, options.cssClasses.tap, options.animationDuration);
-		}
-
-		setHandle(handleNumber, proposal, true, true);
-
-		setZindex();
-
-		fireEvent('slide', handleNumber, true);
-		fireEvent('update', handleNumber, true);
-		fireEvent('change', handleNumber, true);
-		fireEvent('set', handleNumber, true);
-
-		if ( options.events.snap ) {
-			eventStart(event, { handleNumbers: [handleNumber] });
-		}
-	}
-
-	// Fires a 'hover' event for a hovered mouse/pen position.
-	function eventHover ( event ) {
-
-		var proposal = calcPointToPercentage(event.calcPoint);
-
-		var to = scope_Spectrum.getStep(proposal);
-		var value = scope_Spectrum.fromStepping(to);
-
-		Object.keys(scope_Events).forEach(function( targetEvent ) {
-			if ( 'hover' === targetEvent.split('.')[0] ) {
-				scope_Events[targetEvent].forEach(function( callback ) {
-					callback.call( scope_Self, value );
-				});
-			}
-		});
-	}
-
-	// Attach events to several slider parts.
-	function bindSliderEvents ( behaviour ) {
-
-		// Attach the standard drag event to the handles.
-		if ( !behaviour.fixed ) {
-
-			scope_Handles.forEach(function( handle, index ){
-
-				// These events are only bound to the visual handle
-				// element, not the 'real' origin element.
-				attachEvent ( actions.start, handle.children[0], eventStart, {
-					handleNumbers: [index]
-				});
-			});
-		}
-
-		// Attach the tap event to the slider base.
-		if ( behaviour.tap ) {
-			attachEvent (actions.start, scope_Base, eventTap, {});
-		}
-
-		// Fire hover events
-		if ( behaviour.hover ) {
-			attachEvent (actions.move, scope_Base, eventHover, { hover: true });
-		}
-
-		// Make the range draggable.
-		if ( behaviour.drag ){
-
-			scope_Connects.forEach(function( connect, index ){
-
-				if ( connect === false || index === 0 || index === scope_Connects.length - 1 ) {
-					return;
-				}
-
-				var handleBefore = scope_Handles[index - 1];
-				var handleAfter = scope_Handles[index];
-				var eventHolders = [connect];
-
-				addClass(connect, options.cssClasses.draggable);
-
-				// When the range is fixed, the entire range can
-				// be dragged by the handles. The handle in the first
-				// origin will propagate the start event upward,
-				// but it needs to be bound manually on the other.
-				if ( behaviour.fixed ) {
-					eventHolders.push(handleBefore.children[0]);
-					eventHolders.push(handleAfter.children[0]);
-				}
-
-				eventHolders.forEach(function( eventHolder ) {
-					attachEvent ( actions.start, eventHolder, eventStart, {
-						handles: [handleBefore, handleAfter],
-						handleNumbers: [index - 1, index]
-					});
-				});
-			});
-		}
-	}
-
-/*! In this file: Slider events (not browser events); */
-
-	// Attach an event to this slider, possibly including a namespace
-	function bindEvent ( namespacedEvent, callback ) {
-		scope_Events[namespacedEvent] = scope_Events[namespacedEvent] || [];
-		scope_Events[namespacedEvent].push(callback);
-
-		// If the event bound is 'update,' fire it immediately for all handles.
-		if ( namespacedEvent.split('.')[0] === 'update' ) {
-			scope_Handles.forEach(function(a, index){
-				fireEvent('update', index);
-			});
-		}
-	}
-
-	// Undo attachment of event
-	function removeEvent ( namespacedEvent ) {
-
-		var event = namespacedEvent && namespacedEvent.split('.')[0];
-		var namespace = event && namespacedEvent.substring(event.length);
-
-		Object.keys(scope_Events).forEach(function( bind ){
-
-			var tEvent = bind.split('.')[0];
-			var tNamespace = bind.substring(tEvent.length);
-
-			if ( (!event || event === tEvent) && (!namespace || namespace === tNamespace) ) {
-				delete scope_Events[bind];
-			}
-		});
-	}
-
-	// External event handling
-	function fireEvent ( eventName, handleNumber, tap ) {
-
-		Object.keys(scope_Events).forEach(function( targetEvent ) {
-
-			var eventType = targetEvent.split('.')[0];
-
-			if ( eventName === eventType ) {
-				scope_Events[targetEvent].forEach(function( callback ) {
-
-					callback.call(
-						// Use the slider public API as the scope ('this')
-						scope_Self,
-						// Return values as array, so arg_1[arg_2] is always valid.
-						scope_Values.map(options.format.to),
-						// Handle index, 0 or 1
-						handleNumber,
-						// Unformatted slider values
-						scope_Values.slice(),
-						// Event is fired by tap, true or false
-						tap || false,
-						// Left offset of the handle, in relation to the slider
-						scope_Locations.slice()
-					);
-				});
-			}
-		});
-	}
-
-/*! In this file: Mechanics for slider operation */
-
-	function toPct ( pct ) {
-		return pct + '%';
-	}
-
-	// Split out the handle positioning logic so the Move event can use it, too
-	function checkHandlePosition ( reference, handleNumber, to, lookBackward, lookForward, getValue ) {
-
-		// For sliders with multiple handles, limit movement to the other handle.
-		// Apply the margin option by adding it to the handle positions.
-		if ( scope_Handles.length > 1 ) {
-
-			if ( lookBackward && handleNumber > 0 ) {
-				to = Math.max(to, reference[handleNumber - 1] + options.margin);
-			}
-
-			if ( lookForward && handleNumber < scope_Handles.length - 1 ) {
-				to = Math.min(to, reference[handleNumber + 1] - options.margin);
-			}
-		}
-
-		// The limit option has the opposite effect, limiting handles to a
-		// maximum distance from another. Limit must be > 0, as otherwise
-		// handles would be unmoveable.
-		if ( scope_Handles.length > 1 && options.limit ) {
-
-			if ( lookBackward && handleNumber > 0 ) {
-				to = Math.min(to, reference[handleNumber - 1] + options.limit);
-			}
-
-			if ( lookForward && handleNumber < scope_Handles.length - 1 ) {
-				to = Math.max(to, reference[handleNumber + 1] - options.limit);
-			}
-		}
-
-		// The padding option keeps the handles a certain distance from the
-		// edges of the slider. Padding must be > 0.
-		if ( options.padding ) {
-
-			if ( handleNumber === 0 ) {
-				to = Math.max(to, options.padding[0]);
-			}
-
-			if ( handleNumber === scope_Handles.length - 1 ) {
-				to = Math.min(to, 100 - options.padding[1]);
-			}
-		}
-
-		to = scope_Spectrum.getStep(to);
-
-		// Limit percentage to the 0 - 100 range
-		to = limit(to);
-
-		// Return false if handle can't move
-		if ( to === reference[handleNumber] && !getValue ) {
-			return false;
-		}
-
-		return to;
-	}
-
-	// Uses slider orientation to create CSS rules. a = base value;
-	function inRuleOrder ( v, a ) {
-		var o = options.ort;
-		return (o?a:v) + ', ' + (o?v:a);
-	}
-
-	// Moves handle(s) by a percentage
-	// (bool, % to move, [% where handle started, ...], [index in scope_Handles, ...])
-	function moveHandles ( upward, proposal, locations, handleNumbers ) {
-
-		var proposals = locations.slice();
-
-		var b = [!upward, upward];
-		var f = [upward, !upward];
-
-		// Copy handleNumbers so we don't change the dataset
-		handleNumbers = handleNumbers.slice();
-
-		// Check to see which handle is 'leading'.
-		// If that one can't move the second can't either.
-		if ( upward ) {
-			handleNumbers.reverse();
-		}
-
-		// Step 1: get the maximum percentage that any of the handles can move
-		if ( handleNumbers.length > 1 ) {
-
-			handleNumbers.forEach(function(handleNumber, o) {
-
-				var to = checkHandlePosition(proposals, handleNumber, proposals[handleNumber] + proposal, b[o], f[o], false);
-
-				// Stop if one of the handles can't move.
-				if ( to === false ) {
-					proposal = 0;
-				} else {
-					proposal = to - proposals[handleNumber];
-					proposals[handleNumber] = to;
-				}
-			});
-		}
-
-		// If using one handle, check backward AND forward
-		else {
-			b = f = [true];
-		}
-
-		var state = false;
-
-		// Step 2: Try to set the handles with the found percentage
-		handleNumbers.forEach(function(handleNumber, o) {
-			state = setHandle(handleNumber, locations[handleNumber] + proposal, b[o], f[o]) || state;
-		});
-
-		// Step 3: If a handle moved, fire events
-		if ( state ) {
-			handleNumbers.forEach(function(handleNumber){
-				fireEvent('update', handleNumber);
-				fireEvent('slide', handleNumber);
-			});
-		}
-	}
-
-	// Takes a base value and an offset. This offset is used for the connect bar size.
-	// In the initial design for this feature, the origin element was 1% wide.
-	// Unfortunately, a rounding bug in Chrome makes it impossible to implement this feature
-	// in this manner: https://bugs.chromium.org/p/chromium/issues/detail?id=798223
-	function transformDirection ( a, b ) {
-		return options.dir ? 100 - a - b : a;
-	}
-
-	// Updates scope_Locations and scope_Values, updates visual state
-	function updateHandlePosition ( handleNumber, to ) {
-
-		// Update locations.
-		scope_Locations[handleNumber] = to;
-
-		// Convert the value to the slider stepping/range.
-		scope_Values[handleNumber] = scope_Spectrum.fromStepping(to);
-
-		var rule = 'translate(' + inRuleOrder(toPct(transformDirection(to, 0) - scope_DirOffset), '0') + ')';
-		scope_Handles[handleNumber].style[options.transformRule] = rule;
-
-		updateConnect(handleNumber);
-		updateConnect(handleNumber + 1);
-	}
-
-	// Handles before the slider middle are stacked later = higher,
-	// Handles after the middle later is lower
-	// [[7] [8] .......... | .......... [5] [4]
-	function setZindex ( ) {
-
-		scope_HandleNumbers.forEach(function(handleNumber){
-			var dir = (scope_Locations[handleNumber] > 50 ? -1 : 1);
-			var zIndex = 3 + (scope_Handles.length + (dir * handleNumber));
-			scope_Handles[handleNumber].style.zIndex = zIndex;
-		});
-	}
-
-	// Test suggested values and apply margin, step.
-	function setHandle ( handleNumber, to, lookBackward, lookForward ) {
-
-		to = checkHandlePosition(scope_Locations, handleNumber, to, lookBackward, lookForward, false);
-
-		if ( to === false ) {
-			return false;
-		}
-
-		updateHandlePosition(handleNumber, to);
-
-		return true;
-	}
-
-	// Updates style attribute for connect nodes
-	function updateConnect ( index ) {
-
-		// Skip connects set to false
-		if ( !scope_Connects[index] ) {
-			return;
-		}
-
-		var l = 0;
-		var h = 100;
-
-		if ( index !== 0 ) {
-			l = scope_Locations[index - 1];
-		}
-
-		if ( index !== scope_Connects.length - 1 ) {
-			h = scope_Locations[index];
-		}
-
-		// We use two rules:
-		// 'translate' to change the left/top offset;
-		// 'scale' to change the width of the element;
-		// As the element has a width of 100%, a translation of 100% is equal to 100% of the parent (.noUi-base)
-		var connectWidth = h - l;
-		var translateRule = 'translate(' + inRuleOrder(toPct(transformDirection(l, connectWidth)), '0') + ')';
-		var scaleRule = 'scale(' + inRuleOrder(connectWidth / 100, '1') + ')';
-
-		scope_Connects[index].style[options.transformRule] = translateRule + ' ' + scaleRule;
-	}
-
-/*! In this file: All methods eventually exposed in slider.noUiSlider... */
-
-	// Parses value passed to .set method. Returns current value if not parse-able.
-	function resolveToValue ( to, handleNumber ) {
-
-		// Setting with null indicates an 'ignore'.
-		// Inputting 'false' is invalid.
-		if ( to === null || to === false || to === undefined ) {
-			return scope_Locations[handleNumber];
-		}
-
-		// If a formatted number was passed, attempt to decode it.
-		if ( typeof to === 'number' ) {
-			to = String(to);
-		}
-
-		to = options.format.from(to);
-		to = scope_Spectrum.toStepping(to);
-
-		// If parsing the number failed, use the current value.
-		if ( to === false || isNaN(to) ) {
-			return scope_Locations[handleNumber];
-		}
-
-		return to;
-	}
-
-	// Set the slider value.
-	function valueSet ( input, fireSetEvent ) {
-
-		var values = asArray(input);
-		var isInit = scope_Locations[0] === undefined;
-
-		// Event fires by default
-		fireSetEvent = (fireSetEvent === undefined ? true : !!fireSetEvent);
-
-		// Animation is optional.
-		// Make sure the initial values were set before using animated placement.
-		if ( options.animate && !isInit ) {
-			addClassFor(scope_Target, options.cssClasses.tap, options.animationDuration);
-		}
-
-		// First pass, without lookAhead but with lookBackward. Values are set from left to right.
-		scope_HandleNumbers.forEach(function(handleNumber){
-			setHandle(handleNumber, resolveToValue(values[handleNumber], handleNumber), true, false);
-		});
-
-		// Second pass. Now that all base values are set, apply constraints
-		scope_HandleNumbers.forEach(function(handleNumber){
-			setHandle(handleNumber, scope_Locations[handleNumber], true, true);
-		});
-
-		setZindex();
-
-		scope_HandleNumbers.forEach(function(handleNumber){
-
-			fireEvent('update', handleNumber);
-
-			// Fire the event only for handles that received a new value, as per #579
-			if ( values[handleNumber] !== null && fireSetEvent ) {
-				fireEvent('set', handleNumber);
-			}
-		});
-	}
-
-	// Reset slider to initial values
-	function valueReset ( fireSetEvent ) {
-		valueSet(options.start, fireSetEvent);
-	}
-
-	// Get the slider value.
-	function valueGet ( ) {
-
-		var values = scope_Values.map(options.format.to);
-
-		// If only one handle is used, return a single value.
-		if ( values.length === 1 ){
-			return values[0];
-		}
-
-		return values;
-	}
-
-	// Removes classes from the root and empties it.
-	function destroy ( ) {
-
-		for ( var key in options.cssClasses ) {
-			if ( !options.cssClasses.hasOwnProperty(key) ) { continue; }
-			removeClass(scope_Target, options.cssClasses[key]);
-		}
-
-		while (scope_Target.firstChild) {
-			scope_Target.removeChild(scope_Target.firstChild);
-		}
-
-		delete scope_Target.noUiSlider;
-	}
-
-	// Get the current step size for the slider.
-	function getCurrentStep ( ) {
-
-		// Check all locations, map them to their stepping point.
-		// Get the step point, then find it in the input list.
-		return scope_Locations.map(function( location, index ){
-
-			var nearbySteps = scope_Spectrum.getNearbySteps( location );
-			var value = scope_Values[index];
-			var increment = nearbySteps.thisStep.step;
-			var decrement = null;
-
-			// If the next value in this step moves into the next step,
-			// the increment is the start of the next step - the current value
-			if ( increment !== false ) {
-				if ( value + increment > nearbySteps.stepAfter.startValue ) {
-					increment = nearbySteps.stepAfter.startValue - value;
-				}
-			}
-
-
-			// If the value is beyond the starting point
-			if ( value > nearbySteps.thisStep.startValue ) {
-				decrement = nearbySteps.thisStep.step;
-			}
-
-			else if ( nearbySteps.stepBefore.step === false ) {
-				decrement = false;
-			}
-
-			// If a handle is at the start of a step, it always steps back into the previous step first
-			else {
-				decrement = value - nearbySteps.stepBefore.highestStep;
-			}
-
-
-			// Now, if at the slider edges, there is not in/decrement
-			if ( location === 100 ) {
-				increment = null;
-			}
-
-			else if ( location === 0 ) {
-				decrement = null;
-			}
-
-			// As per #391, the comparison for the decrement step can have some rounding issues.
-			var stepDecimals = scope_Spectrum.countStepDecimals();
-
-			// Round per #391
-			if ( increment !== null && increment !== false ) {
-				increment = Number(increment.toFixed(stepDecimals));
-			}
-
-			if ( decrement !== null && decrement !== false ) {
-				decrement = Number(decrement.toFixed(stepDecimals));
-			}
-
-			return [decrement, increment];
-		});
-	}
-
-	// Updateable: margin, limit, padding, step, range, animate, snap
-	function updateOptions ( optionsToUpdate, fireSetEvent ) {
-
-		// Spectrum is created using the range, snap, direction and step options.
-		// 'snap' and 'step' can be updated.
-		// If 'snap' and 'step' are not passed, they should remain unchanged.
-		var v = valueGet();
-
-		var updateAble = ['margin', 'limit', 'padding', 'range', 'animate', 'snap', 'step', 'format'];
-
-		// Only change options that we're actually passed to update.
-		updateAble.forEach(function(name){
-			if ( optionsToUpdate[name] !== undefined ) {
-				originalOptions[name] = optionsToUpdate[name];
-			}
-		});
-
-		var newOptions = testOptions(originalOptions);
-
-		// Load new options into the slider state
-		updateAble.forEach(function(name){
-			if ( optionsToUpdate[name] !== undefined ) {
-				options[name] = newOptions[name];
-			}
-		});
-
-		scope_Spectrum = newOptions.spectrum;
-
-		// Limit, margin and padding depend on the spectrum but are stored outside of it. (#677)
-		options.margin = newOptions.margin;
-		options.limit = newOptions.limit;
-		options.padding = newOptions.padding;
-
-		// Update pips, removes existing.
-		if ( options.pips ) {
-			pips(options.pips);
-		}
-
-		// Invalidate the current positioning so valueSet forces an update.
-		scope_Locations = [];
-		valueSet(optionsToUpdate.start || v, fireSetEvent);
-	}
-
-/*! In this file: Calls to functions. All other scope_ files define functions only; */
-
-	// Create the base element, initialize HTML and set classes.
-	// Add handles and connect elements.
-	addSlider(scope_Target);
-	addElements(options.connect, scope_Base);
-
-	// Attach user events.
-	bindSliderEvents(options.events);
-
-	// Use the public value method to set the start values.
-	valueSet(options.start);
-
-	scope_Self = {
-		destroy: destroy,
-		steps: getCurrentStep,
-		on: bindEvent,
-		off: removeEvent,
-		get: valueGet,
-		set: valueSet,
-		reset: valueReset,
-		// Exposed for unit testing, don't use this in your application.
-		__moveHandles: function(a, b, c) { moveHandles(a, b, scope_Locations, c); },
-		options: originalOptions, // Issue #600, #678
-		updateOptions: updateOptions,
-		target: scope_Target, // Issue #597
-		removePips: removePips,
-		pips: pips // Issue #594
-	};
-
-	if ( options.pips ) {
-		pips(options.pips);
-	}
-
-	if ( options.tooltips ) {
-		tooltips();
-	}
-
-	aria();
-
-	return scope_Self;
-
-}
-
-
-	// Run the standard initializer
-	function initialize ( target, originalOptions ) {
-
-		if ( !target || !target.nodeName ) {
-			throw new Error("noUiSlider (" + VERSION + "): create requires a single element, got: " + target);
-		}
-
-		// Throw an error if the slider was already initialized.
-		if ( target.noUiSlider ) {
-			throw new Error("noUiSlider (" + VERSION + "): Slider was already initialized.");
-		}
-
-		// Test the options and create the slider environment;
-		var options = testOptions( originalOptions, target );
-		var api = scope( target, options, originalOptions );
-
-		target.noUiSlider = api;
-
-		return api;
-	}
-
-	// Use an object instead of a function for future expandability;
-	return {
-		version: VERSION,
-		create: initialize
-	};
-
+
+
+function scope ( target, options, originalOptions ){
+
+	var actions = getActions();
+	var supportsTouchActionNone = getSupportsTouchActionNone();
+	var supportsPassive = supportsTouchActionNone && getSupportsPassive();
+
+	// All variables local to 'scope' are prefixed with 'scope_'
+	var scope_Target = target;
+	var scope_Locations = [];
+	var scope_Base;
+	var scope_Handles;
+	var scope_HandleNumbers = [];
+	var scope_ActiveHandlesCount = 0;
+	var scope_Connects;
+	var scope_Spectrum = options.spectrum;
+	var scope_Values = [];
+	var scope_Events = {};
+	var scope_Self;
+	var scope_Pips;
+	var scope_Document = target.ownerDocument;
+	var scope_DocumentElement = scope_Document.documentElement;
+	var scope_Body = scope_Document.body;
+
+
+	// For horizontal sliders in standard ltr documents,
+	// make .noUi-origin overflow to the left so the document doesn't scroll.
+	var scope_DirOffset = (scope_Document.dir === 'rtl') || (options.ort === 1) ? 0 : 100;
+
+/*! In this file: Construction of DOM elements; */
+
+	// Creates a node, adds it to target, returns the new node.
+	function addNodeTo ( addTarget, className ) {
+
+		var div = scope_Document.createElement('div');
+
+		if ( className ) {
+			addClass(div, className);
+		}
+
+		addTarget.appendChild(div);
+
+		return div;
+	}
+
+	// Append a origin to the base
+	function addOrigin ( base, handleNumber ) {
+
+		var origin = addNodeTo(base, options.cssClasses.origin);
+		var handle = addNodeTo(origin, options.cssClasses.handle);
+
+		handle.setAttribute('data-handle', handleNumber);
+
+		// https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
+		// 0 = focusable and reachable
+		handle.setAttribute('tabindex', '0');
+		handle.setAttribute('role', 'slider');
+		handle.setAttribute('aria-orientation', options.ort ? 'vertical' : 'horizontal');
+
+		if ( handleNumber === 0 ) {
+			addClass(handle, options.cssClasses.handleLower);
+		}
+
+		else if ( handleNumber === options.handles - 1 ) {
+			addClass(handle, options.cssClasses.handleUpper);
+		}
+
+		return origin;
+	}
+
+	// Insert nodes for connect elements
+	function addConnect ( base, add ) {
+
+		if ( !add ) {
+			return false;
+		}
+
+		return addNodeTo(base, options.cssClasses.connect);
+	}
+
+	// Add handles to the slider base.
+	function addElements ( connectOptions, base ) {
+
+		var connectBase = addNodeTo(base, options.cssClasses.connects);
+
+		scope_Handles = [];
+		scope_Connects = [];
+
+		scope_Connects.push(addConnect(connectBase, connectOptions[0]));
+
+		// [::::O====O====O====]
+		// connectOptions = [0, 1, 1, 1]
+
+		for ( var i = 0; i < options.handles; i++ ) {
+			// Keep a list of all added handles.
+			scope_Handles.push(addOrigin(base, i));
+			scope_HandleNumbers[i] = i;
+			scope_Connects.push(addConnect(connectBase, connectOptions[i + 1]));
+		}
+	}
+
+	// Initialize a single slider.
+	function addSlider ( addTarget ) {
+
+		// Apply classes and data to the target.
+		addClass(addTarget, options.cssClasses.target);
+
+		if ( options.dir === 0 ) {
+			addClass(addTarget, options.cssClasses.ltr);
+		} else {
+			addClass(addTarget, options.cssClasses.rtl);
+		}
+
+		if ( options.ort === 0 ) {
+			addClass(addTarget, options.cssClasses.horizontal);
+		} else {
+			addClass(addTarget, options.cssClasses.vertical);
+		}
+
+		scope_Base = addNodeTo(addTarget, options.cssClasses.base);
+	}
+
+
+	function addTooltip ( handle, handleNumber ) {
+
+		if ( !options.tooltips[handleNumber] ) {
+			return false;
+		}
+
+		return addNodeTo(handle.firstChild, options.cssClasses.tooltip);
+	}
+
+	// The tooltips option is a shorthand for using the 'update' event.
+	function tooltips ( ) {
+
+		// Tooltips are added with options.tooltips in original order.
+		var tips = scope_Handles.map(addTooltip);
+
+		bindEvent('update', function(values, handleNumber, unencoded) {
+
+			if ( !tips[handleNumber] ) {
+				return;
+			}
+
+			var formattedValue = values[handleNumber];
+
+			if ( options.tooltips[handleNumber] !== true ) {
+				formattedValue = options.tooltips[handleNumber].to(unencoded[handleNumber]);
+			}
+
+			tips[handleNumber].innerHTML = formattedValue;
+		});
+	}
+
+
+	function aria ( ) {
+
+		bindEvent('update', function ( values, handleNumber, unencoded, tap, positions ) {
+
+			// Update Aria Values for all handles, as a change in one changes min and max values for the next.
+			scope_HandleNumbers.forEach(function( index ){
+
+				var handle = scope_Handles[index];
+
+				var min = checkHandlePosition(scope_Locations, index, 0, true, true, true);
+				var max = checkHandlePosition(scope_Locations, index, 100, true, true, true);
+
+				var now = positions[index];
+				var text = options.ariaFormat.to(unencoded[index]);
+
+				handle.children[0].setAttribute('aria-valuemin', min.toFixed(1));
+				handle.children[0].setAttribute('aria-valuemax', max.toFixed(1));
+				handle.children[0].setAttribute('aria-valuenow', now.toFixed(1));
+				handle.children[0].setAttribute('aria-valuetext', text);
+			});
+		});
+	}
+
+
+	function getGroup ( mode, values, stepped ) {
+
+		// Use the range.
+		if ( mode === 'range' || mode === 'steps' ) {
+			return scope_Spectrum.xVal;
+		}
+
+		if ( mode === 'count' ) {
+
+			if ( values < 2 ) {
+				throw new Error("noUiSlider (" + VERSION + "): 'values' (>= 2) required for mode 'count'.");
+			}
+
+			// Divide 0 - 100 in 'count' parts.
+			var interval = values - 1;
+			var spread = ( 100 / interval );
+
+			values = [];
+
+			// List these parts and have them handled as 'positions'.
+			while ( interval-- ) {
+				values[ interval ] = ( interval * spread );
+			}
+
+			values.push(100);
+
+			mode = 'positions';
+		}
+
+		if ( mode === 'positions' ) {
+
+			// Map all percentages to on-range values.
+			return values.map(function( value ){
+				return scope_Spectrum.fromStepping( stepped ? scope_Spectrum.getStep( value ) : value );
+			});
+		}
+
+		if ( mode === 'values' ) {
+
+			// If the value must be stepped, it needs to be converted to a percentage first.
+			if ( stepped ) {
+
+				return values.map(function( value ){
+
+					// Convert to percentage, apply step, return to value.
+					return scope_Spectrum.fromStepping( scope_Spectrum.getStep( scope_Spectrum.toStepping( value ) ) );
+				});
+
+			}
+
+			// Otherwise, we can simply use the values.
+			return values;
+		}
+	}
+
+	function generateSpread ( density, mode, group ) {
+
+		function safeIncrement(value, increment) {
+			// Avoid floating point variance by dropping the smallest decimal places.
+			return (value + increment).toFixed(7) / 1;
+		}
+
+		var indexes = {};
+		var firstInRange = scope_Spectrum.xVal[0];
+		var lastInRange = scope_Spectrum.xVal[scope_Spectrum.xVal.length-1];
+		var ignoreFirst = false;
+		var ignoreLast = false;
+		var prevPct = 0;
+
+		// Create a copy of the group, sort it and filter away all duplicates.
+		group = unique(group.slice().sort(function(a, b){ return a - b; }));
+
+		// Make sure the range starts with the first element.
+		if ( group[0] !== firstInRange ) {
+			group.unshift(firstInRange);
+			ignoreFirst = true;
+		}
+
+		// Likewise for the last one.
+		if ( group[group.length - 1] !== lastInRange ) {
+			group.push(lastInRange);
+			ignoreLast = true;
+		}
+
+		group.forEach(function ( current, index ) {
+
+			// Get the current step and the lower + upper positions.
+			var step;
+			var i;
+			var q;
+			var low = current;
+			var high = group[index+1];
+			var newPct;
+			var pctDifference;
+			var pctPos;
+			var type;
+			var steps;
+			var realSteps;
+			var stepsize;
+
+			// When using 'steps' mode, use the provided steps.
+			// Otherwise, we'll step on to the next subrange.
+			if ( mode === 'steps' ) {
+				step = scope_Spectrum.xNumSteps[ index ];
+			}
+
+			// Default to a 'full' step.
+			if ( !step ) {
+				step = high-low;
+			}
+
+			// Low can be 0, so test for false. If high is undefined,
+			// we are at the last subrange. Index 0 is already handled.
+			if ( low === false || high === undefined ) {
+				return;
+			}
+
+			// Make sure step isn't 0, which would cause an infinite loop (#654)
+			step = Math.max(step, 0.0000001);
+
+			// Find all steps in the subrange.
+			for ( i = low; i <= high; i = safeIncrement(i, step) ) {
+
+				// Get the percentage value for the current step,
+				// calculate the size for the subrange.
+				newPct = scope_Spectrum.toStepping( i );
+				pctDifference = newPct - prevPct;
+
+				steps = pctDifference / density;
+				realSteps = Math.round(steps);
+
+				// This ratio represents the amount of percentage-space a point indicates.
+				// For a density 1 the points/percentage = 1. For density 2, that percentage needs to be re-devided.
+				// Round the percentage offset to an even number, then divide by two
+				// to spread the offset on both sides of the range.
+				stepsize = pctDifference/realSteps;
+
+				// Divide all points evenly, adding the correct number to this subrange.
+				// Run up to <= so that 100% gets a point, event if ignoreLast is set.
+				for ( q = 1; q <= realSteps; q += 1 ) {
+
+					// The ratio between the rounded value and the actual size might be ~1% off.
+					// Correct the percentage offset by the number of points
+					// per subrange. density = 1 will result in 100 points on the
+					// full range, 2 for 50, 4 for 25, etc.
+					pctPos = prevPct + ( q * stepsize );
+					indexes[pctPos.toFixed(5)] = ['x', 0];
+				}
+
+				// Determine the point type.
+				type = (group.indexOf(i) > -1) ? 1 : ( mode === 'steps' ? 2 : 0 );
+
+				// Enforce the 'ignoreFirst' option by overwriting the type for 0.
+				if ( !index && ignoreFirst ) {
+					type = 0;
+				}
+
+				if ( !(i === high && ignoreLast)) {
+					// Mark the 'type' of this point. 0 = plain, 1 = real value, 2 = step value.
+					indexes[newPct.toFixed(5)] = [i, type];
+				}
+
+				// Update the percentage count.
+				prevPct = newPct;
+			}
+		});
+
+		return indexes;
+	}
+
+	function addMarking ( spread, filterFunc, formatter ) {
+
+		var element = scope_Document.createElement('div');
+
+		var valueSizeClasses = [
+			options.cssClasses.valueNormal,
+			options.cssClasses.valueLarge,
+			options.cssClasses.valueSub
+		];
+		var markerSizeClasses = [
+			options.cssClasses.markerNormal,
+			options.cssClasses.markerLarge,
+			options.cssClasses.markerSub
+		];
+		var valueOrientationClasses = [
+			options.cssClasses.valueHorizontal,
+			options.cssClasses.valueVertical
+		];
+		var markerOrientationClasses = [
+			options.cssClasses.markerHorizontal,
+			options.cssClasses.markerVertical
+		];
+
+		addClass(element, options.cssClasses.pips);
+		addClass(element, options.ort === 0 ? options.cssClasses.pipsHorizontal : options.cssClasses.pipsVertical);
+
+		function getClasses( type, source ){
+			var a = source === options.cssClasses.value;
+			var orientationClasses = a ? valueOrientationClasses : markerOrientationClasses;
+			var sizeClasses = a ? valueSizeClasses : markerSizeClasses;
+
+			return source + ' ' + orientationClasses[options.ort] + ' ' + sizeClasses[type];
+		}
+
+		function addSpread ( offset, values ){
+
+			// Apply the filter function, if it is set.
+			values[1] = (values[1] && filterFunc) ? filterFunc(values[0], values[1]) : values[1];
+
+			// Add a marker for every point
+			var node = addNodeTo(element, false);
+				node.className = getClasses(values[1], options.cssClasses.marker);
+				node.style[options.style] = offset + '%';
+
+			// Values are only appended for points marked '1' or '2'.
+			if ( values[1] ) {
+				node = addNodeTo(element, false);
+				node.className = getClasses(values[1], options.cssClasses.value);
+				node.setAttribute('data-value', values[0]);
+				node.style[options.style] = offset + '%';
+				node.innerText = formatter.to(values[0]);
+			}
+		}
+
+		// Append all points.
+		Object.keys(spread).forEach(function(a){
+			addSpread(a, spread[a]);
+		});
+
+		return element;
+	}
+
+	function removePips ( ) {
+		if ( scope_Pips ) {
+			removeElement(scope_Pips);
+			scope_Pips = null;
+		}
+	}
+
+	function pips ( grid ) {
+
+		// Fix #669
+		removePips();
+
+		var mode = grid.mode;
+		var density = grid.density || 1;
+		var filter = grid.filter || false;
+		var values = grid.values || false;
+		var stepped = grid.stepped || false;
+		var group = getGroup( mode, values, stepped );
+		var spread = generateSpread( density, mode, group );
+		var format = grid.format || {
+			to: Math.round
+		};
+
+		scope_Pips = scope_Target.appendChild(addMarking(
+			spread,
+			filter,
+			format
+		));
+
+		return scope_Pips;
+	}
+
+/*! In this file: Browser events (not slider events like slide, change); */
+
+	// Shorthand for base dimensions.
+	function baseSize ( ) {
+		var rect = scope_Base.getBoundingClientRect();
+		var alt = 'offset' + ['Width', 'Height'][options.ort];
+		return options.ort === 0 ? (rect.width||scope_Base[alt]) : (rect.height||scope_Base[alt]);
+	}
+
+	// Handler for attaching events trough a proxy.
+	function attachEvent ( events, element, callback, data ) {
+
+		// This function can be used to 'filter' events to the slider.
+		// element is a node, not a nodeList
+
+		var method = function ( e ){
+
+			e = fixEvent(e, data.pageOffset, data.target || element);
+
+			// fixEvent returns false if this event has a different target
+			// when handling (multi-) touch events;
+			if ( !e ) {
+				return false;
+			}
+
+			// doNotReject is passed by all end events to make sure released touches
+			// are not rejected, leaving the slider "stuck" to the cursor;
+			if ( scope_Target.hasAttribute('disabled') && !data.doNotReject ) {
+				return false;
+			}
+
+			// Stop if an active 'tap' transition is taking place.
+			if ( hasClass(scope_Target, options.cssClasses.tap) && !data.doNotReject ) {
+				return false;
+			}
+
+			// Ignore right or middle clicks on start #454
+			if ( events === actions.start && e.buttons !== undefined && e.buttons > 1 ) {
+				return false;
+			}
+
+			// Ignore right or middle clicks on start #454
+			if ( data.hover && e.buttons ) {
+				return false;
+			}
+
+			// 'supportsPassive' is only true if a browser also supports touch-action: none in CSS.
+			// iOS safari does not, so it doesn't get to benefit from passive scrolling. iOS does support
+			// touch-action: manipulation, but that allows panning, which breaks
+			// sliders after zooming/on non-responsive pages.
+			// See: https://bugs.webkit.org/show_bug.cgi?id=133112
+			if ( !supportsPassive ) {
+				e.preventDefault();
+			}
+
+			e.calcPoint = e.points[ options.ort ];
+
+			// Call the event handler with the event [ and additional data ].
+			callback ( e, data );
+		};
+
+		var methods = [];
+
+		// Bind a closure on the target for every event type.
+		events.split(' ').forEach(function( eventName ){
+			element.addEventListener(eventName, method, supportsPassive ? { passive: true } : false);
+			methods.push([eventName, method]);
+		});
+
+		return methods;
+	}
+
+	// Provide a clean event with standardized offset values.
+	function fixEvent ( e, pageOffset, eventTarget ) {
+
+		// Filter the event to register the type, which can be
+		// touch, mouse or pointer. Offset changes need to be
+		// made on an event specific basis.
+		var touch = e.type.indexOf('touch') === 0;
+		var mouse = e.type.indexOf('mouse') === 0;
+		var pointer = e.type.indexOf('pointer') === 0;
+
+		var x;
+		var y;
+
+		// IE10 implemented pointer events with a prefix;
+		if ( e.type.indexOf('MSPointer') === 0 ) {
+			pointer = true;
+		}
+
+		// In the event that multitouch is activated, the only thing one handle should be concerned
+		// about is the touches that originated on top of it.
+		if ( touch ) {
+
+			// Returns true if a touch originated on the target.
+			var isTouchOnTarget = function (checkTouch) {
+				return checkTouch.target === eventTarget || eventTarget.contains(checkTouch.target);
+			};
+
+			// In the case of touchstart events, we need to make sure there is still no more than one
+			// touch on the target so we look amongst all touches.
+			if (e.type === 'touchstart') {
+
+				var targetTouches = Array.prototype.filter.call(e.touches, isTouchOnTarget);
+
+				// Do not support more than one touch per handle.
+				if ( targetTouches.length > 1 ) {
+					return false;
+				}
+
+				x = targetTouches[0].pageX;
+				y = targetTouches[0].pageY;
+
+			} else {
+
+				// In the other cases, find on changedTouches is enough.
+				var targetTouch = Array.prototype.find.call(e.changedTouches, isTouchOnTarget);
+
+				// Cancel if the target touch has not moved.
+				if ( !targetTouch ) {
+					return false;
+				}
+
+				x = targetTouch.pageX;
+				y = targetTouch.pageY;
+			}
+		}
+
+		pageOffset = pageOffset || getPageOffset(scope_Document);
+
+		if ( mouse || pointer ) {
+			x = e.clientX + pageOffset.x;
+			y = e.clientY + pageOffset.y;
+		}
+
+		e.pageOffset = pageOffset;
+		e.points = [x, y];
+		e.cursor = mouse || pointer; // Fix #435
+
+		return e;
+	}
+
+	// Translate a coordinate in the document to a percentage on the slider
+	function calcPointToPercentage ( calcPoint ) {
+		var location = calcPoint - offset(scope_Base, options.ort);
+		var proposal = ( location * 100 ) / baseSize();
+
+		// Clamp proposal between 0% and 100%
+		// Out-of-bound coordinates may occur when .noUi-base pseudo-elements
+		// are used (e.g. contained handles feature)
+		proposal = limit(proposal);
+
+		return options.dir ? 100 - proposal : proposal;
+	}
+
+	// Find handle closest to a certain percentage on the slider
+	function getClosestHandle ( proposal ) {
+
+		var closest = 100;
+		var handleNumber = false;
+
+		scope_Handles.forEach(function(handle, index){
+
+			// Disabled handles are ignored
+			if ( handle.hasAttribute('disabled') ) {
+				return;
+			}
+
+			var pos = Math.abs(scope_Locations[index] - proposal);
+
+			if ( pos < closest || (pos === 100 && closest === 100) ) {
+				handleNumber = index;
+				closest = pos;
+			}
+		});
+
+		return handleNumber;
+	}
+
+	// Fire 'end' when a mouse or pen leaves the document.
+	function documentLeave ( event, data ) {
+		if ( event.type === "mouseout" && event.target.nodeName === "HTML" && event.relatedTarget === null ){
+			eventEnd (event, data);
+		}
+	}
+
+	// Handle movement on document for handle and range drag.
+	function eventMove ( event, data ) {
+
+		// Fix #498
+		// Check value of .buttons in 'start' to work around a bug in IE10 mobile (data.buttonsProperty).
+		// https://connect.microsoft.com/IE/feedback/details/927005/mobile-ie10-windows-phone-buttons-property-of-pointermove-event-always-zero
+		// IE9 has .buttons and .which zero on mousemove.
+		// Firefox breaks the spec MDN defines.
+		if ( navigator.appVersion.indexOf("MSIE 9") === -1 && event.buttons === 0 && data.buttonsProperty !== 0 ) {
+			return eventEnd(event, data);
+		}
+
+		// Check if we are moving up or down
+		var movement = (options.dir ? -1 : 1) * (event.calcPoint - data.startCalcPoint);
+
+		// Convert the movement into a percentage of the slider width/height
+		var proposal = (movement * 100) / data.baseSize;
+
+		moveHandles(movement > 0, proposal, data.locations, data.handleNumbers);
+	}
+
+	// Unbind move events on document, call callbacks.
+	function eventEnd ( event, data ) {
+
+		// The handle is no longer active, so remove the class.
+		if ( data.handle ) {
+			removeClass(data.handle, options.cssClasses.active);
+			scope_ActiveHandlesCount -= 1;
+		}
+
+		// Unbind the move and end events, which are added on 'start'.
+		data.listeners.forEach(function( c ) {
+			scope_DocumentElement.removeEventListener(c[0], c[1]);
+		});
+
+		if ( scope_ActiveHandlesCount === 0 ) {
+			// Remove dragging class.
+			removeClass(scope_Target, options.cssClasses.drag);
+			setZindex();
+
+			// Remove cursor styles and text-selection events bound to the body.
+			if ( event.cursor ) {
+				scope_Body.style.cursor = '';
+				scope_Body.removeEventListener('selectstart', preventDefault);
+			}
+		}
+
+		data.handleNumbers.forEach(function(handleNumber){
+			fireEvent('change', handleNumber);
+			fireEvent('set', handleNumber);
+			fireEvent('end', handleNumber);
+		});
+	}
+
+	// Bind move events on document.
+	function eventStart ( event, data ) {
+
+		var handle;
+		if ( data.handleNumbers.length === 1 ) {
+
+			var handleOrigin = scope_Handles[data.handleNumbers[0]];
+
+			// Ignore 'disabled' handles
+			if ( handleOrigin.hasAttribute('disabled') ) {
+				return false;
+			}
+
+			handle = handleOrigin.children[0];
+			scope_ActiveHandlesCount += 1;
+
+			// Mark the handle as 'active' so it can be styled.
+			addClass(handle, options.cssClasses.active);
+		}
+
+		// A drag should never propagate up to the 'tap' event.
+		event.stopPropagation();
+
+		// Record the event listeners.
+		var listeners = [];
+
+		// Attach the move and end events.
+		var moveEvent = attachEvent(actions.move, scope_DocumentElement, eventMove, {
+			// The event target has changed so we need to propagate the original one so that we keep
+			// relying on it to extract target touches.
+			target: event.target,
+			handle: handle,
+			listeners: listeners,
+			startCalcPoint: event.calcPoint,
+			baseSize: baseSize(),
+			pageOffset: event.pageOffset,
+			handleNumbers: data.handleNumbers,
+			buttonsProperty: event.buttons,
+			locations: scope_Locations.slice()
+		});
+
+		var endEvent = attachEvent(actions.end, scope_DocumentElement, eventEnd, {
+			target: event.target,
+			handle: handle,
+			listeners: listeners,
+			doNotReject: true,
+			handleNumbers: data.handleNumbers
+		});
+
+		var outEvent = attachEvent("mouseout", scope_DocumentElement, documentLeave, {
+			target: event.target,
+			handle: handle,
+			listeners: listeners,
+			doNotReject: true,
+			handleNumbers: data.handleNumbers
+		});
+
+		// We want to make sure we pushed the listeners in the listener list rather than creating
+		// a new one as it has already been passed to the event handlers.
+		listeners.push.apply(listeners, moveEvent.concat(endEvent, outEvent));
+
+		// Text selection isn't an issue on touch devices,
+		// so adding cursor styles can be skipped.
+		if ( event.cursor ) {
+
+			// Prevent the 'I' cursor and extend the range-drag cursor.
+			scope_Body.style.cursor = getComputedStyle(event.target).cursor;
+
+			// Mark the target with a dragging state.
+			if ( scope_Handles.length > 1 ) {
+				addClass(scope_Target, options.cssClasses.drag);
+			}
+
+			// Prevent text selection when dragging the handles.
+			// In noUiSlider <= 9.2.0, this was handled by calling preventDefault on mouse/touch start/move,
+			// which is scroll blocking. The selectstart event is supported by FireFox starting from version 52,
+			// meaning the only holdout is iOS Safari. This doesn't matter: text selection isn't triggered there.
+			// The 'cursor' flag is false.
+			// See: http://caniuse.com/#search=selectstart
+			scope_Body.addEventListener('selectstart', preventDefault, false);
+		}
+
+		data.handleNumbers.forEach(function(handleNumber){
+			fireEvent('start', handleNumber);
+		});
+	}
+
+	// Move closest handle to tapped location.
+	function eventTap ( event ) {
+
+		// The tap event shouldn't propagate up
+		event.stopPropagation();
+
+		var proposal = calcPointToPercentage(event.calcPoint);
+		var handleNumber = getClosestHandle(proposal);
+
+		// Tackle the case that all handles are 'disabled'.
+		if ( handleNumber === false ) {
+			return false;
+		}
+
+		// Flag the slider as it is now in a transitional state.
+		// Transition takes a configurable amount of ms (default 300). Re-enable the slider after that.
+		if ( !options.events.snap ) {
+			addClassFor(scope_Target, options.cssClasses.tap, options.animationDuration);
+		}
+
+		setHandle(handleNumber, proposal, true, true);
+
+		setZindex();
+
+		fireEvent('slide', handleNumber, true);
+		fireEvent('update', handleNumber, true);
+		fireEvent('change', handleNumber, true);
+		fireEvent('set', handleNumber, true);
+
+		if ( options.events.snap ) {
+			eventStart(event, { handleNumbers: [handleNumber] });
+		}
+	}
+
+	// Fires a 'hover' event for a hovered mouse/pen position.
+	function eventHover ( event ) {
+
+		var proposal = calcPointToPercentage(event.calcPoint);
+
+		var to = scope_Spectrum.getStep(proposal);
+		var value = scope_Spectrum.fromStepping(to);
+
+		Object.keys(scope_Events).forEach(function( targetEvent ) {
+			if ( 'hover' === targetEvent.split('.')[0] ) {
+				scope_Events[targetEvent].forEach(function( callback ) {
+					callback.call( scope_Self, value );
+				});
+			}
+		});
+	}
+
+	// Attach events to several slider parts.
+	function bindSliderEvents ( behaviour ) {
+
+		// Attach the standard drag event to the handles.
+		if ( !behaviour.fixed ) {
+
+			scope_Handles.forEach(function( handle, index ){
+
+				// These events are only bound to the visual handle
+				// element, not the 'real' origin element.
+				attachEvent ( actions.start, handle.children[0], eventStart, {
+					handleNumbers: [index]
+				});
+			});
+		}
+
+		// Attach the tap event to the slider base.
+		if ( behaviour.tap ) {
+			attachEvent (actions.start, scope_Base, eventTap, {});
+		}
+
+		// Fire hover events
+		if ( behaviour.hover ) {
+			attachEvent (actions.move, scope_Base, eventHover, { hover: true });
+		}
+
+		// Make the range draggable.
+		if ( behaviour.drag ){
+
+			scope_Connects.forEach(function( connect, index ){
+
+				if ( connect === false || index === 0 || index === scope_Connects.length - 1 ) {
+					return;
+				}
+
+				var handleBefore = scope_Handles[index - 1];
+				var handleAfter = scope_Handles[index];
+				var eventHolders = [connect];
+
+				addClass(connect, options.cssClasses.draggable);
+
+				// When the range is fixed, the entire range can
+				// be dragged by the handles. The handle in the first
+				// origin will propagate the start event upward,
+				// but it needs to be bound manually on the other.
+				if ( behaviour.fixed ) {
+					eventHolders.push(handleBefore.children[0]);
+					eventHolders.push(handleAfter.children[0]);
+				}
+
+				eventHolders.forEach(function( eventHolder ) {
+					attachEvent ( actions.start, eventHolder, eventStart, {
+						handles: [handleBefore, handleAfter],
+						handleNumbers: [index - 1, index]
+					});
+				});
+			});
+		}
+	}
+
+/*! In this file: Slider events (not browser events); */
+
+	// Attach an event to this slider, possibly including a namespace
+	function bindEvent ( namespacedEvent, callback ) {
+		scope_Events[namespacedEvent] = scope_Events[namespacedEvent] || [];
+		scope_Events[namespacedEvent].push(callback);
+
+		// If the event bound is 'update,' fire it immediately for all handles.
+		if ( namespacedEvent.split('.')[0] === 'update' ) {
+			scope_Handles.forEach(function(a, index){
+				fireEvent('update', index);
+			});
+		}
+	}
+
+	// Undo attachment of event
+	function removeEvent ( namespacedEvent ) {
+
+		var event = namespacedEvent && namespacedEvent.split('.')[0];
+		var namespace = event && namespacedEvent.substring(event.length);
+
+		Object.keys(scope_Events).forEach(function( bind ){
+
+			var tEvent = bind.split('.')[0];
+			var tNamespace = bind.substring(tEvent.length);
+
+			if ( (!event || event === tEvent) && (!namespace || namespace === tNamespace) ) {
+				delete scope_Events[bind];
+			}
+		});
+	}
+
+	// External event handling
+	function fireEvent ( eventName, handleNumber, tap ) {
+
+		Object.keys(scope_Events).forEach(function( targetEvent ) {
+
+			var eventType = targetEvent.split('.')[0];
+
+			if ( eventName === eventType ) {
+				scope_Events[targetEvent].forEach(function( callback ) {
+
+					callback.call(
+						// Use the slider public API as the scope ('this')
+						scope_Self,
+						// Return values as array, so arg_1[arg_2] is always valid.
+						scope_Values.map(options.format.to),
+						// Handle index, 0 or 1
+						handleNumber,
+						// Unformatted slider values
+						scope_Values.slice(),
+						// Event is fired by tap, true or false
+						tap || false,
+						// Left offset of the handle, in relation to the slider
+						scope_Locations.slice()
+					);
+				});
+			}
+		});
+	}
+
+/*! In this file: Mechanics for slider operation */
+
+	function toPct ( pct ) {
+		return pct + '%';
+	}
+
+	// Split out the handle positioning logic so the Move event can use it, too
+	function checkHandlePosition ( reference, handleNumber, to, lookBackward, lookForward, getValue ) {
+
+		// For sliders with multiple handles, limit movement to the other handle.
+		// Apply the margin option by adding it to the handle positions.
+		if ( scope_Handles.length > 1 ) {
+
+			if ( lookBackward && handleNumber > 0 ) {
+				to = Math.max(to, reference[handleNumber - 1] + options.margin);
+			}
+
+			if ( lookForward && handleNumber < scope_Handles.length - 1 ) {
+				to = Math.min(to, reference[handleNumber + 1] - options.margin);
+			}
+		}
+
+		// The limit option has the opposite effect, limiting handles to a
+		// maximum distance from another. Limit must be > 0, as otherwise
+		// handles would be unmoveable.
+		if ( scope_Handles.length > 1 && options.limit ) {
+
+			if ( lookBackward && handleNumber > 0 ) {
+				to = Math.min(to, reference[handleNumber - 1] + options.limit);
+			}
+
+			if ( lookForward && handleNumber < scope_Handles.length - 1 ) {
+				to = Math.max(to, reference[handleNumber + 1] - options.limit);
+			}
+		}
+
+		// The padding option keeps the handles a certain distance from the
+		// edges of the slider. Padding must be > 0.
+		if ( options.padding ) {
+
+			if ( handleNumber === 0 ) {
+				to = Math.max(to, options.padding[0]);
+			}
+
+			if ( handleNumber === scope_Handles.length - 1 ) {
+				to = Math.min(to, 100 - options.padding[1]);
+			}
+		}
+
+		to = scope_Spectrum.getStep(to);
+
+		// Limit percentage to the 0 - 100 range
+		to = limit(to);
+
+		// Return false if handle can't move
+		if ( to === reference[handleNumber] && !getValue ) {
+			return false;
+		}
+
+		return to;
+	}
+
+	// Uses slider orientation to create CSS rules. a = base value;
+	function inRuleOrder ( v, a ) {
+		var o = options.ort;
+		return (o?a:v) + ', ' + (o?v:a);
+	}
+
+	// Moves handle(s) by a percentage
+	// (bool, % to move, [% where handle started, ...], [index in scope_Handles, ...])
+	function moveHandles ( upward, proposal, locations, handleNumbers ) {
+
+		var proposals = locations.slice();
+
+		var b = [!upward, upward];
+		var f = [upward, !upward];
+
+		// Copy handleNumbers so we don't change the dataset
+		handleNumbers = handleNumbers.slice();
+
+		// Check to see which handle is 'leading'.
+		// If that one can't move the second can't either.
+		if ( upward ) {
+			handleNumbers.reverse();
+		}
+
+		// Step 1: get the maximum percentage that any of the handles can move
+		if ( handleNumbers.length > 1 ) {
+
+			handleNumbers.forEach(function(handleNumber, o) {
+
+				var to = checkHandlePosition(proposals, handleNumber, proposals[handleNumber] + proposal, b[o], f[o], false);
+
+				// Stop if one of the handles can't move.
+				if ( to === false ) {
+					proposal = 0;
+				} else {
+					proposal = to - proposals[handleNumber];
+					proposals[handleNumber] = to;
+				}
+			});
+		}
+
+		// If using one handle, check backward AND forward
+		else {
+			b = f = [true];
+		}
+
+		var state = false;
+
+		// Step 2: Try to set the handles with the found percentage
+		handleNumbers.forEach(function(handleNumber, o) {
+			state = setHandle(handleNumber, locations[handleNumber] + proposal, b[o], f[o]) || state;
+		});
+
+		// Step 3: If a handle moved, fire events
+		if ( state ) {
+			handleNumbers.forEach(function(handleNumber){
+				fireEvent('update', handleNumber);
+				fireEvent('slide', handleNumber);
+			});
+		}
+	}
+
+	// Takes a base value and an offset. This offset is used for the connect bar size.
+	// In the initial design for this feature, the origin element was 1% wide.
+	// Unfortunately, a rounding bug in Chrome makes it impossible to implement this feature
+	// in this manner: https://bugs.chromium.org/p/chromium/issues/detail?id=798223
+	function transformDirection ( a, b ) {
+		return options.dir ? 100 - a - b : a;
+	}
+
+	// Updates scope_Locations and scope_Values, updates visual state
+	function updateHandlePosition ( handleNumber, to ) {
+
+		// Update locations.
+		scope_Locations[handleNumber] = to;
+
+		// Convert the value to the slider stepping/range.
+		scope_Values[handleNumber] = scope_Spectrum.fromStepping(to);
+
+		var rule = 'translate(' + inRuleOrder(toPct(transformDirection(to, 0) - scope_DirOffset), '0') + ')';
+		scope_Handles[handleNumber].style[options.transformRule] = rule;
+
+		updateConnect(handleNumber);
+		updateConnect(handleNumber + 1);
+	}
+
+	// Handles before the slider middle are stacked later = higher,
+	// Handles after the middle later is lower
+	// [[7] [8] .......... | .......... [5] [4]
+	function setZindex ( ) {
+
+		scope_HandleNumbers.forEach(function(handleNumber){
+			var dir = (scope_Locations[handleNumber] > 50 ? -1 : 1);
+			var zIndex = 3 + (scope_Handles.length + (dir * handleNumber));
+			scope_Handles[handleNumber].style.zIndex = zIndex;
+		});
+	}
+
+	// Test suggested values and apply margin, step.
+	function setHandle ( handleNumber, to, lookBackward, lookForward ) {
+
+		to = checkHandlePosition(scope_Locations, handleNumber, to, lookBackward, lookForward, false);
+
+		if ( to === false ) {
+			return false;
+		}
+
+		updateHandlePosition(handleNumber, to);
+
+		return true;
+	}
+
+	// Updates style attribute for connect nodes
+	function updateConnect ( index ) {
+
+		// Skip connects set to false
+		if ( !scope_Connects[index] ) {
+			return;
+		}
+
+		var l = 0;
+		var h = 100;
+
+		if ( index !== 0 ) {
+			l = scope_Locations[index - 1];
+		}
+
+		if ( index !== scope_Connects.length - 1 ) {
+			h = scope_Locations[index];
+		}
+
+		// We use two rules:
+		// 'translate' to change the left/top offset;
+		// 'scale' to change the width of the element;
+		// As the element has a width of 100%, a translation of 100% is equal to 100% of the parent (.noUi-base)
+		var connectWidth = h - l;
+		var translateRule = 'translate(' + inRuleOrder(toPct(transformDirection(l, connectWidth)), '0') + ')';
+		var scaleRule = 'scale(' + inRuleOrder(connectWidth / 100, '1') + ')';
+
+		scope_Connects[index].style[options.transformRule] = translateRule + ' ' + scaleRule;
+	}
+
+/*! In this file: All methods eventually exposed in slider.noUiSlider... */
+
+	// Parses value passed to .set method. Returns current value if not parse-able.
+	function resolveToValue ( to, handleNumber ) {
+
+		// Setting with null indicates an 'ignore'.
+		// Inputting 'false' is invalid.
+		if ( to === null || to === false || to === undefined ) {
+			return scope_Locations[handleNumber];
+		}
+
+		// If a formatted number was passed, attempt to decode it.
+		if ( typeof to === 'number' ) {
+			to = String(to);
+		}
+
+		to = options.format.from(to);
+		to = scope_Spectrum.toStepping(to);
+
+		// If parsing the number failed, use the current value.
+		if ( to === false || isNaN(to) ) {
+			return scope_Locations[handleNumber];
+		}
+
+		return to;
+	}
+
+	// Set the slider value.
+	function valueSet ( input, fireSetEvent ) {
+
+		var values = asArray(input);
+		var isInit = scope_Locations[0] === undefined;
+
+		// Event fires by default
+		fireSetEvent = (fireSetEvent === undefined ? true : !!fireSetEvent);
+
+		// Animation is optional.
+		// Make sure the initial values were set before using animated placement.
+		if ( options.animate && !isInit ) {
+			addClassFor(scope_Target, options.cssClasses.tap, options.animationDuration);
+		}
+
+		// First pass, without lookAhead but with lookBackward. Values are set from left to right.
+		scope_HandleNumbers.forEach(function(handleNumber){
+			setHandle(handleNumber, resolveToValue(values[handleNumber], handleNumber), true, false);
+		});
+
+		// Second pass. Now that all base values are set, apply constraints
+		scope_HandleNumbers.forEach(function(handleNumber){
+			setHandle(handleNumber, scope_Locations[handleNumber], true, true);
+		});
+
+		setZindex();
+
+		scope_HandleNumbers.forEach(function(handleNumber){
+
+			fireEvent('update', handleNumber);
+
+			// Fire the event only for handles that received a new value, as per #579
+			if ( values[handleNumber] !== null && fireSetEvent ) {
+				fireEvent('set', handleNumber);
+			}
+		});
+	}
+
+	// Reset slider to initial values
+	function valueReset ( fireSetEvent ) {
+		valueSet(options.start, fireSetEvent);
+	}
+
+	// Get the slider value.
+	function valueGet ( ) {
+
+		var values = scope_Values.map(options.format.to);
+
+		// If only one handle is used, return a single value.
+		if ( values.length === 1 ){
+			return values[0];
+		}
+
+		return values;
+	}
+
+	// Removes classes from the root and empties it.
+	function destroy ( ) {
+
+		for ( var key in options.cssClasses ) {
+			if ( !options.cssClasses.hasOwnProperty(key) ) { continue; }
+			removeClass(scope_Target, options.cssClasses[key]);
+		}
+
+		while (scope_Target.firstChild) {
+			scope_Target.removeChild(scope_Target.firstChild);
+		}
+
+		delete scope_Target.noUiSlider;
+	}
+
+	// Get the current step size for the slider.
+	function getCurrentStep ( ) {
+
+		// Check all locations, map them to their stepping point.
+		// Get the step point, then find it in the input list.
+		return scope_Locations.map(function( location, index ){
+
+			var nearbySteps = scope_Spectrum.getNearbySteps( location );
+			var value = scope_Values[index];
+			var increment = nearbySteps.thisStep.step;
+			var decrement = null;
+
+			// If the next value in this step moves into the next step,
+			// the increment is the start of the next step - the current value
+			if ( increment !== false ) {
+				if ( value + increment > nearbySteps.stepAfter.startValue ) {
+					increment = nearbySteps.stepAfter.startValue - value;
+				}
+			}
+
+
+			// If the value is beyond the starting point
+			if ( value > nearbySteps.thisStep.startValue ) {
+				decrement = nearbySteps.thisStep.step;
+			}
+
+			else if ( nearbySteps.stepBefore.step === false ) {
+				decrement = false;
+			}
+
+			// If a handle is at the start of a step, it always steps back into the previous step first
+			else {
+				decrement = value - nearbySteps.stepBefore.highestStep;
+			}
+
+
+			// Now, if at the slider edges, there is not in/decrement
+			if ( location === 100 ) {
+				increment = null;
+			}
+
+			else if ( location === 0 ) {
+				decrement = null;
+			}
+
+			// As per #391, the comparison for the decrement step can have some rounding issues.
+			var stepDecimals = scope_Spectrum.countStepDecimals();
+
+			// Round per #391
+			if ( increment !== null && increment !== false ) {
+				increment = Number(increment.toFixed(stepDecimals));
+			}
+
+			if ( decrement !== null && decrement !== false ) {
+				decrement = Number(decrement.toFixed(stepDecimals));
+			}
+
+			return [decrement, increment];
+		});
+	}
+
+	// Updateable: margin, limit, padding, step, range, animate, snap
+	function updateOptions ( optionsToUpdate, fireSetEvent ) {
+
+		// Spectrum is created using the range, snap, direction and step options.
+		// 'snap' and 'step' can be updated.
+		// If 'snap' and 'step' are not passed, they should remain unchanged.
+		var v = valueGet();
+
+		var updateAble = ['margin', 'limit', 'padding', 'range', 'animate', 'snap', 'step', 'format'];
+
+		// Only change options that we're actually passed to update.
+		updateAble.forEach(function(name){
+			if ( optionsToUpdate[name] !== undefined ) {
+				originalOptions[name] = optionsToUpdate[name];
+			}
+		});
+
+		var newOptions = testOptions(originalOptions);
+
+		// Load new options into the slider state
+		updateAble.forEach(function(name){
+			if ( optionsToUpdate[name] !== undefined ) {
+				options[name] = newOptions[name];
+			}
+		});
+
+		scope_Spectrum = newOptions.spectrum;
+
+		// Limit, margin and padding depend on the spectrum but are stored outside of it. (#677)
+		options.margin = newOptions.margin;
+		options.limit = newOptions.limit;
+		options.padding = newOptions.padding;
+
+		// Update pips, removes existing.
+		if ( options.pips ) {
+			pips(options.pips);
+		}
+
+		// Invalidate the current positioning so valueSet forces an update.
+		scope_Locations = [];
+		valueSet(optionsToUpdate.start || v, fireSetEvent);
+	}
+
+/*! In this file: Calls to functions. All other scope_ files define functions only; */
+
+	// Create the base element, initialize HTML and set classes.
+	// Add handles and connect elements.
+	addSlider(scope_Target);
+	addElements(options.connect, scope_Base);
+
+	// Attach user events.
+	bindSliderEvents(options.events);
+
+	// Use the public value method to set the start values.
+	valueSet(options.start);
+
+	scope_Self = {
+		destroy: destroy,
+		steps: getCurrentStep,
+		on: bindEvent,
+		off: removeEvent,
+		get: valueGet,
+		set: valueSet,
+		reset: valueReset,
+		// Exposed for unit testing, don't use this in your application.
+		__moveHandles: function(a, b, c) { moveHandles(a, b, scope_Locations, c); },
+		options: originalOptions, // Issue #600, #678
+		updateOptions: updateOptions,
+		target: scope_Target, // Issue #597
+		removePips: removePips,
+		pips: pips // Issue #594
+	};
+
+	if ( options.pips ) {
+		pips(options.pips);
+	}
+
+	if ( options.tooltips ) {
+		tooltips();
+	}
+
+	aria();
+
+	return scope_Self;
+
+}
+
+
+	// Run the standard initializer
+	function initialize ( target, originalOptions ) {
+
+		if ( !target || !target.nodeName ) {
+			throw new Error("noUiSlider (" + VERSION + "): create requires a single element, got: " + target);
+		}
+
+		// Throw an error if the slider was already initialized.
+		if ( target.noUiSlider ) {
+			throw new Error("noUiSlider (" + VERSION + "): Slider was already initialized.");
+		}
+
+		// Test the options and create the slider environment;
+		var options = testOptions( originalOptions, target );
+		var api = scope( target, options, originalOptions );
+
+		target.noUiSlider = api;
+
+		return api;
+	}
+
+	// Use an object instead of a function for future expandability;
+	return {
+		version: VERSION,
+		create: initialize
+	};
+
 }));
 },{}],3:[function(require,module,exports){
-
-var fields = {
-	
-	functions: {}
-	
-};
-
+
+var fields = {
+	
+	functions: {}
+	
+};
+
 module.exports = fields;
 },{}],4:[function(require,module,exports){
-
-//var state = require('./includes/state');
-
-var pagination = {
-	
-	setupLegacy: function(){
-		
-		
-	},
-	
-	setupLegacy: function(){
-		
-		/*if(typeof(self.ajax_links_selector)!="undefined")
-		{
-			var $ajax_links_object = jQuery(self.ajax_links_selector);
-			
-			if($ajax_links_object.length>0)
-			{
-				$ajax_links_object.on('click', function(e) {
-					
-					e.preventDefault();
-					
-					var link = jQuery(this).attr('href');
-					self.ajax_action = "pagination";
-					
-					self.fetchLegacyAjaxResults(link);
-					return false;
-				});
-			}
-		}*/
-	}
-};
-
+
+//var state = require('./includes/state');
+
+var pagination = {
+	
+	setupLegacy: function(){
+		
+		
+	},
+	
+	setupLegacy: function(){
+		
+		/*if(typeof(self.ajax_links_selector)!="undefined")
+		{
+			var $ajax_links_object = jQuery(self.ajax_links_selector);
+			
+			if($ajax_links_object.length>0)
+			{
+				$ajax_links_object.on('click', function(e) {
+					
+					e.preventDefault();
+					
+					var link = jQuery(this).attr('href');
+					self.ajax_action = "pagination";
+					
+					self.fetchLegacyAjaxResults(link);
+					return false;
+				});
+			}
+		}*/
+	}
+};
+
 module.exports = pagination;
 },{}],5:[function(require,module,exports){
 (function (global){
-
-var $ 				= (typeof window !== "undefined" ? window['jQuery'] : typeof global !== "undefined" ? global['jQuery'] : null);
-var state 			= require('./state');
-var process_form 	= require('./process_form');
-var noUiSlider		= require('nouislider');
-//var cookies         = require('js-cookie');
-var thirdParty      = require('./thirdparty');
-
-window.searchAndFilter = {
-    extensions: [],
-    registerExtension: function( extensionName ) {
-        this.extensions.push( extensionName );
-    }
-};
-
-module.exports = function(options)
-{
-    var defaults = {
-        startOpened: false,
-        isInit: true,
-        action: ""
-    };
-
-    var opts = jQuery.extend(defaults, options);
-    
-    thirdParty.init();
-    
-    //loop through each item matched
-    this.each(function()
-    {
-
-        var $this = $(this);
-        var self = this;
-        this.sfid = $this.attr("data-sf-form-id");
-
-        state.addSearchForm(this.sfid, this);
-
-        this.$fields = $this.find("> ul > li"); //a reference to each fields parent LI
-
-        this.enable_taxonomy_archives = $this.attr('data-taxonomy-archives');
-        this.current_taxonomy_archive = $this.attr('data-current-taxonomy-archive');
-
-        if(typeof(this.enable_taxonomy_archives)=="undefined")
-        {
-            this.enable_taxonomy_archives = "0";
-        }
-        if(typeof(this.current_taxonomy_archive)=="undefined")
-        {
-            this.current_taxonomy_archive = "";
-        }
-
-        process_form.init(self.enable_taxonomy_archives, self.current_taxonomy_archive);
-        //process_form.setTaxArchiveResultsUrl(self);
-        process_form.enableInputs(self);
-
-        if(typeof(this.extra_query_params)=="undefined")
-        {
-            this.extra_query_params = {all: {}, results: {}, ajax: {}};
-        }
-
-
-        this.template_is_loaded = $this.attr("data-template-loaded");
-        this.is_ajax = $this.attr("data-ajax");
-        this.instance_number = $this.attr('data-instance-count');
-        this.$ajax_results_container = jQuery($this.attr("data-ajax-target"));
-
-        this.ajax_update_sections = $this.attr("data-ajax-update-sections") ? JSON.parse( $this.attr("data-ajax-update-sections") ) : [];
-        
-        this.results_url = $this.attr("data-results-url");
-        this.debug_mode = $this.attr("data-debug-mode");
-        this.update_ajax_url = $this.attr("data-update-ajax-url");
-        this.pagination_type = $this.attr("data-ajax-pagination-type");
-        this.auto_count = $this.attr("data-auto-count");
-        this.auto_count_refresh_mode = $this.attr("data-auto-count-refresh-mode");
-        this.only_results_ajax = $this.attr("data-only-results-ajax"); //if we are not on the results page, redirect rather than try to load via ajax
-        this.scroll_to_pos = $this.attr("data-scroll-to-pos");
-        this.custom_scroll_to = $this.attr("data-custom-scroll-to");
-        this.scroll_on_action = $this.attr("data-scroll-on-action");
-        this.lang_code = $this.attr("data-lang-code");
-        this.ajax_url = $this.attr('data-ajax-url');
-        this.ajax_form_url = $this.attr('data-ajax-form-url');
-        this.is_rtl = $this.attr('data-is-rtl');
-
-        this.display_result_method = $this.attr('data-display-result-method');
-        this.maintain_state = $this.attr('data-maintain-state');
-        this.ajax_action = "";
-        this.last_submit_query_params = "";
-
-        this.current_paged = parseInt($this.attr('data-init-paged'));
-        this.last_load_more_html = "";
-        this.load_more_html = "";
-        this.ajax_data_type = $this.attr('data-ajax-data-type');
-        this.ajax_target_attr = $this.attr("data-ajax-target");
-        this.use_history_api = $this.attr("data-use-history-api");
-        this.is_submitting = false;
-
-        this.last_ajax_request = null;
-
-        if(typeof(this.use_history_api)=="undefined")
-        {
-            this.use_history_api = "";
-        }
-
-        if(typeof(this.pagination_type)=="undefined")
-        {
-            this.pagination_type = "normal";
-        }
-        if(typeof(this.current_paged)=="undefined")
-        {
-            this.current_paged = 1;
-        }
-
-        if(typeof(this.ajax_target_attr)=="undefined")
-        {
-            this.ajax_target_attr = "";
-        }
-
-        if(typeof(this.ajax_url)=="undefined")
-        {
-            this.ajax_url = "";
-        }
-
-        if(typeof(this.ajax_form_url)=="undefined")
-        {
-            this.ajax_form_url = "";
-        }
-
-        if(typeof(this.results_url)=="undefined")
-        {
-            this.results_url = "";
-        }
-
-        if(typeof(this.scroll_to_pos)=="undefined")
-        {
-            this.scroll_to_pos = "";
-        }
-
-        if(typeof(this.scroll_on_action)=="undefined")
-        {
-            this.scroll_on_action = "";
-        }
-        if(typeof(this.custom_scroll_to)=="undefined")
-        {
-            this.custom_scroll_to = "";
-        }
-        this.$custom_scroll_to = jQuery(this.custom_scroll_to);
-
-        if(typeof(this.update_ajax_url)=="undefined")
-        {
-            this.update_ajax_url = "";
-        }
-
-        if(typeof(this.debug_mode)=="undefined")
-        {
-            this.debug_mode = "";
-        }
-
-        if(typeof(this.ajax_target_object)=="undefined")
-        {
-            this.ajax_target_object = "";
-        }
-
-        if(typeof(this.template_is_loaded)=="undefined")
-        {
-            this.template_is_loaded = "0";
-        }
-
-        if(typeof(this.auto_count_refresh_mode)=="undefined")
-        {
-            this.auto_count_refresh_mode = "0";
-        }
-
-        this.ajax_links_selector = $this.attr("data-ajax-links-selector");
-
-
-        this.auto_update = $this.attr("data-auto-update");
-        this.inputTimer = 0;
-
-        this.setInfiniteScrollContainer = function()
-        {
-
-            this.is_max_paged = false; //for load more only, once we detect we're at the end set this to true
-            this.use_scroll_loader = $this.attr('data-show-scroll-loader');
-            this.infinite_scroll_container = $this.attr('data-infinite-scroll-container');
-            this.infinite_scroll_trigger_amount = $this.attr('data-infinite-scroll-trigger');
-            this.infinite_scroll_result_class = $this.attr('data-infinite-scroll-result-class');
-            this.$infinite_scroll_container = this.$ajax_results_container;
-
-            if(typeof(this.infinite_scroll_container)=="undefined")
-            {
-                this.infinite_scroll_container = "";
-            }
-            else
-            {
-                this.$infinite_scroll_container = jQuery($this.attr('data-infinite-scroll-container'));
-            }
-
-            if(typeof(this.infinite_scroll_result_class)=="undefined")
-            {
-                this.infinite_scroll_result_class = "";
-            }
-
-            if(typeof(this.use_scroll_loader)=="undefined")
-            {
-                this.use_scroll_loader = 1;
-            }
-
-        };
-        this.setInfiniteScrollContainer();
-
-        /* functions */
-
-        this.reset = function(submit_form)
-        {
-
-            this.resetForm(submit_form);
-            return true;
-        }
-
-        this.inputUpdate = function(delayDuration)
-        {
-            if(typeof(delayDuration)=="undefined")
-            {
-                var delayDuration = 300;
-            }
-
-            self.resetTimer(delayDuration);
-        }
-
-        this.scrollToPos = function() {
-            var offset = 0;
-            var canScroll = true;
-
-            if(self.is_ajax==1)
-            {
-                if(self.scroll_to_pos=="window")
-                {
-                    offset = 0;
-
-                }
-                else if(self.scroll_to_pos=="form")
-                {
-                    offset = $this.offset().top;
-                }
-                else if(self.scroll_to_pos=="results")
-                {
-                    if(self.$ajax_results_container.length>0)
-                    {
-                        offset = self.$ajax_results_container.offset().top;
-                    }
-                }
-                else if(self.scroll_to_pos=="custom")
-                {
-                    //custom_scroll_to
-                    if(self.$custom_scroll_to.length>0)
-                    {
-                        offset = self.$custom_scroll_to.offset().top;
-                    }
-                }
-                else
-                {
-                    canScroll = false;
-                }
-
-                if(canScroll)
-                {
-                    $("html, body").stop().animate({
-                        scrollTop: offset
-                    }, "normal", "easeOutQuad" );
-                }
-            }
-
-        };
-
-        this.attachActiveClass = function(){
-
-            //check to see if we are using ajax & auto count
-            //if not, the search form does not get reloaded, so we need to update the sf-option-active class on all fields
-
-            $this.on('change', 'input[type="radio"], input[type="checkbox"], select', function(e)
-            {
-                var $cthis = $(this);
-                var $cthis_parent = $cthis.closest("li[data-sf-field-name]");
-                var this_tag = $cthis.prop("tagName").toLowerCase();
-                var input_type = $cthis.attr("type");
-                var parent_tag = $cthis_parent.prop("tagName").toLowerCase();
-
-                if((this_tag=="input")&&((input_type=="radio")||(input_type=="checkbox")) && (parent_tag=="li"))
-                {
-                    var $all_options = $cthis_parent.parent().find('li');
-                    var $all_options_fields = $cthis_parent.parent().find('input:checked');
-
-                    $all_options.removeClass("sf-option-active");
-                    $all_options_fields.each(function(){
-
-                        var $parent = $(this).closest("li");
-                        $parent.addClass("sf-option-active");
-
-                    });
-
-                }
-                else if(this_tag=="select")
-                {
-                    var $all_options = $cthis.children();
-                    $all_options.removeClass("sf-option-active");
-                    var this_val = $cthis.val();
-
-                    var this_arr_val = (typeof this_val == 'string' || this_val instanceof String) ? [this_val] : this_val;
-
-                    $(this_arr_val).each(function(i, value){
-                        $cthis.find("option[value='"+value+"']").addClass("sf-option-active");
-                    });
-
-
-                }
-            });
-
-        };
-        this.initAutoUpdateEvents = function(){
-
-            /* auto update */
-            if((self.auto_update==1)||(self.auto_count_refresh_mode==1))
-            {
-                $this.on('change', 'input[type="radio"], input[type="checkbox"], select', function(e) {
-                    self.inputUpdate(200);
-                });
-
-                $this.on('input', 'input[type="number"]', function(e) {
-                    self.inputUpdate(800);
-                });
-
-                var $textInput = $this.find('input[type="text"]:not(.sf-datepicker)');
-                var lastValue = $textInput.val();
-
-                $this.on('input', 'input[type="text"]:not(.sf-datepicker)', function()
-                {
-                    if(lastValue!=$textInput.val())
-                    {
-                        self.inputUpdate(1200);
-                    }
-
-                    lastValue = $textInput.val();
-                });
-
-
-                $this.on('keypress', 'input[type="text"]:not(.sf-datepicker)', function(e)
-                {
-                    if (e.which == 13){
-
-                        e.preventDefault();
-                        self.submitForm();
-                        return false;
-                    }
-
-                });
-
-                //$this.on('input', 'input.sf-datepicker', self.dateInputType);
-
-            }
-        };
-
-        //this.initAutoUpdateEvents();
-
-
-        this.clearTimer = function()
-        {
-            clearTimeout(self.inputTimer);
-        };
-        this.resetTimer = function(delayDuration)
-        {
-            clearTimeout(self.inputTimer);
-            self.inputTimer = setTimeout(self.formUpdated, delayDuration);
-
-        };
-
-        this.addDatePickers = function()
-        {
-            var $date_picker = $this.find(".sf-datepicker");
-
-            if($date_picker.length>0)
-            {
-                $date_picker.each(function(){
-
-                    var $this = $(this);
-                    var dateFormat = "";
-                    var dateDropdownYear = false;
-                    var dateDropdownMonth = false;
-
-                    var $closest_date_wrap = $this.closest(".sf_date_field");
-                    if($closest_date_wrap.length>0)
-                    {
-                        dateFormat = $closest_date_wrap.attr("data-date-format");
-
-                        if($closest_date_wrap.attr("data-date-use-year-dropdown")==1)
-                        {
-                            dateDropdownYear = true;
-                        }
-                        if($closest_date_wrap.attr("data-date-use-month-dropdown")==1)
-                        {
-                            dateDropdownMonth = true;
-                        }
-                    }
-
-                    var datePickerOptions = {
-                        inline: true,
-                        showOtherMonths: true,
-                        onSelect: function(e, from_field){ self.dateSelect(e, from_field, $(this)); },
-                        dateFormat: dateFormat,
-
-                        changeMonth: dateDropdownMonth,
-                        changeYear: dateDropdownYear
-                    };
-
-                    if(self.is_rtl==1)
-                    {
-                        datePickerOptions.direction = "rtl";
-                    }
-
-                    $this.datepicker(datePickerOptions);
-
-                    if(self.lang_code!="")
-                    {
-                        $.datepicker.setDefaults(
-                            $.extend(
-                                {'dateFormat':dateFormat},
-                                $.datepicker.regional[ self.lang_code]
-                            )
-                        );
-
-                    }
-                    else
-                    {
-                        $.datepicker.setDefaults(
-                            $.extend(
-                                {'dateFormat':dateFormat},
-                                $.datepicker.regional["en"]
-                            )
-                        );
-
-                    }
-
-                });
-
-                if($('.ll-skin-melon').length==0){
-
-                    $date_picker.datepicker('widget').wrap('<div class="ll-skin-melon searchandfilter-date-picker"/>');
-                }
-
-            }
-        };
-
-        this.dateSelect = function(e, from_field, $this)
-        {
-            var $input_field = $(from_field.input.get(0));
-            var $this = $(this);
-
-            var $date_fields = $input_field.closest('[data-sf-field-input-type="daterange"], [data-sf-field-input-type="date"]');
-            $date_fields.each(function(e, index){
-                
-                var $tf_date_pickers = $(this).find(".sf-datepicker");
-                var no_date_pickers = $tf_date_pickers.length;
-                
-                if(no_date_pickers>1)
-                {
-                    //then it is a date range, so make sure both fields are filled before updating
-                    var dp_counter = 0;
-                    var dp_empty_field_count = 0;
-                    $tf_date_pickers.each(function(){
-
-                        if($(this).val()=="")
-                        {
-                            dp_empty_field_count++;
-                        }
-
-                        dp_counter++;
-                    });
-
-                    if(dp_empty_field_count==0)
-                    {
-                        self.inputUpdate(1);
-                    }
-                }
-                else
-                {
-                    self.inputUpdate(1);
-                }
-
-            });
-        };
-
-        this.addRangeSliders = function()
-        {
-            var $meta_range = $this.find(".sf-meta-range-slider");
-
-            if($meta_range.length>0)
-            {
-                $meta_range.each(function(){
-
-                    var $this = $(this);
-                    var min = $this.attr("data-min");
-                    var max = $this.attr("data-max");
-                    var smin = $this.attr("data-start-min");
-                    var smax = $this.attr("data-start-max");
-                    var display_value_as = $this.attr("data-display-values-as");
-                    var step = $this.attr("data-step");
-                    var $start_val = $this.find('.sf-range-min');
-                    var $end_val = $this.find('.sf-range-max');
-
-
-                    var decimal_places = $this.attr("data-decimal-places");
-                    var thousand_seperator = $this.attr("data-thousand-seperator");
-                    var decimal_seperator = $this.attr("data-decimal-seperator");
-
-                    var field_format = wNumb({
-                        mark: decimal_seperator,
-                        decimals: parseFloat(decimal_places),
-                        thousand: thousand_seperator
-                    });
-
-
-
-                    var min_unformatted = parseFloat(smin);
-                    var min_formatted = field_format.to(parseFloat(smin));
-                    var max_formatted = field_format.to(parseFloat(smax));
-                    var max_unformatted = parseFloat(smax);
-                    //alert(min_formatted);
-                    //alert(max_formatted);
-                    //alert(display_value_as);
-
-
-                    if(display_value_as=="textinput")
-                    {
-                        $start_val.val(min_formatted);
-                        $end_val.val(max_formatted);
-                    }
-                    else if(display_value_as=="text")
-                    {
-                        $start_val.html(min_formatted);
-                        $end_val.html(max_formatted);
-                    }
-
-
-                    var noUIOptions = {
-                        range: {
-                            'min': [ parseFloat(min) ],
-                            'max': [ parseFloat(max) ]
-                        },
-                        start: [min_formatted, max_formatted],
-                        handles: 2,
-                        connect: true,
-                        step: parseFloat(step),
-
-                        behaviour: 'extend-tap',
-                        format: field_format
-                    };
-
-
-
-                    if(self.is_rtl==1)
-                    {
-                        noUIOptions.direction = "rtl";
-                    }
-
-                    var slider_object = $(this).find(".meta-slider")[0];
-
-                    if( "undefined" !== typeof( slider_object.noUiSlider ) ) {
-                        //destroy if it exists.. this means somehow another instance had initialised it..
-                        slider_object.noUiSlider.destroy();
-                    }
-
-                    noUiSlider.create(slider_object, noUIOptions);
-
-                    $start_val.off();
-                    $start_val.on('change', function(){
-                        slider_object.noUiSlider.set([$(this).val(), null]);
-                    });
-
-                    $end_val.off();
-                    $end_val.on('change', function(){
-                        slider_object.noUiSlider.set([null, $(this).val()]);
-                    });
-
-                    //$start_val.html(min_formatted);
-                    //$end_val.html(max_formatted);
-
-                    slider_object.noUiSlider.off('update');
-                    slider_object.noUiSlider.on('update', function( values, handle ) {
-
-                        var slider_start_val  = min_formatted;
-                        var slider_end_val  = max_formatted;
-
-                        var value = values[handle];
-
-
-                        if ( handle ) {
-                            max_formatted = value;
-                        } else {
-                            min_formatted = value;
-                        }
-
-                        if(display_value_as=="textinput")
-                        {
-                            $start_val.val(min_formatted);
-                            $end_val.val(max_formatted);
-                        }
-                        else if(display_value_as=="text")
-                        {
-                            $start_val.html(min_formatted);
-                            $end_val.html(max_formatted);
-                        }
-
-
-                        //i think the function that builds the URL needs to decode the formatted string before adding to the url
-                        if((self.auto_update==1)||(self.auto_count_refresh_mode==1))
-                        {
-                            //only try to update if the values have actually changed
-                            if((slider_start_val!=min_formatted)||(slider_end_val!=max_formatted)) {
-
-                                self.inputUpdate(800);
-                            }
-
-
-                        }
-
-                    });
-
-                });
-
-                self.clearTimer(); //ignore any changes recently made by the slider (this was just init shouldn't count as an update event)
-            }
-        };
-
-        this.init = function(keep_pagination)
-        {
-            if(typeof(keep_pagination)=="undefined")
-            {
-                var keep_pagination = false;
-            }
-
-            this.initAutoUpdateEvents();
-            this.attachActiveClass();
-
-            this.addDatePickers();
-            this.addRangeSliders();
-
-            //init combo boxes
-            var $combobox = $this.find("select[data-combobox='1']");
-
-            if($combobox.length>0)
-            {
-                $combobox.each(function(index ){
-                    var $thiscb = $( this );
-                    var nrm = $thiscb.attr("data-combobox-nrm");
-
-                    if (typeof $thiscb.chosen != "undefined")
-                    {
-                        var chosenoptions = {
-                            search_contains: true
-                        };
-
-                        if((typeof(nrm)!=="undefined")&&(nrm)){
-                            chosenoptions.no_results_text = nrm;
-                        }
-                        // safe to use the function
-                        //search_contains
-                        if(self.is_rtl==1)
-                        {
-                            $thiscb.addClass("chosen-rtl");
-                        }
-
-                        $thiscb.chosen(chosenoptions);
-                    }
-                    else
-                    {
-
-                        var select2options = {};
-
-                        if(self.is_rtl==1)
-                        {
-                            select2options.dir = "rtl";
-                        }
-                        if((typeof(nrm)!=="undefined")&&(nrm)){
-                            select2options.language= {
-                                "noResults": function(){
-                                    return nrm;
-                                }
-                            };
-                        }
-
-                        $thiscb.select2(select2options);
-                    }
-
-                });
-
-
-            }
-
-            self.isSubmitting = false;
-
-            //if ajax is enabled init the pagination
-            if(self.is_ajax==1)
-            {
-                self.setupAjaxPagination();
-            }
-
-            $this.on("submit", this.submitForm);
-
-            self.initWooCommerceControls(); //woocommerce orderby
-
-            if(keep_pagination==false)
-            {
-                self.last_submit_query_params = self.getUrlParams(false);
-            }
-        }
-
-        this.onWindowScroll = function(event)
-        {
-            if((!self.is_loading_more) && (!self.is_max_paged))
-            {
-                var window_scroll = $(window).scrollTop();
-                var window_scroll_bottom = $(window).scrollTop() + $(window).height();
-                var scroll_offset = parseInt(self.infinite_scroll_trigger_amount);
-
-                if(self.$infinite_scroll_container.length==1)
-                {
-                    var results_scroll_bottom = self.$infinite_scroll_container.offset().top + self.$infinite_scroll_container.height();
-
-                    var offset = (self.$infinite_scroll_container.offset().top + self.$infinite_scroll_container.height()) - window_scroll;
-
-                    if(window_scroll_bottom > results_scroll_bottom + scroll_offset)
-                    {
-                        self.loadMoreResults();
-                    }
-                    else
-                    {//dont load more
-
-                    }
-                }
-            }
-        }
-
-        this.stripQueryStringAndHashFromPath = function(url) {
-            return url.split("?")[0].split("#")[0];
-        }
-
-        this.gup = function( name, url ) {
-            if (!url) url = location.href
-            name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-            var regexS = "[\\?&]"+name+"=([^&#]*)";
-            var regex = new RegExp( regexS );
-            var results = regex.exec( url );
-            return results == null ? null : results[1];
-        };
-
-
-        this.getUrlParams = function(keep_pagination, type, exclude)
-        {
-            if(typeof(keep_pagination)=="undefined")
-            {
-                var keep_pagination = true;
-            }
-
-            if(typeof(type)=="undefined")
-            {
-                var type = "";
-            }
-
-            var url_params_str = "";
-
-            // get all params from fields
-            var url_params_array = process_form.getUrlParams(self);
-
-            var length = Object.keys(url_params_array).length;
-            var count = 0;
-
-            if(typeof(exclude)!="undefined") {
-                if (url_params_array.hasOwnProperty(exclude)) {
-                    length--;
-                }
-            }
-
-            if(length>0)
-            {
-                for (var k in url_params_array) {
-                    if (url_params_array.hasOwnProperty(k)) {
-
-                        var can_add = true;
-                        if(typeof(exclude)!="undefined")
-                        {
-                            if(k==exclude) {
-                                can_add = false;
-                            }
-                        }
-
-                        if(can_add) {
-                            url_params_str += k + "=" + url_params_array[k];
-
-                            if (count < length - 1) {
-                                url_params_str += "&";
-                            }
-
-                            count++;
-                        }
-                    }
-                }
-            }
-
-            var query_params = "";
-
-            //form params as url query string
-            var form_params = url_params_str;
-
-            //get url params from the form itself (what the user has selected)
-            query_params = self.joinUrlParam(query_params, form_params);
-
-            //add pagination
-            if(keep_pagination==true)
-            {
-                var pageNumber = self.$ajax_results_container.attr("data-paged");
-
-                if(typeof(pageNumber)=="undefined")
-                {
-                    pageNumber = 1;
-                }
-
-                if(pageNumber>1)
-                {
-                    query_params = self.joinUrlParam(query_params, "sf_paged="+pageNumber);
-                }
-            }
-
-            //add sfid
-            //query_params = self.joinUrlParam(query_params, "sfid="+self.sfid);
-
-            // loop through any extra params (from ext plugins) and add to the url (ie woocommerce `orderby`)
-            /*var extra_query_param = "";
-             var length = Object.keys(self.extra_query_params).length;
-             var count = 0;
-
-             if(length>0)
-             {
-
-             for (var k in self.extra_query_params) {
-             if (self.extra_query_params.hasOwnProperty(k)) {
-
-             if(self.extra_query_params[k]!="")
-             {
-             extra_query_param = k+"="+self.extra_query_params[k];
-             query_params = self.joinUrlParam(query_params, extra_query_param);
-             }
-             */
-            query_params = self.addQueryParams(query_params, self.extra_query_params.all);
-
-            if(type!="")
-            {
-                //query_params = self.addQueryParams(query_params, self.extra_query_params[type]);
-            }
-
-            return query_params;
-        }
-        this.addQueryParams = function(query_params, new_params)
-        {
-            var extra_query_param = "";
-            var length = Object.keys(new_params).length;
-            var count = 0;
-
-            if(length>0)
-            {
-
-                for (var k in new_params) {
-                    if (new_params.hasOwnProperty(k)) {
-
-                        if(new_params[k]!="")
-                        {
-                            extra_query_param = k+"="+new_params[k];
-                            query_params = self.joinUrlParam(query_params, extra_query_param);
-                        }
-                    }
-                }
-            }
-
-            return query_params;
-        }
-        this.addUrlParam = function(url, string)
-        {
-            var add_params = "";
-
-            if(url!="")
-            {
-                if(url.indexOf("?") != -1)
-                {
-                    add_params += "&";
-                }
-                else
-                {
-                    //url = this.trailingSlashIt(url);
-                    add_params += "?";
-                }
-            }
-
-            if(string!="")
-            {
-
-                return url + add_params + string;
-            }
-            else
-            {
-                return url;
-            }
-        };
-
-        this.joinUrlParam = function(params, string)
-        {
-            var add_params = "";
-
-            if(params!="")
-            {
-                add_params += "&";
-            }
-
-            if(string!="")
-            {
-
-                return params + add_params + string;
-            }
-            else
-            {
-                return params;
-            }
-        };
-
-        this.setAjaxResultsURLs = function(query_params)
-        {
-            if(typeof(self.ajax_results_conf)=="undefined")
-            {
-                self.ajax_results_conf = new Array();
-            }
-
-            self.ajax_results_conf['processing_url'] = "";
-            self.ajax_results_conf['results_url'] = "";
-            self.ajax_results_conf['data_type'] = "";
-
-            //if(self.ajax_url!="")
-            if(self.display_result_method=="shortcode")
-            {//then we want to do a request to the ajax endpoint
-                self.ajax_results_conf['results_url'] = self.addUrlParam(self.results_url, query_params);
-
-                //add lang code to ajax api request, lang code should already be in there for other requests (ie, supplied in the Results URL)
-
-                if(self.lang_code!="")
-                {
-                    //so add it
-                    query_params = self.joinUrlParam(query_params, "lang="+self.lang_code);
-                }
-
-                self.ajax_results_conf['processing_url'] = self.addUrlParam(self.ajax_url, query_params);
-                //self.ajax_results_conf['data_type'] = 'json';
-
-            }
-            else if(self.display_result_method=="post_type_archive")
-            {
-                process_form.setTaxArchiveResultsUrl(self, self.results_url);
-                var results_url = process_form.getResultsUrl(self, self.results_url);
-
-                self.ajax_results_conf['results_url'] = self.addUrlParam(results_url, query_params);
-                self.ajax_results_conf['processing_url'] = self.addUrlParam(results_url, query_params);
-
-            }
-            else if(self.display_result_method=="custom_woocommerce_store")
-            {
-                process_form.setTaxArchiveResultsUrl(self, self.results_url);
-                var results_url = process_form.getResultsUrl(self, self.results_url);
-
-                self.ajax_results_conf['results_url'] = self.addUrlParam(results_url, query_params);
-                self.ajax_results_conf['processing_url'] = self.addUrlParam(results_url, query_params);
-
-            }
-            else
-            {//otherwise we want to pull the results directly from the results page
-                self.ajax_results_conf['results_url'] = self.addUrlParam(self.results_url, query_params);
-                self.ajax_results_conf['processing_url'] = self.addUrlParam(self.ajax_url, query_params);
-                //self.ajax_results_conf['data_type'] = 'html';
-            }
-
-            self.ajax_results_conf['processing_url'] = self.addQueryParams(self.ajax_results_conf['processing_url'], self.extra_query_params['ajax']);
-
-            self.ajax_results_conf['data_type'] = self.ajax_data_type;
-        };
-
-
-
-        this.updateLoaderTag = function($object, tagName) {
-
-            var $parent;
-
-            if(self.infinite_scroll_result_class!="")
-            {
-                $parent = self.$infinite_scroll_container.find(self.infinite_scroll_result_class).last().parent();
-            }
-            else
-            {
-                $parent = self.$infinite_scroll_container;
-            }
-
-            var tagName = $parent.prop("tagName");
-
-            var tagType = 'div';
-            if( ( tagName.toLowerCase() == 'ol' ) || ( tagName.toLowerCase() == 'ul' ) ){
-                tagType = 'li';
-            }
-
-            var $new = $('<'+tagType+' />').html($object.html());
-            var attributes = $object.prop("attributes");
-
-            // loop through <select> attributes and apply them on <div>
-            $.each(attributes, function() {
-                $new.attr(this.name, this.value);
-            });
-
-            return $new;
-
-        }
-
-
-        this.loadMoreResults = function()
-        {
-            self.is_loading_more = true;
-
-            //trigger start event
-            var event_data = {
-                sfid: self.sfid,
-                targetSelector: self.ajax_target_attr,
-                type: "load_more",
-                object: self
-            };
-
-            self.triggerEvent("sf:ajaxstart", event_data);
-            process_form.setTaxArchiveResultsUrl(self, self.results_url);
-            
-            var query_params = self.getUrlParams(true);
-            self.last_submit_query_params = self.getUrlParams(false); //grab a copy of hte URL params without pagination already added
-
-            var ajax_processing_url = "";
-            var ajax_results_url = "";
-            var data_type = "";
-
-
-            //now add the new pagination
-            var next_paged_number = this.current_paged + 1;
-            query_params = self.joinUrlParam(query_params, "sf_paged="+next_paged_number);
-
-            self.setAjaxResultsURLs(query_params);
-            ajax_processing_url = self.ajax_results_conf['processing_url'];
-            ajax_results_url = self.ajax_results_conf['results_url'];
-            data_type = self.ajax_results_conf['data_type'];
-
-            //abort any previous ajax requests
-            if(self.last_ajax_request)
-            {
-                self.last_ajax_request.abort();
-            }
-
-            if(self.use_scroll_loader==1)
-            {
-                var $loader = $('<div/>',{
-                    'class': 'search-filter-scroll-loading'
-                });//.appendTo(self.$ajax_results_container);
-
-                $loader = self.updateLoaderTag($loader);
-
-                self.infiniteScrollAppend($loader);
-            }
-
-            self.last_ajax_request = $.get(ajax_processing_url, function(data, status, request)
-            {
-                self.current_paged++;
-                self.last_ajax_request = null;
-
-                /* scroll */
-                //self.scrollResults();
-
-                //updates the resutls & form html
-                self.addResults(data, data_type);
-
-            }, data_type).fail(function(jqXHR, textStatus, errorThrown)
-            {
-                var data = {};
-                data.sfid = self.sfid;
-                data.object = self;
-                data.targetSelector = self.ajax_target_attr;
-                data.ajaxURL = ajax_processing_url;
-                data.jqXHR = jqXHR;
-                data.textStatus = textStatus;
-                data.errorThrown = errorThrown;
-                self.triggerEvent("sf:ajaxerror", data);
-
-            }).always(function()
-            {
-                var data = {};
-                data.sfid = self.sfid;
-                data.targetSelector = self.ajax_target_attr;
-                data.object = self;
-
-                if(self.use_scroll_loader==1)
-                {
-                    $loader.detach();
-                }
-
-                self.is_loading_more = false;
-
-                self.triggerEvent("sf:ajaxfinish", data);
-            });
-
-        }
-        this.fetchAjaxResults = function()
-        {
-            //trigger start event
-            var event_data = {
-                sfid: self.sfid,
-                targetSelector: self.ajax_target_attr,
-                type: "load_results",
-                object: self
-            };
-
-            self.triggerEvent("sf:ajaxstart", event_data);
-
-            //refocus any input fields after the form has been updated
-            var $last_active_input_text = $this.find('input[type="text"]:focus').not(".sf-datepicker");
-            if($last_active_input_text.length==1)
-            {
-                var last_active_input_text = $last_active_input_text.attr("name");
-            }
-
-            $this.addClass("search-filter-disabled");
-            process_form.disableInputs(self);
-
-            //fade out results
-            self.$ajax_results_container.animate({ opacity: 0.5 }, "fast"); //loading
-            self.fadeContentAreas( "out" );
-
-            if(self.ajax_action=="pagination")
-            {
-                //need to remove active filter from URL
-
-                //query_params = self.last_submit_query_params;
-
-                //now add the new pagination
-                var pageNumber = self.$ajax_results_container.attr("data-paged");
-
-                if(typeof(pageNumber)=="undefined")
-                {
-                    pageNumber = 1;
-                }
-                process_form.setTaxArchiveResultsUrl(self, self.results_url);
-                query_params = self.getUrlParams(false);
-
-                if(pageNumber>1)
-                {
-                    query_params = self.joinUrlParam(query_params, "sf_paged="+pageNumber);
-                }
-
-            }
-            else if(self.ajax_action=="submit")
-            {
-                var query_params = self.getUrlParams(true);
-                self.last_submit_query_params = self.getUrlParams(false); //grab a copy of hte URL params without pagination already added
-            }
-
-            var ajax_processing_url = "";
-            var ajax_results_url = "";
-            var data_type = "";
-
-            self.setAjaxResultsURLs(query_params);
-            ajax_processing_url = self.ajax_results_conf['processing_url'];
-            ajax_results_url = self.ajax_results_conf['results_url'];
-            data_type = self.ajax_results_conf['data_type'];
-
-
-            //abort any previous ajax requests
-            if(self.last_ajax_request)
-            {
-                self.last_ajax_request.abort();
-            }
-            var ajax_action = self.ajax_action;
-            self.last_ajax_request = $.get(ajax_processing_url, function(data, status, request)
-            {
-                self.last_ajax_request = null;
-
-                //updates the resutls & form html
-                self.updateResults(data, data_type);
-
-                // scroll 
-                // set the var back to what it was before the ajax request nad the form re-init
-                self.ajax_action = ajax_action;
-                self.scrollResults( self.ajax_action );
-
-                /* update URL */
-                //update url before pagination, because we need to do some checks agains the URL for infinite scroll
-                self.updateUrlHistory(ajax_results_url);
-
-                //setup pagination
-                self.setupAjaxPagination();
-
-                self.isSubmitting = false;
-
-                /* user def */
-                self.initWooCommerceControls(); //woocommerce orderby
-
-
-            }, data_type).fail(function(jqXHR, textStatus, errorThrown)
-            {
-                var data = {};
-                data.sfid = self.sfid;
-                data.targetSelector = self.ajax_target_attr;
-                data.object = self;
-                data.ajaxURL = ajax_processing_url;
-                data.jqXHR = jqXHR;
-                data.textStatus = textStatus;
-                data.errorThrown = errorThrown;
-                self.isSubmitting = false;
-                self.triggerEvent("sf:ajaxerror", data);
-
-            }).always(function()
-            {
-                self.$ajax_results_container.stop(true,true).animate({ opacity: 1}, "fast"); //finished loading
-                self.fadeContentAreas( "in" );
-                var data = {};
-                data.sfid = self.sfid;
-                data.targetSelector = self.ajax_target_attr;
-                data.object = self;
-                $this.removeClass("search-filter-disabled");
-                process_form.enableInputs(self);
-
-                //refocus the last active text field
-                if(last_active_input_text!="")
-                {
-                    var $input = [];
-                    self.$fields.each(function(){
-
-                        var $active_input = $(this).find("input[name='"+last_active_input_text+"']");
-                        if($active_input.length==1)
-                        {
-                            $input = $active_input;
-                        }
-
-                    });
-                    if($input.length==1) {
-
-                        $input.focus().val($input.val());
-                        self.focusCampo($input[0]);
-                    }
-                }
-
-                $this.find("input[name='_sf_search']").trigger('focus');
-                self.triggerEvent("sf:ajaxfinish",  data );
-
-            });
-        };
-
-        this.focusCampo = function(inputField){
-            //var inputField = document.getElementById(id);
-            if (inputField != null && inputField.value.length != 0){
-                if (inputField.createTextRange){
-                    var FieldRange = inputField.createTextRange();
-                    FieldRange.moveStart('character',inputField.value.length);
-                    FieldRange.collapse();
-                    FieldRange.select();
-                }else if (inputField.selectionStart || inputField.selectionStart == '0') {
-                    var elemLen = inputField.value.length;
-                    inputField.selectionStart = elemLen;
-                    inputField.selectionEnd = elemLen;
-                }
-                inputField.blur();
-                inputField.focus();
-            } else{
-                if ( inputField ) {
-                    inputField.focus();
-                }
-                
-            }
-        }
-
-        this.triggerEvent = function(eventname, data)
-        {
-            var $event_container = $(".searchandfilter[data-sf-form-id='"+self.sfid+"']");
-            $event_container.trigger(eventname, [ data ]);
-        }
-
-        this.fetchAjaxForm = function()
-        {
-            //trigger start event
-            var event_data = {
-                sfid: self.sfid,
-                targetSelector: self.ajax_target_attr,
-                type: "form",
-                object: self
-            };
-
-            self.triggerEvent("sf:ajaxformstart", [ event_data ]);
-
-            $this.addClass("search-filter-disabled");
-            process_form.disableInputs(self);
-
-            var query_params = self.getUrlParams();
-
-            if(self.lang_code!="")
-            {
-                //so add it
-                query_params = self.joinUrlParam(query_params, "lang="+self.lang_code);
-            }
-
-            var ajax_processing_url = self.addUrlParam(self.ajax_form_url, query_params);
-            var data_type = "json";
-
-
-            //abort any previous ajax requests
-            /*if(self.last_ajax_request)
-             {
-             self.last_ajax_request.abort();
-             }*/
-
-
-            //self.last_ajax_request =
-
-            $.get(ajax_processing_url, function(data, status, request)
-            {
-                //self.last_ajax_request = null;
-
-                //updates the resutls & form html
-                self.updateForm(data, data_type);
-
-
-            }, data_type).fail(function(jqXHR, textStatus, errorThrown)
-            {
-                var data = {};
-                data.sfid = self.sfid;
-                data.targetSelector = self.ajax_target_attr;
-                data.object = self;
-                data.ajaxURL = ajax_processing_url;
-                data.jqXHR = jqXHR;
-                data.textStatus = textStatus;
-                data.errorThrown = errorThrown;
-                self.triggerEvent("sf:ajaxerror", [ data ]);
-
-            }).always(function()
-            {
-                var data = {};
-                data.sfid = self.sfid;
-                data.targetSelector = self.ajax_target_attr;
-                data.object = self;
-
-                $this.removeClass("search-filter-disabled");
-                process_form.enableInputs(self);
-
-                self.triggerEvent("sf:ajaxformfinish", [ data ]);
-            });
-        };
-
-        this.copyListItemsContents = function($list_from, $list_to)
-        {
-            var self = this;
-
-            //copy over child list items
-            var li_contents_array = new Array();
-            var from_attributes = new Array();
-
-            var $from_fields = $list_from.find("> ul > li");
-
-            $from_fields.each(function(i){
-
-                li_contents_array.push($(this).html());
-
-                var attributes = $(this).prop("attributes");
-                from_attributes.push(attributes);
-
-                //var field_name = $(this).attr("data-sf-field-name");
-                //var to_field = $list_to.find("> ul > li[data-sf-field-name='"+field_name+"']");
-
-                //self.copyAttributes($(this), $list_to, "data-sf-");
-
-            });
-
-            var li_it = 0;
-            var $to_fields = $list_to.find("> ul > li");
-            $to_fields.each(function(i){
-                $(this).html(li_contents_array[li_it]);
-
-                var $from_field = $($from_fields.get(li_it));
-
-                var $to_field = $(this);
-                $to_field.removeAttr("data-sf-taxonomy-archive");
-                self.copyAttributes($from_field, $to_field);
-
-                li_it++;
-            });
-
-            /*var $from_fields = $list_from.find(" ul > li");
-             var $to_fields = $list_to.find(" > li");
-             $from_fields.each(function(index, val){
-             if($(this).hasAttribute("data-sf-taxonomy-archive"))
-             {
-
-             }
-             });
-
-             this.copyAttributes($list_from, $list_to);*/
-        }
-
-        this.updateFormAttributes = function($list_from, $list_to)
-        {
-            var from_attributes = $list_from.prop("attributes");
-            // loop through <select> attributes and apply them on <div>
-
-            var to_attributes = $list_to.prop("attributes");
-            $.each(to_attributes, function() {
-                $list_to.removeAttr(this.name);
-            });
-
-            $.each(from_attributes, function() {
-                $list_to.attr(this.name, this.value);
-            });
-
-        }
-
-        this.copyAttributes = function($from, $to, prefix)
-        {
-            if(typeof(prefix)=="undefined")
-            {
-                var prefix = "";
-            }
-
-            var from_attributes = $from.prop("attributes");
-
-            var to_attributes = $to.prop("attributes");
-            $.each(to_attributes, function() {
-
-                if(prefix!="") {
-                    if (this.name.indexOf(prefix) == 0) {
-                        $to.removeAttr(this.name);
-                    }
-                }
-                else
-                {
-                    //$to.removeAttr(this.name);
-                }
-            });
-
-            $.each(from_attributes, function() {
-                $to.attr(this.name, this.value);
-            });
-        }
-
-        this.copyFormAttributes = function($from, $to)
-        {
-            $to.removeAttr("data-current-taxonomy-archive");
-            this.copyAttributes($from, $to);
-
-        }
-
-        this.updateForm = function(data, data_type)
-        {
-            var self = this;
-
-            if(data_type=="json")
-            {//then we did a request to the ajax endpoint, so expect an object back
-
-                if(typeof(data['form'])!=="undefined")
-                {
-                    //remove all events from S&F form
-                    $this.off();
-
-                    //refresh the form (auto count)
-                    self.copyListItemsContents($(data['form']), $this);
-
-                    //re init S&F class on the form
-                    //$this.searchAndFilter();
-
-                    //if ajax is enabled init the pagination
-
-                    this.init(true);
-
-                    if(self.is_ajax==1)
-                    {
-                        self.setupAjaxPagination();
-                    }
-
-
-
-                }
-            }
-
-
-        }
-        this.addResults = function(data, data_type)
-        {
-            var self = this;
-
-            if(data_type=="json")
-            {//then we did a request to the ajax endpoint, so expect an object back
-                //grab the results and load in
-                //self.$ajax_results_container.append(data['results']);
-                self.load_more_html = data['results'];
-            }
-            else if(data_type=="html")
-            {//we are expecting the html of the results page back, so extract the html we need
-
-                var $data_obj = $(data);
-
-                //self.$infinite_scroll_container.append($data_obj.find(self.ajax_target_attr).html());
-                self.load_more_html = $data_obj.find(self.ajax_target_attr).html();
-            }
-
-            var infinite_scroll_end = false;
-
-            if($("<div>"+self.load_more_html+"</div>").find("[data-search-filter-action='infinite-scroll-end']").length>0)
-            {
-                infinite_scroll_end = true;
-            }
-
-            //if there is another selector for infinite scroll, find the contents of that instead
-            if(self.infinite_scroll_container!="")
-            {
-                self.load_more_html = $("<div>"+self.load_more_html+"</div>").find(self.infinite_scroll_container).html();
-            }
-            if(self.infinite_scroll_result_class!="")
-            {
-                var $result_items = $("<div>"+self.load_more_html+"</div>").find(self.infinite_scroll_result_class);
-                var $result_items_container = $('<div/>', {});
-                $result_items_container.append($result_items);
-
-                self.load_more_html = $result_items_container.html();
-            }
-
-            if(infinite_scroll_end)
-            {//we found a data attribute signalling the last page so finish here
-
-                self.is_max_paged = true;
-                self.last_load_more_html = self.load_more_html;
-
-                self.infiniteScrollAppend(self.load_more_html);
-
-            }
-            else if(self.last_load_more_html!==self.load_more_html)
-            {
-                //check to make sure the new html fetched is different
-                self.last_load_more_html = self.load_more_html;
-                self.infiniteScrollAppend(self.load_more_html);
-
-            }
-            else
-            {//we received the same message again so don't add, and tell S&F that we're at the end..
-                self.is_max_paged = true;
-            }
-        }
-
-
-        this.infiniteScrollAppend = function($object)
-        {
-            if(self.infinite_scroll_result_class!="")
-            {
-                self.$infinite_scroll_container.find(self.infinite_scroll_result_class).last().after($object);
-            }
-            else
-            {
-               self.$infinite_scroll_container.append($object);
-            }
-        }
-
-
-        this.updateResults = function(data, data_type)
-        {
-            var self = this;
-
-            if(data_type=="json")
-            {//then we did a request to the ajax endpoint, so expect an object back
-                //grab the results and load in
-                self.$ajax_results_container.html(data['results']);
-
-                if(typeof(data['form'])!=="undefined")
-                {
-                    //remove all events from S&F form
-                    $this.off();
-
-                    //remove pagination
-                    self.removeAjaxPagination();
-
-                    //refresh the form (auto count)
-                    self.copyListItemsContents($(data['form']), $this);
-
-                    //update attributes on form
-                    self.copyFormAttributes($(data['form']), $this);
-
-                    //re init S&F class on the form
-                    $this.searchAndFilter({'isInit': false});
-                }
-                else
-                {
-                    //$this.find("input").removeAttr("disabled");
-                }
-            }
-            else if(data_type=="html") {//we are expecting the html of the results page back, so extract the html we need
-
-                var $data_obj = $(data);
-
-                self.$ajax_results_container.html($data_obj.find(self.ajax_target_attr).html());
-
-                self.updateContentAreas( $data_obj );
-
-                if (self.$ajax_results_container.find(".searchandfilter").length > 0)
-                {//then there are search form(s) inside the results container, so re-init them
-
-                    self.$ajax_results_container.find(".searchandfilter").searchAndFilter();
-                }
-
-                //if the current search form is not inside the results container, then proceed as normal and update the form
-                if(self.$ajax_results_container.find(".searchandfilter[data-sf-form-id='" + self.sfid + "']").length==0) {
-
-                    var $new_search_form = $data_obj.find(".searchandfilter[data-sf-form-id='" + self.sfid + "']");
-
-                    if ($new_search_form.length == 1) {//then replace the search form with the new one
-
-                        //remove all events from S&F form
-                        $this.off();
-
-                        //remove pagination
-                        self.removeAjaxPagination();
-
-                        //refresh the form (auto count)
-                        self.copyListItemsContents($new_search_form, $this);
-
-                        //update attributes on form
-                        self.copyFormAttributes($new_search_form, $this);
-
-                        //re init S&F class on the form
-                        $this.searchAndFilter({'isInit': false});
-
-                    }
-                    else {
-
-                        //$this.find("input").removeAttr("disabled");
-                    }
-                }
-            }
-
-            self.is_max_paged = false; //for infinite scroll
-            self.current_paged = 1; //for infinite scroll
-            self.setInfiniteScrollContainer();
-
-        }
-
-        this.updateContentAreas = function( $html_data ) {
-            
-            // add additional content areas
-            if ( this.ajax_update_sections && this.ajax_update_sections.length ) {
-                for (index = 0; index < this.ajax_update_sections.length; ++index) {
-                    var selector = this.ajax_update_sections[index];
-                    $( selector ).html( $html_data.find( selector ).html() );
-                }
-            }
-        }
-        this.fadeContentAreas = function( direction ) {
-            
-            var opacity = 0.5;
-            if ( direction === "in" ) {
-                opacity = 1;
-            }
-
-            if ( this.ajax_update_sections && this.ajax_update_sections.length ) {
-                for (index = 0; index < this.ajax_update_sections.length; ++index) {
-                    var selector = this.ajax_update_sections[index];
-                    $( selector ).stop(true,true).animate( { opacity: opacity}, "fast" );
-                }
-            }
-           
-            
-        }
-
-        this.removeWooCommerceControls = function(){
-            var $woo_orderby = $('.woocommerce-ordering .orderby');
-            var $woo_orderby_form = $('.woocommerce-ordering');
-
-            $woo_orderby_form.off();
-            $woo_orderby.off();
-        };
-
-        this.addQueryParam = function(name, value, url_type){
-
-            if(typeof(url_type)=="undefined")
-            {
-                var url_type = "all";
-            }
-            self.extra_query_params[url_type][name] = value;
-
-        };
-
-        this.initWooCommerceControls = function(){
-
-            self.removeWooCommerceControls();
-
-            var $woo_orderby = $('.woocommerce-ordering .orderby');
-            var $woo_orderby_form = $('.woocommerce-ordering');
-
-            var order_val = "";
-            if($woo_orderby.length>0)
-            {
-                order_val = $woo_orderby.val();
-            }
-            else
-            {
-                order_val = self.getQueryParamFromURL("orderby", window.location.href);
-            }
-
-            if(order_val=="menu_order")
-            {
-                order_val = "";
-            }
-
-            if((order_val!="")&&(!!order_val))
-            {
-                self.extra_query_params.all.orderby = order_val;
-            }
-
-
-            $woo_orderby_form.on('submit', function(e)
-            {
-                e.preventDefault();
-                //var form = e.target;
-                return false;
-            });
-
-            $woo_orderby.on("change", function(e)
-            {
-                e.preventDefault();
-
-                var val = $(this).val();
-                if(val=="menu_order")
-                {
-                    val = "";
-                }
-
-                self.extra_query_params.all.orderby = val;
-
-                $this.trigger("submit")
-
-                return false;
-            });
-
-        }
-
-        this.scrollResults = function()
-        {
-            var self = this;
-            if((self.scroll_on_action==self.ajax_action)||(self.scroll_on_action=="all"))
-            {
-                self.scrollToPos(); //scroll the window if it has been set
-                //self.ajax_action = "";
-            }
-        }
-
-        this.updateUrlHistory = function(ajax_results_url)
-        {
-            var self = this;
-
-            var use_history_api = 0;
-            if (window.history && window.history.pushState)
-            {
-                use_history_api = $this.attr("data-use-history-api");
-            }
-
-            if((self.update_ajax_url==1)&&(use_history_api==1))
-            {
-                //now check if the browser supports history state push :)
-                if (window.history && window.history.pushState)
-                {
-                    history.pushState(null, null, ajax_results_url);
-                }
-            }
-        }
-        this.removeAjaxPagination = function()
-        {
-            var self = this;
-
-            if(typeof(self.ajax_links_selector)!="undefined")
-            {
-                var $ajax_links_object = jQuery(self.ajax_links_selector);
-
-                if($ajax_links_object.length>0)
-                {
-                    $ajax_links_object.off();
-                }
-            }
-        }
-
-        this.canFetchAjaxResults = function(fetch_type)
-        {
-            if(typeof(fetch_type)=="undefined")
-            {
-                var fetch_type = "";
-            }
-
-            var self = this;
-            var fetch_ajax_results = false;
-
-            if(self.is_ajax==1)
-            {//then we will ajax submit the form
-
-                //and if we can find the results container
-                if(self.$ajax_results_container.length==1)
-                {
-                    fetch_ajax_results = true;
-                }
-
-                var results_url = self.results_url;  //
-                var results_url_encoded = '';  //
-                var current_url = window.location.href;
-
-                //ignore # and everything after
-                var hash_pos = window.location.href.indexOf('#');
-                if(hash_pos!==-1){
-                    current_url = window.location.href.substr(0, window.location.href.indexOf('#'));
-                }
-
-                if( ( ( self.display_result_method=="custom_woocommerce_store" ) || ( self.display_result_method=="post_type_archive" ) ) && ( self.enable_taxonomy_archives == 1 ) )
-                {
-                    if( self.current_taxonomy_archive !=="" )
-                    {
-                        fetch_ajax_results = true;
-                        return fetch_ajax_results;
-                    }
-
-                    /*var results_url = process_form.getResultsUrl(self, self.results_url);
-                     var active_tax = process_form.getActiveTax();
-                     var query_params = self.getUrlParams(true, '', active_tax);*/
-                }
-
-
-
-
-                //now see if we are on the URL we think...
-                var url_parts = current_url.split("?");
-                var url_base = "";
-
-                if(url_parts.length>0)
-                {
-                    url_base = url_parts[0];
-                }
-                else {
-                    url_base = current_url;
-                }
-
-                var lang = self.getQueryParamFromURL("lang", window.location.href);
-                if((typeof(lang)!=="undefined")&&(lang!==null))
-                {
-                    url_base = self.addUrlParam(url_base, "lang="+lang);
-                }
-
-                var sfid = self.getQueryParamFromURL("sfid", window.location.href);
-
-                //if sfid is a number
-                if(Number(parseFloat(sfid)) == sfid)
-                {
-                    url_base = self.addUrlParam(url_base, "sfid="+sfid);
-                }
-
-                //if any of the 3 conditions are true, then its good to go
-                // - 1 | if the url base == results_url
-                // - 2 | if url base+ "/"  == results_url - in case of user error in the results URL
-
-                //trim any trailing slash for easier comparison:
-                url_base = url_base.replace(/\/$/, '');
-                results_url = results_url.replace(/\/$/, '');
-                results_url_encoded = encodeURI(results_url.replace(/\/$/, ''));
-
-                var current_url_contains_results_url = -1;
-                if((url_base==results_url)||(url_base.toLowerCase()==results_url_encoded.toLowerCase())){
-                    current_url_contains_results_url = 1;
-                }
-
-                if(self.only_results_ajax==1)
-                {//if a user has chosen to only allow ajax on results pages (default behaviour)
-
-                    if( current_url_contains_results_url > -1)
-                    {//this means the current URL contains the results url, which means we can do ajax
-                        fetch_ajax_results = true;
-                    }
-                    else
-                    {
-                        fetch_ajax_results = false;
-                    }
-                }
-                else
-                {
-                    if(fetch_type=="pagination")
-                    {
-                        if( current_url_contains_results_url > -1)
-                        {//this means the current URL contains the results url, which means we can do ajax
-
-                        }
-                        else
-                        {
-                            //don't ajax pagination when not on a S&F page
-                            fetch_ajax_results = false;
-                        }
-
-
-                    }
-
-                }
-            }
-
-            return fetch_ajax_results;
-        }
-
-        this.setupAjaxPagination = function()
-        {
-            //infinite scroll
-            if(this.pagination_type==="infinite_scroll")
-            {
-                var infinite_scroll_end = false;
-                if(self.$ajax_results_container.find("[data-search-filter-action='infinite-scroll-end']").length>0)
-                {
-                    infinite_scroll_end = true;
-                    self.is_max_paged = true;
-                }
-
-                if(parseInt(this.instance_number)===1) {
-                    $(window).off("scroll", self.onWindowScroll);
-
-                    if (self.canFetchAjaxResults("pagination")) {
-                        $(window).on("scroll", self.onWindowScroll);
-                    }
-                }
-            }
-            else if(typeof(self.ajax_links_selector)=="undefined") {
-                return;
-            }
-            else {
-                $(document).off('click', self.ajax_links_selector);
-                $(document).off(self.ajax_links_selector);
-                $(self.ajax_links_selector).off();
-
-                $(document).on('click', self.ajax_links_selector, function(e){
-
-                    if(self.canFetchAjaxResults("pagination"))
-                    {
-                        e.preventDefault();
-
-                        var link = jQuery(this).attr('href');
-                        self.ajax_action = "pagination";
-
-                        var pageNumber = self.getPagedFromURL(link);
-
-                        self.$ajax_results_container.attr("data-paged", pageNumber);
-
-                        self.fetchAjaxResults();
-
-                        return false;
-                    }
-                });
-            }
-        };
-
-        this.getPagedFromURL = function(URL){
-
-            var pagedVal = 1;
-            //first test to see if we have "/page/4/" in the URL
-            var tpVal = self.getQueryParamFromURL("sf_paged", URL);
-            if((typeof(tpVal)=="string")||(typeof(tpVal)=="number"))
-            {
-                pagedVal = tpVal;
-            }
-
-            return pagedVal;
-        };
-
-        this.getQueryParamFromURL = function(name, URL){
-
-            var qstring = "?"+URL.split('?')[1];
-            if(typeof(qstring)!="undefined")
-            {
-                var val = decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(qstring)||[,""])[1].replace(/\+/g, '%20'))||null;
-                return val;
-            }
-            return "";
-        };
-
-
-
-        this.formUpdated = function(e){
-
-            //e.preventDefault();
-            if(self.auto_update==1) {
-                self.submitForm();
-            }
-            else if((self.auto_update==0)&&(self.auto_count_refresh_mode==1))
-            {
-                self.formUpdatedFetchAjax();
-            }
-
-            return false;
-        };
-
-        this.formUpdatedFetchAjax = function(){
-
-            //loop through all the fields and build the URL
-            self.fetchAjaxForm();
-
-
-            return false;
-        };
-
-        //make any corrections/updates to fields before the submit completes
-        this.setFields = function(e){
-
-            //if(self.is_ajax==0) {
-
-                //sometimes the form is submitted without the slider yet having updated, and as we get our values from
-                //the slider and not inputs, we need to check it if needs to be set
-                //only occurs if ajax is off, and autosubmit on
-                self.$fields.each(function() {
-
-                    var $field = $(this);
-
-                    var range_display_values = $field.find('.sf-meta-range-slider').attr("data-display-values-as");//data-display-values-as="text"
-
-                    if(range_display_values==="textinput") {
-
-                        if($field.find(".meta-slider").length>0){
-
-                        }
-                        $field.find(".meta-slider").each(function (index) {
-
-                            var slider_object = $(this)[0];
-                            var $slider_el = $(this).closest(".sf-meta-range-slider");
-                            //var minVal = $slider_el.attr("data-min");
-                            //var maxVal = $slider_el.attr("data-max");
-                            var minVal = $slider_el.find(".sf-range-min").val();
-                            var maxVal = $slider_el.find(".sf-range-max").val();
-                            slider_object.noUiSlider.set([minVal, maxVal]);
-
-                        });
-                    }
-                });
-            //}
-
-        }
-
-        //submit
-        this.submitForm = function(e){
-
-            //loop through all the fields and build the URL
-            if(self.isSubmitting == true) {
-                return false;
-            }
-
-            self.setFields();
-            self.clearTimer();
-
-            self.isSubmitting = true;
-
-            process_form.setTaxArchiveResultsUrl(self, self.results_url);
-
-            self.$ajax_results_container.attr("data-paged", 1); //init paged
-
-            if(self.canFetchAjaxResults())
-            {//then we will ajax submit the form
-
-                self.ajax_action = "submit"; //so we know it wasn't pagination
-                self.fetchAjaxResults();
-            }
-            else
-            {//then we will simply redirect to the Results URL
-
-                var results_url = process_form.getResultsUrl(self, self.results_url);
-                var query_params = self.getUrlParams(true, '');
-                results_url = self.addUrlParam(results_url, query_params);
-
-                window.location.href = results_url;
-            }
-
-            return false;
-        };
-        this.resetForm = function(submit_form)
-        {
-            //unset all fields
-            self.$fields.each(function(){
-
-                var $field = $(this);
-				
-				$field.removeAttr("data-sf-taxonomy-archive");
-				
-                //standard field types
-                $field.find("select:not([multiple='multiple']) > option:first-child").prop("selected", true);
-                $field.find("select[multiple='multiple'] > option").prop("selected", false);
-                $field.find("input[type='checkbox']").prop("checked", false);
-                $field.find("> ul > li:first-child input[type='radio']").prop("checked", true);
-                $field.find("input[type='text']").val("");
-                $field.find(".sf-option-active").removeClass("sf-option-active");
-                $field.find("> ul > li:first-child input[type='radio']").parent().addClass("sf-option-active"); //re add active class to first "default" option
-
-                //number range - 2 number input fields
-                $field.find("input[type='number']").each(function(index){
-
-                    var $thisInput = $(this);
-
-                    if($thisInput.parent().parent().hasClass("sf-meta-range")) {
-
-                        if(index==0) {
-                            $thisInput.val($thisInput.attr("min"));
-                        }
-                        else if(index==1) {
-                            $thisInput.val($thisInput.attr("max"));
-                        }
-                    }
-
-                });
-
-                //meta / numbers with 2 inputs (from / to fields) - second input must be reset to max value
-                var $meta_select_from_to = $field.find(".sf-meta-range-select-fromto");
-
-                if($meta_select_from_to.length>0) {
-
-                    var start_min = $meta_select_from_to.attr("data-min");
-                    var start_max = $meta_select_from_to.attr("data-max");
-
-                    $meta_select_from_to.find("select").each(function(index){
-
-                        var $thisInput = $(this);
-
-                        if(index==0) {
-
-                            $thisInput.val(start_min);
-                        }
-                        else if(index==1) {
-                            $thisInput.val(start_max);
-                        }
-
-                    });
-                }
-
-                var $meta_radio_from_to = $field.find(".sf-meta-range-radio-fromto");
-
-                if($meta_radio_from_to.length>0)
-                {
-                    var start_min = $meta_radio_from_to.attr("data-min");
-                    var start_max = $meta_radio_from_to.attr("data-max");
-
-                    var $radio_groups = $meta_radio_from_to.find('.sf-input-range-radio');
-
-                    $radio_groups.each(function(index){
-
-
-                        var $radios = $(this).find(".sf-input-radio");
-                        $radios.prop("checked", false);
-
-                        if(index==0)
-                        {
-                            $radios.filter('[value="'+start_min+'"]').prop("checked", true);
-                        }
-                        else if(index==1)
-                        {
-                            $radios.filter('[value="'+start_max+'"]').prop("checked", true);
-                        }
-
-                    });
-
-                }
-
-                //number slider - noUiSlider
-                $field.find(".meta-slider").each(function(index){
-
-                    var slider_object = $(this)[0];
-                    /*var slider_object = $container.find(".meta-slider")[0];
-                     var slider_val = slider_object.noUiSlider.get();*/
-
-                    var $slider_el = $(this).closest(".sf-meta-range-slider");
-                    var minVal = $slider_el.attr("data-min");
-                    var maxVal = $slider_el.attr("data-max");
-                    slider_object.noUiSlider.set([minVal, maxVal]);
-
-                });
-
-                //need to see if any are combobox and act accordingly
-                var $combobox = $field.find("select[data-combobox='1']");
-                if($combobox.length>0)
-                {
-                    if (typeof $combobox.chosen != "undefined")
-                    {
-                        $combobox.trigger("chosen:updated"); //for chosen only
-                    }
-                    else
-                    {
-                        $combobox.val('');
-                        $combobox.trigger('change.select2');
-                    }
-                }
-
-
-            });
-            self.clearTimer();
-
-
-
-            if(submit_form=="always")
-            {
-                self.submitForm();
-            }
-            else if(submit_form=="never")
-            {
-                if(this.auto_count_refresh_mode==1)
-                {
-                    self.formUpdatedFetchAjax();
-                }
-            }
-            else if(submit_form=="auto")
-            {
-                if(this.auto_update==true)
-                {
-                    self.submitForm();
-                }
-                else
-                {
-                    if(this.auto_count_refresh_mode==1)
-                    {
-                        self.formUpdatedFetchAjax();
-                    }
-                }
-            }
-
-        };
-
-        this.init();
-
-        var event_data = {};
-        event_data.sfid = self.sfid;
-        event_data.targetSelector = self.ajax_target_attr;
-        event_data.object = this;
-        if(opts.isInit)
-        {
-            self.triggerEvent("sf:init", event_data);
-        }
-
-    });
-};
+
+var $ 				= (typeof window !== "undefined" ? window['jQuery'] : typeof global !== "undefined" ? global['jQuery'] : null);
+var state 			= require('./state');
+var process_form 	= require('./process_form');
+var noUiSlider		= require('nouislider');
+//var cookies         = require('js-cookie');
+var thirdParty      = require('./thirdparty');
+
+window.searchAndFilter = {
+    extensions: [],
+    registerExtension: function( extensionName ) {
+        this.extensions.push( extensionName );
+    }
+};
+
+module.exports = function(options)
+{
+    var defaults = {
+        startOpened: false,
+        isInit: true,
+        action: ""
+    };
+
+    var opts = jQuery.extend(defaults, options);
+    
+    thirdParty.init();
+    
+    //loop through each item matched
+    this.each(function()
+    {
+
+        var $this = $(this);
+        var self = this;
+        this.sfid = $this.attr("data-sf-form-id");
+
+        state.addSearchForm(this.sfid, this);
+
+        this.$fields = $this.find("> ul > li"); //a reference to each fields parent LI
+
+        this.enable_taxonomy_archives = $this.attr('data-taxonomy-archives');
+        this.current_taxonomy_archive = $this.attr('data-current-taxonomy-archive');
+
+        if(typeof(this.enable_taxonomy_archives)=="undefined")
+        {
+            this.enable_taxonomy_archives = "0";
+        }
+        if(typeof(this.current_taxonomy_archive)=="undefined")
+        {
+            this.current_taxonomy_archive = "";
+        }
+
+        process_form.init(self.enable_taxonomy_archives, self.current_taxonomy_archive);
+        //process_form.setTaxArchiveResultsUrl(self);
+        process_form.enableInputs(self);
+
+        if(typeof(this.extra_query_params)=="undefined")
+        {
+            this.extra_query_params = {all: {}, results: {}, ajax: {}};
+        }
+
+
+        this.template_is_loaded = $this.attr("data-template-loaded");
+        this.is_ajax = $this.attr("data-ajax");
+        this.instance_number = $this.attr('data-instance-count');
+        this.$ajax_results_container = jQuery($this.attr("data-ajax-target"));
+
+        this.ajax_update_sections = $this.attr("data-ajax-update-sections") ? JSON.parse( $this.attr("data-ajax-update-sections") ) : [];
+        
+        this.results_url = $this.attr("data-results-url");
+        this.debug_mode = $this.attr("data-debug-mode");
+        this.update_ajax_url = $this.attr("data-update-ajax-url");
+        this.pagination_type = $this.attr("data-ajax-pagination-type");
+        this.auto_count = $this.attr("data-auto-count");
+        this.auto_count_refresh_mode = $this.attr("data-auto-count-refresh-mode");
+        this.only_results_ajax = $this.attr("data-only-results-ajax"); //if we are not on the results page, redirect rather than try to load via ajax
+        this.scroll_to_pos = $this.attr("data-scroll-to-pos");
+        this.custom_scroll_to = $this.attr("data-custom-scroll-to");
+        this.scroll_on_action = $this.attr("data-scroll-on-action");
+        this.lang_code = $this.attr("data-lang-code");
+        this.ajax_url = $this.attr('data-ajax-url');
+        this.ajax_form_url = $this.attr('data-ajax-form-url');
+        this.is_rtl = $this.attr('data-is-rtl');
+
+        this.display_result_method = $this.attr('data-display-result-method');
+        this.maintain_state = $this.attr('data-maintain-state');
+        this.ajax_action = "";
+        this.last_submit_query_params = "";
+
+        this.current_paged = parseInt($this.attr('data-init-paged'));
+        this.last_load_more_html = "";
+        this.load_more_html = "";
+        this.ajax_data_type = $this.attr('data-ajax-data-type');
+        this.ajax_target_attr = $this.attr("data-ajax-target");
+        this.use_history_api = $this.attr("data-use-history-api");
+        this.is_submitting = false;
+
+        this.last_ajax_request = null;
+
+        if(typeof(this.use_history_api)=="undefined")
+        {
+            this.use_history_api = "";
+        }
+
+        if(typeof(this.pagination_type)=="undefined")
+        {
+            this.pagination_type = "normal";
+        }
+        if(typeof(this.current_paged)=="undefined")
+        {
+            this.current_paged = 1;
+        }
+
+        if(typeof(this.ajax_target_attr)=="undefined")
+        {
+            this.ajax_target_attr = "";
+        }
+
+        if(typeof(this.ajax_url)=="undefined")
+        {
+            this.ajax_url = "";
+        }
+
+        if(typeof(this.ajax_form_url)=="undefined")
+        {
+            this.ajax_form_url = "";
+        }
+
+        if(typeof(this.results_url)=="undefined")
+        {
+            this.results_url = "";
+        }
+
+        if(typeof(this.scroll_to_pos)=="undefined")
+        {
+            this.scroll_to_pos = "";
+        }
+
+        if(typeof(this.scroll_on_action)=="undefined")
+        {
+            this.scroll_on_action = "";
+        }
+        if(typeof(this.custom_scroll_to)=="undefined")
+        {
+            this.custom_scroll_to = "";
+        }
+        this.$custom_scroll_to = jQuery(this.custom_scroll_to);
+
+        if(typeof(this.update_ajax_url)=="undefined")
+        {
+            this.update_ajax_url = "";
+        }
+
+        if(typeof(this.debug_mode)=="undefined")
+        {
+            this.debug_mode = "";
+        }
+
+        if(typeof(this.ajax_target_object)=="undefined")
+        {
+            this.ajax_target_object = "";
+        }
+
+        if(typeof(this.template_is_loaded)=="undefined")
+        {
+            this.template_is_loaded = "0";
+        }
+
+        if(typeof(this.auto_count_refresh_mode)=="undefined")
+        {
+            this.auto_count_refresh_mode = "0";
+        }
+
+        this.ajax_links_selector = $this.attr("data-ajax-links-selector");
+
+
+        this.auto_update = $this.attr("data-auto-update");
+        this.inputTimer = 0;
+
+        this.setInfiniteScrollContainer = function()
+        {
+
+            this.is_max_paged = false; //for load more only, once we detect we're at the end set this to true
+            this.use_scroll_loader = $this.attr('data-show-scroll-loader');
+            this.infinite_scroll_container = $this.attr('data-infinite-scroll-container');
+            this.infinite_scroll_trigger_amount = $this.attr('data-infinite-scroll-trigger');
+            this.infinite_scroll_result_class = $this.attr('data-infinite-scroll-result-class');
+            this.$infinite_scroll_container = this.$ajax_results_container;
+
+            if(typeof(this.infinite_scroll_container)=="undefined")
+            {
+                this.infinite_scroll_container = "";
+            }
+            else
+            {
+                this.$infinite_scroll_container = jQuery($this.attr('data-infinite-scroll-container'));
+            }
+
+            if(typeof(this.infinite_scroll_result_class)=="undefined")
+            {
+                this.infinite_scroll_result_class = "";
+            }
+
+            if(typeof(this.use_scroll_loader)=="undefined")
+            {
+                this.use_scroll_loader = 1;
+            }
+
+        };
+        this.setInfiniteScrollContainer();
+
+        /* functions */
+
+        this.reset = function(submit_form)
+        {
+
+            this.resetForm(submit_form);
+            return true;
+        }
+
+        this.inputUpdate = function(delayDuration)
+        {
+            if(typeof(delayDuration)=="undefined")
+            {
+                var delayDuration = 300;
+            }
+
+            self.resetTimer(delayDuration);
+        }
+
+        this.scrollToPos = function() {
+            var offset = 0;
+            var canScroll = true;
+
+            if(self.is_ajax==1)
+            {
+                if(self.scroll_to_pos=="window")
+                {
+                    offset = 0;
+
+                }
+                else if(self.scroll_to_pos=="form")
+                {
+                    offset = $this.offset().top;
+                }
+                else if(self.scroll_to_pos=="results")
+                {
+                    if(self.$ajax_results_container.length>0)
+                    {
+                        offset = self.$ajax_results_container.offset().top;
+                    }
+                }
+                else if(self.scroll_to_pos=="custom")
+                {
+                    //custom_scroll_to
+                    if(self.$custom_scroll_to.length>0)
+                    {
+                        offset = self.$custom_scroll_to.offset().top;
+                    }
+                }
+                else
+                {
+                    canScroll = false;
+                }
+
+                if(canScroll)
+                {
+                    $("html, body").stop().animate({
+                        scrollTop: offset
+                    }, "normal", "easeOutQuad" );
+                }
+            }
+
+        };
+
+        this.attachActiveClass = function(){
+
+            //check to see if we are using ajax & auto count
+            //if not, the search form does not get reloaded, so we need to update the sf-option-active class on all fields
+
+            $this.on('change', 'input[type="radio"], input[type="checkbox"], select', function(e)
+            {
+                var $cthis = $(this);
+                var $cthis_parent = $cthis.closest("li[data-sf-field-name]");
+                var this_tag = $cthis.prop("tagName").toLowerCase();
+                var input_type = $cthis.attr("type");
+                var parent_tag = $cthis_parent.prop("tagName").toLowerCase();
+
+                if((this_tag=="input")&&((input_type=="radio")||(input_type=="checkbox")) && (parent_tag=="li"))
+                {
+                    var $all_options = $cthis_parent.parent().find('li');
+                    var $all_options_fields = $cthis_parent.parent().find('input:checked');
+
+                    $all_options.removeClass("sf-option-active");
+                    $all_options_fields.each(function(){
+
+                        var $parent = $(this).closest("li");
+                        $parent.addClass("sf-option-active");
+
+                    });
+
+                }
+                else if(this_tag=="select")
+                {
+                    var $all_options = $cthis.children();
+                    $all_options.removeClass("sf-option-active");
+                    var this_val = $cthis.val();
+
+                    var this_arr_val = (typeof this_val == 'string' || this_val instanceof String) ? [this_val] : this_val;
+
+                    $(this_arr_val).each(function(i, value){
+                        $cthis.find("option[value='"+value+"']").addClass("sf-option-active");
+                    });
+
+
+                }
+            });
+
+        };
+        this.initAutoUpdateEvents = function(){
+
+            /* auto update */
+            if((self.auto_update==1)||(self.auto_count_refresh_mode==1))
+            {
+                $this.on('change', 'input[type="radio"], input[type="checkbox"], select', function(e) {
+                    self.inputUpdate(200);
+                });
+
+                $this.on('input', 'input[type="number"]', function(e) {
+                    self.inputUpdate(800);
+                });
+
+                var $textInput = $this.find('input[type="text"]:not(.sf-datepicker)');
+                var lastValue = $textInput.val();
+
+                $this.on('input', 'input[type="text"]:not(.sf-datepicker)', function()
+                {
+                    if(lastValue!=$textInput.val())
+                    {
+                        self.inputUpdate(1200);
+                    }
+
+                    lastValue = $textInput.val();
+                });
+
+
+                $this.on('keypress', 'input[type="text"]:not(.sf-datepicker)', function(e)
+                {
+                    if (e.which == 13){
+
+                        e.preventDefault();
+                        self.submitForm();
+                        return false;
+                    }
+
+                });
+
+                //$this.on('input', 'input.sf-datepicker', self.dateInputType);
+
+            }
+        };
+
+        //this.initAutoUpdateEvents();
+
+
+        this.clearTimer = function()
+        {
+            clearTimeout(self.inputTimer);
+        };
+        this.resetTimer = function(delayDuration)
+        {
+            clearTimeout(self.inputTimer);
+            self.inputTimer = setTimeout(self.formUpdated, delayDuration);
+
+        };
+
+        this.addDatePickers = function()
+        {
+            var $date_picker = $this.find(".sf-datepicker");
+
+            if($date_picker.length>0)
+            {
+                $date_picker.each(function(){
+
+                    var $this = $(this);
+                    var dateFormat = "";
+                    var dateDropdownYear = false;
+                    var dateDropdownMonth = false;
+
+                    var $closest_date_wrap = $this.closest(".sf_date_field");
+                    if($closest_date_wrap.length>0)
+                    {
+                        dateFormat = $closest_date_wrap.attr("data-date-format");
+
+                        if($closest_date_wrap.attr("data-date-use-year-dropdown")==1)
+                        {
+                            dateDropdownYear = true;
+                        }
+                        if($closest_date_wrap.attr("data-date-use-month-dropdown")==1)
+                        {
+                            dateDropdownMonth = true;
+                        }
+                    }
+
+                    var datePickerOptions = {
+                        inline: true,
+                        showOtherMonths: true,
+                        onSelect: function(e, from_field){ self.dateSelect(e, from_field, $(this)); },
+                        dateFormat: dateFormat,
+
+                        changeMonth: dateDropdownMonth,
+                        changeYear: dateDropdownYear
+                    };
+
+                    if(self.is_rtl==1)
+                    {
+                        datePickerOptions.direction = "rtl";
+                    }
+
+                    $this.datepicker(datePickerOptions);
+
+                    if(self.lang_code!="")
+                    {
+                        $.datepicker.setDefaults(
+                            $.extend(
+                                {'dateFormat':dateFormat},
+                                $.datepicker.regional[ self.lang_code]
+                            )
+                        );
+
+                    }
+                    else
+                    {
+                        $.datepicker.setDefaults(
+                            $.extend(
+                                {'dateFormat':dateFormat},
+                                $.datepicker.regional["en"]
+                            )
+                        );
+
+                    }
+
+                });
+
+                if($('.ll-skin-melon').length==0){
+
+                    $date_picker.datepicker('widget').wrap('<div class="ll-skin-melon searchandfilter-date-picker"/>');
+                }
+
+            }
+        };
+
+        this.dateSelect = function(e, from_field, $this)
+        {
+            var $input_field = $(from_field.input.get(0));
+            var $this = $(this);
+
+            var $date_fields = $input_field.closest('[data-sf-field-input-type="daterange"], [data-sf-field-input-type="date"]');
+            $date_fields.each(function(e, index){
+                
+                var $tf_date_pickers = $(this).find(".sf-datepicker");
+                var no_date_pickers = $tf_date_pickers.length;
+                
+                if(no_date_pickers>1)
+                {
+                    //then it is a date range, so make sure both fields are filled before updating
+                    var dp_counter = 0;
+                    var dp_empty_field_count = 0;
+                    $tf_date_pickers.each(function(){
+
+                        if($(this).val()=="")
+                        {
+                            dp_empty_field_count++;
+                        }
+
+                        dp_counter++;
+                    });
+
+                    if(dp_empty_field_count==0)
+                    {
+                        self.inputUpdate(1);
+                    }
+                }
+                else
+                {
+                    self.inputUpdate(1);
+                }
+
+            });
+        };
+
+        this.addRangeSliders = function()
+        {
+            var $meta_range = $this.find(".sf-meta-range-slider");
+
+            if($meta_range.length>0)
+            {
+                $meta_range.each(function(){
+
+                    var $this = $(this);
+                    var min = $this.attr("data-min");
+                    var max = $this.attr("data-max");
+                    var smin = $this.attr("data-start-min");
+                    var smax = $this.attr("data-start-max");
+                    var display_value_as = $this.attr("data-display-values-as");
+                    var step = $this.attr("data-step");
+                    var $start_val = $this.find('.sf-range-min');
+                    var $end_val = $this.find('.sf-range-max');
+
+
+                    var decimal_places = $this.attr("data-decimal-places");
+                    var thousand_seperator = $this.attr("data-thousand-seperator");
+                    var decimal_seperator = $this.attr("data-decimal-seperator");
+
+                    var field_format = wNumb({
+                        mark: decimal_seperator,
+                        decimals: parseFloat(decimal_places),
+                        thousand: thousand_seperator
+                    });
+
+
+
+                    var min_unformatted = parseFloat(smin);
+                    var min_formatted = field_format.to(parseFloat(smin));
+                    var max_formatted = field_format.to(parseFloat(smax));
+                    var max_unformatted = parseFloat(smax);
+                    //alert(min_formatted);
+                    //alert(max_formatted);
+                    //alert(display_value_as);
+
+
+                    if(display_value_as=="textinput")
+                    {
+                        $start_val.val(min_formatted);
+                        $end_val.val(max_formatted);
+                    }
+                    else if(display_value_as=="text")
+                    {
+                        $start_val.html(min_formatted);
+                        $end_val.html(max_formatted);
+                    }
+
+
+                    var noUIOptions = {
+                        range: {
+                            'min': [ parseFloat(min) ],
+                            'max': [ parseFloat(max) ]
+                        },
+                        start: [min_formatted, max_formatted],
+                        handles: 2,
+                        connect: true,
+                        step: parseFloat(step),
+
+                        behaviour: 'extend-tap',
+                        format: field_format
+                    };
+
+
+
+                    if(self.is_rtl==1)
+                    {
+                        noUIOptions.direction = "rtl";
+                    }
+
+                    var slider_object = $(this).find(".meta-slider")[0];
+
+                    if( "undefined" !== typeof( slider_object.noUiSlider ) ) {
+                        //destroy if it exists.. this means somehow another instance had initialised it..
+                        slider_object.noUiSlider.destroy();
+                    }
+
+                    noUiSlider.create(slider_object, noUIOptions);
+
+                    $start_val.off();
+                    $start_val.on('change', function(){
+                        slider_object.noUiSlider.set([$(this).val(), null]);
+                    });
+
+                    $end_val.off();
+                    $end_val.on('change', function(){
+                        slider_object.noUiSlider.set([null, $(this).val()]);
+                    });
+
+                    //$start_val.html(min_formatted);
+                    //$end_val.html(max_formatted);
+
+                    slider_object.noUiSlider.off('update');
+                    slider_object.noUiSlider.on('update', function( values, handle ) {
+
+                        var slider_start_val  = min_formatted;
+                        var slider_end_val  = max_formatted;
+
+                        var value = values[handle];
+
+
+                        if ( handle ) {
+                            max_formatted = value;
+                        } else {
+                            min_formatted = value;
+                        }
+
+                        if(display_value_as=="textinput")
+                        {
+                            $start_val.val(min_formatted);
+                            $end_val.val(max_formatted);
+                        }
+                        else if(display_value_as=="text")
+                        {
+                            $start_val.html(min_formatted);
+                            $end_val.html(max_formatted);
+                        }
+
+
+                        //i think the function that builds the URL needs to decode the formatted string before adding to the url
+                        if((self.auto_update==1)||(self.auto_count_refresh_mode==1))
+                        {
+                            //only try to update if the values have actually changed
+                            if((slider_start_val!=min_formatted)||(slider_end_val!=max_formatted)) {
+
+                                self.inputUpdate(800);
+                            }
+
+
+                        }
+
+                    });
+
+                });
+
+                self.clearTimer(); //ignore any changes recently made by the slider (this was just init shouldn't count as an update event)
+            }
+        };
+
+        this.init = function(keep_pagination)
+        {
+            if(typeof(keep_pagination)=="undefined")
+            {
+                var keep_pagination = false;
+            }
+
+            this.initAutoUpdateEvents();
+            this.attachActiveClass();
+
+            this.addDatePickers();
+            this.addRangeSliders();
+
+            //init combo boxes
+            var $combobox = $this.find("select[data-combobox='1']");
+
+            if($combobox.length>0)
+            {
+                $combobox.each(function(index ){
+                    var $thiscb = $( this );
+                    var nrm = $thiscb.attr("data-combobox-nrm");
+
+                    if (typeof $thiscb.chosen != "undefined")
+                    {
+                        var chosenoptions = {
+                            search_contains: true
+                        };
+
+                        if((typeof(nrm)!=="undefined")&&(nrm)){
+                            chosenoptions.no_results_text = nrm;
+                        }
+                        // safe to use the function
+                        //search_contains
+                        if(self.is_rtl==1)
+                        {
+                            $thiscb.addClass("chosen-rtl");
+                        }
+
+                        $thiscb.chosen(chosenoptions);
+                    }
+                    else
+                    {
+
+                        var select2options = {};
+
+                        if(self.is_rtl==1)
+                        {
+                            select2options.dir = "rtl";
+                        }
+                        if((typeof(nrm)!=="undefined")&&(nrm)){
+                            select2options.language= {
+                                "noResults": function(){
+                                    return nrm;
+                                }
+                            };
+                        }
+
+                        $thiscb.select2(select2options);
+                    }
+
+                });
+
+
+            }
+
+            self.isSubmitting = false;
+
+            //if ajax is enabled init the pagination
+            if(self.is_ajax==1)
+            {
+                self.setupAjaxPagination();
+            }
+
+            $this.on("submit", this.submitForm);
+
+            self.initWooCommerceControls(); //woocommerce orderby
+
+            if(keep_pagination==false)
+            {
+                self.last_submit_query_params = self.getUrlParams(false);
+            }
+        }
+
+        this.onWindowScroll = function(event)
+        {
+            if((!self.is_loading_more) && (!self.is_max_paged))
+            {
+                var window_scroll = $(window).scrollTop();
+                var window_scroll_bottom = $(window).scrollTop() + $(window).height();
+                var scroll_offset = parseInt(self.infinite_scroll_trigger_amount);
+
+                if(self.$infinite_scroll_container.length==1)
+                {
+                    var results_scroll_bottom = self.$infinite_scroll_container.offset().top + self.$infinite_scroll_container.height();
+
+                    var offset = (self.$infinite_scroll_container.offset().top + self.$infinite_scroll_container.height()) - window_scroll;
+
+                    if(window_scroll_bottom > results_scroll_bottom + scroll_offset)
+                    {
+                        self.loadMoreResults();
+                    }
+                    else
+                    {//dont load more
+
+                    }
+                }
+            }
+        }
+
+        this.stripQueryStringAndHashFromPath = function(url) {
+            return url.split("?")[0].split("#")[0];
+        }
+
+        this.gup = function( name, url ) {
+            if (!url) url = location.href
+            name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+            var regexS = "[\\?&]"+name+"=([^&#]*)";
+            var regex = new RegExp( regexS );
+            var results = regex.exec( url );
+            return results == null ? null : results[1];
+        };
+
+
+        this.getUrlParams = function(keep_pagination, type, exclude)
+        {
+            if(typeof(keep_pagination)=="undefined")
+            {
+                var keep_pagination = true;
+            }
+
+            if(typeof(type)=="undefined")
+            {
+                var type = "";
+            }
+
+            var url_params_str = "";
+
+            // get all params from fields
+            var url_params_array = process_form.getUrlParams(self);
+
+            var length = Object.keys(url_params_array).length;
+            var count = 0;
+
+            if(typeof(exclude)!="undefined") {
+                if (url_params_array.hasOwnProperty(exclude)) {
+                    length--;
+                }
+            }
+
+            if(length>0)
+            {
+                for (var k in url_params_array) {
+                    if (url_params_array.hasOwnProperty(k)) {
+
+                        var can_add = true;
+                        if(typeof(exclude)!="undefined")
+                        {
+                            if(k==exclude) {
+                                can_add = false;
+                            }
+                        }
+
+                        if(can_add) {
+                            url_params_str += k + "=" + url_params_array[k];
+
+                            if (count < length - 1) {
+                                url_params_str += "&";
+                            }
+
+                            count++;
+                        }
+                    }
+                }
+            }
+
+            var query_params = "";
+
+            //form params as url query string
+            var form_params = url_params_str;
+
+            //get url params from the form itself (what the user has selected)
+            query_params = self.joinUrlParam(query_params, form_params);
+
+            //add pagination
+            if(keep_pagination==true)
+            {
+                var pageNumber = self.$ajax_results_container.attr("data-paged");
+
+                if(typeof(pageNumber)=="undefined")
+                {
+                    pageNumber = 1;
+                }
+
+                if(pageNumber>1)
+                {
+                    query_params = self.joinUrlParam(query_params, "sf_paged="+pageNumber);
+                }
+            }
+
+            //add sfid
+            //query_params = self.joinUrlParam(query_params, "sfid="+self.sfid);
+
+            // loop through any extra params (from ext plugins) and add to the url (ie woocommerce `orderby`)
+            /*var extra_query_param = "";
+             var length = Object.keys(self.extra_query_params).length;
+             var count = 0;
+
+             if(length>0)
+             {
+
+             for (var k in self.extra_query_params) {
+             if (self.extra_query_params.hasOwnProperty(k)) {
+
+             if(self.extra_query_params[k]!="")
+             {
+             extra_query_param = k+"="+self.extra_query_params[k];
+             query_params = self.joinUrlParam(query_params, extra_query_param);
+             }
+             */
+            query_params = self.addQueryParams(query_params, self.extra_query_params.all);
+
+            if(type!="")
+            {
+                //query_params = self.addQueryParams(query_params, self.extra_query_params[type]);
+            }
+
+            return query_params;
+        }
+        this.addQueryParams = function(query_params, new_params)
+        {
+            var extra_query_param = "";
+            var length = Object.keys(new_params).length;
+            var count = 0;
+
+            if(length>0)
+            {
+
+                for (var k in new_params) {
+                    if (new_params.hasOwnProperty(k)) {
+
+                        if(new_params[k]!="")
+                        {
+                            extra_query_param = k+"="+new_params[k];
+                            query_params = self.joinUrlParam(query_params, extra_query_param);
+                        }
+                    }
+                }
+            }
+
+            return query_params;
+        }
+        this.addUrlParam = function(url, string)
+        {
+            var add_params = "";
+
+            if(url!="")
+            {
+                if(url.indexOf("?") != -1)
+                {
+                    add_params += "&";
+                }
+                else
+                {
+                    //url = this.trailingSlashIt(url);
+                    add_params += "?";
+                }
+            }
+
+            if(string!="")
+            {
+
+                return url + add_params + string;
+            }
+            else
+            {
+                return url;
+            }
+        };
+
+        this.joinUrlParam = function(params, string)
+        {
+            var add_params = "";
+
+            if(params!="")
+            {
+                add_params += "&";
+            }
+
+            if(string!="")
+            {
+
+                return params + add_params + string;
+            }
+            else
+            {
+                return params;
+            }
+        };
+
+        this.setAjaxResultsURLs = function(query_params)
+        {
+            if(typeof(self.ajax_results_conf)=="undefined")
+            {
+                self.ajax_results_conf = new Array();
+            }
+
+            self.ajax_results_conf['processing_url'] = "";
+            self.ajax_results_conf['results_url'] = "";
+            self.ajax_results_conf['data_type'] = "";
+
+            //if(self.ajax_url!="")
+            if(self.display_result_method=="shortcode")
+            {//then we want to do a request to the ajax endpoint
+                self.ajax_results_conf['results_url'] = self.addUrlParam(self.results_url, query_params);
+
+                //add lang code to ajax api request, lang code should already be in there for other requests (ie, supplied in the Results URL)
+
+                if(self.lang_code!="")
+                {
+                    //so add it
+                    query_params = self.joinUrlParam(query_params, "lang="+self.lang_code);
+                }
+
+                self.ajax_results_conf['processing_url'] = self.addUrlParam(self.ajax_url, query_params);
+                //self.ajax_results_conf['data_type'] = 'json';
+
+            }
+            else if(self.display_result_method=="post_type_archive")
+            {
+                process_form.setTaxArchiveResultsUrl(self, self.results_url);
+                var results_url = process_form.getResultsUrl(self, self.results_url);
+
+                self.ajax_results_conf['results_url'] = self.addUrlParam(results_url, query_params);
+                self.ajax_results_conf['processing_url'] = self.addUrlParam(results_url, query_params);
+
+            }
+            else if(self.display_result_method=="custom_woocommerce_store")
+            {
+                process_form.setTaxArchiveResultsUrl(self, self.results_url);
+                var results_url = process_form.getResultsUrl(self, self.results_url);
+
+                self.ajax_results_conf['results_url'] = self.addUrlParam(results_url, query_params);
+                self.ajax_results_conf['processing_url'] = self.addUrlParam(results_url, query_params);
+
+            }
+            else
+            {//otherwise we want to pull the results directly from the results page
+                self.ajax_results_conf['results_url'] = self.addUrlParam(self.results_url, query_params);
+                self.ajax_results_conf['processing_url'] = self.addUrlParam(self.ajax_url, query_params);
+                //self.ajax_results_conf['data_type'] = 'html';
+            }
+
+            self.ajax_results_conf['processing_url'] = self.addQueryParams(self.ajax_results_conf['processing_url'], self.extra_query_params['ajax']);
+
+            self.ajax_results_conf['data_type'] = self.ajax_data_type;
+        };
+
+
+
+        this.updateLoaderTag = function($object, tagName) {
+
+            var $parent;
+
+            if(self.infinite_scroll_result_class!="")
+            {
+                $parent = self.$infinite_scroll_container.find(self.infinite_scroll_result_class).last().parent();
+            }
+            else
+            {
+                $parent = self.$infinite_scroll_container;
+            }
+
+            var tagName = $parent.prop("tagName");
+
+            var tagType = 'div';
+            if( ( tagName.toLowerCase() == 'ol' ) || ( tagName.toLowerCase() == 'ul' ) ){
+                tagType = 'li';
+            }
+
+            var $new = $('<'+tagType+' />').html($object.html());
+            var attributes = $object.prop("attributes");
+
+            // loop through <select> attributes and apply them on <div>
+            $.each(attributes, function() {
+                $new.attr(this.name, this.value);
+            });
+
+            return $new;
+
+        }
+
+
+        this.loadMoreResults = function()
+        {
+            self.is_loading_more = true;
+
+            //trigger start event
+            var event_data = {
+                sfid: self.sfid,
+                targetSelector: self.ajax_target_attr,
+                type: "load_more",
+                object: self
+            };
+
+            self.triggerEvent("sf:ajaxstart", event_data);
+            process_form.setTaxArchiveResultsUrl(self, self.results_url);
+            
+            var query_params = self.getUrlParams(true);
+            self.last_submit_query_params = self.getUrlParams(false); //grab a copy of hte URL params without pagination already added
+
+            var ajax_processing_url = "";
+            var ajax_results_url = "";
+            var data_type = "";
+
+
+            //now add the new pagination
+            var next_paged_number = this.current_paged + 1;
+            query_params = self.joinUrlParam(query_params, "sf_paged="+next_paged_number);
+
+            self.setAjaxResultsURLs(query_params);
+            ajax_processing_url = self.ajax_results_conf['processing_url'];
+            ajax_results_url = self.ajax_results_conf['results_url'];
+            data_type = self.ajax_results_conf['data_type'];
+
+            //abort any previous ajax requests
+            if(self.last_ajax_request)
+            {
+                self.last_ajax_request.abort();
+            }
+
+            if(self.use_scroll_loader==1)
+            {
+                var $loader = $('<div/>',{
+                    'class': 'search-filter-scroll-loading'
+                });//.appendTo(self.$ajax_results_container);
+
+                $loader = self.updateLoaderTag($loader);
+
+                self.infiniteScrollAppend($loader);
+            }
+
+            self.last_ajax_request = $.get(ajax_processing_url, function(data, status, request)
+            {
+                self.current_paged++;
+                self.last_ajax_request = null;
+
+                /* scroll */
+                //self.scrollResults();
+
+                //updates the resutls & form html
+                self.addResults(data, data_type);
+
+            }, data_type).fail(function(jqXHR, textStatus, errorThrown)
+            {
+                var data = {};
+                data.sfid = self.sfid;
+                data.object = self;
+                data.targetSelector = self.ajax_target_attr;
+                data.ajaxURL = ajax_processing_url;
+                data.jqXHR = jqXHR;
+                data.textStatus = textStatus;
+                data.errorThrown = errorThrown;
+                self.triggerEvent("sf:ajaxerror", data);
+
+            }).always(function()
+            {
+                var data = {};
+                data.sfid = self.sfid;
+                data.targetSelector = self.ajax_target_attr;
+                data.object = self;
+
+                if(self.use_scroll_loader==1)
+                {
+                    $loader.detach();
+                }
+
+                self.is_loading_more = false;
+
+                self.triggerEvent("sf:ajaxfinish", data);
+            });
+
+        }
+        this.fetchAjaxResults = function()
+        {
+            //trigger start event
+            var event_data = {
+                sfid: self.sfid,
+                targetSelector: self.ajax_target_attr,
+                type: "load_results",
+                object: self
+            };
+
+            self.triggerEvent("sf:ajaxstart", event_data);
+
+            //refocus any input fields after the form has been updated
+            var $last_active_input_text = $this.find('input[type="text"]:focus').not(".sf-datepicker");
+            if($last_active_input_text.length==1)
+            {
+                var last_active_input_text = $last_active_input_text.attr("name");
+            }
+
+            $this.addClass("search-filter-disabled");
+            process_form.disableInputs(self);
+
+            //fade out results
+            self.$ajax_results_container.animate({ opacity: 0.5 }, "fast"); //loading
+            self.fadeContentAreas( "out" );
+
+            if(self.ajax_action=="pagination")
+            {
+                //need to remove active filter from URL
+
+                //query_params = self.last_submit_query_params;
+
+                //now add the new pagination
+                var pageNumber = self.$ajax_results_container.attr("data-paged");
+
+                if(typeof(pageNumber)=="undefined")
+                {
+                    pageNumber = 1;
+                }
+                process_form.setTaxArchiveResultsUrl(self, self.results_url);
+                query_params = self.getUrlParams(false);
+
+                if(pageNumber>1)
+                {
+                    query_params = self.joinUrlParam(query_params, "sf_paged="+pageNumber);
+                }
+
+            }
+            else if(self.ajax_action=="submit")
+            {
+                var query_params = self.getUrlParams(true);
+                self.last_submit_query_params = self.getUrlParams(false); //grab a copy of hte URL params without pagination already added
+            }
+
+            var ajax_processing_url = "";
+            var ajax_results_url = "";
+            var data_type = "";
+
+            self.setAjaxResultsURLs(query_params);
+            ajax_processing_url = self.ajax_results_conf['processing_url'];
+            ajax_results_url = self.ajax_results_conf['results_url'];
+            data_type = self.ajax_results_conf['data_type'];
+
+
+            //abort any previous ajax requests
+            if(self.last_ajax_request)
+            {
+                self.last_ajax_request.abort();
+            }
+            var ajax_action = self.ajax_action;
+            self.last_ajax_request = $.get(ajax_processing_url, function(data, status, request)
+            {
+                self.last_ajax_request = null;
+
+                //updates the resutls & form html
+                self.updateResults(data, data_type);
+
+                // scroll 
+                // set the var back to what it was before the ajax request nad the form re-init
+                self.ajax_action = ajax_action;
+                self.scrollResults( self.ajax_action );
+
+                /* update URL */
+                //update url before pagination, because we need to do some checks agains the URL for infinite scroll
+                self.updateUrlHistory(ajax_results_url);
+
+                //setup pagination
+                self.setupAjaxPagination();
+
+                self.isSubmitting = false;
+
+                /* user def */
+                self.initWooCommerceControls(); //woocommerce orderby
+
+
+            }, data_type).fail(function(jqXHR, textStatus, errorThrown)
+            {
+                var data = {};
+                data.sfid = self.sfid;
+                data.targetSelector = self.ajax_target_attr;
+                data.object = self;
+                data.ajaxURL = ajax_processing_url;
+                data.jqXHR = jqXHR;
+                data.textStatus = textStatus;
+                data.errorThrown = errorThrown;
+                self.isSubmitting = false;
+                self.triggerEvent("sf:ajaxerror", data);
+
+            }).always(function()
+            {
+                self.$ajax_results_container.stop(true,true).animate({ opacity: 1}, "fast"); //finished loading
+                self.fadeContentAreas( "in" );
+                var data = {};
+                data.sfid = self.sfid;
+                data.targetSelector = self.ajax_target_attr;
+                data.object = self;
+                $this.removeClass("search-filter-disabled");
+                process_form.enableInputs(self);
+
+                //refocus the last active text field
+                if(last_active_input_text!="")
+                {
+                    var $input = [];
+                    self.$fields.each(function(){
+
+                        var $active_input = $(this).find("input[name='"+last_active_input_text+"']");
+                        if($active_input.length==1)
+                        {
+                            $input = $active_input;
+                        }
+
+                    });
+                    if($input.length==1) {
+
+                        $input.focus().val($input.val());
+                        self.focusCampo($input[0]);
+                    }
+                }
+
+                $this.find("input[name='_sf_search']").trigger('focus');
+                self.triggerEvent("sf:ajaxfinish",  data );
+
+            });
+        };
+
+        this.focusCampo = function(inputField){
+            //var inputField = document.getElementById(id);
+            if (inputField != null && inputField.value.length != 0){
+                if (inputField.createTextRange){
+                    var FieldRange = inputField.createTextRange();
+                    FieldRange.moveStart('character',inputField.value.length);
+                    FieldRange.collapse();
+                    FieldRange.select();
+                }else if (inputField.selectionStart || inputField.selectionStart == '0') {
+                    var elemLen = inputField.value.length;
+                    inputField.selectionStart = elemLen;
+                    inputField.selectionEnd = elemLen;
+                }
+                inputField.blur();
+                inputField.focus();
+            } else{
+                if ( inputField ) {
+                    inputField.focus();
+                }
+                
+            }
+        }
+
+        this.triggerEvent = function(eventname, data)
+        {
+            var $event_container = $(".searchandfilter[data-sf-form-id='"+self.sfid+"']");
+            $event_container.trigger(eventname, [ data ]);
+        }
+
+        this.fetchAjaxForm = function()
+        {
+            //trigger start event
+            var event_data = {
+                sfid: self.sfid,
+                targetSelector: self.ajax_target_attr,
+                type: "form",
+                object: self
+            };
+
+            self.triggerEvent("sf:ajaxformstart", [ event_data ]);
+
+            $this.addClass("search-filter-disabled");
+            process_form.disableInputs(self);
+
+            var query_params = self.getUrlParams();
+
+            if(self.lang_code!="")
+            {
+                //so add it
+                query_params = self.joinUrlParam(query_params, "lang="+self.lang_code);
+            }
+
+            var ajax_processing_url = self.addUrlParam(self.ajax_form_url, query_params);
+            var data_type = "json";
+
+
+            //abort any previous ajax requests
+            /*if(self.last_ajax_request)
+             {
+             self.last_ajax_request.abort();
+             }*/
+
+
+            //self.last_ajax_request =
+
+            $.get(ajax_processing_url, function(data, status, request)
+            {
+                //self.last_ajax_request = null;
+
+                //updates the resutls & form html
+                self.updateForm(data, data_type);
+
+
+            }, data_type).fail(function(jqXHR, textStatus, errorThrown)
+            {
+                var data = {};
+                data.sfid = self.sfid;
+                data.targetSelector = self.ajax_target_attr;
+                data.object = self;
+                data.ajaxURL = ajax_processing_url;
+                data.jqXHR = jqXHR;
+                data.textStatus = textStatus;
+                data.errorThrown = errorThrown;
+                self.triggerEvent("sf:ajaxerror", [ data ]);
+
+            }).always(function()
+            {
+                var data = {};
+                data.sfid = self.sfid;
+                data.targetSelector = self.ajax_target_attr;
+                data.object = self;
+
+                $this.removeClass("search-filter-disabled");
+                process_form.enableInputs(self);
+
+                self.triggerEvent("sf:ajaxformfinish", [ data ]);
+            });
+        };
+
+        this.copyListItemsContents = function($list_from, $list_to)
+        {
+            var self = this;
+
+            //copy over child list items
+            var li_contents_array = new Array();
+            var from_attributes = new Array();
+
+            var $from_fields = $list_from.find("> ul > li");
+
+            $from_fields.each(function(i){
+
+                li_contents_array.push($(this).html());
+
+                var attributes = $(this).prop("attributes");
+                from_attributes.push(attributes);
+
+                //var field_name = $(this).attr("data-sf-field-name");
+                //var to_field = $list_to.find("> ul > li[data-sf-field-name='"+field_name+"']");
+
+                //self.copyAttributes($(this), $list_to, "data-sf-");
+
+            });
+
+            var li_it = 0;
+            var $to_fields = $list_to.find("> ul > li");
+            $to_fields.each(function(i){
+                $(this).html(li_contents_array[li_it]);
+
+                var $from_field = $($from_fields.get(li_it));
+
+                var $to_field = $(this);
+                $to_field.removeAttr("data-sf-taxonomy-archive");
+                self.copyAttributes($from_field, $to_field);
+
+                li_it++;
+            });
+
+            /*var $from_fields = $list_from.find(" ul > li");
+             var $to_fields = $list_to.find(" > li");
+             $from_fields.each(function(index, val){
+             if($(this).hasAttribute("data-sf-taxonomy-archive"))
+             {
+
+             }
+             });
+
+             this.copyAttributes($list_from, $list_to);*/
+        }
+
+        this.updateFormAttributes = function($list_from, $list_to)
+        {
+            var from_attributes = $list_from.prop("attributes");
+            // loop through <select> attributes and apply them on <div>
+
+            var to_attributes = $list_to.prop("attributes");
+            $.each(to_attributes, function() {
+                $list_to.removeAttr(this.name);
+            });
+
+            $.each(from_attributes, function() {
+                $list_to.attr(this.name, this.value);
+            });
+
+        }
+
+        this.copyAttributes = function($from, $to, prefix)
+        {
+            if(typeof(prefix)=="undefined")
+            {
+                var prefix = "";
+            }
+
+            var from_attributes = $from.prop("attributes");
+
+            var to_attributes = $to.prop("attributes");
+            $.each(to_attributes, function() {
+
+                if(prefix!="") {
+                    if (this.name.indexOf(prefix) == 0) {
+                        $to.removeAttr(this.name);
+                    }
+                }
+                else
+                {
+                    //$to.removeAttr(this.name);
+                }
+            });
+
+            $.each(from_attributes, function() {
+                $to.attr(this.name, this.value);
+            });
+        }
+
+        this.copyFormAttributes = function($from, $to)
+        {
+            $to.removeAttr("data-current-taxonomy-archive");
+            this.copyAttributes($from, $to);
+
+        }
+
+        this.updateForm = function(data, data_type)
+        {
+            var self = this;
+
+            if(data_type=="json")
+            {//then we did a request to the ajax endpoint, so expect an object back
+
+                if(typeof(data['form'])!=="undefined")
+                {
+                    //remove all events from S&F form
+                    $this.off();
+
+                    //refresh the form (auto count)
+                    self.copyListItemsContents($(data['form']), $this);
+
+                    //re init S&F class on the form
+                    //$this.searchAndFilter();
+
+                    //if ajax is enabled init the pagination
+
+                    this.init(true);
+
+                    if(self.is_ajax==1)
+                    {
+                        self.setupAjaxPagination();
+                    }
+
+
+
+                }
+            }
+
+
+        }
+        this.addResults = function(data, data_type)
+        {
+            var self = this;
+
+            if(data_type=="json")
+            {//then we did a request to the ajax endpoint, so expect an object back
+                //grab the results and load in
+                //self.$ajax_results_container.append(data['results']);
+                self.load_more_html = data['results'];
+            }
+            else if(data_type=="html")
+            {//we are expecting the html of the results page back, so extract the html we need
+
+                var $data_obj = $(data);
+
+                //self.$infinite_scroll_container.append($data_obj.find(self.ajax_target_attr).html());
+                self.load_more_html = $data_obj.find(self.ajax_target_attr).html();
+            }
+
+            var infinite_scroll_end = false;
+
+            if($("<div>"+self.load_more_html+"</div>").find("[data-search-filter-action='infinite-scroll-end']").length>0)
+            {
+                infinite_scroll_end = true;
+            }
+
+            //if there is another selector for infinite scroll, find the contents of that instead
+            if(self.infinite_scroll_container!="")
+            {
+                self.load_more_html = $("<div>"+self.load_more_html+"</div>").find(self.infinite_scroll_container).html();
+            }
+            if(self.infinite_scroll_result_class!="")
+            {
+                var $result_items = $("<div>"+self.load_more_html+"</div>").find(self.infinite_scroll_result_class);
+                var $result_items_container = $('<div/>', {});
+                $result_items_container.append($result_items);
+
+                self.load_more_html = $result_items_container.html();
+            }
+
+            if(infinite_scroll_end)
+            {//we found a data attribute signalling the last page so finish here
+
+                self.is_max_paged = true;
+                self.last_load_more_html = self.load_more_html;
+
+                self.infiniteScrollAppend(self.load_more_html);
+
+            }
+            else if(self.last_load_more_html!==self.load_more_html)
+            {
+                //check to make sure the new html fetched is different
+                self.last_load_more_html = self.load_more_html;
+                self.infiniteScrollAppend(self.load_more_html);
+
+            }
+            else
+            {//we received the same message again so don't add, and tell S&F that we're at the end..
+                self.is_max_paged = true;
+            }
+        }
+
+
+        this.infiniteScrollAppend = function($object)
+        {
+            if(self.infinite_scroll_result_class!="")
+            {
+                self.$infinite_scroll_container.find(self.infinite_scroll_result_class).last().after($object);
+            }
+            else
+            {
+               self.$infinite_scroll_container.append($object);
+            }
+        }
+
+
+        this.updateResults = function(data, data_type)
+        {
+            var self = this;
+
+            if(data_type=="json")
+            {//then we did a request to the ajax endpoint, so expect an object back
+                //grab the results and load in
+                self.$ajax_results_container.html(data['results']);
+
+                if(typeof(data['form'])!=="undefined")
+                {
+                    //remove all events from S&F form
+                    $this.off();
+
+                    //remove pagination
+                    self.removeAjaxPagination();
+
+                    //refresh the form (auto count)
+                    self.copyListItemsContents($(data['form']), $this);
+
+                    //update attributes on form
+                    self.copyFormAttributes($(data['form']), $this);
+
+                    //re init S&F class on the form
+                    $this.searchAndFilter({'isInit': false});
+                }
+                else
+                {
+                    //$this.find("input").removeAttr("disabled");
+                }
+            }
+            else if(data_type=="html") {//we are expecting the html of the results page back, so extract the html we need
+
+                var $data_obj = $(data);
+
+                self.$ajax_results_container.html($data_obj.find(self.ajax_target_attr).html());
+
+                self.updateContentAreas( $data_obj );
+
+                if (self.$ajax_results_container.find(".searchandfilter").length > 0)
+                {//then there are search form(s) inside the results container, so re-init them
+
+                    self.$ajax_results_container.find(".searchandfilter").searchAndFilter();
+                }
+
+                //if the current search form is not inside the results container, then proceed as normal and update the form
+                if(self.$ajax_results_container.find(".searchandfilter[data-sf-form-id='" + self.sfid + "']").length==0) {
+
+                    var $new_search_form = $data_obj.find(".searchandfilter[data-sf-form-id='" + self.sfid + "']");
+
+                    if ($new_search_form.length == 1) {//then replace the search form with the new one
+
+                        //remove all events from S&F form
+                        $this.off();
+
+                        //remove pagination
+                        self.removeAjaxPagination();
+
+                        //refresh the form (auto count)
+                        self.copyListItemsContents($new_search_form, $this);
+
+                        //update attributes on form
+                        self.copyFormAttributes($new_search_form, $this);
+
+                        //re init S&F class on the form
+                        $this.searchAndFilter({'isInit': false});
+
+                    }
+                    else {
+
+                        //$this.find("input").removeAttr("disabled");
+                    }
+                }
+            }
+
+            self.is_max_paged = false; //for infinite scroll
+            self.current_paged = 1; //for infinite scroll
+            self.setInfiniteScrollContainer();
+
+        }
+
+        this.updateContentAreas = function( $html_data ) {
+            
+            // add additional content areas
+            if ( this.ajax_update_sections && this.ajax_update_sections.length ) {
+                for (index = 0; index < this.ajax_update_sections.length; ++index) {
+                    var selector = this.ajax_update_sections[index];
+                    $( selector ).html( $html_data.find( selector ).html() );
+                }
+            }
+        }
+        this.fadeContentAreas = function( direction ) {
+            
+            var opacity = 0.5;
+            if ( direction === "in" ) {
+                opacity = 1;
+            }
+
+            if ( this.ajax_update_sections && this.ajax_update_sections.length ) {
+                for (index = 0; index < this.ajax_update_sections.length; ++index) {
+                    var selector = this.ajax_update_sections[index];
+                    $( selector ).stop(true,true).animate( { opacity: opacity}, "fast" );
+                }
+            }
+           
+            
+        }
+
+        this.removeWooCommerceControls = function(){
+            var $woo_orderby = $('.woocommerce-ordering .orderby');
+            var $woo_orderby_form = $('.woocommerce-ordering');
+
+            $woo_orderby_form.off();
+            $woo_orderby.off();
+        };
+
+        this.addQueryParam = function(name, value, url_type){
+
+            if(typeof(url_type)=="undefined")
+            {
+                var url_type = "all";
+            }
+            self.extra_query_params[url_type][name] = value;
+
+        };
+
+        this.initWooCommerceControls = function(){
+
+            self.removeWooCommerceControls();
+
+            var $woo_orderby = $('.woocommerce-ordering .orderby');
+            var $woo_orderby_form = $('.woocommerce-ordering');
+
+            var order_val = "";
+            if($woo_orderby.length>0)
+            {
+                order_val = $woo_orderby.val();
+            }
+            else
+            {
+                order_val = self.getQueryParamFromURL("orderby", window.location.href);
+            }
+
+            if(order_val=="menu_order")
+            {
+                order_val = "";
+            }
+
+            if((order_val!="")&&(!!order_val))
+            {
+                self.extra_query_params.all.orderby = order_val;
+            }
+
+
+            $woo_orderby_form.on('submit', function(e)
+            {
+                e.preventDefault();
+                //var form = e.target;
+                return false;
+            });
+
+            $woo_orderby.on("change", function(e)
+            {
+                e.preventDefault();
+
+                var val = $(this).val();
+                if(val=="menu_order")
+                {
+                    val = "";
+                }
+
+                self.extra_query_params.all.orderby = val;
+
+                $this.trigger("submit")
+
+                return false;
+            });
+
+        }
+
+        this.scrollResults = function()
+        {
+            var self = this;
+            if((self.scroll_on_action==self.ajax_action)||(self.scroll_on_action=="all"))
+            {
+                self.scrollToPos(); //scroll the window if it has been set
+                //self.ajax_action = "";
+            }
+        }
+
+        this.updateUrlHistory = function(ajax_results_url)
+        {
+            var self = this;
+
+            var use_history_api = 0;
+            if (window.history && window.history.pushState)
+            {
+                use_history_api = $this.attr("data-use-history-api");
+            }
+
+            if((self.update_ajax_url==1)&&(use_history_api==1))
+            {
+                //now check if the browser supports history state push :)
+                if (window.history && window.history.pushState)
+                {
+                    history.pushState(null, null, ajax_results_url);
+                }
+            }
+        }
+        this.removeAjaxPagination = function()
+        {
+            var self = this;
+
+            if(typeof(self.ajax_links_selector)!="undefined")
+            {
+                var $ajax_links_object = jQuery(self.ajax_links_selector);
+
+                if($ajax_links_object.length>0)
+                {
+                    $ajax_links_object.off();
+                }
+            }
+        }
+
+        this.canFetchAjaxResults = function(fetch_type)
+        {
+            if(typeof(fetch_type)=="undefined")
+            {
+                var fetch_type = "";
+            }
+
+            var self = this;
+            var fetch_ajax_results = false;
+
+            if(self.is_ajax==1)
+            {//then we will ajax submit the form
+
+                //and if we can find the results container
+                if(self.$ajax_results_container.length==1)
+                {
+                    fetch_ajax_results = true;
+                }
+
+                var results_url = self.results_url;  //
+                var results_url_encoded = '';  //
+                var current_url = window.location.href;
+
+                //ignore # and everything after
+                var hash_pos = window.location.href.indexOf('#');
+                if(hash_pos!==-1){
+                    current_url = window.location.href.substr(0, window.location.href.indexOf('#'));
+                }
+
+                if( ( ( self.display_result_method=="custom_woocommerce_store" ) || ( self.display_result_method=="post_type_archive" ) ) && ( self.enable_taxonomy_archives == 1 ) )
+                {
+                    if( self.current_taxonomy_archive !=="" )
+                    {
+                        fetch_ajax_results = true;
+                        return fetch_ajax_results;
+                    }
+
+                    /*var results_url = process_form.getResultsUrl(self, self.results_url);
+                     var active_tax = process_form.getActiveTax();
+                     var query_params = self.getUrlParams(true, '', active_tax);*/
+                }
+
+
+
+
+                //now see if we are on the URL we think...
+                var url_parts = current_url.split("?");
+                var url_base = "";
+
+                if(url_parts.length>0)
+                {
+                    url_base = url_parts[0];
+                }
+                else {
+                    url_base = current_url;
+                }
+
+                var lang = self.getQueryParamFromURL("lang", window.location.href);
+                if((typeof(lang)!=="undefined")&&(lang!==null))
+                {
+                    url_base = self.addUrlParam(url_base, "lang="+lang);
+                }
+
+                var sfid = self.getQueryParamFromURL("sfid", window.location.href);
+
+                //if sfid is a number
+                if(Number(parseFloat(sfid)) == sfid)
+                {
+                    url_base = self.addUrlParam(url_base, "sfid="+sfid);
+                }
+
+                //if any of the 3 conditions are true, then its good to go
+                // - 1 | if the url base == results_url
+                // - 2 | if url base+ "/"  == results_url - in case of user error in the results URL
+
+                //trim any trailing slash for easier comparison:
+                url_base = url_base.replace(/\/$/, '');
+                results_url = results_url.replace(/\/$/, '');
+                results_url_encoded = encodeURI(results_url.replace(/\/$/, ''));
+
+                var current_url_contains_results_url = -1;
+                if((url_base==results_url)||(url_base.toLowerCase()==results_url_encoded.toLowerCase())){
+                    current_url_contains_results_url = 1;
+                }
+
+                if(self.only_results_ajax==1)
+                {//if a user has chosen to only allow ajax on results pages (default behaviour)
+
+                    if( current_url_contains_results_url > -1)
+                    {//this means the current URL contains the results url, which means we can do ajax
+                        fetch_ajax_results = true;
+                    }
+                    else
+                    {
+                        fetch_ajax_results = false;
+                    }
+                }
+                else
+                {
+                    if(fetch_type=="pagination")
+                    {
+                        if( current_url_contains_results_url > -1)
+                        {//this means the current URL contains the results url, which means we can do ajax
+
+                        }
+                        else
+                        {
+                            //don't ajax pagination when not on a S&F page
+                            fetch_ajax_results = false;
+                        }
+
+
+                    }
+
+                }
+            }
+
+            return fetch_ajax_results;
+        }
+
+        this.setupAjaxPagination = function()
+        {
+            //infinite scroll
+            if(this.pagination_type==="infinite_scroll")
+            {
+                var infinite_scroll_end = false;
+                if(self.$ajax_results_container.find("[data-search-filter-action='infinite-scroll-end']").length>0)
+                {
+                    infinite_scroll_end = true;
+                    self.is_max_paged = true;
+                }
+
+                if(parseInt(this.instance_number)===1) {
+                    $(window).off("scroll", self.onWindowScroll);
+
+                    if (self.canFetchAjaxResults("pagination")) {
+                        $(window).on("scroll", self.onWindowScroll);
+                    }
+                }
+            }
+            else if(typeof(self.ajax_links_selector)=="undefined") {
+                return;
+            }
+            else {
+                $(document).off('click', self.ajax_links_selector);
+                $(document).off(self.ajax_links_selector);
+                $(self.ajax_links_selector).off();
+
+                $(document).on('click', self.ajax_links_selector, function(e){
+
+                    if(self.canFetchAjaxResults("pagination"))
+                    {
+                        e.preventDefault();
+
+                        var link = jQuery(this).attr('href');
+                        self.ajax_action = "pagination";
+
+                        var pageNumber = self.getPagedFromURL(link);
+
+                        self.$ajax_results_container.attr("data-paged", pageNumber);
+
+                        self.fetchAjaxResults();
+
+                        return false;
+                    }
+                });
+            }
+        };
+
+        this.getPagedFromURL = function(URL){
+
+            var pagedVal = 1;
+            //first test to see if we have "/page/4/" in the URL
+            var tpVal = self.getQueryParamFromURL("sf_paged", URL);
+            if((typeof(tpVal)=="string")||(typeof(tpVal)=="number"))
+            {
+                pagedVal = tpVal;
+            }
+
+            return pagedVal;
+        };
+
+        this.getQueryParamFromURL = function(name, URL){
+
+            var qstring = "?"+URL.split('?')[1];
+            if(typeof(qstring)!="undefined")
+            {
+                var val = decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(qstring)||[,""])[1].replace(/\+/g, '%20'))||null;
+                return val;
+            }
+            return "";
+        };
+
+
+
+        this.formUpdated = function(e){
+
+            //e.preventDefault();
+            if(self.auto_update==1) {
+                self.submitForm();
+            }
+            else if((self.auto_update==0)&&(self.auto_count_refresh_mode==1))
+            {
+                self.formUpdatedFetchAjax();
+            }
+
+            return false;
+        };
+
+        this.formUpdatedFetchAjax = function(){
+
+            //loop through all the fields and build the URL
+            self.fetchAjaxForm();
+
+
+            return false;
+        };
+
+        //make any corrections/updates to fields before the submit completes
+        this.setFields = function(e){
+
+            //if(self.is_ajax==0) {
+
+                //sometimes the form is submitted without the slider yet having updated, and as we get our values from
+                //the slider and not inputs, we need to check it if needs to be set
+                //only occurs if ajax is off, and autosubmit on
+                self.$fields.each(function() {
+
+                    var $field = $(this);
+
+                    var range_display_values = $field.find('.sf-meta-range-slider').attr("data-display-values-as");//data-display-values-as="text"
+
+                    if(range_display_values==="textinput") {
+
+                        if($field.find(".meta-slider").length>0){
+
+                        }
+                        $field.find(".meta-slider").each(function (index) {
+
+                            var slider_object = $(this)[0];
+                            var $slider_el = $(this).closest(".sf-meta-range-slider");
+                            //var minVal = $slider_el.attr("data-min");
+                            //var maxVal = $slider_el.attr("data-max");
+                            var minVal = $slider_el.find(".sf-range-min").val();
+                            var maxVal = $slider_el.find(".sf-range-max").val();
+                            slider_object.noUiSlider.set([minVal, maxVal]);
+
+                        });
+                    }
+                });
+            //}
+
+        }
+
+        //submit
+        this.submitForm = function(e){
+
+            //loop through all the fields and build the URL
+            if(self.isSubmitting == true) {
+                return false;
+            }
+
+            self.setFields();
+            self.clearTimer();
+
+            self.isSubmitting = true;
+
+            process_form.setTaxArchiveResultsUrl(self, self.results_url);
+
+            self.$ajax_results_container.attr("data-paged", 1); //init paged
+
+            if(self.canFetchAjaxResults())
+            {//then we will ajax submit the form
+
+                self.ajax_action = "submit"; //so we know it wasn't pagination
+                self.fetchAjaxResults();
+            }
+            else
+            {//then we will simply redirect to the Results URL
+
+                var results_url = process_form.getResultsUrl(self, self.results_url);
+                var query_params = self.getUrlParams(true, '');
+                results_url = self.addUrlParam(results_url, query_params);
+
+                window.location.href = results_url;
+            }
+
+            return false;
+        };
+        this.resetForm = function(submit_form)
+        {
+            //unset all fields
+            self.$fields.each(function(){
+
+                var $field = $(this);
+				
+				$field.removeAttr("data-sf-taxonomy-archive");
+				
+                //standard field types
+                $field.find("select:not([multiple='multiple']) > option:first-child").prop("selected", true);
+                $field.find("select[multiple='multiple'] > option").prop("selected", false);
+                $field.find("input[type='checkbox']").prop("checked", false);
+                $field.find("> ul > li:first-child input[type='radio']").prop("checked", true);
+                $field.find("input[type='text']").val("");
+                $field.find(".sf-option-active").removeClass("sf-option-active");
+                $field.find("> ul > li:first-child input[type='radio']").parent().addClass("sf-option-active"); //re add active class to first "default" option
+
+                //number range - 2 number input fields
+                $field.find("input[type='number']").each(function(index){
+
+                    var $thisInput = $(this);
+
+                    if($thisInput.parent().parent().hasClass("sf-meta-range")) {
+
+                        if(index==0) {
+                            $thisInput.val($thisInput.attr("min"));
+                        }
+                        else if(index==1) {
+                            $thisInput.val($thisInput.attr("max"));
+                        }
+                    }
+
+                });
+
+                //meta / numbers with 2 inputs (from / to fields) - second input must be reset to max value
+                var $meta_select_from_to = $field.find(".sf-meta-range-select-fromto");
+
+                if($meta_select_from_to.length>0) {
+
+                    var start_min = $meta_select_from_to.attr("data-min");
+                    var start_max = $meta_select_from_to.attr("data-max");
+
+                    $meta_select_from_to.find("select").each(function(index){
+
+                        var $thisInput = $(this);
+
+                        if(index==0) {
+
+                            $thisInput.val(start_min);
+                        }
+                        else if(index==1) {
+                            $thisInput.val(start_max);
+                        }
+
+                    });
+                }
+
+                var $meta_radio_from_to = $field.find(".sf-meta-range-radio-fromto");
+
+                if($meta_radio_from_to.length>0)
+                {
+                    var start_min = $meta_radio_from_to.attr("data-min");
+                    var start_max = $meta_radio_from_to.attr("data-max");
+
+                    var $radio_groups = $meta_radio_from_to.find('.sf-input-range-radio');
+
+                    $radio_groups.each(function(index){
+
+
+                        var $radios = $(this).find(".sf-input-radio");
+                        $radios.prop("checked", false);
+
+                        if(index==0)
+                        {
+                            $radios.filter('[value="'+start_min+'"]').prop("checked", true);
+                        }
+                        else if(index==1)
+                        {
+                            $radios.filter('[value="'+start_max+'"]').prop("checked", true);
+                        }
+
+                    });
+
+                }
+
+                //number slider - noUiSlider
+                $field.find(".meta-slider").each(function(index){
+
+                    var slider_object = $(this)[0];
+                    /*var slider_object = $container.find(".meta-slider")[0];
+                     var slider_val = slider_object.noUiSlider.get();*/
+
+                    var $slider_el = $(this).closest(".sf-meta-range-slider");
+                    var minVal = $slider_el.attr("data-min");
+                    var maxVal = $slider_el.attr("data-max");
+                    slider_object.noUiSlider.set([minVal, maxVal]);
+
+                });
+
+                //need to see if any are combobox and act accordingly
+                var $combobox = $field.find("select[data-combobox='1']");
+                if($combobox.length>0)
+                {
+                    if (typeof $combobox.chosen != "undefined")
+                    {
+                        $combobox.trigger("chosen:updated"); //for chosen only
+                    }
+                    else
+                    {
+                        $combobox.val('');
+                        $combobox.trigger('change.select2');
+                    }
+                }
+
+
+            });
+            self.clearTimer();
+
+
+
+            if(submit_form=="always")
+            {
+                self.submitForm();
+            }
+            else if(submit_form=="never")
+            {
+                if(this.auto_count_refresh_mode==1)
+                {
+                    self.formUpdatedFetchAjax();
+                }
+            }
+            else if(submit_form=="auto")
+            {
+                if(this.auto_update==true)
+                {
+                    self.submitForm();
+                }
+                else
+                {
+                    if(this.auto_count_refresh_mode==1)
+                    {
+                        self.formUpdatedFetchAjax();
+                    }
+                }
+            }
+
+        };
+
+        this.init();
+
+        var event_data = {};
+        event_data.sfid = self.sfid;
+        event_data.targetSelector = self.ajax_target_attr;
+        event_data.object = this;
+        if(opts.isInit)
+        {
+            self.triggerEvent("sf:init", event_data);
+        }
+
+    });
+};
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 //# sourceMappingURL=data:application/json;charset:utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9wdWJsaWMvYXNzZXRzL2pzL2luY2x1ZGVzL3BsdWdpbi5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EiLCJmaWxlIjoiZ2VuZXJhdGVkLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXNDb250ZW50IjpbIlxyXG52YXIgJCBcdFx0XHRcdD0gKHR5cGVvZiB3aW5kb3cgIT09IFwidW5kZWZpbmVkXCIgPyB3aW5kb3dbJ2pRdWVyeSddIDogdHlwZW9mIGdsb2JhbCAhPT0gXCJ1bmRlZmluZWRcIiA/IGdsb2JhbFsnalF1ZXJ5J10gOiBudWxsKTtcclxudmFyIHN0YXRlIFx0XHRcdD0gcmVxdWlyZSgnLi9zdGF0ZScpO1xyXG52YXIgcHJvY2Vzc19mb3JtIFx0PSByZXF1aXJlKCcuL3Byb2Nlc3NfZm9ybScpO1xyXG52YXIgbm9VaVNsaWRlclx0XHQ9IHJlcXVpcmUoJ25vdWlzbGlkZXInKTtcclxuLy92YXIgY29va2llcyAgICAgICAgID0gcmVxdWlyZSgnanMtY29va2llJyk7XHJcbnZhciB0aGlyZFBhcnR5ICAgICAgPSByZXF1aXJlKCcuL3RoaXJkcGFydHknKTtcclxuXHJcbndpbmRvdy5zZWFyY2hBbmRGaWx0ZXIgPSB7XHJcbiAgICBleHRlbnNpb25zOiBbXSxcclxuICAgIHJlZ2lzdGVyRXh0ZW5zaW9uOiBmdW5jdGlvbiggZXh0ZW5zaW9uTmFtZSApIHtcclxuICAgICAgICB0aGlzLmV4dGVuc2lvbnMucHVzaCggZXh0ZW5zaW9uTmFtZSApO1xyXG4gICAgfVxyXG59O1xyXG5cclxubW9kdWxlLmV4cG9ydHMgPSBmdW5jdGlvbihvcHRpb25zKVxyXG57XHJcbiAgICB2YXIgZGVmYXVsdHMgPSB7XHJcbiAgICAgICAgc3RhcnRPcGVuZWQ6IGZhbHNlLFxyXG4gICAgICAgIGlzSW5pdDogdHJ1ZSxcclxuICAgICAgICBhY3Rpb246IFwiXCJcclxuICAgIH07XHJcblxyXG4gICAgdmFyIG9wdHMgPSBqUXVlcnkuZXh0ZW5kKGRlZmF1bHRzLCBvcHRpb25zKTtcclxuICAgIFxyXG4gICAgdGhpcmRQYXJ0eS5pbml0KCk7XHJcbiAgICBcclxuICAgIC8vbG9vcCB0aHJvdWdoIGVhY2ggaXRlbSBtYXRjaGVkXHJcbiAgICB0aGlzLmVhY2goZnVuY3Rpb24oKVxyXG4gICAge1xyXG5cclxuICAgICAgICB2YXIgJHRoaXMgPSAkKHRoaXMpO1xyXG4gICAgICAgIHZhciBzZWxmID0gdGhpcztcclxuICAgICAgICB0aGlzLnNmaWQgPSAkdGhpcy5hdHRyKFwiZGF0YS1zZi1mb3JtLWlkXCIpO1xyXG5cclxuICAgICAgICBzdGF0ZS5hZGRTZWFyY2hGb3JtKHRoaXMuc2ZpZCwgdGhpcyk7XHJcblxyXG4gICAgICAgIHRoaXMuJGZpZWxkcyA9ICR0aGlzLmZpbmQoXCI+IHVsID4gbGlcIik7IC8vYSByZWZlcmVuY2UgdG8gZWFjaCBmaWVsZHMgcGFyZW50IExJXHJcblxyXG4gICAgICAgIHRoaXMuZW5hYmxlX3RheG9ub215X2FyY2hpdmVzID0gJHRoaXMuYXR0cignZGF0YS10YXhvbm9teS1hcmNoaXZlcycpO1xyXG4gICAgICAgIHRoaXMuY3VycmVudF90YXhvbm9teV9hcmNoaXZlID0gJHRoaXMuYXR0cignZGF0YS1jdXJyZW50LXRheG9ub215LWFyY2hpdmUnKTtcclxuXHJcbiAgICAgICAgaWYodHlwZW9mKHRoaXMuZW5hYmxlX3RheG9ub215X2FyY2hpdmVzKT09XCJ1bmRlZmluZWRcIilcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIHRoaXMuZW5hYmxlX3RheG9ub215X2FyY2hpdmVzID0gXCIwXCI7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIGlmKHR5cGVvZih0aGlzLmN1cnJlbnRfdGF4b25vbXlfYXJjaGl2ZSk9PVwidW5kZWZpbmVkXCIpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICB0aGlzLmN1cnJlbnRfdGF4b25vbXlfYXJjaGl2ZSA9IFwiXCI7XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICBwcm9jZXNzX2Zvcm0uaW5pdChzZWxmLmVuYWJsZV90YXhvbm9teV9hcmNoaXZlcywgc2VsZi5jdXJyZW50X3RheG9ub215X2FyY2hpdmUpO1xyXG4gICAgICAgIC8vcHJvY2Vzc19mb3JtLnNldFRheEFyY2hpdmVSZXN1bHRzVXJsKHNlbGYpO1xyXG4gICAgICAgIHByb2Nlc3NfZm9ybS5lbmFibGVJbnB1dHMoc2VsZik7XHJcblxyXG4gICAgICAgIGlmKHR5cGVvZih0aGlzLmV4dHJhX3F1ZXJ5X3BhcmFtcyk9PVwidW5kZWZpbmVkXCIpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICB0aGlzLmV4dHJhX3F1ZXJ5X3BhcmFtcyA9IHthbGw6IHt9LCByZXN1bHRzOiB7fSwgYWpheDoge319O1xyXG4gICAgICAgIH1cclxuXHJcblxyXG4gICAgICAgIHRoaXMudGVtcGxhdGVfaXNfbG9hZGVkID0gJHRoaXMuYXR0cihcImRhdGEtdGVtcGxhdGUtbG9hZGVkXCIpO1xyXG4gICAgICAgIHRoaXMuaXNfYWpheCA9ICR0aGlzLmF0dHIoXCJkYXRhLWFqYXhcIik7XHJcbiAgICAgICAgdGhpcy5pbnN0YW5jZV9udW1iZXIgPSAkdGhpcy5hdHRyKCdkYXRhLWluc3RhbmNlLWNvdW50Jyk7XHJcbiAgICAgICAgdGhpcy4kYWpheF9yZXN1bHRzX2NvbnRhaW5lciA9IGpRdWVyeSgkdGhpcy5hdHRyKFwiZGF0YS1hamF4LXRhcmdldFwiKSk7XHJcblxyXG4gICAgICAgIHRoaXMuYWpheF91cGRhdGVfc2VjdGlvbnMgPSAkdGhpcy5hdHRyKFwiZGF0YS1hamF4LXVwZGF0ZS1zZWN0aW9uc1wiKSA/IEpTT04ucGFyc2UoICR0aGlzLmF0dHIoXCJkYXRhLWFqYXgtdXBkYXRlLXNlY3Rpb25zXCIpICkgOiBbXTtcclxuICAgICAgICBcclxuICAgICAgICB0aGlzLnJlc3VsdHNfdXJsID0gJHRoaXMuYXR0cihcImRhdGEtcmVzdWx0cy11cmxcIik7XHJcbiAgICAgICAgdGhpcy5kZWJ1Z19tb2RlID0gJHRoaXMuYXR0cihcImRhdGEtZGVidWctbW9kZVwiKTtcclxuICAgICAgICB0aGlzLnVwZGF0ZV9hamF4X3VybCA9ICR0aGlzLmF0dHIoXCJkYXRhLXVwZGF0ZS1hamF4LXVybFwiKTtcclxuICAgICAgICB0aGlzLnBhZ2luYXRpb25fdHlwZSA9ICR0aGlzLmF0dHIoXCJkYXRhLWFqYXgtcGFnaW5hdGlvbi10eXBlXCIpO1xyXG4gICAgICAgIHRoaXMuYXV0b19jb3VudCA9ICR0aGlzLmF0dHIoXCJkYXRhLWF1dG8tY291bnRcIik7XHJcbiAgICAgICAgdGhpcy5hdXRvX2NvdW50X3JlZnJlc2hfbW9kZSA9ICR0aGlzLmF0dHIoXCJkYXRhLWF1dG8tY291bnQtcmVmcmVzaC1tb2RlXCIpO1xyXG4gICAgICAgIHRoaXMub25seV9yZXN1bHRzX2FqYXggPSAkdGhpcy5hdHRyKFwiZGF0YS1vbmx5LXJlc3VsdHMtYWpheFwiKTsgLy9pZiB3ZSBhcmUgbm90IG9uIHRoZSByZXN1bHRzIHBhZ2UsIHJlZGlyZWN0IHJhdGhlciB0aGFuIHRyeSB0byBsb2FkIHZpYSBhamF4XHJcbiAgICAgICAgdGhpcy5zY3JvbGxfdG9fcG9zID0gJHRoaXMuYXR0cihcImRhdGEtc2Nyb2xsLXRvLXBvc1wiKTtcclxuICAgICAgICB0aGlzLmN1c3RvbV9zY3JvbGxfdG8gPSAkdGhpcy5hdHRyKFwiZGF0YS1jdXN0b20tc2Nyb2xsLXRvXCIpO1xyXG4gICAgICAgIHRoaXMuc2Nyb2xsX29uX2FjdGlvbiA9ICR0aGlzLmF0dHIoXCJkYXRhLXNjcm9sbC1vbi1hY3Rpb25cIik7XHJcbiAgICAgICAgdGhpcy5sYW5nX2NvZGUgPSAkdGhpcy5hdHRyKFwiZGF0YS1sYW5nLWNvZGVcIik7XHJcbiAgICAgICAgdGhpcy5hamF4X3VybCA9ICR0aGlzLmF0dHIoJ2RhdGEtYWpheC11cmwnKTtcclxuICAgICAgICB0aGlzLmFqYXhfZm9ybV91cmwgPSAkdGhpcy5hdHRyKCdkYXRhLWFqYXgtZm9ybS11cmwnKTtcclxuICAgICAgICB0aGlzLmlzX3J0bCA9ICR0aGlzLmF0dHIoJ2RhdGEtaXMtcnRsJyk7XHJcblxyXG4gICAgICAgIHRoaXMuZGlzcGxheV9yZXN1bHRfbWV0aG9kID0gJHRoaXMuYXR0cignZGF0YS1kaXNwbGF5LXJlc3VsdC1tZXRob2QnKTtcclxuICAgICAgICB0aGlzLm1haW50YWluX3N0YXRlID0gJHRoaXMuYXR0cignZGF0YS1tYWludGFpbi1zdGF0ZScpO1xyXG4gICAgICAgIHRoaXMuYWpheF9hY3Rpb24gPSBcIlwiO1xyXG4gICAgICAgIHRoaXMubGFzdF9zdWJtaXRfcXVlcnlfcGFyYW1zID0gXCJcIjtcclxuXHJcbiAgICAgICAgdGhpcy5jdXJyZW50X3BhZ2VkID0gcGFyc2VJbnQoJHRoaXMuYXR0cignZGF0YS1pbml0LXBhZ2VkJykpO1xyXG4gICAgICAgIHRoaXMubGFzdF9sb2FkX21vcmVfaHRtbCA9IFwiXCI7XHJcbiAgICAgICAgdGhpcy5sb2FkX21vcmVfaHRtbCA9IFwiXCI7XHJcbiAgICAgICAgdGhpcy5hamF4X2RhdGFfdHlwZSA9ICR0aGlzLmF0dHIoJ2RhdGEtYWpheC1kYXRhLXR5cGUnKTtcclxuICAgICAgICB0aGlzLmFqYXhfdGFyZ2V0X2F0dHIgPSAkdGhpcy5hdHRyKFwiZGF0YS1hamF4LXRhcmdldFwiKTtcclxuICAgICAgICB0aGlzLnVzZV9oaXN0b3J5X2FwaSA9ICR0aGlzLmF0dHIoXCJkYXRhLXVzZS1oaXN0b3J5LWFwaVwiKTtcclxuICAgICAgICB0aGlzLmlzX3N1Ym1pdHRpbmcgPSBmYWxzZTtcclxuXHJcbiAgICAgICAgdGhpcy5sYXN0X2FqYXhfcmVxdWVzdCA9IG51bGw7XHJcblxyXG4gICAgICAgIGlmKHR5cGVvZih0aGlzLnVzZV9oaXN0b3J5X2FwaSk9PVwidW5kZWZpbmVkXCIpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICB0aGlzLnVzZV9oaXN0b3J5X2FwaSA9IFwiXCI7XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICBpZih0eXBlb2YodGhpcy5wYWdpbmF0aW9uX3R5cGUpPT1cInVuZGVmaW5lZFwiKVxyXG4gICAgICAgIHtcclxuICAgICAgICAgICAgdGhpcy5wYWdpbmF0aW9uX3R5cGUgPSBcIm5vcm1hbFwiO1xyXG4gICAgICAgIH1cclxuICAgICAgICBpZih0eXBlb2YodGhpcy5jdXJyZW50X3BhZ2VkKT09XCJ1bmRlZmluZWRcIilcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIHRoaXMuY3VycmVudF9wYWdlZCA9IDE7XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICBpZih0eXBlb2YodGhpcy5hamF4X3RhcmdldF9hdHRyKT09XCJ1bmRlZmluZWRcIilcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIHRoaXMuYWpheF90YXJnZXRfYXR0ciA9IFwiXCI7XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICBpZih0eXBlb2YodGhpcy5hamF4X3VybCk9PVwidW5kZWZpbmVkXCIpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICB0aGlzLmFqYXhfdXJsID0gXCJcIjtcclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIGlmKHR5cGVvZih0aGlzLmFqYXhfZm9ybV91cmwpPT1cInVuZGVmaW5lZFwiKVxyXG4gICAgICAgIHtcclxuICAgICAgICAgICAgdGhpcy5hamF4X2Zvcm1fdXJsID0gXCJcIjtcclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIGlmKHR5cGVvZih0aGlzLnJlc3VsdHNfdXJsKT09XCJ1bmRlZmluZWRcIilcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIHRoaXMucmVzdWx0c191cmwgPSBcIlwiO1xyXG4gICAgICAgIH1cclxuXHJcbiAgICAgICAgaWYodHlwZW9mKHRoaXMuc2Nyb2xsX3RvX3Bvcyk9PVwidW5kZWZpbmVkXCIpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICB0aGlzLnNjcm9sbF90b19wb3MgPSBcIlwiO1xyXG4gICAgICAgIH1cclxuXHJcbiAgICAgICAgaWYodHlwZW9mKHRoaXMuc2Nyb2xsX29uX2FjdGlvbik9PVwidW5kZWZpbmVkXCIpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICB0aGlzLnNjcm9sbF9vbl9hY3Rpb24gPSBcIlwiO1xyXG4gICAgICAgIH1cclxuICAgICAgICBpZih0eXBlb2YodGhpcy5jdXN0b21fc2Nyb2xsX3RvKT09XCJ1bmRlZmluZWRcIilcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIHRoaXMuY3VzdG9tX3Njcm9sbF90byA9IFwiXCI7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIHRoaXMuJGN1c3RvbV9zY3JvbGxfdG8gPSBqUXVlcnkodGhpcy5jdXN0b21fc2Nyb2xsX3RvKTtcclxuXHJcbiAgICAgICAgaWYodHlwZW9mKHRoaXMudXBkYXRlX2FqYXhfdXJsKT09XCJ1bmRlZmluZWRcIilcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIHRoaXMudXBkYXRlX2FqYXhfdXJsID0gXCJcIjtcclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIGlmKHR5cGVvZih0aGlzLmRlYnVnX21vZGUpPT1cInVuZGVmaW5lZFwiKVxyXG4gICAgICAgIHtcclxuICAgICAgICAgICAgdGhpcy5kZWJ1Z19tb2RlID0gXCJcIjtcclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIGlmKHR5cGVvZih0aGlzLmFqYXhfdGFyZ2V0X29iamVjdCk9PVwidW5kZWZpbmVkXCIpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICB0aGlzLmFqYXhfdGFyZ2V0X29iamVjdCA9IFwiXCI7XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICBpZih0eXBlb2YodGhpcy50ZW1wbGF0ZV9pc19sb2FkZWQpPT1cInVuZGVmaW5lZFwiKVxyXG4gICAgICAgIHtcclxuICAgICAgICAgICAgdGhpcy50ZW1wbGF0ZV9pc19sb2FkZWQgPSBcIjBcIjtcclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIGlmKHR5cGVvZih0aGlzLmF1dG9fY291bnRfcmVmcmVzaF9tb2RlKT09XCJ1bmRlZmluZWRcIilcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIHRoaXMuYXV0b19jb3VudF9yZWZyZXNoX21vZGUgPSBcIjBcIjtcclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIHRoaXMuYWpheF9saW5rc19zZWxlY3RvciA9ICR0aGlzLmF0dHIoXCJkYXRhLWFqYXgtbGlua3Mtc2VsZWN0b3JcIik7XHJcblxyXG5cclxuICAgICAgICB0aGlzLmF1dG9fdXBkYXRlID0gJHRoaXMuYXR0cihcImRhdGEtYXV0by11cGRhdGVcIik7XHJcbiAgICAgICAgdGhpcy5pbnB1dFRpbWVyID0gMDtcclxuXHJcbiAgICAgICAgdGhpcy5zZXRJbmZpbml0ZVNjcm9sbENvbnRhaW5lciA9IGZ1bmN0aW9uKClcclxuICAgICAgICB7XHJcblxyXG4gICAgICAgICAgICB0aGlzLmlzX21heF9wYWdlZCA9IGZhbHNlOyAvL2ZvciBsb2FkIG1vcmUgb25seSwgb25jZSB3ZSBkZXRlY3Qgd2UncmUgYXQgdGhlIGVuZCBzZXQgdGhpcyB0byB0cnVlXHJcbiAgICAgICAgICAgIHRoaXMudXNlX3Njcm9sbF9sb2FkZXIgPSAkdGhpcy5hdHRyKCdkYXRhLXNob3ctc2Nyb2xsLWxvYWRlcicpO1xyXG4gICAgICAgICAgICB0aGlzLmluZmluaXRlX3Njcm9sbF9jb250YWluZXIgPSAkdGhpcy5hdHRyKCdkYXRhLWluZmluaXRlLXNjcm9sbC1jb250YWluZXInKTtcclxuICAgICAgICAgICAgdGhpcy5pbmZpbml0ZV9zY3JvbGxfdHJpZ2dlcl9hbW91bnQgPSAkdGhpcy5hdHRyKCdkYXRhLWluZmluaXRlLXNjcm9sbC10cmlnZ2VyJyk7XHJcbiAgICAgICAgICAgIHRoaXMuaW5maW5pdGVfc2Nyb2xsX3Jlc3VsdF9jbGFzcyA9ICR0aGlzLmF0dHIoJ2RhdGEtaW5maW5pdGUtc2Nyb2xsLXJlc3VsdC1jbGFzcycpO1xyXG4gICAgICAgICAgICB0aGlzLiRpbmZpbml0ZV9zY3JvbGxfY29udGFpbmVyID0gdGhpcy4kYWpheF9yZXN1bHRzX2NvbnRhaW5lcjtcclxuXHJcbiAgICAgICAgICAgIGlmKHR5cGVvZih0aGlzLmluZmluaXRlX3Njcm9sbF9jb250YWluZXIpPT1cInVuZGVmaW5lZFwiKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICB0aGlzLmluZmluaXRlX3Njcm9sbF9jb250YWluZXIgPSBcIlwiO1xyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIGVsc2VcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgdGhpcy4kaW5maW5pdGVfc2Nyb2xsX2NvbnRhaW5lciA9IGpRdWVyeSgkdGhpcy5hdHRyKCdkYXRhLWluZmluaXRlLXNjcm9sbC1jb250YWluZXInKSk7XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIGlmKHR5cGVvZih0aGlzLmluZmluaXRlX3Njcm9sbF9yZXN1bHRfY2xhc3MpPT1cInVuZGVmaW5lZFwiKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICB0aGlzLmluZmluaXRlX3Njcm9sbF9yZXN1bHRfY2xhc3MgPSBcIlwiO1xyXG4gICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICBpZih0eXBlb2YodGhpcy51c2Vfc2Nyb2xsX2xvYWRlcik9PVwidW5kZWZpbmVkXCIpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIHRoaXMudXNlX3Njcm9sbF9sb2FkZXIgPSAxO1xyXG4gICAgICAgICAgICB9XHJcblxyXG4gICAgICAgIH07XHJcbiAgICAgICAgdGhpcy5zZXRJbmZpbml0ZVNjcm9sbENvbnRhaW5lcigpO1xyXG5cclxuICAgICAgICAvKiBmdW5jdGlvbnMgKi9cclxuXHJcbiAgICAgICAgdGhpcy5yZXNldCA9IGZ1bmN0aW9uKHN1Ym1pdF9mb3JtKVxyXG4gICAgICAgIHtcclxuXHJcbiAgICAgICAgICAgIHRoaXMucmVzZXRGb3JtKHN1Ym1pdF9mb3JtKTtcclxuICAgICAgICAgICAgcmV0dXJuIHRydWU7XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICB0aGlzLmlucHV0VXBkYXRlID0gZnVuY3Rpb24oZGVsYXlEdXJhdGlvbilcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIGlmKHR5cGVvZihkZWxheUR1cmF0aW9uKT09XCJ1bmRlZmluZWRcIilcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgdmFyIGRlbGF5RHVyYXRpb24gPSAzMDA7XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIHNlbGYucmVzZXRUaW1lcihkZWxheUR1cmF0aW9uKTtcclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIHRoaXMuc2Nyb2xsVG9Qb3MgPSBmdW5jdGlvbigpIHtcclxuICAgICAgICAgICAgdmFyIG9mZnNldCA9IDA7XHJcbiAgICAgICAgICAgIHZhciBjYW5TY3JvbGwgPSB0cnVlO1xyXG5cclxuICAgICAgICAgICAgaWYoc2VsZi5pc19hamF4PT0xKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICBpZihzZWxmLnNjcm9sbF90b19wb3M9PVwid2luZG93XCIpXHJcbiAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgb2Zmc2V0ID0gMDtcclxuXHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICBlbHNlIGlmKHNlbGYuc2Nyb2xsX3RvX3Bvcz09XCJmb3JtXCIpXHJcbiAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgb2Zmc2V0ID0gJHRoaXMub2Zmc2V0KCkudG9wO1xyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgZWxzZSBpZihzZWxmLnNjcm9sbF90b19wb3M9PVwicmVzdWx0c1wiKVxyXG4gICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgIGlmKHNlbGYuJGFqYXhfcmVzdWx0c19jb250YWluZXIubGVuZ3RoPjApXHJcbiAgICAgICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBvZmZzZXQgPSBzZWxmLiRhamF4X3Jlc3VsdHNfY29udGFpbmVyLm9mZnNldCgpLnRvcDtcclxuICAgICAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICBlbHNlIGlmKHNlbGYuc2Nyb2xsX3RvX3Bvcz09XCJjdXN0b21cIilcclxuICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAvL2N1c3RvbV9zY3JvbGxfdG9cclxuICAgICAgICAgICAgICAgICAgICBpZihzZWxmLiRjdXN0b21fc2Nyb2xsX3RvLmxlbmd0aD4wKVxyXG4gICAgICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgb2Zmc2V0ID0gc2VsZi4kY3VzdG9tX3Njcm9sbF90by5vZmZzZXQoKS50b3A7XHJcbiAgICAgICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgZWxzZVxyXG4gICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgIGNhblNjcm9sbCA9IGZhbHNlO1xyXG4gICAgICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgICAgIGlmKGNhblNjcm9sbClcclxuICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAkKFwiaHRtbCwgYm9keVwiKS5zdG9wKCkuYW5pbWF0ZSh7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHNjcm9sbFRvcDogb2Zmc2V0XHJcbiAgICAgICAgICAgICAgICAgICAgfSwgXCJub3JtYWxcIiwgXCJlYXNlT3V0UXVhZFwiICk7XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgfTtcclxuXHJcbiAgICAgICAgdGhpcy5hdHRhY2hBY3RpdmVDbGFzcyA9IGZ1bmN0aW9uKCl7XHJcblxyXG4gICAgICAgICAgICAvL2NoZWNrIHRvIHNlZSBpZiB3ZSBhcmUgdXNpbmcgYWpheCAmIGF1dG8gY291bnRcclxuICAgICAgICAgICAgLy9pZiBub3QsIHRoZSBzZWFyY2ggZm9ybSBkb2VzIG5vdCBnZXQgcmVsb2FkZWQsIHNvIHdlIG5lZWQgdG8gdXBkYXRlIHRoZSBzZi1vcHRpb24tYWN0aXZlIGNsYXNzIG9uIGFsbCBmaWVsZHNcclxuXHJcbiAgICAgICAgICAgICR0aGlzLm9uKCdjaGFuZ2UnLCAnaW5wdXRbdHlwZT1cInJhZGlvXCJdLCBpbnB1dFt0eXBlPVwiY2hlY2tib3hcIl0sIHNlbGVjdCcsIGZ1bmN0aW9uKGUpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIHZhciAkY3RoaXMgPSAkKHRoaXMpO1xyXG4gICAgICAgICAgICAgICAgdmFyICRjdGhpc19wYXJlbnQgPSAkY3RoaXMuY2xvc2VzdChcImxpW2RhdGEtc2YtZmllbGQtbmFtZV1cIik7XHJcbiAgICAgICAgICAgICAgICB2YXIgdGhpc190YWcgPSAkY3RoaXMucHJvcChcInRhZ05hbWVcIikudG9Mb3dlckNhc2UoKTtcclxuICAgICAgICAgICAgICAgIHZhciBpbnB1dF90eXBlID0gJGN0aGlzLmF0dHIoXCJ0eXBlXCIpO1xyXG4gICAgICAgICAgICAgICAgdmFyIHBhcmVudF90YWcgPSAkY3RoaXNfcGFyZW50LnByb3AoXCJ0YWdOYW1lXCIpLnRvTG93ZXJDYXNlKCk7XHJcblxyXG4gICAgICAgICAgICAgICAgaWYoKHRoaXNfdGFnPT1cImlucHV0XCIpJiYoKGlucHV0X3R5cGU9PVwicmFkaW9cIil8fChpbnB1dF90eXBlPT1cImNoZWNrYm94XCIpKSAmJiAocGFyZW50X3RhZz09XCJsaVwiKSlcclxuICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICB2YXIgJGFsbF9vcHRpb25zID0gJGN0aGlzX3BhcmVudC5wYXJlbnQoKS5maW5kKCdsaScpO1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciAkYWxsX29wdGlvbnNfZmllbGRzID0gJGN0aGlzX3BhcmVudC5wYXJlbnQoKS5maW5kKCdpbnB1dDpjaGVja2VkJyk7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICRhbGxfb3B0aW9ucy5yZW1vdmVDbGFzcyhcInNmLW9wdGlvbi1hY3RpdmVcIik7XHJcbiAgICAgICAgICAgICAgICAgICAgJGFsbF9vcHRpb25zX2ZpZWxkcy5lYWNoKGZ1bmN0aW9uKCl7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICB2YXIgJHBhcmVudCA9ICQodGhpcykuY2xvc2VzdChcImxpXCIpO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAkcGFyZW50LmFkZENsYXNzKFwic2Ytb3B0aW9uLWFjdGl2ZVwiKTtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgfSk7XHJcblxyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgZWxzZSBpZih0aGlzX3RhZz09XCJzZWxlY3RcIilcclxuICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICB2YXIgJGFsbF9vcHRpb25zID0gJGN0aGlzLmNoaWxkcmVuKCk7XHJcbiAgICAgICAgICAgICAgICAgICAgJGFsbF9vcHRpb25zLnJlbW92ZUNsYXNzKFwic2Ytb3B0aW9uLWFjdGl2ZVwiKTtcclxuICAgICAgICAgICAgICAgICAgICB2YXIgdGhpc192YWwgPSAkY3RoaXMudmFsKCk7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIHZhciB0aGlzX2Fycl92YWwgPSAodHlwZW9mIHRoaXNfdmFsID09ICdzdHJpbmcnIHx8IHRoaXNfdmFsIGluc3RhbmNlb2YgU3RyaW5nKSA/IFt0aGlzX3ZhbF0gOiB0aGlzX3ZhbDtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgJCh0aGlzX2Fycl92YWwpLmVhY2goZnVuY3Rpb24oaSwgdmFsdWUpe1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAkY3RoaXMuZmluZChcIm9wdGlvblt2YWx1ZT0nXCIrdmFsdWUrXCInXVwiKS5hZGRDbGFzcyhcInNmLW9wdGlvbi1hY3RpdmVcIik7XHJcbiAgICAgICAgICAgICAgICAgICAgfSk7XHJcblxyXG5cclxuICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgfSk7XHJcblxyXG4gICAgICAgIH07XHJcbiAgICAgICAgdGhpcy5pbml0QXV0b1VwZGF0ZUV2ZW50cyA9IGZ1bmN0aW9uKCl7XHJcblxyXG4gICAgICAgICAgICAvKiBhdXRvIHVwZGF0ZSAqL1xyXG4gICAgICAgICAgICBpZigoc2VsZi5hdXRvX3VwZGF0ZT09MSl8fChzZWxmLmF1dG9fY291bnRfcmVmcmVzaF9tb2RlPT0xKSlcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgJHRoaXMub24oJ2NoYW5nZScsICdpbnB1dFt0eXBlPVwicmFkaW9cIl0sIGlucHV0W3R5cGU9XCJjaGVja2JveFwiXSwgc2VsZWN0JywgZnVuY3Rpb24oZSkge1xyXG4gICAgICAgICAgICAgICAgICAgIHNlbGYuaW5wdXRVcGRhdGUoMjAwKTtcclxuICAgICAgICAgICAgICAgIH0pO1xyXG5cclxuICAgICAgICAgICAgICAgICR0aGlzLm9uKCdpbnB1dCcsICdpbnB1dFt0eXBlPVwibnVtYmVyXCJdJywgZnVuY3Rpb24oZSkge1xyXG4gICAgICAgICAgICAgICAgICAgIHNlbGYuaW5wdXRVcGRhdGUoODAwKTtcclxuICAgICAgICAgICAgICAgIH0pO1xyXG5cclxuICAgICAgICAgICAgICAgIHZhciAkdGV4dElucHV0ID0gJHRoaXMuZmluZCgnaW5wdXRbdHlwZT1cInRleHRcIl06bm90KC5zZi1kYXRlcGlja2VyKScpO1xyXG4gICAgICAgICAgICAgICAgdmFyIGxhc3RWYWx1ZSA9ICR0ZXh0SW5wdXQudmFsKCk7XHJcblxyXG4gICAgICAgICAgICAgICAgJHRoaXMub24oJ2lucHV0JywgJ2lucHV0W3R5cGU9XCJ0ZXh0XCJdOm5vdCguc2YtZGF0ZXBpY2tlciknLCBmdW5jdGlvbigpXHJcbiAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgaWYobGFzdFZhbHVlIT0kdGV4dElucHV0LnZhbCgpKVxyXG4gICAgICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgc2VsZi5pbnB1dFVwZGF0ZSgxMjAwKTtcclxuICAgICAgICAgICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIGxhc3RWYWx1ZSA9ICR0ZXh0SW5wdXQudmFsKCk7XHJcbiAgICAgICAgICAgICAgICB9KTtcclxuXHJcblxyXG4gICAgICAgICAgICAgICAgJHRoaXMub24oJ2tleXByZXNzJywgJ2lucHV0W3R5cGU9XCJ0ZXh0XCJdOm5vdCguc2YtZGF0ZXBpY2tlciknLCBmdW5jdGlvbihlKVxyXG4gICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgIGlmIChlLndoaWNoID09IDEzKXtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGUucHJldmVudERlZmF1bHQoKTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgc2VsZi5zdWJtaXRGb3JtKCk7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHJldHVybiBmYWxzZTtcclxuICAgICAgICAgICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICAgICAgfSk7XHJcblxyXG4gICAgICAgICAgICAgICAgLy8kdGhpcy5vbignaW5wdXQnLCAnaW5wdXQuc2YtZGF0ZXBpY2tlcicsIHNlbGYuZGF0ZUlucHV0VHlwZSk7XHJcblxyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgfTtcclxuXHJcbiAgICAgICAgLy90aGlzLmluaXRBdXRvVXBkYXRlRXZlbnRzKCk7XHJcblxyXG5cclxuICAgICAgICB0aGlzLmNsZWFyVGltZXIgPSBmdW5jdGlvbigpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICBjbGVhclRpbWVvdXQoc2VsZi5pbnB1dFRpbWVyKTtcclxuICAgICAgICB9O1xyXG4gICAgICAgIHRoaXMucmVzZXRUaW1lciA9IGZ1bmN0aW9uKGRlbGF5RHVyYXRpb24pXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICBjbGVhclRpbWVvdXQoc2VsZi5pbnB1dFRpbWVyKTtcclxuICAgICAgICAgICAgc2VsZi5pbnB1dFRpbWVyID0gc2V0VGltZW91dChzZWxmLmZvcm1VcGRhdGVkLCBkZWxheUR1cmF0aW9uKTtcclxuXHJcbiAgICAgICAgfTtcclxuXHJcbiAgICAgICAgdGhpcy5hZGREYXRlUGlja2VycyA9IGZ1bmN0aW9uKClcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIHZhciAkZGF0ZV9waWNrZXIgPSAkdGhpcy5maW5kKFwiLnNmLWRhdGVwaWNrZXJcIik7XHJcblxyXG4gICAgICAgICAgICBpZigkZGF0ZV9waWNrZXIubGVuZ3RoPjApXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICRkYXRlX3BpY2tlci5lYWNoKGZ1bmN0aW9uKCl7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIHZhciAkdGhpcyA9ICQodGhpcyk7XHJcbiAgICAgICAgICAgICAgICAgICAgdmFyIGRhdGVGb3JtYXQgPSBcIlwiO1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciBkYXRlRHJvcGRvd25ZZWFyID0gZmFsc2U7XHJcbiAgICAgICAgICAgICAgICAgICAgdmFyIGRhdGVEcm9wZG93bk1vbnRoID0gZmFsc2U7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIHZhciAkY2xvc2VzdF9kYXRlX3dyYXAgPSAkdGhpcy5jbG9zZXN0KFwiLnNmX2RhdGVfZmllbGRcIik7XHJcbiAgICAgICAgICAgICAgICAgICAgaWYoJGNsb3Nlc3RfZGF0ZV93cmFwLmxlbmd0aD4wKVxyXG4gICAgICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgZGF0ZUZvcm1hdCA9ICRjbG9zZXN0X2RhdGVfd3JhcC5hdHRyKFwiZGF0YS1kYXRlLWZvcm1hdFwiKTtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGlmKCRjbG9zZXN0X2RhdGVfd3JhcC5hdHRyKFwiZGF0YS1kYXRlLXVzZS15ZWFyLWRyb3Bkb3duXCIpPT0xKVxyXG4gICAgICAgICAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBkYXRlRHJvcGRvd25ZZWFyID0gdHJ1ZTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgICAgICAgICBpZigkY2xvc2VzdF9kYXRlX3dyYXAuYXR0cihcImRhdGEtZGF0ZS11c2UtbW9udGgtZHJvcGRvd25cIik9PTEpXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRhdGVEcm9wZG93bk1vbnRoID0gdHJ1ZTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgdmFyIGRhdGVQaWNrZXJPcHRpb25zID0ge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBpbmxpbmU6IHRydWUsXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHNob3dPdGhlck1vbnRoczogdHJ1ZSxcclxuICAgICAgICAgICAgICAgICAgICAgICAgb25TZWxlY3Q6IGZ1bmN0aW9uKGUsIGZyb21fZmllbGQpeyBzZWxmLmRhdGVTZWxlY3QoZSwgZnJvbV9maWVsZCwgJCh0aGlzKSk7IH0sXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGRhdGVGb3JtYXQ6IGRhdGVGb3JtYXQsXHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICBjaGFuZ2VNb250aDogZGF0ZURyb3Bkb3duTW9udGgsXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGNoYW5nZVllYXI6IGRhdGVEcm9wZG93blllYXJcclxuICAgICAgICAgICAgICAgICAgICB9O1xyXG5cclxuICAgICAgICAgICAgICAgICAgICBpZihzZWxmLmlzX3J0bD09MSlcclxuICAgICAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGRhdGVQaWNrZXJPcHRpb25zLmRpcmVjdGlvbiA9IFwicnRsXCI7XHJcbiAgICAgICAgICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgICAgICAgICAkdGhpcy5kYXRlcGlja2VyKGRhdGVQaWNrZXJPcHRpb25zKTtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgaWYoc2VsZi5sYW5nX2NvZGUhPVwiXCIpXHJcbiAgICAgICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAkLmRhdGVwaWNrZXIuc2V0RGVmYXVsdHMoXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAkLmV4dGVuZChcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB7J2RhdGVGb3JtYXQnOmRhdGVGb3JtYXR9LFxyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICQuZGF0ZXBpY2tlci5yZWdpb25hbFsgc2VsZi5sYW5nX2NvZGVdXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICApXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICk7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgICAgICBlbHNlXHJcbiAgICAgICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAkLmRhdGVwaWNrZXIuc2V0RGVmYXVsdHMoXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAkLmV4dGVuZChcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB7J2RhdGVGb3JtYXQnOmRhdGVGb3JtYXR9LFxyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICQuZGF0ZXBpY2tlci5yZWdpb25hbFtcImVuXCJdXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICApXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICk7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICAgICB9KTtcclxuXHJcbiAgICAgICAgICAgICAgICBpZigkKCcubGwtc2tpbi1tZWxvbicpLmxlbmd0aD09MCl7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICRkYXRlX3BpY2tlci5kYXRlcGlja2VyKCd3aWRnZXQnKS53cmFwKCc8ZGl2IGNsYXNzPVwibGwtc2tpbi1tZWxvbiBzZWFyY2hhbmRmaWx0ZXItZGF0ZS1waWNrZXJcIi8+Jyk7XHJcbiAgICAgICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgfTtcclxuXHJcbiAgICAgICAgdGhpcy5kYXRlU2VsZWN0ID0gZnVuY3Rpb24oZSwgZnJvbV9maWVsZCwgJHRoaXMpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICB2YXIgJGlucHV0X2ZpZWxkID0gJChmcm9tX2ZpZWxkLmlucHV0LmdldCgwKSk7XHJcbiAgICAgICAgICAgIHZhciAkdGhpcyA9ICQodGhpcyk7XHJcblxyXG4gICAgICAgICAgICB2YXIgJGRhdGVfZmllbGRzID0gJGlucHV0X2ZpZWxkLmNsb3Nlc3QoJ1tkYXRhLXNmLWZpZWxkLWlucHV0LXR5cGU9XCJkYXRlcmFuZ2VcIl0sIFtkYXRhLXNmLWZpZWxkLWlucHV0LXR5cGU9XCJkYXRlXCJdJyk7XHJcbiAgICAgICAgICAgICRkYXRlX2ZpZWxkcy5lYWNoKGZ1bmN0aW9uKGUsIGluZGV4KXtcclxuICAgICAgICAgICAgICAgIFxyXG4gICAgICAgICAgICAgICAgdmFyICR0Zl9kYXRlX3BpY2tlcnMgPSAkKHRoaXMpLmZpbmQoXCIuc2YtZGF0ZXBpY2tlclwiKTtcclxuICAgICAgICAgICAgICAgIHZhciBub19kYXRlX3BpY2tlcnMgPSAkdGZfZGF0ZV9waWNrZXJzLmxlbmd0aDtcclxuICAgICAgICAgICAgICAgIFxyXG4gICAgICAgICAgICAgICAgaWYobm9fZGF0ZV9waWNrZXJzPjEpXHJcbiAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgLy90aGVuIGl0IGlzIGEgZGF0ZSByYW5nZSwgc28gbWFrZSBzdXJlIGJvdGggZmllbGRzIGFyZSBmaWxsZWQgYmVmb3JlIHVwZGF0aW5nXHJcbiAgICAgICAgICAgICAgICAgICAgdmFyIGRwX2NvdW50ZXIgPSAwO1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciBkcF9lbXB0eV9maWVsZF9jb3VudCA9IDA7XHJcbiAgICAgICAgICAgICAgICAgICAgJHRmX2RhdGVfcGlja2Vycy5lYWNoKGZ1bmN0aW9uKCl7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICBpZigkKHRoaXMpLnZhbCgpPT1cIlwiKVxyXG4gICAgICAgICAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBkcF9lbXB0eV9maWVsZF9jb3VudCsrO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICBkcF9jb3VudGVyKys7XHJcbiAgICAgICAgICAgICAgICAgICAgfSk7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIGlmKGRwX2VtcHR5X2ZpZWxkX2NvdW50PT0wKVxyXG4gICAgICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgc2VsZi5pbnB1dFVwZGF0ZSgxKTtcclxuICAgICAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICBlbHNlXHJcbiAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgc2VsZi5pbnB1dFVwZGF0ZSgxKTtcclxuICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIH0pO1xyXG4gICAgICAgIH07XHJcblxyXG4gICAgICAgIHRoaXMuYWRkUmFuZ2VTbGlkZXJzID0gZnVuY3Rpb24oKVxyXG4gICAgICAgIHtcclxuICAgICAgICAgICAgdmFyICRtZXRhX3JhbmdlID0gJHRoaXMuZmluZChcIi5zZi1tZXRhLXJhbmdlLXNsaWRlclwiKTtcclxuXHJcbiAgICAgICAgICAgIGlmKCRtZXRhX3JhbmdlLmxlbmd0aD4wKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAkbWV0YV9yYW5nZS5lYWNoKGZ1bmN0aW9uKCl7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIHZhciAkdGhpcyA9ICQodGhpcyk7XHJcbiAgICAgICAgICAgICAgICAgICAgdmFyIG1pbiA9ICR0aGlzLmF0dHIoXCJkYXRhLW1pblwiKTtcclxuICAgICAgICAgICAgICAgICAgICB2YXIgbWF4ID0gJHRoaXMuYXR0cihcImRhdGEtbWF4XCIpO1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciBzbWluID0gJHRoaXMuYXR0cihcImRhdGEtc3RhcnQtbWluXCIpO1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciBzbWF4ID0gJHRoaXMuYXR0cihcImRhdGEtc3RhcnQtbWF4XCIpO1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciBkaXNwbGF5X3ZhbHVlX2FzID0gJHRoaXMuYXR0cihcImRhdGEtZGlzcGxheS12YWx1ZXMtYXNcIik7XHJcbiAgICAgICAgICAgICAgICAgICAgdmFyIHN0ZXAgPSAkdGhpcy5hdHRyKFwiZGF0YS1zdGVwXCIpO1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciAkc3RhcnRfdmFsID0gJHRoaXMuZmluZCgnLnNmLXJhbmdlLW1pbicpO1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciAkZW5kX3ZhbCA9ICR0aGlzLmZpbmQoJy5zZi1yYW5nZS1tYXgnKTtcclxuXHJcblxyXG4gICAgICAgICAgICAgICAgICAgIHZhciBkZWNpbWFsX3BsYWNlcyA9ICR0aGlzLmF0dHIoXCJkYXRhLWRlY2ltYWwtcGxhY2VzXCIpO1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciB0aG91c2FuZF9zZXBlcmF0b3IgPSAkdGhpcy5hdHRyKFwiZGF0YS10aG91c2FuZC1zZXBlcmF0b3JcIik7XHJcbiAgICAgICAgICAgICAgICAgICAgdmFyIGRlY2ltYWxfc2VwZXJhdG9yID0gJHRoaXMuYXR0cihcImRhdGEtZGVjaW1hbC1zZXBlcmF0b3JcIik7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIHZhciBmaWVsZF9mb3JtYXQgPSB3TnVtYih7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIG1hcms6IGRlY2ltYWxfc2VwZXJhdG9yLFxyXG4gICAgICAgICAgICAgICAgICAgICAgICBkZWNpbWFsczogcGFyc2VGbG9hdChkZWNpbWFsX3BsYWNlcyksXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHRob3VzYW5kOiB0aG91c2FuZF9zZXBlcmF0b3JcclxuICAgICAgICAgICAgICAgICAgICB9KTtcclxuXHJcblxyXG5cclxuICAgICAgICAgICAgICAgICAgICB2YXIgbWluX3VuZm9ybWF0dGVkID0gcGFyc2VGbG9hdChzbWluKTtcclxuICAgICAgICAgICAgICAgICAgICB2YXIgbWluX2Zvcm1hdHRlZCA9IGZpZWxkX2Zvcm1hdC50byhwYXJzZUZsb2F0KHNtaW4pKTtcclxuICAgICAgICAgICAgICAgICAgICB2YXIgbWF4X2Zvcm1hdHRlZCA9IGZpZWxkX2Zvcm1hdC50byhwYXJzZUZsb2F0KHNtYXgpKTtcclxuICAgICAgICAgICAgICAgICAgICB2YXIgbWF4X3VuZm9ybWF0dGVkID0gcGFyc2VGbG9hdChzbWF4KTtcclxuICAgICAgICAgICAgICAgICAgICAvL2FsZXJ0KG1pbl9mb3JtYXR0ZWQpO1xyXG4gICAgICAgICAgICAgICAgICAgIC8vYWxlcnQobWF4X2Zvcm1hdHRlZCk7XHJcbiAgICAgICAgICAgICAgICAgICAgLy9hbGVydChkaXNwbGF5X3ZhbHVlX2FzKTtcclxuXHJcblxyXG4gICAgICAgICAgICAgICAgICAgIGlmKGRpc3BsYXlfdmFsdWVfYXM9PVwidGV4dGlucHV0XCIpXHJcbiAgICAgICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAkc3RhcnRfdmFsLnZhbChtaW5fZm9ybWF0dGVkKTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgJGVuZF92YWwudmFsKG1heF9mb3JtYXR0ZWQpO1xyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgICAgICBlbHNlIGlmKGRpc3BsYXlfdmFsdWVfYXM9PVwidGV4dFwiKVxyXG4gICAgICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgJHN0YXJ0X3ZhbC5odG1sKG1pbl9mb3JtYXR0ZWQpO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAkZW5kX3ZhbC5odG1sKG1heF9mb3JtYXR0ZWQpO1xyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuXHJcblxyXG4gICAgICAgICAgICAgICAgICAgIHZhciBub1VJT3B0aW9ucyA9IHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgcmFuZ2U6IHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICdtaW4nOiBbIHBhcnNlRmxvYXQobWluKSBdLFxyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgJ21heCc6IFsgcGFyc2VGbG9hdChtYXgpIF1cclxuICAgICAgICAgICAgICAgICAgICAgICAgfSxcclxuICAgICAgICAgICAgICAgICAgICAgICAgc3RhcnQ6IFttaW5fZm9ybWF0dGVkLCBtYXhfZm9ybWF0dGVkXSxcclxuICAgICAgICAgICAgICAgICAgICAgICAgaGFuZGxlczogMixcclxuICAgICAgICAgICAgICAgICAgICAgICAgY29ubmVjdDogdHJ1ZSxcclxuICAgICAgICAgICAgICAgICAgICAgICAgc3RlcDogcGFyc2VGbG9hdChzdGVwKSxcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGJlaGF2aW91cjogJ2V4dGVuZC10YXAnLFxyXG4gICAgICAgICAgICAgICAgICAgICAgICBmb3JtYXQ6IGZpZWxkX2Zvcm1hdFxyXG4gICAgICAgICAgICAgICAgICAgIH07XHJcblxyXG5cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgaWYoc2VsZi5pc19ydGw9PTEpXHJcbiAgICAgICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBub1VJT3B0aW9ucy5kaXJlY3Rpb24gPSBcInJ0bFwiO1xyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgdmFyIHNsaWRlcl9vYmplY3QgPSAkKHRoaXMpLmZpbmQoXCIubWV0YS1zbGlkZXJcIilbMF07XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIGlmKCBcInVuZGVmaW5lZFwiICE9PSB0eXBlb2YoIHNsaWRlcl9vYmplY3Qubm9VaVNsaWRlciApICkge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAvL2Rlc3Ryb3kgaWYgaXQgZXhpc3RzLi4gdGhpcyBtZWFucyBzb21laG93IGFub3RoZXIgaW5zdGFuY2UgaGFkIGluaXRpYWxpc2VkIGl0Li5cclxuICAgICAgICAgICAgICAgICAgICAgICAgc2xpZGVyX29iamVjdC5ub1VpU2xpZGVyLmRlc3Ryb3koKTtcclxuICAgICAgICAgICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIG5vVWlTbGlkZXIuY3JlYXRlKHNsaWRlcl9vYmplY3QsIG5vVUlPcHRpb25zKTtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgJHN0YXJ0X3ZhbC5vZmYoKTtcclxuICAgICAgICAgICAgICAgICAgICAkc3RhcnRfdmFsLm9uKCdjaGFuZ2UnLCBmdW5jdGlvbigpe1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBzbGlkZXJfb2JqZWN0Lm5vVWlTbGlkZXIuc2V0KFskKHRoaXMpLnZhbCgpLCBudWxsXSk7XHJcbiAgICAgICAgICAgICAgICAgICAgfSk7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICRlbmRfdmFsLm9mZigpO1xyXG4gICAgICAgICAgICAgICAgICAgICRlbmRfdmFsLm9uKCdjaGFuZ2UnLCBmdW5jdGlvbigpe1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBzbGlkZXJfb2JqZWN0Lm5vVWlTbGlkZXIuc2V0KFtudWxsLCAkKHRoaXMpLnZhbCgpXSk7XHJcbiAgICAgICAgICAgICAgICAgICAgfSk7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIC8vJHN0YXJ0X3ZhbC5odG1sKG1pbl9mb3JtYXR0ZWQpO1xyXG4gICAgICAgICAgICAgICAgICAgIC8vJGVuZF92YWwuaHRtbChtYXhfZm9ybWF0dGVkKTtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgc2xpZGVyX29iamVjdC5ub1VpU2xpZGVyLm9mZigndXBkYXRlJyk7XHJcbiAgICAgICAgICAgICAgICAgICAgc2xpZGVyX29iamVjdC5ub1VpU2xpZGVyLm9uKCd1cGRhdGUnLCBmdW5jdGlvbiggdmFsdWVzLCBoYW5kbGUgKSB7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICB2YXIgc2xpZGVyX3N0YXJ0X3ZhbCAgPSBtaW5fZm9ybWF0dGVkO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICB2YXIgc2xpZGVyX2VuZF92YWwgID0gbWF4X2Zvcm1hdHRlZDtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHZhciB2YWx1ZSA9IHZhbHVlc1toYW5kbGVdO1xyXG5cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGlmICggaGFuZGxlICkge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgbWF4X2Zvcm1hdHRlZCA9IHZhbHVlO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICB9IGVsc2Uge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgbWluX2Zvcm1hdHRlZCA9IHZhbHVlO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICBpZihkaXNwbGF5X3ZhbHVlX2FzPT1cInRleHRpbnB1dFwiKVxyXG4gICAgICAgICAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAkc3RhcnRfdmFsLnZhbChtaW5fZm9ybWF0dGVkKTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICRlbmRfdmFsLnZhbChtYXhfZm9ybWF0dGVkKTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgICAgICAgICBlbHNlIGlmKGRpc3BsYXlfdmFsdWVfYXM9PVwidGV4dFwiKVxyXG4gICAgICAgICAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAkc3RhcnRfdmFsLmh0bWwobWluX2Zvcm1hdHRlZCk7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAkZW5kX3ZhbC5odG1sKG1heF9mb3JtYXR0ZWQpO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICB9XHJcblxyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgLy9pIHRoaW5rIHRoZSBmdW5jdGlvbiB0aGF0IGJ1aWxkcyB0aGUgVVJMIG5lZWRzIHRvIGRlY29kZSB0aGUgZm9ybWF0dGVkIHN0cmluZyBiZWZvcmUgYWRkaW5nIHRvIHRoZSB1cmxcclxuICAgICAgICAgICAgICAgICAgICAgICAgaWYoKHNlbGYuYXV0b191cGRhdGU9PTEpfHwoc2VsZi5hdXRvX2NvdW50X3JlZnJlc2hfbW9kZT09MSkpXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIC8vb25seSB0cnkgdG8gdXBkYXRlIGlmIHRoZSB2YWx1ZXMgaGF2ZSBhY3R1YWxseSBjaGFuZ2VkXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZigoc2xpZGVyX3N0YXJ0X3ZhbCE9bWluX2Zvcm1hdHRlZCl8fChzbGlkZXJfZW5kX3ZhbCE9bWF4X2Zvcm1hdHRlZCkpIHtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc2VsZi5pbnB1dFVwZGF0ZSg4MDApO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgfVxyXG5cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgfSk7XHJcblxyXG4gICAgICAgICAgICAgICAgfSk7XHJcblxyXG4gICAgICAgICAgICAgICAgc2VsZi5jbGVhclRpbWVyKCk7IC8vaWdub3JlIGFueSBjaGFuZ2VzIHJlY2VudGx5IG1hZGUgYnkgdGhlIHNsaWRlciAodGhpcyB3YXMganVzdCBpbml0IHNob3VsZG4ndCBjb3VudCBhcyBhbiB1cGRhdGUgZXZlbnQpXHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICB9O1xyXG5cclxuICAgICAgICB0aGlzLmluaXQgPSBmdW5jdGlvbihrZWVwX3BhZ2luYXRpb24pXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICBpZih0eXBlb2Yoa2VlcF9wYWdpbmF0aW9uKT09XCJ1bmRlZmluZWRcIilcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgdmFyIGtlZXBfcGFnaW5hdGlvbiA9IGZhbHNlO1xyXG4gICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICB0aGlzLmluaXRBdXRvVXBkYXRlRXZlbnRzKCk7XHJcbiAgICAgICAgICAgIHRoaXMuYXR0YWNoQWN0aXZlQ2xhc3MoKTtcclxuXHJcbiAgICAgICAgICAgIHRoaXMuYWRkRGF0ZVBpY2tlcnMoKTtcclxuICAgICAgICAgICAgdGhpcy5hZGRSYW5nZVNsaWRlcnMoKTtcclxuXHJcbiAgICAgICAgICAgIC8vaW5pdCBjb21ibyBib3hlc1xyXG4gICAgICAgICAgICB2YXIgJGNvbWJvYm94ID0gJHRoaXMuZmluZChcInNlbGVjdFtkYXRhLWNvbWJvYm94PScxJ11cIik7XHJcblxyXG4gICAgICAgICAgICBpZigkY29tYm9ib3gubGVuZ3RoPjApXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICRjb21ib2JveC5lYWNoKGZ1bmN0aW9uKGluZGV4ICl7XHJcbiAgICAgICAgICAgICAgICAgICAgdmFyICR0aGlzY2IgPSAkKCB0aGlzICk7XHJcbiAgICAgICAgICAgICAgICAgICAgdmFyIG5ybSA9ICR0aGlzY2IuYXR0cihcImRhdGEtY29tYm9ib3gtbnJtXCIpO1xyXG5cclxuICAgICAgICAgICAgICAgICAgICBpZiAodHlwZW9mICR0aGlzY2IuY2hvc2VuICE9IFwidW5kZWZpbmVkXCIpXHJcbiAgICAgICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICB2YXIgY2hvc2Vub3B0aW9ucyA9IHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNlYXJjaF9jb250YWluczogdHJ1ZVxyXG4gICAgICAgICAgICAgICAgICAgICAgICB9O1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgaWYoKHR5cGVvZihucm0pIT09XCJ1bmRlZmluZWRcIikmJihucm0pKXtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNob3Nlbm9wdGlvbnMubm9fcmVzdWx0c190ZXh0ID0gbnJtO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIC8vIHNhZmUgdG8gdXNlIHRoZSBmdW5jdGlvblxyXG4gICAgICAgICAgICAgICAgICAgICAgICAvL3NlYXJjaF9jb250YWluc1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBpZihzZWxmLmlzX3J0bD09MSlcclxuICAgICAgICAgICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgJHRoaXNjYi5hZGRDbGFzcyhcImNob3Nlbi1ydGxcIik7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICR0aGlzY2IuY2hvc2VuKGNob3Nlbm9wdGlvbnMpO1xyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgICAgICBlbHNlXHJcbiAgICAgICAgICAgICAgICAgICAge1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgdmFyIHNlbGVjdDJvcHRpb25zID0ge307XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICBpZihzZWxmLmlzX3J0bD09MSlcclxuICAgICAgICAgICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgc2VsZWN0Mm9wdGlvbnMuZGlyID0gXCJydGxcIjtcclxuICAgICAgICAgICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgICAgICAgICBpZigodHlwZW9mKG5ybSkhPT1cInVuZGVmaW5lZFwiKSYmKG5ybSkpe1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgc2VsZWN0Mm9wdGlvbnMubGFuZ3VhZ2U9IHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIm5vUmVzdWx0c1wiOiBmdW5jdGlvbigpe1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gbnJtO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIH07XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICR0aGlzY2Iuc2VsZWN0MihzZWxlY3Qyb3B0aW9ucyk7XHJcbiAgICAgICAgICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgICAgIH0pO1xyXG5cclxuXHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIHNlbGYuaXNTdWJtaXR0aW5nID0gZmFsc2U7XHJcblxyXG4gICAgICAgICAgICAvL2lmIGFqYXggaXMgZW5hYmxlZCBpbml0IHRoZSBwYWdpbmF0aW9uXHJcbiAgICAgICAgICAgIGlmKHNlbGYuaXNfYWpheD09MSlcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgc2VsZi5zZXR1cEFqYXhQYWdpbmF0aW9uKCk7XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICR0aGlzLm9uKFwic3VibWl0XCIsIHRoaXMuc3VibWl0Rm9ybSk7XHJcblxyXG4gICAgICAgICAgICBzZWxmLmluaXRXb29Db21tZXJjZUNvbnRyb2xzKCk7IC8vd29vY29tbWVyY2Ugb3JkZXJieVxyXG5cclxuICAgICAgICAgICAgaWYoa2VlcF9wYWdpbmF0aW9uPT1mYWxzZSlcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgc2VsZi5sYXN0X3N1Ym1pdF9xdWVyeV9wYXJhbXMgPSBzZWxmLmdldFVybFBhcmFtcyhmYWxzZSk7XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIHRoaXMub25XaW5kb3dTY3JvbGwgPSBmdW5jdGlvbihldmVudClcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIGlmKCghc2VsZi5pc19sb2FkaW5nX21vcmUpICYmICghc2VsZi5pc19tYXhfcGFnZWQpKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICB2YXIgd2luZG93X3Njcm9sbCA9ICQod2luZG93KS5zY3JvbGxUb3AoKTtcclxuICAgICAgICAgICAgICAgIHZhciB3aW5kb3dfc2Nyb2xsX2JvdHRvbSA9ICQod2luZG93KS5zY3JvbGxUb3AoKSArICQod2luZG93KS5oZWlnaHQoKTtcclxuICAgICAgICAgICAgICAgIHZhciBzY3JvbGxfb2Zmc2V0ID0gcGFyc2VJbnQoc2VsZi5pbmZpbml0ZV9zY3JvbGxfdHJpZ2dlcl9hbW91bnQpO1xyXG5cclxuICAgICAgICAgICAgICAgIGlmKHNlbGYuJGluZmluaXRlX3Njcm9sbF9jb250YWluZXIubGVuZ3RoPT0xKVxyXG4gICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciByZXN1bHRzX3Njcm9sbF9ib3R0b20gPSBzZWxmLiRpbmZpbml0ZV9zY3JvbGxfY29udGFpbmVyLm9mZnNldCgpLnRvcCArIHNlbGYuJGluZmluaXRlX3Njcm9sbF9jb250YWluZXIuaGVpZ2h0KCk7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIHZhciBvZmZzZXQgPSAoc2VsZi4kaW5maW5pdGVfc2Nyb2xsX2NvbnRhaW5lci5vZmZzZXQoKS50b3AgKyBzZWxmLiRpbmZpbml0ZV9zY3JvbGxfY29udGFpbmVyLmhlaWdodCgpKSAtIHdpbmRvd19zY3JvbGw7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIGlmKHdpbmRvd19zY3JvbGxfYm90dG9tID4gcmVzdWx0c19zY3JvbGxfYm90dG9tICsgc2Nyb2xsX29mZnNldClcclxuICAgICAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHNlbGYubG9hZE1vcmVSZXN1bHRzKCk7XHJcbiAgICAgICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgICAgIGVsc2VcclxuICAgICAgICAgICAgICAgICAgICB7Ly9kb250IGxvYWQgbW9yZVxyXG5cclxuICAgICAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIHRoaXMuc3RyaXBRdWVyeVN0cmluZ0FuZEhhc2hGcm9tUGF0aCA9IGZ1bmN0aW9uKHVybCkge1xyXG4gICAgICAgICAgICByZXR1cm4gdXJsLnNwbGl0KFwiP1wiKVswXS5zcGxpdChcIiNcIilbMF07XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICB0aGlzLmd1cCA9IGZ1bmN0aW9uKCBuYW1lLCB1cmwgKSB7XHJcbiAgICAgICAgICAgIGlmICghdXJsKSB1cmwgPSBsb2NhdGlvbi5ocmVmXHJcbiAgICAgICAgICAgIG5hbWUgPSBuYW1lLnJlcGxhY2UoL1tcXFtdLyxcIlxcXFxcXFtcIikucmVwbGFjZSgvW1xcXV0vLFwiXFxcXFxcXVwiKTtcclxuICAgICAgICAgICAgdmFyIHJlZ2V4UyA9IFwiW1xcXFw/Jl1cIituYW1lK1wiPShbXiYjXSopXCI7XHJcbiAgICAgICAgICAgIHZhciByZWdleCA9IG5ldyBSZWdFeHAoIHJlZ2V4UyApO1xyXG4gICAgICAgICAgICB2YXIgcmVzdWx0cyA9IHJlZ2V4LmV4ZWMoIHVybCApO1xyXG4gICAgICAgICAgICByZXR1cm4gcmVzdWx0cyA9PSBudWxsID8gbnVsbCA6IHJlc3VsdHNbMV07XHJcbiAgICAgICAgfTtcclxuXHJcblxyXG4gICAgICAgIHRoaXMuZ2V0VXJsUGFyYW1zID0gZnVuY3Rpb24oa2VlcF9wYWdpbmF0aW9uLCB0eXBlLCBleGNsdWRlKVxyXG4gICAgICAgIHtcclxuICAgICAgICAgICAgaWYodHlwZW9mKGtlZXBfcGFnaW5hdGlvbik9PVwidW5kZWZpbmVkXCIpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIHZhciBrZWVwX3BhZ2luYXRpb24gPSB0cnVlO1xyXG4gICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICBpZih0eXBlb2YodHlwZSk9PVwidW5kZWZpbmVkXCIpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIHZhciB0eXBlID0gXCJcIjtcclxuICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgdmFyIHVybF9wYXJhbXNfc3RyID0gXCJcIjtcclxuXHJcbiAgICAgICAgICAgIC8vIGdldCBhbGwgcGFyYW1zIGZyb20gZmllbGRzXHJcbiAgICAgICAgICAgIHZhciB1cmxfcGFyYW1zX2FycmF5ID0gcHJvY2Vzc19mb3JtLmdldFVybFBhcmFtcyhzZWxmKTtcclxuXHJcbiAgICAgICAgICAgIHZhciBsZW5ndGggPSBPYmplY3Qua2V5cyh1cmxfcGFyYW1zX2FycmF5KS5sZW5ndGg7XHJcbiAgICAgICAgICAgIHZhciBjb3VudCA9IDA7XHJcblxyXG4gICAgICAgICAgICBpZih0eXBlb2YoZXhjbHVkZSkhPVwidW5kZWZpbmVkXCIpIHtcclxuICAgICAgICAgICAgICAgIGlmICh1cmxfcGFyYW1zX2FycmF5Lmhhc093blByb3BlcnR5KGV4Y2x1ZGUpKSB7XHJcbiAgICAgICAgICAgICAgICAgICAgbGVuZ3RoLS07XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIGlmKGxlbmd0aD4wKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICBmb3IgKHZhciBrIGluIHVybF9wYXJhbXNfYXJyYXkpIHtcclxuICAgICAgICAgICAgICAgICAgICBpZiAodXJsX3BhcmFtc19hcnJheS5oYXNPd25Qcm9wZXJ0eShrKSkge1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgdmFyIGNhbl9hZGQgPSB0cnVlO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBpZih0eXBlb2YoZXhjbHVkZSkhPVwidW5kZWZpbmVkXCIpXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmKGs9PWV4Y2x1ZGUpIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjYW5fYWRkID0gZmFsc2U7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGlmKGNhbl9hZGQpIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIHVybF9wYXJhbXNfc3RyICs9IGsgKyBcIj1cIiArIHVybF9wYXJhbXNfYXJyYXlba107XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgaWYgKGNvdW50IDwgbGVuZ3RoIC0gMSkge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHVybF9wYXJhbXNfc3RyICs9IFwiJlwiO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvdW50Kys7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIHZhciBxdWVyeV9wYXJhbXMgPSBcIlwiO1xyXG5cclxuICAgICAgICAgICAgLy9mb3JtIHBhcmFtcyBhcyB1cmwgcXVlcnkgc3RyaW5nXHJcbiAgICAgICAgICAgIHZhciBmb3JtX3BhcmFtcyA9IHVybF9wYXJhbXNfc3RyO1xyXG5cclxuICAgICAgICAgICAgLy9nZXQgdXJsIHBhcmFtcyBmcm9tIHRoZSBmb3JtIGl0c2VsZiAod2hhdCB0aGUgdXNlciBoYXMgc2VsZWN0ZWQpXHJcbiAgICAgICAgICAgIHF1ZXJ5X3BhcmFtcyA9IHNlbGYuam9pblVybFBhcmFtKHF1ZXJ5X3BhcmFtcywgZm9ybV9wYXJhbXMpO1xyXG5cclxuICAgICAgICAgICAgLy9hZGQgcGFnaW5hdGlvblxyXG4gICAgICAgICAgICBpZihrZWVwX3BhZ2luYXRpb249PXRydWUpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIHZhciBwYWdlTnVtYmVyID0gc2VsZi4kYWpheF9yZXN1bHRzX2NvbnRhaW5lci5hdHRyKFwiZGF0YS1wYWdlZFwiKTtcclxuXHJcbiAgICAgICAgICAgICAgICBpZih0eXBlb2YocGFnZU51bWJlcik9PVwidW5kZWZpbmVkXCIpXHJcbiAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgcGFnZU51bWJlciA9IDE7XHJcbiAgICAgICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICAgICAgaWYocGFnZU51bWJlcj4xKVxyXG4gICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgIHF1ZXJ5X3BhcmFtcyA9IHNlbGYuam9pblVybFBhcmFtKHF1ZXJ5X3BhcmFtcywgXCJzZl9wYWdlZD1cIitwYWdlTnVtYmVyKTtcclxuICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgLy9hZGQgc2ZpZFxyXG4gICAgICAgICAgICAvL3F1ZXJ5X3BhcmFtcyA9IHNlbGYuam9pblVybFBhcmFtKHF1ZXJ5X3BhcmFtcywgXCJzZmlkPVwiK3NlbGYuc2ZpZCk7XHJcblxyXG4gICAgICAgICAgICAvLyBsb29wIHRocm91Z2ggYW55IGV4dHJhIHBhcmFtcyAoZnJvbSBleHQgcGx1Z2lucykgYW5kIGFkZCB0byB0aGUgdXJsIChpZSB3b29jb21tZXJjZSBgb3JkZXJieWApXHJcbiAgICAgICAgICAgIC8qdmFyIGV4dHJhX3F1ZXJ5X3BhcmFtID0gXCJcIjtcclxuICAgICAgICAgICAgIHZhciBsZW5ndGggPSBPYmplY3Qua2V5cyhzZWxmLmV4dHJhX3F1ZXJ5X3BhcmFtcykubGVuZ3RoO1xyXG4gICAgICAgICAgICAgdmFyIGNvdW50ID0gMDtcclxuXHJcbiAgICAgICAgICAgICBpZihsZW5ndGg+MClcclxuICAgICAgICAgICAgIHtcclxuXHJcbiAgICAgICAgICAgICBmb3IgKHZhciBrIGluIHNlbGYuZXh0cmFfcXVlcnlfcGFyYW1zKSB7XHJcbiAgICAgICAgICAgICBpZiAoc2VsZi5leHRyYV9xdWVyeV9wYXJhbXMuaGFzT3duUHJvcGVydHkoaykpIHtcclxuXHJcbiAgICAgICAgICAgICBpZihzZWxmLmV4dHJhX3F1ZXJ5X3BhcmFtc1trXSE9XCJcIilcclxuICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgIGV4dHJhX3F1ZXJ5X3BhcmFtID0gaytcIj1cIitzZWxmLmV4dHJhX3F1ZXJ5X3BhcmFtc1trXTtcclxuICAgICAgICAgICAgIHF1ZXJ5X3BhcmFtcyA9IHNlbGYuam9pblVybFBhcmFtKHF1ZXJ5X3BhcmFtcywgZXh0cmFfcXVlcnlfcGFyYW0pO1xyXG4gICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgKi9cclxuICAgICAgICAgICAgcXVlcnlfcGFyYW1zID0gc2VsZi5hZGRRdWVyeVBhcmFtcyhxdWVyeV9wYXJhbXMsIHNlbGYuZXh0cmFfcXVlcnlfcGFyYW1zLmFsbCk7XHJcblxyXG4gICAgICAgICAgICBpZih0eXBlIT1cIlwiKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAvL3F1ZXJ5X3BhcmFtcyA9IHNlbGYuYWRkUXVlcnlQYXJhbXMocXVlcnlfcGFyYW1zLCBzZWxmLmV4dHJhX3F1ZXJ5X3BhcmFtc1t0eXBlXSk7XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIHJldHVybiBxdWVyeV9wYXJhbXM7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIHRoaXMuYWRkUXVlcnlQYXJhbXMgPSBmdW5jdGlvbihxdWVyeV9wYXJhbXMsIG5ld19wYXJhbXMpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICB2YXIgZXh0cmFfcXVlcnlfcGFyYW0gPSBcIlwiO1xyXG4gICAgICAgICAgICB2YXIgbGVuZ3RoID0gT2JqZWN0LmtleXMobmV3X3BhcmFtcykubGVuZ3RoO1xyXG4gICAgICAgICAgICB2YXIgY291bnQgPSAwO1xyXG5cclxuICAgICAgICAgICAgaWYobGVuZ3RoPjApXHJcbiAgICAgICAgICAgIHtcclxuXHJcbiAgICAgICAgICAgICAgICBmb3IgKHZhciBrIGluIG5ld19wYXJhbXMpIHtcclxuICAgICAgICAgICAgICAgICAgICBpZiAobmV3X3BhcmFtcy5oYXNPd25Qcm9wZXJ0eShrKSkge1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgaWYobmV3X3BhcmFtc1trXSE9XCJcIilcclxuICAgICAgICAgICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgZXh0cmFfcXVlcnlfcGFyYW0gPSBrK1wiPVwiK25ld19wYXJhbXNba107XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBxdWVyeV9wYXJhbXMgPSBzZWxmLmpvaW5VcmxQYXJhbShxdWVyeV9wYXJhbXMsIGV4dHJhX3F1ZXJ5X3BhcmFtKTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgcmV0dXJuIHF1ZXJ5X3BhcmFtcztcclxuICAgICAgICB9XHJcbiAgICAgICAgdGhpcy5hZGRVcmxQYXJhbSA9IGZ1bmN0aW9uKHVybCwgc3RyaW5nKVxyXG4gICAgICAgIHtcclxuICAgICAgICAgICAgdmFyIGFkZF9wYXJhbXMgPSBcIlwiO1xyXG5cclxuICAgICAgICAgICAgaWYodXJsIT1cIlwiKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICBpZih1cmwuaW5kZXhPZihcIj9cIikgIT0gLTEpXHJcbiAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgYWRkX3BhcmFtcyArPSBcIiZcIjtcclxuICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgIGVsc2VcclxuICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAvL3VybCA9IHRoaXMudHJhaWxpbmdTbGFzaEl0KHVybCk7XHJcbiAgICAgICAgICAgICAgICAgICAgYWRkX3BhcmFtcyArPSBcIj9cIjtcclxuICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgaWYoc3RyaW5nIT1cIlwiKVxyXG4gICAgICAgICAgICB7XHJcblxyXG4gICAgICAgICAgICAgICAgcmV0dXJuIHVybCArIGFkZF9wYXJhbXMgKyBzdHJpbmc7XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgZWxzZVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICByZXR1cm4gdXJsO1xyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgfTtcclxuXHJcbiAgICAgICAgdGhpcy5qb2luVXJsUGFyYW0gPSBmdW5jdGlvbihwYXJhbXMsIHN0cmluZylcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIHZhciBhZGRfcGFyYW1zID0gXCJcIjtcclxuXHJcbiAgICAgICAgICAgIGlmKHBhcmFtcyE9XCJcIilcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgYWRkX3BhcmFtcyArPSBcIiZcIjtcclxuICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgaWYoc3RyaW5nIT1cIlwiKVxyXG4gICAgICAgICAgICB7XHJcblxyXG4gICAgICAgICAgICAgICAgcmV0dXJuIHBhcmFtcyArIGFkZF9wYXJhbXMgKyBzdHJpbmc7XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgZWxzZVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICByZXR1cm4gcGFyYW1zO1xyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgfTtcclxuXHJcbiAgICAgICAgdGhpcy5zZXRBamF4UmVzdWx0c1VSTHMgPSBmdW5jdGlvbihxdWVyeV9wYXJhbXMpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICBpZih0eXBlb2Yoc2VsZi5hamF4X3Jlc3VsdHNfY29uZik9PVwidW5kZWZpbmVkXCIpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIHNlbGYuYWpheF9yZXN1bHRzX2NvbmYgPSBuZXcgQXJyYXkoKTtcclxuICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgc2VsZi5hamF4X3Jlc3VsdHNfY29uZlsncHJvY2Vzc2luZ191cmwnXSA9IFwiXCI7XHJcbiAgICAgICAgICAgIHNlbGYuYWpheF9yZXN1bHRzX2NvbmZbJ3Jlc3VsdHNfdXJsJ10gPSBcIlwiO1xyXG4gICAgICAgICAgICBzZWxmLmFqYXhfcmVzdWx0c19jb25mWydkYXRhX3R5cGUnXSA9IFwiXCI7XHJcblxyXG4gICAgICAgICAgICAvL2lmKHNlbGYuYWpheF91cmwhPVwiXCIpXHJcbiAgICAgICAgICAgIGlmKHNlbGYuZGlzcGxheV9yZXN1bHRfbWV0aG9kPT1cInNob3J0Y29kZVwiKVxyXG4gICAgICAgICAgICB7Ly90aGVuIHdlIHdhbnQgdG8gZG8gYSByZXF1ZXN0IHRvIHRoZSBhamF4IGVuZHBvaW50XHJcbiAgICAgICAgICAgICAgICBzZWxmLmFqYXhfcmVzdWx0c19jb25mWydyZXN1bHRzX3VybCddID0gc2VsZi5hZGRVcmxQYXJhbShzZWxmLnJlc3VsdHNfdXJsLCBxdWVyeV9wYXJhbXMpO1xyXG5cclxuICAgICAgICAgICAgICAgIC8vYWRkIGxhbmcgY29kZSB0byBhamF4IGFwaSByZXF1ZXN0LCBsYW5nIGNvZGUgc2hvdWxkIGFscmVhZHkgYmUgaW4gdGhlcmUgZm9yIG90aGVyIHJlcXVlc3RzIChpZSwgc3VwcGxpZWQgaW4gdGhlIFJlc3VsdHMgVVJMKVxyXG5cclxuICAgICAgICAgICAgICAgIGlmKHNlbGYubGFuZ19jb2RlIT1cIlwiKVxyXG4gICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgIC8vc28gYWRkIGl0XHJcbiAgICAgICAgICAgICAgICAgICAgcXVlcnlfcGFyYW1zID0gc2VsZi5qb2luVXJsUGFyYW0ocXVlcnlfcGFyYW1zLCBcImxhbmc9XCIrc2VsZi5sYW5nX2NvZGUpO1xyXG4gICAgICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgICAgIHNlbGYuYWpheF9yZXN1bHRzX2NvbmZbJ3Byb2Nlc3NpbmdfdXJsJ10gPSBzZWxmLmFkZFVybFBhcmFtKHNlbGYuYWpheF91cmwsIHF1ZXJ5X3BhcmFtcyk7XHJcbiAgICAgICAgICAgICAgICAvL3NlbGYuYWpheF9yZXN1bHRzX2NvbmZbJ2RhdGFfdHlwZSddID0gJ2pzb24nO1xyXG5cclxuICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICBlbHNlIGlmKHNlbGYuZGlzcGxheV9yZXN1bHRfbWV0aG9kPT1cInBvc3RfdHlwZV9hcmNoaXZlXCIpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIHByb2Nlc3NfZm9ybS5zZXRUYXhBcmNoaXZlUmVzdWx0c1VybChzZWxmLCBzZWxmLnJlc3VsdHNfdXJsKTtcclxuICAgICAgICAgICAgICAgIHZhciByZXN1bHRzX3VybCA9IHByb2Nlc3NfZm9ybS5nZXRSZXN1bHRzVXJsKHNlbGYsIHNlbGYucmVzdWx0c191cmwpO1xyXG5cclxuICAgICAgICAgICAgICAgIHNlbGYuYWpheF9yZXN1bHRzX2NvbmZbJ3Jlc3VsdHNfdXJsJ10gPSBzZWxmLmFkZFVybFBhcmFtKHJlc3VsdHNfdXJsLCBxdWVyeV9wYXJhbXMpO1xyXG4gICAgICAgICAgICAgICAgc2VsZi5hamF4X3Jlc3VsdHNfY29uZlsncHJvY2Vzc2luZ191cmwnXSA9IHNlbGYuYWRkVXJsUGFyYW0ocmVzdWx0c191cmwsIHF1ZXJ5X3BhcmFtcyk7XHJcblxyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIGVsc2UgaWYoc2VsZi5kaXNwbGF5X3Jlc3VsdF9tZXRob2Q9PVwiY3VzdG9tX3dvb2NvbW1lcmNlX3N0b3JlXCIpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIHByb2Nlc3NfZm9ybS5zZXRUYXhBcmNoaXZlUmVzdWx0c1VybChzZWxmLCBzZWxmLnJlc3VsdHNfdXJsKTtcclxuICAgICAgICAgICAgICAgIHZhciByZXN1bHRzX3VybCA9IHByb2Nlc3NfZm9ybS5nZXRSZXN1bHRzVXJsKHNlbGYsIHNlbGYucmVzdWx0c191cmwpO1xyXG5cclxuICAgICAgICAgICAgICAgIHNlbGYuYWpheF9yZXN1bHRzX2NvbmZbJ3Jlc3VsdHNfdXJsJ10gPSBzZWxmLmFkZFVybFBhcmFtKHJlc3VsdHNfdXJsLCBxdWVyeV9wYXJhbXMpO1xyXG4gICAgICAgICAgICAgICAgc2VsZi5hamF4X3Jlc3VsdHNfY29uZlsncHJvY2Vzc2luZ191cmwnXSA9IHNlbGYuYWRkVXJsUGFyYW0ocmVzdWx0c191cmwsIHF1ZXJ5X3BhcmFtcyk7XHJcblxyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIGVsc2VcclxuICAgICAgICAgICAgey8vb3RoZXJ3aXNlIHdlIHdhbnQgdG8gcHVsbCB0aGUgcmVzdWx0cyBkaXJlY3RseSBmcm9tIHRoZSByZXN1bHRzIHBhZ2VcclxuICAgICAgICAgICAgICAgIHNlbGYuYWpheF9yZXN1bHRzX2NvbmZbJ3Jlc3VsdHNfdXJsJ10gPSBzZWxmLmFkZFVybFBhcmFtKHNlbGYucmVzdWx0c191cmwsIHF1ZXJ5X3BhcmFtcyk7XHJcbiAgICAgICAgICAgICAgICBzZWxmLmFqYXhfcmVzdWx0c19jb25mWydwcm9jZXNzaW5nX3VybCddID0gc2VsZi5hZGRVcmxQYXJhbShzZWxmLmFqYXhfdXJsLCBxdWVyeV9wYXJhbXMpO1xyXG4gICAgICAgICAgICAgICAgLy9zZWxmLmFqYXhfcmVzdWx0c19jb25mWydkYXRhX3R5cGUnXSA9ICdodG1sJztcclxuICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgc2VsZi5hamF4X3Jlc3VsdHNfY29uZlsncHJvY2Vzc2luZ191cmwnXSA9IHNlbGYuYWRkUXVlcnlQYXJhbXMoc2VsZi5hamF4X3Jlc3VsdHNfY29uZlsncHJvY2Vzc2luZ191cmwnXSwgc2VsZi5leHRyYV9xdWVyeV9wYXJhbXNbJ2FqYXgnXSk7XHJcblxyXG4gICAgICAgICAgICBzZWxmLmFqYXhfcmVzdWx0c19jb25mWydkYXRhX3R5cGUnXSA9IHNlbGYuYWpheF9kYXRhX3R5cGU7XHJcbiAgICAgICAgfTtcclxuXHJcblxyXG5cclxuICAgICAgICB0aGlzLnVwZGF0ZUxvYWRlclRhZyA9IGZ1bmN0aW9uKCRvYmplY3QsIHRhZ05hbWUpIHtcclxuXHJcbiAgICAgICAgICAgIHZhciAkcGFyZW50O1xyXG5cclxuICAgICAgICAgICAgaWYoc2VsZi5pbmZpbml0ZV9zY3JvbGxfcmVzdWx0X2NsYXNzIT1cIlwiKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAkcGFyZW50ID0gc2VsZi4kaW5maW5pdGVfc2Nyb2xsX2NvbnRhaW5lci5maW5kKHNlbGYuaW5maW5pdGVfc2Nyb2xsX3Jlc3VsdF9jbGFzcykubGFzdCgpLnBhcmVudCgpO1xyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIGVsc2VcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgJHBhcmVudCA9IHNlbGYuJGluZmluaXRlX3Njcm9sbF9jb250YWluZXI7XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIHZhciB0YWdOYW1lID0gJHBhcmVudC5wcm9wKFwidGFnTmFtZVwiKTtcclxuXHJcbiAgICAgICAgICAgIHZhciB0YWdUeXBlID0gJ2Rpdic7XHJcbiAgICAgICAgICAgIGlmKCAoIHRhZ05hbWUudG9Mb3dlckNhc2UoKSA9PSAnb2wnICkgfHwgKCB0YWdOYW1lLnRvTG93ZXJDYXNlKCkgPT0gJ3VsJyApICl7XHJcbiAgICAgICAgICAgICAgICB0YWdUeXBlID0gJ2xpJztcclxuICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgdmFyICRuZXcgPSAkKCc8Jyt0YWdUeXBlKycgLz4nKS5odG1sKCRvYmplY3QuaHRtbCgpKTtcclxuICAgICAgICAgICAgdmFyIGF0dHJpYnV0ZXMgPSAkb2JqZWN0LnByb3AoXCJhdHRyaWJ1dGVzXCIpO1xyXG5cclxuICAgICAgICAgICAgLy8gbG9vcCB0aHJvdWdoIDxzZWxlY3Q+IGF0dHJpYnV0ZXMgYW5kIGFwcGx5IHRoZW0gb24gPGRpdj5cclxuICAgICAgICAgICAgJC5lYWNoKGF0dHJpYnV0ZXMsIGZ1bmN0aW9uKCkge1xyXG4gICAgICAgICAgICAgICAgJG5ldy5hdHRyKHRoaXMubmFtZSwgdGhpcy52YWx1ZSk7XHJcbiAgICAgICAgICAgIH0pO1xyXG5cclxuICAgICAgICAgICAgcmV0dXJuICRuZXc7XHJcblxyXG4gICAgICAgIH1cclxuXHJcblxyXG4gICAgICAgIHRoaXMubG9hZE1vcmVSZXN1bHRzID0gZnVuY3Rpb24oKVxyXG4gICAgICAgIHtcclxuICAgICAgICAgICAgc2VsZi5pc19sb2FkaW5nX21vcmUgPSB0cnVlO1xyXG5cclxuICAgICAgICAgICAgLy90cmlnZ2VyIHN0YXJ0IGV2ZW50XHJcbiAgICAgICAgICAgIHZhciBldmVudF9kYXRhID0ge1xyXG4gICAgICAgICAgICAgICAgc2ZpZDogc2VsZi5zZmlkLFxyXG4gICAgICAgICAgICAgICAgdGFyZ2V0U2VsZWN0b3I6IHNlbGYuYWpheF90YXJnZXRfYXR0cixcclxuICAgICAgICAgICAgICAgIHR5cGU6IFwibG9hZF9tb3JlXCIsXHJcbiAgICAgICAgICAgICAgICBvYmplY3Q6IHNlbGZcclxuICAgICAgICAgICAgfTtcclxuXHJcbiAgICAgICAgICAgIHNlbGYudHJpZ2dlckV2ZW50KFwic2Y6YWpheHN0YXJ0XCIsIGV2ZW50X2RhdGEpO1xyXG4gICAgICAgICAgICBwcm9jZXNzX2Zvcm0uc2V0VGF4QXJjaGl2ZVJlc3VsdHNVcmwoc2VsZiwgc2VsZi5yZXN1bHRzX3VybCk7XHJcbiAgICAgICAgICAgIFxyXG4gICAgICAgICAgICB2YXIgcXVlcnlfcGFyYW1zID0gc2VsZi5nZXRVcmxQYXJhbXModHJ1ZSk7XHJcbiAgICAgICAgICAgIHNlbGYubGFzdF9zdWJtaXRfcXVlcnlfcGFyYW1zID0gc2VsZi5nZXRVcmxQYXJhbXMoZmFsc2UpOyAvL2dyYWIgYSBjb3B5IG9mIGh0ZSBVUkwgcGFyYW1zIHdpdGhvdXQgcGFnaW5hdGlvbiBhbHJlYWR5IGFkZGVkXHJcblxyXG4gICAgICAgICAgICB2YXIgYWpheF9wcm9jZXNzaW5nX3VybCA9IFwiXCI7XHJcbiAgICAgICAgICAgIHZhciBhamF4X3Jlc3VsdHNfdXJsID0gXCJcIjtcclxuICAgICAgICAgICAgdmFyIGRhdGFfdHlwZSA9IFwiXCI7XHJcblxyXG5cclxuICAgICAgICAgICAgLy9ub3cgYWRkIHRoZSBuZXcgcGFnaW5hdGlvblxyXG4gICAgICAgICAgICB2YXIgbmV4dF9wYWdlZF9udW1iZXIgPSB0aGlzLmN1cnJlbnRfcGFnZWQgKyAxO1xyXG4gICAgICAgICAgICBxdWVyeV9wYXJhbXMgPSBzZWxmLmpvaW5VcmxQYXJhbShxdWVyeV9wYXJhbXMsIFwic2ZfcGFnZWQ9XCIrbmV4dF9wYWdlZF9udW1iZXIpO1xyXG5cclxuICAgICAgICAgICAgc2VsZi5zZXRBamF4UmVzdWx0c1VSTHMocXVlcnlfcGFyYW1zKTtcclxuICAgICAgICAgICAgYWpheF9wcm9jZXNzaW5nX3VybCA9IHNlbGYuYWpheF9yZXN1bHRzX2NvbmZbJ3Byb2Nlc3NpbmdfdXJsJ107XHJcbiAgICAgICAgICAgIGFqYXhfcmVzdWx0c191cmwgPSBzZWxmLmFqYXhfcmVzdWx0c19jb25mWydyZXN1bHRzX3VybCddO1xyXG4gICAgICAgICAgICBkYXRhX3R5cGUgPSBzZWxmLmFqYXhfcmVzdWx0c19jb25mWydkYXRhX3R5cGUnXTtcclxuXHJcbiAgICAgICAgICAgIC8vYWJvcnQgYW55IHByZXZpb3VzIGFqYXggcmVxdWVzdHNcclxuICAgICAgICAgICAgaWYoc2VsZi5sYXN0X2FqYXhfcmVxdWVzdClcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgc2VsZi5sYXN0X2FqYXhfcmVxdWVzdC5hYm9ydCgpO1xyXG4gICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICBpZihzZWxmLnVzZV9zY3JvbGxfbG9hZGVyPT0xKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICB2YXIgJGxvYWRlciA9ICQoJzxkaXYvPicse1xyXG4gICAgICAgICAgICAgICAgICAgICdjbGFzcyc6ICdzZWFyY2gtZmlsdGVyLXNjcm9sbC1sb2FkaW5nJ1xyXG4gICAgICAgICAgICAgICAgfSk7Ly8uYXBwZW5kVG8oc2VsZi4kYWpheF9yZXN1bHRzX2NvbnRhaW5lcik7XHJcblxyXG4gICAgICAgICAgICAgICAgJGxvYWRlciA9IHNlbGYudXBkYXRlTG9hZGVyVGFnKCRsb2FkZXIpO1xyXG5cclxuICAgICAgICAgICAgICAgIHNlbGYuaW5maW5pdGVTY3JvbGxBcHBlbmQoJGxvYWRlcik7XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIHNlbGYubGFzdF9hamF4X3JlcXVlc3QgPSAkLmdldChhamF4X3Byb2Nlc3NpbmdfdXJsLCBmdW5jdGlvbihkYXRhLCBzdGF0dXMsIHJlcXVlc3QpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIHNlbGYuY3VycmVudF9wYWdlZCsrO1xyXG4gICAgICAgICAgICAgICAgc2VsZi5sYXN0X2FqYXhfcmVxdWVzdCA9IG51bGw7XHJcblxyXG4gICAgICAgICAgICAgICAgLyogc2Nyb2xsICovXHJcbiAgICAgICAgICAgICAgICAvL3NlbGYuc2Nyb2xsUmVzdWx0cygpO1xyXG5cclxuICAgICAgICAgICAgICAgIC8vdXBkYXRlcyB0aGUgcmVzdXRscyAmIGZvcm0gaHRtbFxyXG4gICAgICAgICAgICAgICAgc2VsZi5hZGRSZXN1bHRzKGRhdGEsIGRhdGFfdHlwZSk7XHJcblxyXG4gICAgICAgICAgICB9LCBkYXRhX3R5cGUpLmZhaWwoZnVuY3Rpb24oanFYSFIsIHRleHRTdGF0dXMsIGVycm9yVGhyb3duKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICB2YXIgZGF0YSA9IHt9O1xyXG4gICAgICAgICAgICAgICAgZGF0YS5zZmlkID0gc2VsZi5zZmlkO1xyXG4gICAgICAgICAgICAgICAgZGF0YS5vYmplY3QgPSBzZWxmO1xyXG4gICAgICAgICAgICAgICAgZGF0YS50YXJnZXRTZWxlY3RvciA9IHNlbGYuYWpheF90YXJnZXRfYXR0cjtcclxuICAgICAgICAgICAgICAgIGRhdGEuYWpheFVSTCA9IGFqYXhfcHJvY2Vzc2luZ191cmw7XHJcbiAgICAgICAgICAgICAgICBkYXRhLmpxWEhSID0ganFYSFI7XHJcbiAgICAgICAgICAgICAgICBkYXRhLnRleHRTdGF0dXMgPSB0ZXh0U3RhdHVzO1xyXG4gICAgICAgICAgICAgICAgZGF0YS5lcnJvclRocm93biA9IGVycm9yVGhyb3duO1xyXG4gICAgICAgICAgICAgICAgc2VsZi50cmlnZ2VyRXZlbnQoXCJzZjphamF4ZXJyb3JcIiwgZGF0YSk7XHJcblxyXG4gICAgICAgICAgICB9KS5hbHdheXMoZnVuY3Rpb24oKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICB2YXIgZGF0YSA9IHt9O1xyXG4gICAgICAgICAgICAgICAgZGF0YS5zZmlkID0gc2VsZi5zZmlkO1xyXG4gICAgICAgICAgICAgICAgZGF0YS50YXJnZXRTZWxlY3RvciA9IHNlbGYuYWpheF90YXJnZXRfYXR0cjtcclxuICAgICAgICAgICAgICAgIGRhdGEub2JqZWN0ID0gc2VsZjtcclxuXHJcbiAgICAgICAgICAgICAgICBpZihzZWxmLnVzZV9zY3JvbGxfbG9hZGVyPT0xKVxyXG4gICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICRsb2FkZXIuZGV0YWNoKCk7XHJcbiAgICAgICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICAgICAgc2VsZi5pc19sb2FkaW5nX21vcmUgPSBmYWxzZTtcclxuXHJcbiAgICAgICAgICAgICAgICBzZWxmLnRyaWdnZXJFdmVudChcInNmOmFqYXhmaW5pc2hcIiwgZGF0YSk7XHJcbiAgICAgICAgICAgIH0pO1xyXG5cclxuICAgICAgICB9XHJcbiAgICAgICAgdGhpcy5mZXRjaEFqYXhSZXN1bHRzID0gZnVuY3Rpb24oKVxyXG4gICAgICAgIHtcclxuICAgICAgICAgICAgLy90cmlnZ2VyIHN0YXJ0IGV2ZW50XHJcbiAgICAgICAgICAgIHZhciBldmVudF9kYXRhID0ge1xyXG4gICAgICAgICAgICAgICAgc2ZpZDogc2VsZi5zZmlkLFxyXG4gICAgICAgICAgICAgICAgdGFyZ2V0U2VsZWN0b3I6IHNlbGYuYWpheF90YXJnZXRfYXR0cixcclxuICAgICAgICAgICAgICAgIHR5cGU6IFwibG9hZF9yZXN1bHRzXCIsXHJcbiAgICAgICAgICAgICAgICBvYmplY3Q6IHNlbGZcclxuICAgICAgICAgICAgfTtcclxuXHJcbiAgICAgICAgICAgIHNlbGYudHJpZ2dlckV2ZW50KFwic2Y6YWpheHN0YXJ0XCIsIGV2ZW50X2RhdGEpO1xyXG5cclxuICAgICAgICAgICAgLy9yZWZvY3VzIGFueSBpbnB1dCBmaWVsZHMgYWZ0ZXIgdGhlIGZvcm0gaGFzIGJlZW4gdXBkYXRlZFxyXG4gICAgICAgICAgICB2YXIgJGxhc3RfYWN0aXZlX2lucHV0X3RleHQgPSAkdGhpcy5maW5kKCdpbnB1dFt0eXBlPVwidGV4dFwiXTpmb2N1cycpLm5vdChcIi5zZi1kYXRlcGlja2VyXCIpO1xyXG4gICAgICAgICAgICBpZigkbGFzdF9hY3RpdmVfaW5wdXRfdGV4dC5sZW5ndGg9PTEpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIHZhciBsYXN0X2FjdGl2ZV9pbnB1dF90ZXh0ID0gJGxhc3RfYWN0aXZlX2lucHV0X3RleHQuYXR0cihcIm5hbWVcIik7XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICR0aGlzLmFkZENsYXNzKFwic2VhcmNoLWZpbHRlci1kaXNhYmxlZFwiKTtcclxuICAgICAgICAgICAgcHJvY2Vzc19mb3JtLmRpc2FibGVJbnB1dHMoc2VsZik7XHJcblxyXG4gICAgICAgICAgICAvL2ZhZGUgb3V0IHJlc3VsdHNcclxuICAgICAgICAgICAgc2VsZi4kYWpheF9yZXN1bHRzX2NvbnRhaW5lci5hbmltYXRlKHsgb3BhY2l0eTogMC41IH0sIFwiZmFzdFwiKTsgLy9sb2FkaW5nXHJcbiAgICAgICAgICAgIHNlbGYuZmFkZUNvbnRlbnRBcmVhcyggXCJvdXRcIiApO1xyXG5cclxuICAgICAgICAgICAgaWYoc2VsZi5hamF4X2FjdGlvbj09XCJwYWdpbmF0aW9uXCIpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIC8vbmVlZCB0byByZW1vdmUgYWN0aXZlIGZpbHRlciBmcm9tIFVSTFxyXG5cclxuICAgICAgICAgICAgICAgIC8vcXVlcnlfcGFyYW1zID0gc2VsZi5sYXN0X3N1Ym1pdF9xdWVyeV9wYXJhbXM7XHJcblxyXG4gICAgICAgICAgICAgICAgLy9ub3cgYWRkIHRoZSBuZXcgcGFnaW5hdGlvblxyXG4gICAgICAgICAgICAgICAgdmFyIHBhZ2VOdW1iZXIgPSBzZWxmLiRhamF4X3Jlc3VsdHNfY29udGFpbmVyLmF0dHIoXCJkYXRhLXBhZ2VkXCIpO1xyXG5cclxuICAgICAgICAgICAgICAgIGlmKHR5cGVvZihwYWdlTnVtYmVyKT09XCJ1bmRlZmluZWRcIilcclxuICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICBwYWdlTnVtYmVyID0gMTtcclxuICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgIHByb2Nlc3NfZm9ybS5zZXRUYXhBcmNoaXZlUmVzdWx0c1VybChzZWxmLCBzZWxmLnJlc3VsdHNfdXJsKTtcclxuICAgICAgICAgICAgICAgIHF1ZXJ5X3BhcmFtcyA9IHNlbGYuZ2V0VXJsUGFyYW1zKGZhbHNlKTtcclxuXHJcbiAgICAgICAgICAgICAgICBpZihwYWdlTnVtYmVyPjEpXHJcbiAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgcXVlcnlfcGFyYW1zID0gc2VsZi5qb2luVXJsUGFyYW0ocXVlcnlfcGFyYW1zLCBcInNmX3BhZ2VkPVwiK3BhZ2VOdW1iZXIpO1xyXG4gICAgICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICBlbHNlIGlmKHNlbGYuYWpheF9hY3Rpb249PVwic3VibWl0XCIpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIHZhciBxdWVyeV9wYXJhbXMgPSBzZWxmLmdldFVybFBhcmFtcyh0cnVlKTtcclxuICAgICAgICAgICAgICAgIHNlbGYubGFzdF9zdWJtaXRfcXVlcnlfcGFyYW1zID0gc2VsZi5nZXRVcmxQYXJhbXMoZmFsc2UpOyAvL2dyYWIgYSBjb3B5IG9mIGh0ZSBVUkwgcGFyYW1zIHdpdGhvdXQgcGFnaW5hdGlvbiBhbHJlYWR5IGFkZGVkXHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIHZhciBhamF4X3Byb2Nlc3NpbmdfdXJsID0gXCJcIjtcclxuICAgICAgICAgICAgdmFyIGFqYXhfcmVzdWx0c191cmwgPSBcIlwiO1xyXG4gICAgICAgICAgICB2YXIgZGF0YV90eXBlID0gXCJcIjtcclxuXHJcbiAgICAgICAgICAgIHNlbGYuc2V0QWpheFJlc3VsdHNVUkxzKHF1ZXJ5X3BhcmFtcyk7XHJcbiAgICAgICAgICAgIGFqYXhfcHJvY2Vzc2luZ191cmwgPSBzZWxmLmFqYXhfcmVzdWx0c19jb25mWydwcm9jZXNzaW5nX3VybCddO1xyXG4gICAgICAgICAgICBhamF4X3Jlc3VsdHNfdXJsID0gc2VsZi5hamF4X3Jlc3VsdHNfY29uZlsncmVzdWx0c191cmwnXTtcclxuICAgICAgICAgICAgZGF0YV90eXBlID0gc2VsZi5hamF4X3Jlc3VsdHNfY29uZlsnZGF0YV90eXBlJ107XHJcblxyXG5cclxuICAgICAgICAgICAgLy9hYm9ydCBhbnkgcHJldmlvdXMgYWpheCByZXF1ZXN0c1xyXG4gICAgICAgICAgICBpZihzZWxmLmxhc3RfYWpheF9yZXF1ZXN0KVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICBzZWxmLmxhc3RfYWpheF9yZXF1ZXN0LmFib3J0KCk7XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgdmFyIGFqYXhfYWN0aW9uID0gc2VsZi5hamF4X2FjdGlvbjtcclxuICAgICAgICAgICAgc2VsZi5sYXN0X2FqYXhfcmVxdWVzdCA9ICQuZ2V0KGFqYXhfcHJvY2Vzc2luZ191cmwsIGZ1bmN0aW9uKGRhdGEsIHN0YXR1cywgcmVxdWVzdClcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgc2VsZi5sYXN0X2FqYXhfcmVxdWVzdCA9IG51bGw7XHJcblxyXG4gICAgICAgICAgICAgICAgLy91cGRhdGVzIHRoZSByZXN1dGxzICYgZm9ybSBodG1sXHJcbiAgICAgICAgICAgICAgICBzZWxmLnVwZGF0ZVJlc3VsdHMoZGF0YSwgZGF0YV90eXBlKTtcclxuXHJcbiAgICAgICAgICAgICAgICAvLyBzY3JvbGwgXHJcbiAgICAgICAgICAgICAgICAvLyBzZXQgdGhlIHZhciBiYWNrIHRvIHdoYXQgaXQgd2FzIGJlZm9yZSB0aGUgYWpheCByZXF1ZXN0IG5hZCB0aGUgZm9ybSByZS1pbml0XHJcbiAgICAgICAgICAgICAgICBzZWxmLmFqYXhfYWN0aW9uID0gYWpheF9hY3Rpb247XHJcbiAgICAgICAgICAgICAgICBzZWxmLnNjcm9sbFJlc3VsdHMoIHNlbGYuYWpheF9hY3Rpb24gKTtcclxuXHJcbiAgICAgICAgICAgICAgICAvKiB1cGRhdGUgVVJMICovXHJcbiAgICAgICAgICAgICAgICAvL3VwZGF0ZSB1cmwgYmVmb3JlIHBhZ2luYXRpb24sIGJlY2F1c2Ugd2UgbmVlZCB0byBkbyBzb21lIGNoZWNrcyBhZ2FpbnMgdGhlIFVSTCBmb3IgaW5maW5pdGUgc2Nyb2xsXHJcbiAgICAgICAgICAgICAgICBzZWxmLnVwZGF0ZVVybEhpc3RvcnkoYWpheF9yZXN1bHRzX3VybCk7XHJcblxyXG4gICAgICAgICAgICAgICAgLy9zZXR1cCBwYWdpbmF0aW9uXHJcbiAgICAgICAgICAgICAgICBzZWxmLnNldHVwQWpheFBhZ2luYXRpb24oKTtcclxuXHJcbiAgICAgICAgICAgICAgICBzZWxmLmlzU3VibWl0dGluZyA9IGZhbHNlO1xyXG5cclxuICAgICAgICAgICAgICAgIC8qIHVzZXIgZGVmICovXHJcbiAgICAgICAgICAgICAgICBzZWxmLmluaXRXb29Db21tZXJjZUNvbnRyb2xzKCk7IC8vd29vY29tbWVyY2Ugb3JkZXJieVxyXG5cclxuXHJcbiAgICAgICAgICAgIH0sIGRhdGFfdHlwZSkuZmFpbChmdW5jdGlvbihqcVhIUiwgdGV4dFN0YXR1cywgZXJyb3JUaHJvd24pXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIHZhciBkYXRhID0ge307XHJcbiAgICAgICAgICAgICAgICBkYXRhLnNmaWQgPSBzZWxmLnNmaWQ7XHJcbiAgICAgICAgICAgICAgICBkYXRhLnRhcmdldFNlbGVjdG9yID0gc2VsZi5hamF4X3RhcmdldF9hdHRyO1xyXG4gICAgICAgICAgICAgICAgZGF0YS5vYmplY3QgPSBzZWxmO1xyXG4gICAgICAgICAgICAgICAgZGF0YS5hamF4VVJMID0gYWpheF9wcm9jZXNzaW5nX3VybDtcclxuICAgICAgICAgICAgICAgIGRhdGEuanFYSFIgPSBqcVhIUjtcclxuICAgICAgICAgICAgICAgIGRhdGEudGV4dFN0YXR1cyA9IHRleHRTdGF0dXM7XHJcbiAgICAgICAgICAgICAgICBkYXRhLmVycm9yVGhyb3duID0gZXJyb3JUaHJvd247XHJcbiAgICAgICAgICAgICAgICBzZWxmLmlzU3VibWl0dGluZyA9IGZhbHNlO1xyXG4gICAgICAgICAgICAgICAgc2VsZi50cmlnZ2VyRXZlbnQoXCJzZjphamF4ZXJyb3JcIiwgZGF0YSk7XHJcblxyXG4gICAgICAgICAgICB9KS5hbHdheXMoZnVuY3Rpb24oKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICBzZWxmLiRhamF4X3Jlc3VsdHNfY29udGFpbmVyLnN0b3AodHJ1ZSx0cnVlKS5hbmltYXRlKHsgb3BhY2l0eTogMX0sIFwiZmFzdFwiKTsgLy9maW5pc2hlZCBsb2FkaW5nXHJcbiAgICAgICAgICAgICAgICBzZWxmLmZhZGVDb250ZW50QXJlYXMoIFwiaW5cIiApO1xyXG4gICAgICAgICAgICAgICAgdmFyIGRhdGEgPSB7fTtcclxuICAgICAgICAgICAgICAgIGRhdGEuc2ZpZCA9IHNlbGYuc2ZpZDtcclxuICAgICAgICAgICAgICAgIGRhdGEudGFyZ2V0U2VsZWN0b3IgPSBzZWxmLmFqYXhfdGFyZ2V0X2F0dHI7XHJcbiAgICAgICAgICAgICAgICBkYXRhLm9iamVjdCA9IHNlbGY7XHJcbiAgICAgICAgICAgICAgICAkdGhpcy5yZW1vdmVDbGFzcyhcInNlYXJjaC1maWx0ZXItZGlzYWJsZWRcIik7XHJcbiAgICAgICAgICAgICAgICBwcm9jZXNzX2Zvcm0uZW5hYmxlSW5wdXRzKHNlbGYpO1xyXG5cclxuICAgICAgICAgICAgICAgIC8vcmVmb2N1cyB0aGUgbGFzdCBhY3RpdmUgdGV4dCBmaWVsZFxyXG4gICAgICAgICAgICAgICAgaWYobGFzdF9hY3RpdmVfaW5wdXRfdGV4dCE9XCJcIilcclxuICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICB2YXIgJGlucHV0ID0gW107XHJcbiAgICAgICAgICAgICAgICAgICAgc2VsZi4kZmllbGRzLmVhY2goZnVuY3Rpb24oKXtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHZhciAkYWN0aXZlX2lucHV0ID0gJCh0aGlzKS5maW5kKFwiaW5wdXRbbmFtZT0nXCIrbGFzdF9hY3RpdmVfaW5wdXRfdGV4dCtcIiddXCIpO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBpZigkYWN0aXZlX2lucHV0Lmxlbmd0aD09MSlcclxuICAgICAgICAgICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgJGlucHV0ID0gJGFjdGl2ZV9pbnB1dDtcclxuICAgICAgICAgICAgICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgICAgICAgICB9KTtcclxuICAgICAgICAgICAgICAgICAgICBpZigkaW5wdXQubGVuZ3RoPT0xKSB7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICAkaW5wdXQuZm9jdXMoKS52YWwoJGlucHV0LnZhbCgpKTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgc2VsZi5mb2N1c0NhbXBvKCRpbnB1dFswXSk7XHJcbiAgICAgICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgICAgICR0aGlzLmZpbmQoXCJpbnB1dFtuYW1lPSdfc2Zfc2VhcmNoJ11cIikudHJpZ2dlcignZm9jdXMnKTtcclxuICAgICAgICAgICAgICAgIHNlbGYudHJpZ2dlckV2ZW50KFwic2Y6YWpheGZpbmlzaFwiLCAgZGF0YSApO1xyXG5cclxuICAgICAgICAgICAgfSk7XHJcbiAgICAgICAgfTtcclxuXHJcbiAgICAgICAgdGhpcy5mb2N1c0NhbXBvID0gZnVuY3Rpb24oaW5wdXRGaWVsZCl7XHJcbiAgICAgICAgICAgIC8vdmFyIGlucHV0RmllbGQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChpZCk7XHJcbiAgICAgICAgICAgIGlmIChpbnB1dEZpZWxkICE9IG51bGwgJiYgaW5wdXRGaWVsZC52YWx1ZS5sZW5ndGggIT0gMCl7XHJcbiAgICAgICAgICAgICAgICBpZiAoaW5wdXRGaWVsZC5jcmVhdGVUZXh0UmFuZ2Upe1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciBGaWVsZFJhbmdlID0gaW5wdXRGaWVsZC5jcmVhdGVUZXh0UmFuZ2UoKTtcclxuICAgICAgICAgICAgICAgICAgICBGaWVsZFJhbmdlLm1vdmVTdGFydCgnY2hhcmFjdGVyJyxpbnB1dEZpZWxkLnZhbHVlLmxlbmd0aCk7XHJcbiAgICAgICAgICAgICAgICAgICAgRmllbGRSYW5nZS5jb2xsYXBzZSgpO1xyXG4gICAgICAgICAgICAgICAgICAgIEZpZWxkUmFuZ2Uuc2VsZWN0KCk7XHJcbiAgICAgICAgICAgICAgICB9ZWxzZSBpZiAoaW5wdXRGaWVsZC5zZWxlY3Rpb25TdGFydCB8fCBpbnB1dEZpZWxkLnNlbGVjdGlvblN0YXJ0ID09ICcwJykge1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciBlbGVtTGVuID0gaW5wdXRGaWVsZC52YWx1ZS5sZW5ndGg7XHJcbiAgICAgICAgICAgICAgICAgICAgaW5wdXRGaWVsZC5zZWxlY3Rpb25TdGFydCA9IGVsZW1MZW47XHJcbiAgICAgICAgICAgICAgICAgICAgaW5wdXRGaWVsZC5zZWxlY3Rpb25FbmQgPSBlbGVtTGVuO1xyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgaW5wdXRGaWVsZC5ibHVyKCk7XHJcbiAgICAgICAgICAgICAgICBpbnB1dEZpZWxkLmZvY3VzKCk7XHJcbiAgICAgICAgICAgIH0gZWxzZXtcclxuICAgICAgICAgICAgICAgIGlmICggaW5wdXRGaWVsZCApIHtcclxuICAgICAgICAgICAgICAgICAgICBpbnB1dEZpZWxkLmZvY3VzKCk7XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICBcclxuICAgICAgICAgICAgfVxyXG4gICAgICAgIH1cclxuXHJcbiAgICAgICAgdGhpcy50cmlnZ2VyRXZlbnQgPSBmdW5jdGlvbihldmVudG5hbWUsIGRhdGEpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICB2YXIgJGV2ZW50X2NvbnRhaW5lciA9ICQoXCIuc2VhcmNoYW5kZmlsdGVyW2RhdGEtc2YtZm9ybS1pZD0nXCIrc2VsZi5zZmlkK1wiJ11cIik7XHJcbiAgICAgICAgICAgICRldmVudF9jb250YWluZXIudHJpZ2dlcihldmVudG5hbWUsIFsgZGF0YSBdKTtcclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIHRoaXMuZmV0Y2hBamF4Rm9ybSA9IGZ1bmN0aW9uKClcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIC8vdHJpZ2dlciBzdGFydCBldmVudFxyXG4gICAgICAgICAgICB2YXIgZXZlbnRfZGF0YSA9IHtcclxuICAgICAgICAgICAgICAgIHNmaWQ6IHNlbGYuc2ZpZCxcclxuICAgICAgICAgICAgICAgIHRhcmdldFNlbGVjdG9yOiBzZWxmLmFqYXhfdGFyZ2V0X2F0dHIsXHJcbiAgICAgICAgICAgICAgICB0eXBlOiBcImZvcm1cIixcclxuICAgICAgICAgICAgICAgIG9iamVjdDogc2VsZlxyXG4gICAgICAgICAgICB9O1xyXG5cclxuICAgICAgICAgICAgc2VsZi50cmlnZ2VyRXZlbnQoXCJzZjphamF4Zm9ybXN0YXJ0XCIsIFsgZXZlbnRfZGF0YSBdKTtcclxuXHJcbiAgICAgICAgICAgICR0aGlzLmFkZENsYXNzKFwic2VhcmNoLWZpbHRlci1kaXNhYmxlZFwiKTtcclxuICAgICAgICAgICAgcHJvY2Vzc19mb3JtLmRpc2FibGVJbnB1dHMoc2VsZik7XHJcblxyXG4gICAgICAgICAgICB2YXIgcXVlcnlfcGFyYW1zID0gc2VsZi5nZXRVcmxQYXJhbXMoKTtcclxuXHJcbiAgICAgICAgICAgIGlmKHNlbGYubGFuZ19jb2RlIT1cIlwiKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAvL3NvIGFkZCBpdFxyXG4gICAgICAgICAgICAgICAgcXVlcnlfcGFyYW1zID0gc2VsZi5qb2luVXJsUGFyYW0ocXVlcnlfcGFyYW1zLCBcImxhbmc9XCIrc2VsZi5sYW5nX2NvZGUpO1xyXG4gICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICB2YXIgYWpheF9wcm9jZXNzaW5nX3VybCA9IHNlbGYuYWRkVXJsUGFyYW0oc2VsZi5hamF4X2Zvcm1fdXJsLCBxdWVyeV9wYXJhbXMpO1xyXG4gICAgICAgICAgICB2YXIgZGF0YV90eXBlID0gXCJqc29uXCI7XHJcblxyXG5cclxuICAgICAgICAgICAgLy9hYm9ydCBhbnkgcHJldmlvdXMgYWpheCByZXF1ZXN0c1xyXG4gICAgICAgICAgICAvKmlmKHNlbGYubGFzdF9hamF4X3JlcXVlc3QpXHJcbiAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICBzZWxmLmxhc3RfYWpheF9yZXF1ZXN0LmFib3J0KCk7XHJcbiAgICAgICAgICAgICB9Ki9cclxuXHJcblxyXG4gICAgICAgICAgICAvL3NlbGYubGFzdF9hamF4X3JlcXVlc3QgPVxyXG5cclxuICAgICAgICAgICAgJC5nZXQoYWpheF9wcm9jZXNzaW5nX3VybCwgZnVuY3Rpb24oZGF0YSwgc3RhdHVzLCByZXF1ZXN0KVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAvL3NlbGYubGFzdF9hamF4X3JlcXVlc3QgPSBudWxsO1xyXG5cclxuICAgICAgICAgICAgICAgIC8vdXBkYXRlcyB0aGUgcmVzdXRscyAmIGZvcm0gaHRtbFxyXG4gICAgICAgICAgICAgICAgc2VsZi51cGRhdGVGb3JtKGRhdGEsIGRhdGFfdHlwZSk7XHJcblxyXG5cclxuICAgICAgICAgICAgfSwgZGF0YV90eXBlKS5mYWlsKGZ1bmN0aW9uKGpxWEhSLCB0ZXh0U3RhdHVzLCBlcnJvclRocm93bilcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgdmFyIGRhdGEgPSB7fTtcclxuICAgICAgICAgICAgICAgIGRhdGEuc2ZpZCA9IHNlbGYuc2ZpZDtcclxuICAgICAgICAgICAgICAgIGRhdGEudGFyZ2V0U2VsZWN0b3IgPSBzZWxmLmFqYXhfdGFyZ2V0X2F0dHI7XHJcbiAgICAgICAgICAgICAgICBkYXRhLm9iamVjdCA9IHNlbGY7XHJcbiAgICAgICAgICAgICAgICBkYXRhLmFqYXhVUkwgPSBhamF4X3Byb2Nlc3NpbmdfdXJsO1xyXG4gICAgICAgICAgICAgICAgZGF0YS5qcVhIUiA9IGpxWEhSO1xyXG4gICAgICAgICAgICAgICAgZGF0YS50ZXh0U3RhdHVzID0gdGV4dFN0YXR1cztcclxuICAgICAgICAgICAgICAgIGRhdGEuZXJyb3JUaHJvd24gPSBlcnJvclRocm93bjtcclxuICAgICAgICAgICAgICAgIHNlbGYudHJpZ2dlckV2ZW50KFwic2Y6YWpheGVycm9yXCIsIFsgZGF0YSBdKTtcclxuXHJcbiAgICAgICAgICAgIH0pLmFsd2F5cyhmdW5jdGlvbigpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIHZhciBkYXRhID0ge307XHJcbiAgICAgICAgICAgICAgICBkYXRhLnNmaWQgPSBzZWxmLnNmaWQ7XHJcbiAgICAgICAgICAgICAgICBkYXRhLnRhcmdldFNlbGVjdG9yID0gc2VsZi5hamF4X3RhcmdldF9hdHRyO1xyXG4gICAgICAgICAgICAgICAgZGF0YS5vYmplY3QgPSBzZWxmO1xyXG5cclxuICAgICAgICAgICAgICAgICR0aGlzLnJlbW92ZUNsYXNzKFwic2VhcmNoLWZpbHRlci1kaXNhYmxlZFwiKTtcclxuICAgICAgICAgICAgICAgIHByb2Nlc3NfZm9ybS5lbmFibGVJbnB1dHMoc2VsZik7XHJcblxyXG4gICAgICAgICAgICAgICAgc2VsZi50cmlnZ2VyRXZlbnQoXCJzZjphamF4Zm9ybWZpbmlzaFwiLCBbIGRhdGEgXSk7XHJcbiAgICAgICAgICAgIH0pO1xyXG4gICAgICAgIH07XHJcblxyXG4gICAgICAgIHRoaXMuY29weUxpc3RJdGVtc0NvbnRlbnRzID0gZnVuY3Rpb24oJGxpc3RfZnJvbSwgJGxpc3RfdG8pXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICB2YXIgc2VsZiA9IHRoaXM7XHJcblxyXG4gICAgICAgICAgICAvL2NvcHkgb3ZlciBjaGlsZCBsaXN0IGl0ZW1zXHJcbiAgICAgICAgICAgIHZhciBsaV9jb250ZW50c19hcnJheSA9IG5ldyBBcnJheSgpO1xyXG4gICAgICAgICAgICB2YXIgZnJvbV9hdHRyaWJ1dGVzID0gbmV3IEFycmF5KCk7XHJcblxyXG4gICAgICAgICAgICB2YXIgJGZyb21fZmllbGRzID0gJGxpc3RfZnJvbS5maW5kKFwiPiB1bCA+IGxpXCIpO1xyXG5cclxuICAgICAgICAgICAgJGZyb21fZmllbGRzLmVhY2goZnVuY3Rpb24oaSl7XHJcblxyXG4gICAgICAgICAgICAgICAgbGlfY29udGVudHNfYXJyYXkucHVzaCgkKHRoaXMpLmh0bWwoKSk7XHJcblxyXG4gICAgICAgICAgICAgICAgdmFyIGF0dHJpYnV0ZXMgPSAkKHRoaXMpLnByb3AoXCJhdHRyaWJ1dGVzXCIpO1xyXG4gICAgICAgICAgICAgICAgZnJvbV9hdHRyaWJ1dGVzLnB1c2goYXR0cmlidXRlcyk7XHJcblxyXG4gICAgICAgICAgICAgICAgLy92YXIgZmllbGRfbmFtZSA9ICQodGhpcykuYXR0cihcImRhdGEtc2YtZmllbGQtbmFtZVwiKTtcclxuICAgICAgICAgICAgICAgIC8vdmFyIHRvX2ZpZWxkID0gJGxpc3RfdG8uZmluZChcIj4gdWwgPiBsaVtkYXRhLXNmLWZpZWxkLW5hbWU9J1wiK2ZpZWxkX25hbWUrXCInXVwiKTtcclxuXHJcbiAgICAgICAgICAgICAgICAvL3NlbGYuY29weUF0dHJpYnV0ZXMoJCh0aGlzKSwgJGxpc3RfdG8sIFwiZGF0YS1zZi1cIik7XHJcblxyXG4gICAgICAgICAgICB9KTtcclxuXHJcbiAgICAgICAgICAgIHZhciBsaV9pdCA9IDA7XHJcbiAgICAgICAgICAgIHZhciAkdG9fZmllbGRzID0gJGxpc3RfdG8uZmluZChcIj4gdWwgPiBsaVwiKTtcclxuICAgICAgICAgICAgJHRvX2ZpZWxkcy5lYWNoKGZ1bmN0aW9uKGkpe1xyXG4gICAgICAgICAgICAgICAgJCh0aGlzKS5odG1sKGxpX2NvbnRlbnRzX2FycmF5W2xpX2l0XSk7XHJcblxyXG4gICAgICAgICAgICAgICAgdmFyICRmcm9tX2ZpZWxkID0gJCgkZnJvbV9maWVsZHMuZ2V0KGxpX2l0KSk7XHJcblxyXG4gICAgICAgICAgICAgICAgdmFyICR0b19maWVsZCA9ICQodGhpcyk7XHJcbiAgICAgICAgICAgICAgICAkdG9fZmllbGQucmVtb3ZlQXR0cihcImRhdGEtc2YtdGF4b25vbXktYXJjaGl2ZVwiKTtcclxuICAgICAgICAgICAgICAgIHNlbGYuY29weUF0dHJpYnV0ZXMoJGZyb21fZmllbGQsICR0b19maWVsZCk7XHJcblxyXG4gICAgICAgICAgICAgICAgbGlfaXQrKztcclxuICAgICAgICAgICAgfSk7XHJcblxyXG4gICAgICAgICAgICAvKnZhciAkZnJvbV9maWVsZHMgPSAkbGlzdF9mcm9tLmZpbmQoXCIgdWwgPiBsaVwiKTtcclxuICAgICAgICAgICAgIHZhciAkdG9fZmllbGRzID0gJGxpc3RfdG8uZmluZChcIiA+IGxpXCIpO1xyXG4gICAgICAgICAgICAgJGZyb21fZmllbGRzLmVhY2goZnVuY3Rpb24oaW5kZXgsIHZhbCl7XHJcbiAgICAgICAgICAgICBpZigkKHRoaXMpLmhhc0F0dHJpYnV0ZShcImRhdGEtc2YtdGF4b25vbXktYXJjaGl2ZVwiKSlcclxuICAgICAgICAgICAgIHtcclxuXHJcbiAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICB9KTtcclxuXHJcbiAgICAgICAgICAgICB0aGlzLmNvcHlBdHRyaWJ1dGVzKCRsaXN0X2Zyb20sICRsaXN0X3RvKTsqL1xyXG4gICAgICAgIH1cclxuXHJcbiAgICAgICAgdGhpcy51cGRhdGVGb3JtQXR0cmlidXRlcyA9IGZ1bmN0aW9uKCRsaXN0X2Zyb20sICRsaXN0X3RvKVxyXG4gICAgICAgIHtcclxuICAgICAgICAgICAgdmFyIGZyb21fYXR0cmlidXRlcyA9ICRsaXN0X2Zyb20ucHJvcChcImF0dHJpYnV0ZXNcIik7XHJcbiAgICAgICAgICAgIC8vIGxvb3AgdGhyb3VnaCA8c2VsZWN0PiBhdHRyaWJ1dGVzIGFuZCBhcHBseSB0aGVtIG9uIDxkaXY+XHJcblxyXG4gICAgICAgICAgICB2YXIgdG9fYXR0cmlidXRlcyA9ICRsaXN0X3RvLnByb3AoXCJhdHRyaWJ1dGVzXCIpO1xyXG4gICAgICAgICAgICAkLmVhY2godG9fYXR0cmlidXRlcywgZnVuY3Rpb24oKSB7XHJcbiAgICAgICAgICAgICAgICAkbGlzdF90by5yZW1vdmVBdHRyKHRoaXMubmFtZSk7XHJcbiAgICAgICAgICAgIH0pO1xyXG5cclxuICAgICAgICAgICAgJC5lYWNoKGZyb21fYXR0cmlidXRlcywgZnVuY3Rpb24oKSB7XHJcbiAgICAgICAgICAgICAgICAkbGlzdF90by5hdHRyKHRoaXMubmFtZSwgdGhpcy52YWx1ZSk7XHJcbiAgICAgICAgICAgIH0pO1xyXG5cclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIHRoaXMuY29weUF0dHJpYnV0ZXMgPSBmdW5jdGlvbigkZnJvbSwgJHRvLCBwcmVmaXgpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICBpZih0eXBlb2YocHJlZml4KT09XCJ1bmRlZmluZWRcIilcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgdmFyIHByZWZpeCA9IFwiXCI7XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIHZhciBmcm9tX2F0dHJpYnV0ZXMgPSAkZnJvbS5wcm9wKFwiYXR0cmlidXRlc1wiKTtcclxuXHJcbiAgICAgICAgICAgIHZhciB0b19hdHRyaWJ1dGVzID0gJHRvLnByb3AoXCJhdHRyaWJ1dGVzXCIpO1xyXG4gICAgICAgICAgICAkLmVhY2godG9fYXR0cmlidXRlcywgZnVuY3Rpb24oKSB7XHJcblxyXG4gICAgICAgICAgICAgICAgaWYocHJlZml4IT1cIlwiKSB7XHJcbiAgICAgICAgICAgICAgICAgICAgaWYgKHRoaXMubmFtZS5pbmRleE9mKHByZWZpeCkgPT0gMCkge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAkdG8ucmVtb3ZlQXR0cih0aGlzLm5hbWUpO1xyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgIGVsc2VcclxuICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAvLyR0by5yZW1vdmVBdHRyKHRoaXMubmFtZSk7XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIH0pO1xyXG5cclxuICAgICAgICAgICAgJC5lYWNoKGZyb21fYXR0cmlidXRlcywgZnVuY3Rpb24oKSB7XHJcbiAgICAgICAgICAgICAgICAkdG8uYXR0cih0aGlzLm5hbWUsIHRoaXMudmFsdWUpO1xyXG4gICAgICAgICAgICB9KTtcclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIHRoaXMuY29weUZvcm1BdHRyaWJ1dGVzID0gZnVuY3Rpb24oJGZyb20sICR0bylcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgICR0by5yZW1vdmVBdHRyKFwiZGF0YS1jdXJyZW50LXRheG9ub215LWFyY2hpdmVcIik7XHJcbiAgICAgICAgICAgIHRoaXMuY29weUF0dHJpYnV0ZXMoJGZyb20sICR0byk7XHJcblxyXG4gICAgICAgIH1cclxuXHJcbiAgICAgICAgdGhpcy51cGRhdGVGb3JtID0gZnVuY3Rpb24oZGF0YSwgZGF0YV90eXBlKVxyXG4gICAgICAgIHtcclxuICAgICAgICAgICAgdmFyIHNlbGYgPSB0aGlzO1xyXG5cclxuICAgICAgICAgICAgaWYoZGF0YV90eXBlPT1cImpzb25cIilcclxuICAgICAgICAgICAgey8vdGhlbiB3ZSBkaWQgYSByZXF1ZXN0IHRvIHRoZSBhamF4IGVuZHBvaW50LCBzbyBleHBlY3QgYW4gb2JqZWN0IGJhY2tcclxuXHJcbiAgICAgICAgICAgICAgICBpZih0eXBlb2YoZGF0YVsnZm9ybSddKSE9PVwidW5kZWZpbmVkXCIpXHJcbiAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgLy9yZW1vdmUgYWxsIGV2ZW50cyBmcm9tIFMmRiBmb3JtXHJcbiAgICAgICAgICAgICAgICAgICAgJHRoaXMub2ZmKCk7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIC8vcmVmcmVzaCB0aGUgZm9ybSAoYXV0byBjb3VudClcclxuICAgICAgICAgICAgICAgICAgICBzZWxmLmNvcHlMaXN0SXRlbXNDb250ZW50cygkKGRhdGFbJ2Zvcm0nXSksICR0aGlzKTtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgLy9yZSBpbml0IFMmRiBjbGFzcyBvbiB0aGUgZm9ybVxyXG4gICAgICAgICAgICAgICAgICAgIC8vJHRoaXMuc2VhcmNoQW5kRmlsdGVyKCk7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIC8vaWYgYWpheCBpcyBlbmFibGVkIGluaXQgdGhlIHBhZ2luYXRpb25cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgdGhpcy5pbml0KHRydWUpO1xyXG5cclxuICAgICAgICAgICAgICAgICAgICBpZihzZWxmLmlzX2FqYXg9PTEpXHJcbiAgICAgICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBzZWxmLnNldHVwQWpheFBhZ2luYXRpb24oKTtcclxuICAgICAgICAgICAgICAgICAgICB9XHJcblxyXG5cclxuXHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIH1cclxuXHJcblxyXG4gICAgICAgIH1cclxuICAgICAgICB0aGlzLmFkZFJlc3VsdHMgPSBmdW5jdGlvbihkYXRhLCBkYXRhX3R5cGUpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICB2YXIgc2VsZiA9IHRoaXM7XHJcblxyXG4gICAgICAgICAgICBpZihkYXRhX3R5cGU9PVwianNvblwiKVxyXG4gICAgICAgICAgICB7Ly90aGVuIHdlIGRpZCBhIHJlcXVlc3QgdG8gdGhlIGFqYXggZW5kcG9pbnQsIHNvIGV4cGVjdCBhbiBvYmplY3QgYmFja1xyXG4gICAgICAgICAgICAgICAgLy9ncmFiIHRoZSByZXN1bHRzIGFuZCBsb2FkIGluXHJcbiAgICAgICAgICAgICAgICAvL3NlbGYuJGFqYXhfcmVzdWx0c19jb250YWluZXIuYXBwZW5kKGRhdGFbJ3Jlc3VsdHMnXSk7XHJcbiAgICAgICAgICAgICAgICBzZWxmLmxvYWRfbW9yZV9odG1sID0gZGF0YVsncmVzdWx0cyddO1xyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIGVsc2UgaWYoZGF0YV90eXBlPT1cImh0bWxcIilcclxuICAgICAgICAgICAgey8vd2UgYXJlIGV4cGVjdGluZyB0aGUgaHRtbCBvZiB0aGUgcmVzdWx0cyBwYWdlIGJhY2ssIHNvIGV4dHJhY3QgdGhlIGh0bWwgd2UgbmVlZFxyXG5cclxuICAgICAgICAgICAgICAgIHZhciAkZGF0YV9vYmogPSAkKGRhdGEpO1xyXG5cclxuICAgICAgICAgICAgICAgIC8vc2VsZi4kaW5maW5pdGVfc2Nyb2xsX2NvbnRhaW5lci5hcHBlbmQoJGRhdGFfb2JqLmZpbmQoc2VsZi5hamF4X3RhcmdldF9hdHRyKS5odG1sKCkpO1xyXG4gICAgICAgICAgICAgICAgc2VsZi5sb2FkX21vcmVfaHRtbCA9ICRkYXRhX29iai5maW5kKHNlbGYuYWpheF90YXJnZXRfYXR0cikuaHRtbCgpO1xyXG4gICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICB2YXIgaW5maW5pdGVfc2Nyb2xsX2VuZCA9IGZhbHNlO1xyXG5cclxuICAgICAgICAgICAgaWYoJChcIjxkaXY+XCIrc2VsZi5sb2FkX21vcmVfaHRtbCtcIjwvZGl2PlwiKS5maW5kKFwiW2RhdGEtc2VhcmNoLWZpbHRlci1hY3Rpb249J2luZmluaXRlLXNjcm9sbC1lbmQnXVwiKS5sZW5ndGg+MClcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgaW5maW5pdGVfc2Nyb2xsX2VuZCA9IHRydWU7XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIC8vaWYgdGhlcmUgaXMgYW5vdGhlciBzZWxlY3RvciBmb3IgaW5maW5pdGUgc2Nyb2xsLCBmaW5kIHRoZSBjb250ZW50cyBvZiB0aGF0IGluc3RlYWRcclxuICAgICAgICAgICAgaWYoc2VsZi5pbmZpbml0ZV9zY3JvbGxfY29udGFpbmVyIT1cIlwiKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICBzZWxmLmxvYWRfbW9yZV9odG1sID0gJChcIjxkaXY+XCIrc2VsZi5sb2FkX21vcmVfaHRtbCtcIjwvZGl2PlwiKS5maW5kKHNlbGYuaW5maW5pdGVfc2Nyb2xsX2NvbnRhaW5lcikuaHRtbCgpO1xyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIGlmKHNlbGYuaW5maW5pdGVfc2Nyb2xsX3Jlc3VsdF9jbGFzcyE9XCJcIilcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgdmFyICRyZXN1bHRfaXRlbXMgPSAkKFwiPGRpdj5cIitzZWxmLmxvYWRfbW9yZV9odG1sK1wiPC9kaXY+XCIpLmZpbmQoc2VsZi5pbmZpbml0ZV9zY3JvbGxfcmVzdWx0X2NsYXNzKTtcclxuICAgICAgICAgICAgICAgIHZhciAkcmVzdWx0X2l0ZW1zX2NvbnRhaW5lciA9ICQoJzxkaXYvPicsIHt9KTtcclxuICAgICAgICAgICAgICAgICRyZXN1bHRfaXRlbXNfY29udGFpbmVyLmFwcGVuZCgkcmVzdWx0X2l0ZW1zKTtcclxuXHJcbiAgICAgICAgICAgICAgICBzZWxmLmxvYWRfbW9yZV9odG1sID0gJHJlc3VsdF9pdGVtc19jb250YWluZXIuaHRtbCgpO1xyXG4gICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICBpZihpbmZpbml0ZV9zY3JvbGxfZW5kKVxyXG4gICAgICAgICAgICB7Ly93ZSBmb3VuZCBhIGRhdGEgYXR0cmlidXRlIHNpZ25hbGxpbmcgdGhlIGxhc3QgcGFnZSBzbyBmaW5pc2ggaGVyZVxyXG5cclxuICAgICAgICAgICAgICAgIHNlbGYuaXNfbWF4X3BhZ2VkID0gdHJ1ZTtcclxuICAgICAgICAgICAgICAgIHNlbGYubGFzdF9sb2FkX21vcmVfaHRtbCA9IHNlbGYubG9hZF9tb3JlX2h0bWw7XHJcblxyXG4gICAgICAgICAgICAgICAgc2VsZi5pbmZpbml0ZVNjcm9sbEFwcGVuZChzZWxmLmxvYWRfbW9yZV9odG1sKTtcclxuXHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgZWxzZSBpZihzZWxmLmxhc3RfbG9hZF9tb3JlX2h0bWwhPT1zZWxmLmxvYWRfbW9yZV9odG1sKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAvL2NoZWNrIHRvIG1ha2Ugc3VyZSB0aGUgbmV3IGh0bWwgZmV0Y2hlZCBpcyBkaWZmZXJlbnRcclxuICAgICAgICAgICAgICAgIHNlbGYubGFzdF9sb2FkX21vcmVfaHRtbCA9IHNlbGYubG9hZF9tb3JlX2h0bWw7XHJcbiAgICAgICAgICAgICAgICBzZWxmLmluZmluaXRlU2Nyb2xsQXBwZW5kKHNlbGYubG9hZF9tb3JlX2h0bWwpO1xyXG5cclxuICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICBlbHNlXHJcbiAgICAgICAgICAgIHsvL3dlIHJlY2VpdmVkIHRoZSBzYW1lIG1lc3NhZ2UgYWdhaW4gc28gZG9uJ3QgYWRkLCBhbmQgdGVsbCBTJkYgdGhhdCB3ZSdyZSBhdCB0aGUgZW5kLi5cclxuICAgICAgICAgICAgICAgIHNlbGYuaXNfbWF4X3BhZ2VkID0gdHJ1ZTtcclxuICAgICAgICAgICAgfVxyXG4gICAgICAgIH1cclxuXHJcblxyXG4gICAgICAgIHRoaXMuaW5maW5pdGVTY3JvbGxBcHBlbmQgPSBmdW5jdGlvbigkb2JqZWN0KVxyXG4gICAgICAgIHtcclxuICAgICAgICAgICAgaWYoc2VsZi5pbmZpbml0ZV9zY3JvbGxfcmVzdWx0X2NsYXNzIT1cIlwiKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICBzZWxmLiRpbmZpbml0ZV9zY3JvbGxfY29udGFpbmVyLmZpbmQoc2VsZi5pbmZpbml0ZV9zY3JvbGxfcmVzdWx0X2NsYXNzKS5sYXN0KCkuYWZ0ZXIoJG9iamVjdCk7XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgZWxzZVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgIHNlbGYuJGluZmluaXRlX3Njcm9sbF9jb250YWluZXIuYXBwZW5kKCRvYmplY3QpO1xyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgfVxyXG5cclxuXHJcbiAgICAgICAgdGhpcy51cGRhdGVSZXN1bHRzID0gZnVuY3Rpb24oZGF0YSwgZGF0YV90eXBlKVxyXG4gICAgICAgIHtcclxuICAgICAgICAgICAgdmFyIHNlbGYgPSB0aGlzO1xyXG5cclxuICAgICAgICAgICAgaWYoZGF0YV90eXBlPT1cImpzb25cIilcclxuICAgICAgICAgICAgey8vdGhlbiB3ZSBkaWQgYSByZXF1ZXN0IHRvIHRoZSBhamF4IGVuZHBvaW50LCBzbyBleHBlY3QgYW4gb2JqZWN0IGJhY2tcclxuICAgICAgICAgICAgICAgIC8vZ3JhYiB0aGUgcmVzdWx0cyBhbmQgbG9hZCBpblxyXG4gICAgICAgICAgICAgICAgc2VsZi4kYWpheF9yZXN1bHRzX2NvbnRhaW5lci5odG1sKGRhdGFbJ3Jlc3VsdHMnXSk7XHJcblxyXG4gICAgICAgICAgICAgICAgaWYodHlwZW9mKGRhdGFbJ2Zvcm0nXSkhPT1cInVuZGVmaW5lZFwiKVxyXG4gICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgIC8vcmVtb3ZlIGFsbCBldmVudHMgZnJvbSBTJkYgZm9ybVxyXG4gICAgICAgICAgICAgICAgICAgICR0aGlzLm9mZigpO1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAvL3JlbW92ZSBwYWdpbmF0aW9uXHJcbiAgICAgICAgICAgICAgICAgICAgc2VsZi5yZW1vdmVBamF4UGFnaW5hdGlvbigpO1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAvL3JlZnJlc2ggdGhlIGZvcm0gKGF1dG8gY291bnQpXHJcbiAgICAgICAgICAgICAgICAgICAgc2VsZi5jb3B5TGlzdEl0ZW1zQ29udGVudHMoJChkYXRhWydmb3JtJ10pLCAkdGhpcyk7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIC8vdXBkYXRlIGF0dHJpYnV0ZXMgb24gZm9ybVxyXG4gICAgICAgICAgICAgICAgICAgIHNlbGYuY29weUZvcm1BdHRyaWJ1dGVzKCQoZGF0YVsnZm9ybSddKSwgJHRoaXMpO1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAvL3JlIGluaXQgUyZGIGNsYXNzIG9uIHRoZSBmb3JtXHJcbiAgICAgICAgICAgICAgICAgICAgJHRoaXMuc2VhcmNoQW5kRmlsdGVyKHsnaXNJbml0JzogZmFsc2V9KTtcclxuICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgIGVsc2VcclxuICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAvLyR0aGlzLmZpbmQoXCJpbnB1dFwiKS5yZW1vdmVBdHRyKFwiZGlzYWJsZWRcIik7XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgZWxzZSBpZihkYXRhX3R5cGU9PVwiaHRtbFwiKSB7Ly93ZSBhcmUgZXhwZWN0aW5nIHRoZSBodG1sIG9mIHRoZSByZXN1bHRzIHBhZ2UgYmFjaywgc28gZXh0cmFjdCB0aGUgaHRtbCB3ZSBuZWVkXHJcblxyXG4gICAgICAgICAgICAgICAgdmFyICRkYXRhX29iaiA9ICQoZGF0YSk7XHJcblxyXG4gICAgICAgICAgICAgICAgc2VsZi4kYWpheF9yZXN1bHRzX2NvbnRhaW5lci5odG1sKCRkYXRhX29iai5maW5kKHNlbGYuYWpheF90YXJnZXRfYXR0cikuaHRtbCgpKTtcclxuXHJcbiAgICAgICAgICAgICAgICBzZWxmLnVwZGF0ZUNvbnRlbnRBcmVhcyggJGRhdGFfb2JqICk7XHJcblxyXG4gICAgICAgICAgICAgICAgaWYgKHNlbGYuJGFqYXhfcmVzdWx0c19jb250YWluZXIuZmluZChcIi5zZWFyY2hhbmRmaWx0ZXJcIikubGVuZ3RoID4gMClcclxuICAgICAgICAgICAgICAgIHsvL3RoZW4gdGhlcmUgYXJlIHNlYXJjaCBmb3JtKHMpIGluc2lkZSB0aGUgcmVzdWx0cyBjb250YWluZXIsIHNvIHJlLWluaXQgdGhlbVxyXG5cclxuICAgICAgICAgICAgICAgICAgICBzZWxmLiRhamF4X3Jlc3VsdHNfY29udGFpbmVyLmZpbmQoXCIuc2VhcmNoYW5kZmlsdGVyXCIpLnNlYXJjaEFuZEZpbHRlcigpO1xyXG4gICAgICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgICAgIC8vaWYgdGhlIGN1cnJlbnQgc2VhcmNoIGZvcm0gaXMgbm90IGluc2lkZSB0aGUgcmVzdWx0cyBjb250YWluZXIsIHRoZW4gcHJvY2VlZCBhcyBub3JtYWwgYW5kIHVwZGF0ZSB0aGUgZm9ybVxyXG4gICAgICAgICAgICAgICAgaWYoc2VsZi4kYWpheF9yZXN1bHRzX2NvbnRhaW5lci5maW5kKFwiLnNlYXJjaGFuZGZpbHRlcltkYXRhLXNmLWZvcm0taWQ9J1wiICsgc2VsZi5zZmlkICsgXCInXVwiKS5sZW5ndGg9PTApIHtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgdmFyICRuZXdfc2VhcmNoX2Zvcm0gPSAkZGF0YV9vYmouZmluZChcIi5zZWFyY2hhbmRmaWx0ZXJbZGF0YS1zZi1mb3JtLWlkPSdcIiArIHNlbGYuc2ZpZCArIFwiJ11cIik7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIGlmICgkbmV3X3NlYXJjaF9mb3JtLmxlbmd0aCA9PSAxKSB7Ly90aGVuIHJlcGxhY2UgdGhlIHNlYXJjaCBmb3JtIHdpdGggdGhlIG5ldyBvbmVcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIC8vcmVtb3ZlIGFsbCBldmVudHMgZnJvbSBTJkYgZm9ybVxyXG4gICAgICAgICAgICAgICAgICAgICAgICAkdGhpcy5vZmYoKTtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIC8vcmVtb3ZlIHBhZ2luYXRpb25cclxuICAgICAgICAgICAgICAgICAgICAgICAgc2VsZi5yZW1vdmVBamF4UGFnaW5hdGlvbigpO1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgLy9yZWZyZXNoIHRoZSBmb3JtIChhdXRvIGNvdW50KVxyXG4gICAgICAgICAgICAgICAgICAgICAgICBzZWxmLmNvcHlMaXN0SXRlbXNDb250ZW50cygkbmV3X3NlYXJjaF9mb3JtLCAkdGhpcyk7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICAvL3VwZGF0ZSBhdHRyaWJ1dGVzIG9uIGZvcm1cclxuICAgICAgICAgICAgICAgICAgICAgICAgc2VsZi5jb3B5Rm9ybUF0dHJpYnV0ZXMoJG5ld19zZWFyY2hfZm9ybSwgJHRoaXMpO1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgLy9yZSBpbml0IFMmRiBjbGFzcyBvbiB0aGUgZm9ybVxyXG4gICAgICAgICAgICAgICAgICAgICAgICAkdGhpcy5zZWFyY2hBbmRGaWx0ZXIoeydpc0luaXQnOiBmYWxzZX0pO1xyXG5cclxuICAgICAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICAgICAgZWxzZSB7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICAvLyR0aGlzLmZpbmQoXCJpbnB1dFwiKS5yZW1vdmVBdHRyKFwiZGlzYWJsZWRcIik7XHJcbiAgICAgICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICBzZWxmLmlzX21heF9wYWdlZCA9IGZhbHNlOyAvL2ZvciBpbmZpbml0ZSBzY3JvbGxcclxuICAgICAgICAgICAgc2VsZi5jdXJyZW50X3BhZ2VkID0gMTsgLy9mb3IgaW5maW5pdGUgc2Nyb2xsXHJcbiAgICAgICAgICAgIHNlbGYuc2V0SW5maW5pdGVTY3JvbGxDb250YWluZXIoKTtcclxuXHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICB0aGlzLnVwZGF0ZUNvbnRlbnRBcmVhcyA9IGZ1bmN0aW9uKCAkaHRtbF9kYXRhICkge1xyXG4gICAgICAgICAgICBcclxuICAgICAgICAgICAgLy8gYWRkIGFkZGl0aW9uYWwgY29udGVudCBhcmVhc1xyXG4gICAgICAgICAgICBpZiAoIHRoaXMuYWpheF91cGRhdGVfc2VjdGlvbnMgJiYgdGhpcy5hamF4X3VwZGF0ZV9zZWN0aW9ucy5sZW5ndGggKSB7XHJcbiAgICAgICAgICAgICAgICBmb3IgKGluZGV4ID0gMDsgaW5kZXggPCB0aGlzLmFqYXhfdXBkYXRlX3NlY3Rpb25zLmxlbmd0aDsgKytpbmRleCkge1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciBzZWxlY3RvciA9IHRoaXMuYWpheF91cGRhdGVfc2VjdGlvbnNbaW5kZXhdO1xyXG4gICAgICAgICAgICAgICAgICAgICQoIHNlbGVjdG9yICkuaHRtbCggJGh0bWxfZGF0YS5maW5kKCBzZWxlY3RvciApLmh0bWwoKSApO1xyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgfVxyXG4gICAgICAgIHRoaXMuZmFkZUNvbnRlbnRBcmVhcyA9IGZ1bmN0aW9uKCBkaXJlY3Rpb24gKSB7XHJcbiAgICAgICAgICAgIFxyXG4gICAgICAgICAgICB2YXIgb3BhY2l0eSA9IDAuNTtcclxuICAgICAgICAgICAgaWYgKCBkaXJlY3Rpb24gPT09IFwiaW5cIiApIHtcclxuICAgICAgICAgICAgICAgIG9wYWNpdHkgPSAxO1xyXG4gICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICBpZiAoIHRoaXMuYWpheF91cGRhdGVfc2VjdGlvbnMgJiYgdGhpcy5hamF4X3VwZGF0ZV9zZWN0aW9ucy5sZW5ndGggKSB7XHJcbiAgICAgICAgICAgICAgICBmb3IgKGluZGV4ID0gMDsgaW5kZXggPCB0aGlzLmFqYXhfdXBkYXRlX3NlY3Rpb25zLmxlbmd0aDsgKytpbmRleCkge1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciBzZWxlY3RvciA9IHRoaXMuYWpheF91cGRhdGVfc2VjdGlvbnNbaW5kZXhdO1xyXG4gICAgICAgICAgICAgICAgICAgICQoIHNlbGVjdG9yICkuc3RvcCh0cnVlLHRydWUpLmFuaW1hdGUoIHsgb3BhY2l0eTogb3BhY2l0eX0sIFwiZmFzdFwiICk7XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICAgICBcclxuICAgICAgICAgICAgXHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICB0aGlzLnJlbW92ZVdvb0NvbW1lcmNlQ29udHJvbHMgPSBmdW5jdGlvbigpe1xyXG4gICAgICAgICAgICB2YXIgJHdvb19vcmRlcmJ5ID0gJCgnLndvb2NvbW1lcmNlLW9yZGVyaW5nIC5vcmRlcmJ5Jyk7XHJcbiAgICAgICAgICAgIHZhciAkd29vX29yZGVyYnlfZm9ybSA9ICQoJy53b29jb21tZXJjZS1vcmRlcmluZycpO1xyXG5cclxuICAgICAgICAgICAgJHdvb19vcmRlcmJ5X2Zvcm0ub2ZmKCk7XHJcbiAgICAgICAgICAgICR3b29fb3JkZXJieS5vZmYoKTtcclxuICAgICAgICB9O1xyXG5cclxuICAgICAgICB0aGlzLmFkZFF1ZXJ5UGFyYW0gPSBmdW5jdGlvbihuYW1lLCB2YWx1ZSwgdXJsX3R5cGUpe1xyXG5cclxuICAgICAgICAgICAgaWYodHlwZW9mKHVybF90eXBlKT09XCJ1bmRlZmluZWRcIilcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgdmFyIHVybF90eXBlID0gXCJhbGxcIjtcclxuICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICBzZWxmLmV4dHJhX3F1ZXJ5X3BhcmFtc1t1cmxfdHlwZV1bbmFtZV0gPSB2YWx1ZTtcclxuXHJcbiAgICAgICAgfTtcclxuXHJcbiAgICAgICAgdGhpcy5pbml0V29vQ29tbWVyY2VDb250cm9scyA9IGZ1bmN0aW9uKCl7XHJcblxyXG4gICAgICAgICAgICBzZWxmLnJlbW92ZVdvb0NvbW1lcmNlQ29udHJvbHMoKTtcclxuXHJcbiAgICAgICAgICAgIHZhciAkd29vX29yZGVyYnkgPSAkKCcud29vY29tbWVyY2Utb3JkZXJpbmcgLm9yZGVyYnknKTtcclxuICAgICAgICAgICAgdmFyICR3b29fb3JkZXJieV9mb3JtID0gJCgnLndvb2NvbW1lcmNlLW9yZGVyaW5nJyk7XHJcblxyXG4gICAgICAgICAgICB2YXIgb3JkZXJfdmFsID0gXCJcIjtcclxuICAgICAgICAgICAgaWYoJHdvb19vcmRlcmJ5Lmxlbmd0aD4wKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICBvcmRlcl92YWwgPSAkd29vX29yZGVyYnkudmFsKCk7XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgZWxzZVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICBvcmRlcl92YWwgPSBzZWxmLmdldFF1ZXJ5UGFyYW1Gcm9tVVJMKFwib3JkZXJieVwiLCB3aW5kb3cubG9jYXRpb24uaHJlZik7XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIGlmKG9yZGVyX3ZhbD09XCJtZW51X29yZGVyXCIpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIG9yZGVyX3ZhbCA9IFwiXCI7XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIGlmKChvcmRlcl92YWwhPVwiXCIpJiYoISFvcmRlcl92YWwpKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICBzZWxmLmV4dHJhX3F1ZXJ5X3BhcmFtcy5hbGwub3JkZXJieSA9IG9yZGVyX3ZhbDtcclxuICAgICAgICAgICAgfVxyXG5cclxuXHJcbiAgICAgICAgICAgICR3b29fb3JkZXJieV9mb3JtLm9uKCdzdWJtaXQnLCBmdW5jdGlvbihlKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICBlLnByZXZlbnREZWZhdWx0KCk7XHJcbiAgICAgICAgICAgICAgICAvL3ZhciBmb3JtID0gZS50YXJnZXQ7XHJcbiAgICAgICAgICAgICAgICByZXR1cm4gZmFsc2U7XHJcbiAgICAgICAgICAgIH0pO1xyXG5cclxuICAgICAgICAgICAgJHdvb19vcmRlcmJ5Lm9uKFwiY2hhbmdlXCIsIGZ1bmN0aW9uKGUpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIGUucHJldmVudERlZmF1bHQoKTtcclxuXHJcbiAgICAgICAgICAgICAgICB2YXIgdmFsID0gJCh0aGlzKS52YWwoKTtcclxuICAgICAgICAgICAgICAgIGlmKHZhbD09XCJtZW51X29yZGVyXCIpXHJcbiAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgdmFsID0gXCJcIjtcclxuICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICAgICBzZWxmLmV4dHJhX3F1ZXJ5X3BhcmFtcy5hbGwub3JkZXJieSA9IHZhbDtcclxuXHJcbiAgICAgICAgICAgICAgICAkdGhpcy50cmlnZ2VyKFwic3VibWl0XCIpXHJcblxyXG4gICAgICAgICAgICAgICAgcmV0dXJuIGZhbHNlO1xyXG4gICAgICAgICAgICB9KTtcclxuXHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICB0aGlzLnNjcm9sbFJlc3VsdHMgPSBmdW5jdGlvbigpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICB2YXIgc2VsZiA9IHRoaXM7XHJcbiAgICAgICAgICAgIGlmKChzZWxmLnNjcm9sbF9vbl9hY3Rpb249PXNlbGYuYWpheF9hY3Rpb24pfHwoc2VsZi5zY3JvbGxfb25fYWN0aW9uPT1cImFsbFwiKSlcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgc2VsZi5zY3JvbGxUb1BvcygpOyAvL3Njcm9sbCB0aGUgd2luZG93IGlmIGl0IGhhcyBiZWVuIHNldFxyXG4gICAgICAgICAgICAgICAgLy9zZWxmLmFqYXhfYWN0aW9uID0gXCJcIjtcclxuICAgICAgICAgICAgfVxyXG4gICAgICAgIH1cclxuXHJcbiAgICAgICAgdGhpcy51cGRhdGVVcmxIaXN0b3J5ID0gZnVuY3Rpb24oYWpheF9yZXN1bHRzX3VybClcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIHZhciBzZWxmID0gdGhpcztcclxuXHJcbiAgICAgICAgICAgIHZhciB1c2VfaGlzdG9yeV9hcGkgPSAwO1xyXG4gICAgICAgICAgICBpZiAod2luZG93Lmhpc3RvcnkgJiYgd2luZG93Lmhpc3RvcnkucHVzaFN0YXRlKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICB1c2VfaGlzdG9yeV9hcGkgPSAkdGhpcy5hdHRyKFwiZGF0YS11c2UtaGlzdG9yeS1hcGlcIik7XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIGlmKChzZWxmLnVwZGF0ZV9hamF4X3VybD09MSkmJih1c2VfaGlzdG9yeV9hcGk9PTEpKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAvL25vdyBjaGVjayBpZiB0aGUgYnJvd3NlciBzdXBwb3J0cyBoaXN0b3J5IHN0YXRlIHB1c2ggOilcclxuICAgICAgICAgICAgICAgIGlmICh3aW5kb3cuaGlzdG9yeSAmJiB3aW5kb3cuaGlzdG9yeS5wdXNoU3RhdGUpXHJcbiAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgaGlzdG9yeS5wdXNoU3RhdGUobnVsbCwgbnVsbCwgYWpheF9yZXN1bHRzX3VybCk7XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICB9XHJcbiAgICAgICAgdGhpcy5yZW1vdmVBamF4UGFnaW5hdGlvbiA9IGZ1bmN0aW9uKClcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIHZhciBzZWxmID0gdGhpcztcclxuXHJcbiAgICAgICAgICAgIGlmKHR5cGVvZihzZWxmLmFqYXhfbGlua3Nfc2VsZWN0b3IpIT1cInVuZGVmaW5lZFwiKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICB2YXIgJGFqYXhfbGlua3Nfb2JqZWN0ID0galF1ZXJ5KHNlbGYuYWpheF9saW5rc19zZWxlY3Rvcik7XHJcblxyXG4gICAgICAgICAgICAgICAgaWYoJGFqYXhfbGlua3Nfb2JqZWN0Lmxlbmd0aD4wKVxyXG4gICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICRhamF4X2xpbmtzX29iamVjdC5vZmYoKTtcclxuICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgfVxyXG4gICAgICAgIH1cclxuXHJcbiAgICAgICAgdGhpcy5jYW5GZXRjaEFqYXhSZXN1bHRzID0gZnVuY3Rpb24oZmV0Y2hfdHlwZSlcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIGlmKHR5cGVvZihmZXRjaF90eXBlKT09XCJ1bmRlZmluZWRcIilcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgdmFyIGZldGNoX3R5cGUgPSBcIlwiO1xyXG4gICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICB2YXIgc2VsZiA9IHRoaXM7XHJcbiAgICAgICAgICAgIHZhciBmZXRjaF9hamF4X3Jlc3VsdHMgPSBmYWxzZTtcclxuXHJcbiAgICAgICAgICAgIGlmKHNlbGYuaXNfYWpheD09MSlcclxuICAgICAgICAgICAgey8vdGhlbiB3ZSB3aWxsIGFqYXggc3VibWl0IHRoZSBmb3JtXHJcblxyXG4gICAgICAgICAgICAgICAgLy9hbmQgaWYgd2UgY2FuIGZpbmQgdGhlIHJlc3VsdHMgY29udGFpbmVyXHJcbiAgICAgICAgICAgICAgICBpZihzZWxmLiRhamF4X3Jlc3VsdHNfY29udGFpbmVyLmxlbmd0aD09MSlcclxuICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICBmZXRjaF9hamF4X3Jlc3VsdHMgPSB0cnVlO1xyXG4gICAgICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgICAgIHZhciByZXN1bHRzX3VybCA9IHNlbGYucmVzdWx0c191cmw7ICAvL1xyXG4gICAgICAgICAgICAgICAgdmFyIHJlc3VsdHNfdXJsX2VuY29kZWQgPSAnJzsgIC8vXHJcbiAgICAgICAgICAgICAgICB2YXIgY3VycmVudF91cmwgPSB3aW5kb3cubG9jYXRpb24uaHJlZjtcclxuXHJcbiAgICAgICAgICAgICAgICAvL2lnbm9yZSAjIGFuZCBldmVyeXRoaW5nIGFmdGVyXHJcbiAgICAgICAgICAgICAgICB2YXIgaGFzaF9wb3MgPSB3aW5kb3cubG9jYXRpb24uaHJlZi5pbmRleE9mKCcjJyk7XHJcbiAgICAgICAgICAgICAgICBpZihoYXNoX3BvcyE9PS0xKXtcclxuICAgICAgICAgICAgICAgICAgICBjdXJyZW50X3VybCA9IHdpbmRvdy5sb2NhdGlvbi5ocmVmLnN1YnN0cigwLCB3aW5kb3cubG9jYXRpb24uaHJlZi5pbmRleE9mKCcjJykpO1xyXG4gICAgICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgICAgIGlmKCAoICggc2VsZi5kaXNwbGF5X3Jlc3VsdF9tZXRob2Q9PVwiY3VzdG9tX3dvb2NvbW1lcmNlX3N0b3JlXCIgKSB8fCAoIHNlbGYuZGlzcGxheV9yZXN1bHRfbWV0aG9kPT1cInBvc3RfdHlwZV9hcmNoaXZlXCIgKSApICYmICggc2VsZi5lbmFibGVfdGF4b25vbXlfYXJjaGl2ZXMgPT0gMSApIClcclxuICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICBpZiggc2VsZi5jdXJyZW50X3RheG9ub215X2FyY2hpdmUgIT09XCJcIiApXHJcbiAgICAgICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBmZXRjaF9hamF4X3Jlc3VsdHMgPSB0cnVlO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gZmV0Y2hfYWpheF9yZXN1bHRzO1xyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgLyp2YXIgcmVzdWx0c191cmwgPSBwcm9jZXNzX2Zvcm0uZ2V0UmVzdWx0c1VybChzZWxmLCBzZWxmLnJlc3VsdHNfdXJsKTtcclxuICAgICAgICAgICAgICAgICAgICAgdmFyIGFjdGl2ZV90YXggPSBwcm9jZXNzX2Zvcm0uZ2V0QWN0aXZlVGF4KCk7XHJcbiAgICAgICAgICAgICAgICAgICAgIHZhciBxdWVyeV9wYXJhbXMgPSBzZWxmLmdldFVybFBhcmFtcyh0cnVlLCAnJywgYWN0aXZlX3RheCk7Ki9cclxuICAgICAgICAgICAgICAgIH1cclxuXHJcblxyXG5cclxuXHJcbiAgICAgICAgICAgICAgICAvL25vdyBzZWUgaWYgd2UgYXJlIG9uIHRoZSBVUkwgd2UgdGhpbmsuLi5cclxuICAgICAgICAgICAgICAgIHZhciB1cmxfcGFydHMgPSBjdXJyZW50X3VybC5zcGxpdChcIj9cIik7XHJcbiAgICAgICAgICAgICAgICB2YXIgdXJsX2Jhc2UgPSBcIlwiO1xyXG5cclxuICAgICAgICAgICAgICAgIGlmKHVybF9wYXJ0cy5sZW5ndGg+MClcclxuICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICB1cmxfYmFzZSA9IHVybF9wYXJ0c1swXTtcclxuICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgIGVsc2Uge1xyXG4gICAgICAgICAgICAgICAgICAgIHVybF9iYXNlID0gY3VycmVudF91cmw7XHJcbiAgICAgICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICAgICAgdmFyIGxhbmcgPSBzZWxmLmdldFF1ZXJ5UGFyYW1Gcm9tVVJMKFwibGFuZ1wiLCB3aW5kb3cubG9jYXRpb24uaHJlZik7XHJcbiAgICAgICAgICAgICAgICBpZigodHlwZW9mKGxhbmcpIT09XCJ1bmRlZmluZWRcIikmJihsYW5nIT09bnVsbCkpXHJcbiAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgdXJsX2Jhc2UgPSBzZWxmLmFkZFVybFBhcmFtKHVybF9iYXNlLCBcImxhbmc9XCIrbGFuZyk7XHJcbiAgICAgICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICAgICAgdmFyIHNmaWQgPSBzZWxmLmdldFF1ZXJ5UGFyYW1Gcm9tVVJMKFwic2ZpZFwiLCB3aW5kb3cubG9jYXRpb24uaHJlZik7XHJcblxyXG4gICAgICAgICAgICAgICAgLy9pZiBzZmlkIGlzIGEgbnVtYmVyXHJcbiAgICAgICAgICAgICAgICBpZihOdW1iZXIocGFyc2VGbG9hdChzZmlkKSkgPT0gc2ZpZClcclxuICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICB1cmxfYmFzZSA9IHNlbGYuYWRkVXJsUGFyYW0odXJsX2Jhc2UsIFwic2ZpZD1cIitzZmlkKTtcclxuICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICAgICAvL2lmIGFueSBvZiB0aGUgMyBjb25kaXRpb25zIGFyZSB0cnVlLCB0aGVuIGl0cyBnb29kIHRvIGdvXHJcbiAgICAgICAgICAgICAgICAvLyAtIDEgfCBpZiB0aGUgdXJsIGJhc2UgPT0gcmVzdWx0c191cmxcclxuICAgICAgICAgICAgICAgIC8vIC0gMiB8IGlmIHVybCBiYXNlKyBcIi9cIiAgPT0gcmVzdWx0c191cmwgLSBpbiBjYXNlIG9mIHVzZXIgZXJyb3IgaW4gdGhlIHJlc3VsdHMgVVJMXHJcblxyXG4gICAgICAgICAgICAgICAgLy90cmltIGFueSB0cmFpbGluZyBzbGFzaCBmb3IgZWFzaWVyIGNvbXBhcmlzb246XHJcbiAgICAgICAgICAgICAgICB1cmxfYmFzZSA9IHVybF9iYXNlLnJlcGxhY2UoL1xcLyQvLCAnJyk7XHJcbiAgICAgICAgICAgICAgICByZXN1bHRzX3VybCA9IHJlc3VsdHNfdXJsLnJlcGxhY2UoL1xcLyQvLCAnJyk7XHJcbiAgICAgICAgICAgICAgICByZXN1bHRzX3VybF9lbmNvZGVkID0gZW5jb2RlVVJJKHJlc3VsdHNfdXJsLnJlcGxhY2UoL1xcLyQvLCAnJykpO1xyXG5cclxuICAgICAgICAgICAgICAgIHZhciBjdXJyZW50X3VybF9jb250YWluc19yZXN1bHRzX3VybCA9IC0xO1xyXG4gICAgICAgICAgICAgICAgaWYoKHVybF9iYXNlPT1yZXN1bHRzX3VybCl8fCh1cmxfYmFzZS50b0xvd2VyQ2FzZSgpPT1yZXN1bHRzX3VybF9lbmNvZGVkLnRvTG93ZXJDYXNlKCkpKXtcclxuICAgICAgICAgICAgICAgICAgICBjdXJyZW50X3VybF9jb250YWluc19yZXN1bHRzX3VybCA9IDE7XHJcbiAgICAgICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICAgICAgaWYoc2VsZi5vbmx5X3Jlc3VsdHNfYWpheD09MSlcclxuICAgICAgICAgICAgICAgIHsvL2lmIGEgdXNlciBoYXMgY2hvc2VuIHRvIG9ubHkgYWxsb3cgYWpheCBvbiByZXN1bHRzIHBhZ2VzIChkZWZhdWx0IGJlaGF2aW91cilcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgaWYoIGN1cnJlbnRfdXJsX2NvbnRhaW5zX3Jlc3VsdHNfdXJsID4gLTEpXHJcbiAgICAgICAgICAgICAgICAgICAgey8vdGhpcyBtZWFucyB0aGUgY3VycmVudCBVUkwgY29udGFpbnMgdGhlIHJlc3VsdHMgdXJsLCB3aGljaCBtZWFucyB3ZSBjYW4gZG8gYWpheFxyXG4gICAgICAgICAgICAgICAgICAgICAgICBmZXRjaF9hamF4X3Jlc3VsdHMgPSB0cnVlO1xyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgICAgICBlbHNlXHJcbiAgICAgICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBmZXRjaF9hamF4X3Jlc3VsdHMgPSBmYWxzZTtcclxuICAgICAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICBlbHNlXHJcbiAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgaWYoZmV0Y2hfdHlwZT09XCJwYWdpbmF0aW9uXCIpXHJcbiAgICAgICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBpZiggY3VycmVudF91cmxfY29udGFpbnNfcmVzdWx0c191cmwgPiAtMSlcclxuICAgICAgICAgICAgICAgICAgICAgICAgey8vdGhpcyBtZWFucyB0aGUgY3VycmVudCBVUkwgY29udGFpbnMgdGhlIHJlc3VsdHMgdXJsLCB3aGljaCBtZWFucyB3ZSBjYW4gZG8gYWpheFxyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgICAgICAgICBlbHNlXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIC8vZG9uJ3QgYWpheCBwYWdpbmF0aW9uIHdoZW4gbm90IG9uIGEgUyZGIHBhZ2VcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZldGNoX2FqYXhfcmVzdWx0cyA9IGZhbHNlO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICB9XHJcblxyXG5cclxuICAgICAgICAgICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICByZXR1cm4gZmV0Y2hfYWpheF9yZXN1bHRzO1xyXG4gICAgICAgIH1cclxuXHJcbiAgICAgICAgdGhpcy5zZXR1cEFqYXhQYWdpbmF0aW9uID0gZnVuY3Rpb24oKVxyXG4gICAgICAgIHtcclxuICAgICAgICAgICAgLy9pbmZpbml0ZSBzY3JvbGxcclxuICAgICAgICAgICAgaWYodGhpcy5wYWdpbmF0aW9uX3R5cGU9PT1cImluZmluaXRlX3Njcm9sbFwiKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICB2YXIgaW5maW5pdGVfc2Nyb2xsX2VuZCA9IGZhbHNlO1xyXG4gICAgICAgICAgICAgICAgaWYoc2VsZi4kYWpheF9yZXN1bHRzX2NvbnRhaW5lci5maW5kKFwiW2RhdGEtc2VhcmNoLWZpbHRlci1hY3Rpb249J2luZmluaXRlLXNjcm9sbC1lbmQnXVwiKS5sZW5ndGg+MClcclxuICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICBpbmZpbml0ZV9zY3JvbGxfZW5kID0gdHJ1ZTtcclxuICAgICAgICAgICAgICAgICAgICBzZWxmLmlzX21heF9wYWdlZCA9IHRydWU7XHJcbiAgICAgICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICAgICAgaWYocGFyc2VJbnQodGhpcy5pbnN0YW5jZV9udW1iZXIpPT09MSkge1xyXG4gICAgICAgICAgICAgICAgICAgICQod2luZG93KS5vZmYoXCJzY3JvbGxcIiwgc2VsZi5vbldpbmRvd1Njcm9sbCk7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIGlmIChzZWxmLmNhbkZldGNoQWpheFJlc3VsdHMoXCJwYWdpbmF0aW9uXCIpKSB7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICQod2luZG93KS5vbihcInNjcm9sbFwiLCBzZWxmLm9uV2luZG93U2Nyb2xsKTtcclxuICAgICAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgZWxzZSBpZih0eXBlb2Yoc2VsZi5hamF4X2xpbmtzX3NlbGVjdG9yKT09XCJ1bmRlZmluZWRcIikge1xyXG4gICAgICAgICAgICAgICAgcmV0dXJuO1xyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIGVsc2Uge1xyXG4gICAgICAgICAgICAgICAgJChkb2N1bWVudCkub2ZmKCdjbGljaycsIHNlbGYuYWpheF9saW5rc19zZWxlY3Rvcik7XHJcbiAgICAgICAgICAgICAgICAkKGRvY3VtZW50KS5vZmYoc2VsZi5hamF4X2xpbmtzX3NlbGVjdG9yKTtcclxuICAgICAgICAgICAgICAgICQoc2VsZi5hamF4X2xpbmtzX3NlbGVjdG9yKS5vZmYoKTtcclxuXHJcbiAgICAgICAgICAgICAgICAkKGRvY3VtZW50KS5vbignY2xpY2snLCBzZWxmLmFqYXhfbGlua3Nfc2VsZWN0b3IsIGZ1bmN0aW9uKGUpe1xyXG5cclxuICAgICAgICAgICAgICAgICAgICBpZihzZWxmLmNhbkZldGNoQWpheFJlc3VsdHMoXCJwYWdpbmF0aW9uXCIpKVxyXG4gICAgICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgZS5wcmV2ZW50RGVmYXVsdCgpO1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgdmFyIGxpbmsgPSBqUXVlcnkodGhpcykuYXR0cignaHJlZicpO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBzZWxmLmFqYXhfYWN0aW9uID0gXCJwYWdpbmF0aW9uXCI7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICB2YXIgcGFnZU51bWJlciA9IHNlbGYuZ2V0UGFnZWRGcm9tVVJMKGxpbmspO1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgc2VsZi4kYWpheF9yZXN1bHRzX2NvbnRhaW5lci5hdHRyKFwiZGF0YS1wYWdlZFwiLCBwYWdlTnVtYmVyKTtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHNlbGYuZmV0Y2hBamF4UmVzdWx0cygpO1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIGZhbHNlO1xyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgIH0pO1xyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgfTtcclxuXHJcbiAgICAgICAgdGhpcy5nZXRQYWdlZEZyb21VUkwgPSBmdW5jdGlvbihVUkwpe1xyXG5cclxuICAgICAgICAgICAgdmFyIHBhZ2VkVmFsID0gMTtcclxuICAgICAgICAgICAgLy9maXJzdCB0ZXN0IHRvIHNlZSBpZiB3ZSBoYXZlIFwiL3BhZ2UvNC9cIiBpbiB0aGUgVVJMXHJcbiAgICAgICAgICAgIHZhciB0cFZhbCA9IHNlbGYuZ2V0UXVlcnlQYXJhbUZyb21VUkwoXCJzZl9wYWdlZFwiLCBVUkwpO1xyXG4gICAgICAgICAgICBpZigodHlwZW9mKHRwVmFsKT09XCJzdHJpbmdcIil8fCh0eXBlb2YodHBWYWwpPT1cIm51bWJlclwiKSlcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgcGFnZWRWYWwgPSB0cFZhbDtcclxuICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgcmV0dXJuIHBhZ2VkVmFsO1xyXG4gICAgICAgIH07XHJcblxyXG4gICAgICAgIHRoaXMuZ2V0UXVlcnlQYXJhbUZyb21VUkwgPSBmdW5jdGlvbihuYW1lLCBVUkwpe1xyXG5cclxuICAgICAgICAgICAgdmFyIHFzdHJpbmcgPSBcIj9cIitVUkwuc3BsaXQoJz8nKVsxXTtcclxuICAgICAgICAgICAgaWYodHlwZW9mKHFzdHJpbmcpIT1cInVuZGVmaW5lZFwiKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICB2YXIgdmFsID0gZGVjb2RlVVJJQ29tcG9uZW50KChuZXcgUmVnRXhwKCdbP3wmXScgKyBuYW1lICsgJz0nICsgJyhbXiY7XSs/KSgmfCN8O3wkKScpLmV4ZWMocXN0cmluZyl8fFssXCJcIl0pWzFdLnJlcGxhY2UoL1xcKy9nLCAnJTIwJykpfHxudWxsO1xyXG4gICAgICAgICAgICAgICAgcmV0dXJuIHZhbDtcclxuICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICByZXR1cm4gXCJcIjtcclxuICAgICAgICB9O1xyXG5cclxuXHJcblxyXG4gICAgICAgIHRoaXMuZm9ybVVwZGF0ZWQgPSBmdW5jdGlvbihlKXtcclxuXHJcbiAgICAgICAgICAgIC8vZS5wcmV2ZW50RGVmYXVsdCgpO1xyXG4gICAgICAgICAgICBpZihzZWxmLmF1dG9fdXBkYXRlPT0xKSB7XHJcbiAgICAgICAgICAgICAgICBzZWxmLnN1Ym1pdEZvcm0oKTtcclxuICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICBlbHNlIGlmKChzZWxmLmF1dG9fdXBkYXRlPT0wKSYmKHNlbGYuYXV0b19jb3VudF9yZWZyZXNoX21vZGU9PTEpKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICBzZWxmLmZvcm1VcGRhdGVkRmV0Y2hBamF4KCk7XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIHJldHVybiBmYWxzZTtcclxuICAgICAgICB9O1xyXG5cclxuICAgICAgICB0aGlzLmZvcm1VcGRhdGVkRmV0Y2hBamF4ID0gZnVuY3Rpb24oKXtcclxuXHJcbiAgICAgICAgICAgIC8vbG9vcCB0aHJvdWdoIGFsbCB0aGUgZmllbGRzIGFuZCBidWlsZCB0aGUgVVJMXHJcbiAgICAgICAgICAgIHNlbGYuZmV0Y2hBamF4Rm9ybSgpO1xyXG5cclxuXHJcbiAgICAgICAgICAgIHJldHVybiBmYWxzZTtcclxuICAgICAgICB9O1xyXG5cclxuICAgICAgICAvL21ha2UgYW55IGNvcnJlY3Rpb25zL3VwZGF0ZXMgdG8gZmllbGRzIGJlZm9yZSB0aGUgc3VibWl0IGNvbXBsZXRlc1xyXG4gICAgICAgIHRoaXMuc2V0RmllbGRzID0gZnVuY3Rpb24oZSl7XHJcblxyXG4gICAgICAgICAgICAvL2lmKHNlbGYuaXNfYWpheD09MCkge1xyXG5cclxuICAgICAgICAgICAgICAgIC8vc29tZXRpbWVzIHRoZSBmb3JtIGlzIHN1Ym1pdHRlZCB3aXRob3V0IHRoZSBzbGlkZXIgeWV0IGhhdmluZyB1cGRhdGVkLCBhbmQgYXMgd2UgZ2V0IG91ciB2YWx1ZXMgZnJvbVxyXG4gICAgICAgICAgICAgICAgLy90aGUgc2xpZGVyIGFuZCBub3QgaW5wdXRzLCB3ZSBuZWVkIHRvIGNoZWNrIGl0IGlmIG5lZWRzIHRvIGJlIHNldFxyXG4gICAgICAgICAgICAgICAgLy9vbmx5IG9jY3VycyBpZiBhamF4IGlzIG9mZiwgYW5kIGF1dG9zdWJtaXQgb25cclxuICAgICAgICAgICAgICAgIHNlbGYuJGZpZWxkcy5lYWNoKGZ1bmN0aW9uKCkge1xyXG5cclxuICAgICAgICAgICAgICAgICAgICB2YXIgJGZpZWxkID0gJCh0aGlzKTtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgdmFyIHJhbmdlX2Rpc3BsYXlfdmFsdWVzID0gJGZpZWxkLmZpbmQoJy5zZi1tZXRhLXJhbmdlLXNsaWRlcicpLmF0dHIoXCJkYXRhLWRpc3BsYXktdmFsdWVzLWFzXCIpOy8vZGF0YS1kaXNwbGF5LXZhbHVlcy1hcz1cInRleHRcIlxyXG5cclxuICAgICAgICAgICAgICAgICAgICBpZihyYW5nZV9kaXNwbGF5X3ZhbHVlcz09PVwidGV4dGlucHV0XCIpIHtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGlmKCRmaWVsZC5maW5kKFwiLm1ldGEtc2xpZGVyXCIpLmxlbmd0aD4wKXtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgICAgICAgICAgJGZpZWxkLmZpbmQoXCIubWV0YS1zbGlkZXJcIikuZWFjaChmdW5jdGlvbiAoaW5kZXgpIHtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB2YXIgc2xpZGVyX29iamVjdCA9ICQodGhpcylbMF07XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB2YXIgJHNsaWRlcl9lbCA9ICQodGhpcykuY2xvc2VzdChcIi5zZi1tZXRhLXJhbmdlLXNsaWRlclwiKTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIC8vdmFyIG1pblZhbCA9ICRzbGlkZXJfZWwuYXR0cihcImRhdGEtbWluXCIpO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgLy92YXIgbWF4VmFsID0gJHNsaWRlcl9lbC5hdHRyKFwiZGF0YS1tYXhcIik7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB2YXIgbWluVmFsID0gJHNsaWRlcl9lbC5maW5kKFwiLnNmLXJhbmdlLW1pblwiKS52YWwoKTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIHZhciBtYXhWYWwgPSAkc2xpZGVyX2VsLmZpbmQoXCIuc2YtcmFuZ2UtbWF4XCIpLnZhbCgpO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgc2xpZGVyX29iamVjdC5ub1VpU2xpZGVyLnNldChbbWluVmFsLCBtYXhWYWxdKTtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIH0pO1xyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgIH0pO1xyXG4gICAgICAgICAgICAvL31cclxuXHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICAvL3N1Ym1pdFxyXG4gICAgICAgIHRoaXMuc3VibWl0Rm9ybSA9IGZ1bmN0aW9uKGUpe1xyXG5cclxuICAgICAgICAgICAgLy9sb29wIHRocm91Z2ggYWxsIHRoZSBmaWVsZHMgYW5kIGJ1aWxkIHRoZSBVUkxcclxuICAgICAgICAgICAgaWYoc2VsZi5pc1N1Ym1pdHRpbmcgPT0gdHJ1ZSkge1xyXG4gICAgICAgICAgICAgICAgcmV0dXJuIGZhbHNlO1xyXG4gICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICBzZWxmLnNldEZpZWxkcygpO1xyXG4gICAgICAgICAgICBzZWxmLmNsZWFyVGltZXIoKTtcclxuXHJcbiAgICAgICAgICAgIHNlbGYuaXNTdWJtaXR0aW5nID0gdHJ1ZTtcclxuXHJcbiAgICAgICAgICAgIHByb2Nlc3NfZm9ybS5zZXRUYXhBcmNoaXZlUmVzdWx0c1VybChzZWxmLCBzZWxmLnJlc3VsdHNfdXJsKTtcclxuXHJcbiAgICAgICAgICAgIHNlbGYuJGFqYXhfcmVzdWx0c19jb250YWluZXIuYXR0cihcImRhdGEtcGFnZWRcIiwgMSk7IC8vaW5pdCBwYWdlZFxyXG5cclxuICAgICAgICAgICAgaWYoc2VsZi5jYW5GZXRjaEFqYXhSZXN1bHRzKCkpXHJcbiAgICAgICAgICAgIHsvL3RoZW4gd2Ugd2lsbCBhamF4IHN1Ym1pdCB0aGUgZm9ybVxyXG5cclxuICAgICAgICAgICAgICAgIHNlbGYuYWpheF9hY3Rpb24gPSBcInN1Ym1pdFwiOyAvL3NvIHdlIGtub3cgaXQgd2Fzbid0IHBhZ2luYXRpb25cclxuICAgICAgICAgICAgICAgIHNlbGYuZmV0Y2hBamF4UmVzdWx0cygpO1xyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIGVsc2VcclxuICAgICAgICAgICAgey8vdGhlbiB3ZSB3aWxsIHNpbXBseSByZWRpcmVjdCB0byB0aGUgUmVzdWx0cyBVUkxcclxuXHJcbiAgICAgICAgICAgICAgICB2YXIgcmVzdWx0c191cmwgPSBwcm9jZXNzX2Zvcm0uZ2V0UmVzdWx0c1VybChzZWxmLCBzZWxmLnJlc3VsdHNfdXJsKTtcclxuICAgICAgICAgICAgICAgIHZhciBxdWVyeV9wYXJhbXMgPSBzZWxmLmdldFVybFBhcmFtcyh0cnVlLCAnJyk7XHJcbiAgICAgICAgICAgICAgICByZXN1bHRzX3VybCA9IHNlbGYuYWRkVXJsUGFyYW0ocmVzdWx0c191cmwsIHF1ZXJ5X3BhcmFtcyk7XHJcblxyXG4gICAgICAgICAgICAgICAgd2luZG93LmxvY2F0aW9uLmhyZWYgPSByZXN1bHRzX3VybDtcclxuICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgcmV0dXJuIGZhbHNlO1xyXG4gICAgICAgIH07XHJcbiAgICAgICAgdGhpcy5yZXNldEZvcm0gPSBmdW5jdGlvbihzdWJtaXRfZm9ybSlcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIC8vdW5zZXQgYWxsIGZpZWxkc1xyXG4gICAgICAgICAgICBzZWxmLiRmaWVsZHMuZWFjaChmdW5jdGlvbigpe1xyXG5cclxuICAgICAgICAgICAgICAgIHZhciAkZmllbGQgPSAkKHRoaXMpO1xyXG5cdFx0XHRcdFxyXG5cdFx0XHRcdCRmaWVsZC5yZW1vdmVBdHRyKFwiZGF0YS1zZi10YXhvbm9teS1hcmNoaXZlXCIpO1xyXG5cdFx0XHRcdFxyXG4gICAgICAgICAgICAgICAgLy9zdGFuZGFyZCBmaWVsZCB0eXBlc1xyXG4gICAgICAgICAgICAgICAgJGZpZWxkLmZpbmQoXCJzZWxlY3Q6bm90KFttdWx0aXBsZT0nbXVsdGlwbGUnXSkgPiBvcHRpb246Zmlyc3QtY2hpbGRcIikucHJvcChcInNlbGVjdGVkXCIsIHRydWUpO1xyXG4gICAgICAgICAgICAgICAgJGZpZWxkLmZpbmQoXCJzZWxlY3RbbXVsdGlwbGU9J211bHRpcGxlJ10gPiBvcHRpb25cIikucHJvcChcInNlbGVjdGVkXCIsIGZhbHNlKTtcclxuICAgICAgICAgICAgICAgICRmaWVsZC5maW5kKFwiaW5wdXRbdHlwZT0nY2hlY2tib3gnXVwiKS5wcm9wKFwiY2hlY2tlZFwiLCBmYWxzZSk7XHJcbiAgICAgICAgICAgICAgICAkZmllbGQuZmluZChcIj4gdWwgPiBsaTpmaXJzdC1jaGlsZCBpbnB1dFt0eXBlPSdyYWRpbyddXCIpLnByb3AoXCJjaGVja2VkXCIsIHRydWUpO1xyXG4gICAgICAgICAgICAgICAgJGZpZWxkLmZpbmQoXCJpbnB1dFt0eXBlPSd0ZXh0J11cIikudmFsKFwiXCIpO1xyXG4gICAgICAgICAgICAgICAgJGZpZWxkLmZpbmQoXCIuc2Ytb3B0aW9uLWFjdGl2ZVwiKS5yZW1vdmVDbGFzcyhcInNmLW9wdGlvbi1hY3RpdmVcIik7XHJcbiAgICAgICAgICAgICAgICAkZmllbGQuZmluZChcIj4gdWwgPiBsaTpmaXJzdC1jaGlsZCBpbnB1dFt0eXBlPSdyYWRpbyddXCIpLnBhcmVudCgpLmFkZENsYXNzKFwic2Ytb3B0aW9uLWFjdGl2ZVwiKTsgLy9yZSBhZGQgYWN0aXZlIGNsYXNzIHRvIGZpcnN0IFwiZGVmYXVsdFwiIG9wdGlvblxyXG5cclxuICAgICAgICAgICAgICAgIC8vbnVtYmVyIHJhbmdlIC0gMiBudW1iZXIgaW5wdXQgZmllbGRzXHJcbiAgICAgICAgICAgICAgICAkZmllbGQuZmluZChcImlucHV0W3R5cGU9J251bWJlciddXCIpLmVhY2goZnVuY3Rpb24oaW5kZXgpe1xyXG5cclxuICAgICAgICAgICAgICAgICAgICB2YXIgJHRoaXNJbnB1dCA9ICQodGhpcyk7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIGlmKCR0aGlzSW5wdXQucGFyZW50KCkucGFyZW50KCkuaGFzQ2xhc3MoXCJzZi1tZXRhLXJhbmdlXCIpKSB7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICBpZihpbmRleD09MCkge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgJHRoaXNJbnB1dC52YWwoJHRoaXNJbnB1dC5hdHRyKFwibWluXCIpKTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgICAgICAgICBlbHNlIGlmKGluZGV4PT0xKSB7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAkdGhpc0lucHV0LnZhbCgkdGhpc0lucHV0LmF0dHIoXCJtYXhcIikpO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgICAgIH0pO1xyXG5cclxuICAgICAgICAgICAgICAgIC8vbWV0YSAvIG51bWJlcnMgd2l0aCAyIGlucHV0cyAoZnJvbSAvIHRvIGZpZWxkcykgLSBzZWNvbmQgaW5wdXQgbXVzdCBiZSByZXNldCB0byBtYXggdmFsdWVcclxuICAgICAgICAgICAgICAgIHZhciAkbWV0YV9zZWxlY3RfZnJvbV90byA9ICRmaWVsZC5maW5kKFwiLnNmLW1ldGEtcmFuZ2Utc2VsZWN0LWZyb210b1wiKTtcclxuXHJcbiAgICAgICAgICAgICAgICBpZigkbWV0YV9zZWxlY3RfZnJvbV90by5sZW5ndGg+MCkge1xyXG5cclxuICAgICAgICAgICAgICAgICAgICB2YXIgc3RhcnRfbWluID0gJG1ldGFfc2VsZWN0X2Zyb21fdG8uYXR0cihcImRhdGEtbWluXCIpO1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciBzdGFydF9tYXggPSAkbWV0YV9zZWxlY3RfZnJvbV90by5hdHRyKFwiZGF0YS1tYXhcIik7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICRtZXRhX3NlbGVjdF9mcm9tX3RvLmZpbmQoXCJzZWxlY3RcIikuZWFjaChmdW5jdGlvbihpbmRleCl7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICB2YXIgJHRoaXNJbnB1dCA9ICQodGhpcyk7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICBpZihpbmRleD09MCkge1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICR0aGlzSW5wdXQudmFsKHN0YXJ0X21pbik7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgICAgICAgICAgZWxzZSBpZihpbmRleD09MSkge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgJHRoaXNJbnB1dC52YWwoc3RhcnRfbWF4KTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgICAgICAgICB9KTtcclxuICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICAgICB2YXIgJG1ldGFfcmFkaW9fZnJvbV90byA9ICRmaWVsZC5maW5kKFwiLnNmLW1ldGEtcmFuZ2UtcmFkaW8tZnJvbXRvXCIpO1xyXG5cclxuICAgICAgICAgICAgICAgIGlmKCRtZXRhX3JhZGlvX2Zyb21fdG8ubGVuZ3RoPjApXHJcbiAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgdmFyIHN0YXJ0X21pbiA9ICRtZXRhX3JhZGlvX2Zyb21fdG8uYXR0cihcImRhdGEtbWluXCIpO1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciBzdGFydF9tYXggPSAkbWV0YV9yYWRpb19mcm9tX3RvLmF0dHIoXCJkYXRhLW1heFwiKTtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgdmFyICRyYWRpb19ncm91cHMgPSAkbWV0YV9yYWRpb19mcm9tX3RvLmZpbmQoJy5zZi1pbnB1dC1yYW5nZS1yYWRpbycpO1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAkcmFkaW9fZ3JvdXBzLmVhY2goZnVuY3Rpb24oaW5kZXgpe1xyXG5cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHZhciAkcmFkaW9zID0gJCh0aGlzKS5maW5kKFwiLnNmLWlucHV0LXJhZGlvXCIpO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAkcmFkaW9zLnByb3AoXCJjaGVja2VkXCIsIGZhbHNlKTtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGlmKGluZGV4PT0wKVxyXG4gICAgICAgICAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAkcmFkaW9zLmZpbHRlcignW3ZhbHVlPVwiJytzdGFydF9taW4rJ1wiXScpLnByb3AoXCJjaGVja2VkXCIsIHRydWUpO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGVsc2UgaWYoaW5kZXg9PTEpXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICRyYWRpb3MuZmlsdGVyKCdbdmFsdWU9XCInK3N0YXJ0X21heCsnXCJdJykucHJvcChcImNoZWNrZWRcIiwgdHJ1ZSk7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgfSk7XHJcblxyXG4gICAgICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgICAgIC8vbnVtYmVyIHNsaWRlciAtIG5vVWlTbGlkZXJcclxuICAgICAgICAgICAgICAgICRmaWVsZC5maW5kKFwiLm1ldGEtc2xpZGVyXCIpLmVhY2goZnVuY3Rpb24oaW5kZXgpe1xyXG5cclxuICAgICAgICAgICAgICAgICAgICB2YXIgc2xpZGVyX29iamVjdCA9ICQodGhpcylbMF07XHJcbiAgICAgICAgICAgICAgICAgICAgLyp2YXIgc2xpZGVyX29iamVjdCA9ICRjb250YWluZXIuZmluZChcIi5tZXRhLXNsaWRlclwiKVswXTtcclxuICAgICAgICAgICAgICAgICAgICAgdmFyIHNsaWRlcl92YWwgPSBzbGlkZXJfb2JqZWN0Lm5vVWlTbGlkZXIuZ2V0KCk7Ki9cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgdmFyICRzbGlkZXJfZWwgPSAkKHRoaXMpLmNsb3Nlc3QoXCIuc2YtbWV0YS1yYW5nZS1zbGlkZXJcIik7XHJcbiAgICAgICAgICAgICAgICAgICAgdmFyIG1pblZhbCA9ICRzbGlkZXJfZWwuYXR0cihcImRhdGEtbWluXCIpO1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciBtYXhWYWwgPSAkc2xpZGVyX2VsLmF0dHIoXCJkYXRhLW1heFwiKTtcclxuICAgICAgICAgICAgICAgICAgICBzbGlkZXJfb2JqZWN0Lm5vVWlTbGlkZXIuc2V0KFttaW5WYWwsIG1heFZhbF0pO1xyXG5cclxuICAgICAgICAgICAgICAgIH0pO1xyXG5cclxuICAgICAgICAgICAgICAgIC8vbmVlZCB0byBzZWUgaWYgYW55IGFyZSBjb21ib2JveCBhbmQgYWN0IGFjY29yZGluZ2x5XHJcbiAgICAgICAgICAgICAgICB2YXIgJGNvbWJvYm94ID0gJGZpZWxkLmZpbmQoXCJzZWxlY3RbZGF0YS1jb21ib2JveD0nMSddXCIpO1xyXG4gICAgICAgICAgICAgICAgaWYoJGNvbWJvYm94Lmxlbmd0aD4wKVxyXG4gICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgIGlmICh0eXBlb2YgJGNvbWJvYm94LmNob3NlbiAhPSBcInVuZGVmaW5lZFwiKVxyXG4gICAgICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgJGNvbWJvYm94LnRyaWdnZXIoXCJjaG9zZW46dXBkYXRlZFwiKTsgLy9mb3IgY2hvc2VuIG9ubHlcclxuICAgICAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICAgICAgZWxzZVxyXG4gICAgICAgICAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgJGNvbWJvYm94LnZhbCgnJyk7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICRjb21ib2JveC50cmlnZ2VyKCdjaGFuZ2Uuc2VsZWN0MicpO1xyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgIH1cclxuXHJcblxyXG4gICAgICAgICAgICB9KTtcclxuICAgICAgICAgICAgc2VsZi5jbGVhclRpbWVyKCk7XHJcblxyXG5cclxuXHJcbiAgICAgICAgICAgIGlmKHN1Ym1pdF9mb3JtPT1cImFsd2F5c1wiKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICBzZWxmLnN1Ym1pdEZvcm0oKTtcclxuICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICBlbHNlIGlmKHN1Ym1pdF9mb3JtPT1cIm5ldmVyXCIpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIGlmKHRoaXMuYXV0b19jb3VudF9yZWZyZXNoX21vZGU9PTEpXHJcbiAgICAgICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICAgICAgc2VsZi5mb3JtVXBkYXRlZEZldGNoQWpheCgpO1xyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIGVsc2UgaWYoc3VibWl0X2Zvcm09PVwiYXV0b1wiKVxyXG4gICAgICAgICAgICB7XHJcbiAgICAgICAgICAgICAgICBpZih0aGlzLmF1dG9fdXBkYXRlPT10cnVlKVxyXG4gICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgIHNlbGYuc3VibWl0Rm9ybSgpO1xyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgZWxzZVxyXG4gICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgIGlmKHRoaXMuYXV0b19jb3VudF9yZWZyZXNoX21vZGU9PTEpXHJcbiAgICAgICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBzZWxmLmZvcm1VcGRhdGVkRmV0Y2hBamF4KCk7XHJcbiAgICAgICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICB9XHJcblxyXG4gICAgICAgIH07XHJcblxyXG4gICAgICAgIHRoaXMuaW5pdCgpO1xyXG5cclxuICAgICAgICB2YXIgZXZlbnRfZGF0YSA9IHt9O1xyXG4gICAgICAgIGV2ZW50X2RhdGEuc2ZpZCA9IHNlbGYuc2ZpZDtcclxuICAgICAgICBldmVudF9kYXRhLnRhcmdldFNlbGVjdG9yID0gc2VsZi5hamF4X3RhcmdldF9hdHRyO1xyXG4gICAgICAgIGV2ZW50X2RhdGEub2JqZWN0ID0gdGhpcztcclxuICAgICAgICBpZihvcHRzLmlzSW5pdClcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIHNlbGYudHJpZ2dlckV2ZW50KFwic2Y6aW5pdFwiLCBldmVudF9kYXRhKTtcclxuICAgICAgICB9XHJcblxyXG4gICAgfSk7XHJcbn07XHJcbiJdfQ==
 },{"./process_form":6,"./state":7,"./thirdparty":8,"nouislider":2}],6:[function(require,module,exports){
 (function (global){
-
-var $ = (typeof window !== "undefined" ? window['jQuery'] : typeof global !== "undefined" ? global['jQuery'] : null);
-
-module.exports = {
-
-	taxonomy_archives: 0,
-    url_params: {},
-    tax_archive_results_url: "",
-    active_tax: "",
-    fields: {},
-	init: function(taxonomy_archives, current_taxonomy_archive){
-
-        this.taxonomy_archives = 0;
-        this.url_params = {};
-        this.tax_archive_results_url = "";
-        this.active_tax = "";
-
-		//this.$fields = $fields;
-        this.taxonomy_archives = taxonomy_archives;
-        this.current_taxonomy_archive = current_taxonomy_archive;
-
-		this.clearUrlComponents();
-
-	},
-    setTaxArchiveResultsUrl: function($form, current_results_url, get_active) {
-
-        var self = this;
-		this.clearTaxArchiveResultsUrl();
-        //var current_results_url = "";
-        if(this.taxonomy_archives!=1)
-        {
-            return;
-        }
-
-        if(typeof(get_active)=="undefined")
-		{
-			var get_active = false;
-		}
-
-        //check to see if we have any taxonomies selected
-        //if so, check their rewrites and use those as the results url
-        var $field = false;
-        var field_name = "";
-        var field_value = "";
-
-        var $active_taxonomy = $form.$fields.parent().find("[data-sf-taxonomy-archive='1']");
-        if($active_taxonomy.length==1)
-        {
-            $field = $active_taxonomy;
-
-            var fieldType = $field.attr("data-sf-field-type");
-
-            if ((fieldType == "tag") || (fieldType == "category") || (fieldType == "taxonomy")) {
-                var taxonomy_value = self.processTaxonomy($field, true);
-                field_name = $field.attr("data-sf-field-name");
-                var taxonomy_name = field_name.replace("_sft_", "");
-
-                if (taxonomy_value) {
-                    field_value = taxonomy_value.value;
-                }
-            }
-
-            if(field_value=="")
-            {
-                $field = false;
-            }
-        }
-
-        if((self.current_taxonomy_archive!="")&&(self.current_taxonomy_archive!=taxonomy_name))
-        {
-
-            this.tax_archive_results_url = current_results_url;
-            return;
-        }
-
-        if(((field_value=="")||(!$field) ))
-        {
-            $form.$fields.each(function () {
-
-                if (!$field) {
-
-                    var fieldType = $(this).attr("data-sf-field-type");
-
-                    if ((fieldType == "tag") || (fieldType == "category") || (fieldType == "taxonomy")) {
-                        var taxonomy_value = self.processTaxonomy($(this), true);
-                        field_name = $(this).attr("data-sf-field-name");
-
-                        if (taxonomy_value) {
-
-                            field_value = taxonomy_value.value;
-
-                            if (field_value != "") {
-
-                                $field = $(this);
-                            }
-
-                        }
-                    }
-                }
-            });
-        }
-
-        if( ($field) && (field_value != "" )) {
-            //if we found a field
-			var rewrite_attr = ($field.attr("data-sf-term-rewrite"));
-
-            if(rewrite_attr!="") {
-
-                var rewrite = JSON.parse(rewrite_attr);
-                var input_type = $field.attr("data-sf-field-input-type");
-                self.active_tax = field_name;
-
-                //find the active element
-                if ((input_type == "radio") || (input_type == "checkbox")) {
-
-                    //var $active = $field.find(".sf-option-active");
-                    //explode the values if there is a delim
-                    //field_value
-
-                    var is_single_value = true;
-                    var field_values = field_value.split(",").join("+").split("+");
-                    if (field_values.length > 1) {
-                        is_single_value = false;
-                    }
-
-                    if (is_single_value) {
-
-                        var $input = $field.find("input[value='" + field_value + "']");
-                        var $active = $input.parent();
-                        var depth = $active.attr("data-sf-depth");
-
-                        //now loop through parents to grab their names
-                        var values = new Array();
-                        values.push(field_value);
-
-                        for (var i = depth; i > 0; i--) {
-                            $active = $active.parent().parent();
-                            values.push($active.find("input").val());
-                        }
-
-                        values.reverse();
-
-                        //grab the rewrite for this depth
-                        var active_rewrite = rewrite[depth];
-                        var url = active_rewrite;
-
-
-                        //then map from the parents to the depth
-                        $(values).each(function (index, value) {
-
-                            url = url.replace("[" + index + "]", value);
-
-                        });
-                        this.tax_archive_results_url = url;
-                    }
-                    else {
-
-                        //if there are multiple values,
-                        //then we need to check for 3 things:
-
-                        //if the values selected are all in the same tree then we can do some clever rewrite stuff
-                        //merge all values in same level, then combine the levels
-
-                        //if they are from different trees then just combine them or just use `field_value`
-                        /*
-
-                         var depths = new Array();
-                         $(field_values).each(function (index, val) {
-
-                         var $input = $field.find("input[value='" + field_value + "']");
-                         var $active = $input.parent();
-
-                         var depth = $active.attr("data-sf-depth");
-                         //depths.push(depth);
-
-                         });*/
-
-                    }
-                }
-                else if ((input_type == "select") || (input_type == "multiselect")) {
-
-                    var is_single_value = true;
-                    var field_values = field_value.split(",").join("+").split("+");
-                    if (field_values.length > 1) {
-                        is_single_value = false;
-                    }
-
-                    if (is_single_value) {
-
-                        var $active = $field.find("option[value='" + field_value + "']");
-                        var depth = $active.attr("data-sf-depth");
-
-                        var values = new Array();
-                        values.push(field_value);
-
-                        for (var i = depth; i > 0; i--) {
-                            $active = $active.prevAll("option[data-sf-depth='" + (i - 1) + "']");
-                            values.push($active.val());
-                        }
-
-                        values.reverse();
-                        var active_rewrite = rewrite[depth];
-                        var url = active_rewrite;
-                        $(values).each(function (index, value) {
-
-                            url = url.replace("[" + index + "]", value);
-
-                        });
-                        this.tax_archive_results_url = url;
-                    }
-
-                }
-            }
-
-        }
-        //this.tax_archive_results_url = current_results_url;
-    },
-    getResultsUrl: function($form, current_results_url) {
-
-        //this.setTaxArchiveResultsUrl($form, current_results_url);
-
-        if(this.tax_archive_results_url=="")
-        {
-            return current_results_url;
-        }
-
-        return this.tax_archive_results_url;
-    },
-	getUrlParams: function($form){
-
-		this.buildUrlComponents($form, true);
-
-        if(this.tax_archive_results_url!="")
-        {
-
-            if(this.active_tax!="")
-            {
-                var field_name = this.active_tax;
-
-                if(typeof(this.url_params[field_name])!="undefined")
-                {
-                    delete this.url_params[field_name];
-                }
-            }
-        }
-
-		return this.url_params;
-	},
-	clearUrlComponents: function(){
-		//this.url_components = "";
-		this.url_params = {};
-	},
-	clearTaxArchiveResultsUrl: function() {
-		this.tax_archive_results_url = '';
-	},
-	disableInputs: function($form){
-		var self = this;
-		
-		$form.$fields.each(function(){
-			
-			var $inputs = $(this).find("input, select, .meta-slider");
-			$inputs.attr("disabled", "disabled");
-			$inputs.attr("disabled", true);
-			$inputs.prop("disabled", true);
-			$inputs.trigger("chosen:updated");
-			
-		});
-		
-		
-	},
-	enableInputs: function($form){
-		var self = this;
-		$form.$fields.each(function(){
-			var $inputs = $(this).find("input, select, .meta-slider");
-			$inputs.prop("disabled", false);
-			$inputs.attr("disabled", false);
-			$inputs.trigger("chosen:updated");			
-		});
-		
-		
-	},
-	buildUrlComponents: function($form, clear_components){
-		
-		var self = this;
-		
-		if(typeof(clear_components)!="undefined")
-		{
-			if(clear_components==true)
-			{
-				this.clearUrlComponents();
-			}
-		}
-		
-		$form.$fields.each(function(){
-			
-			var fieldName = $(this).attr("data-sf-field-name");
-			var fieldType = $(this).attr("data-sf-field-type");
-			
-			if(fieldType=="search")
-			{
-				self.processSearchField($(this));
-			}
-			else if((fieldType=="tag")||(fieldType=="category")||(fieldType=="taxonomy"))
-			{
-				self.processTaxonomy($(this));
-			}
-			else if(fieldType=="sort_order")
-			{
-				self.processSortOrderField($(this));
-			}
-			else if(fieldType=="posts_per_page")
-			{
-				self.processResultsPerPageField($(this));
-			}
-			else if(fieldType=="author")
-			{
-				self.processAuthor($(this));
-			}
-			else if(fieldType=="post_type")
-			{
-				self.processPostType($(this));
-			}
-			else if(fieldType=="post_date")
-			{
-				self.processPostDate($(this));
-			}
-			else if(fieldType=="post_meta")
-			{
-				self.processPostMeta($(this));
-				
-			}
-			else
-			{
-				
-			}
-			
-		});
-		
-	},
-	processSearchField: function($container)
-	{
-		var self = this;
-		
-		var $field = $container.find("input[name^='_sf_search']");
-		
-		if($field.length>0)
-		{
-			var fieldName = $field.attr("name").replace('[]', '');
-			var fieldVal = $field.val();
-			
-			if(fieldVal!="")
-			{
-				//self.url_components += "&_sf_s="+encodeURIComponent(fieldVal);
-				self.url_params['_sf_s'] = encodeURIComponent(fieldVal);
-			}
-		}
-	},
-	processSortOrderField: function($container)
-	{
-		this.processAuthor($container);
-		
-	},
-	processResultsPerPageField: function($container)
-	{
-		this.processAuthor($container);
-		
-	},
-	getActiveTax: function($field) {
-		return this.active_tax;
-	},
-	getSelectVal: function($field){
-
-		var fieldVal = "";
-		
-		if($field.val()!=0)
-		{
-			fieldVal = $field.val();
-		}
-		
-		if(fieldVal==null)
-		{
-			fieldVal = "";
-		}
-		
-		return fieldVal;
-	},
-	getMetaSelectVal: function($field){
-		
-		var fieldVal = "";
-		
-		fieldVal = $field.val();
-						
-		if(fieldVal==null)
-		{
-			fieldVal = "";
-		}
-		
-		return fieldVal;
-	},
-	getMultiSelectVal: function($field, operator){
-		
-		var delim = "+";
-		if(operator=="or")
-		{
-			delim = ",";
-		}
-		
-		if(typeof($field.val())=="object")
-		{
-			if($field.val()!=null)
-			{
-				return $field.val().join(delim);
-			}
-		}
-		
-	},
-	getMetaMultiSelectVal: function($field, operator){
-		
-		var delim = "-+-";
-		if(operator=="or")
-		{
-			delim = "-,-";
-		}
-				
-		if(typeof($field.val())=="object")
-		{
-			if($field.val()!=null)
-			{
-				
-				var fieldval = [];
-				
-				$($field.val()).each(function(index,value){
-					
-					fieldval.push((value));
-				});
-				
-				return fieldval.join(delim);
-			}
-		}
-		
-		return "";
-		
-	},
-	getCheckboxVal: function($field, operator){
-		
-		
-		var fieldVal = $field.map(function(){
-			if($(this).prop("checked")==true)
-			{
-				return $(this).val();
-			}
-		}).get();
-		
-		var delim = "+";
-		if(operator=="or")
-		{
-			delim = ",";
-		}
-		
-		return fieldVal.join(delim);
-	},
-	getMetaCheckboxVal: function($field, operator){
-		
-		
-		var fieldVal = $field.map(function(){
-			if($(this).prop("checked")==true)
-			{
-				return ($(this).val());
-			}
-		}).get();
-		
-		var delim = "-+-";
-		if(operator=="or")
-		{
-			delim = "-,-";
-		}
-		
-		return fieldVal.join(delim);
-	},
-	getRadioVal: function($field){
-							
-		var fieldVal = $field.map(function()
-		{
-			if($(this).prop("checked")==true)
-			{
-				return $(this).val();
-			}
-			
-		}).get();
-		
-		
-		if(fieldVal[0]!=0)
-		{
-			return fieldVal[0];
-		}
-	},
-	getMetaRadioVal: function($field){
-							
-		var fieldVal = $field.map(function()
-		{
-			if($(this).prop("checked")==true)
-			{
-				return $(this).val();
-			}
-			
-		}).get();
-		
-		return fieldVal[0];
-	},
-	processAuthor: function($container)
-	{
-		var self = this;
-		
-		
-		var fieldType = $container.attr("data-sf-field-type");
-		var inputType = $container.attr("data-sf-field-input-type");
-		
-		var $field;
-		var fieldName = "";
-		var fieldVal = "";
-		
-		if(inputType=="select")
-		{
-			$field = $container.find("select");
-			fieldName = $field.attr("name").replace('[]', '');
-			
-			fieldVal = self.getSelectVal($field); 
-		}
-		else if(inputType=="multiselect")
-		{
-			$field = $container.find("select");
-			fieldName = $field.attr("name").replace('[]', '');
-			var operator = $field.attr("data-operator");
-			
-			fieldVal = self.getMultiSelectVal($field, "or");
-			
-		}
-		else if(inputType=="checkbox")
-		{
-			$field = $container.find("ul > li input:checkbox");
-			
-			if($field.length>0)
-			{
-				fieldName = $field.attr("name").replace('[]', '');
-										
-				var operator = $container.find("> ul").attr("data-operator");
-				fieldVal = self.getCheckboxVal($field, "or");
-			}
-			
-		}
-		else if(inputType=="radio")
-		{
-			
-			$field = $container.find("ul > li input:radio");
-						
-			if($field.length>0)
-			{
-				fieldName = $field.attr("name").replace('[]', '');
-				
-				fieldVal = self.getRadioVal($field);
-			}
-		}
-		
-		if(typeof(fieldVal)!="undefined")
-		{
-			if(fieldVal!="")
-			{
-				var fieldSlug = "";
-				
-				if(fieldName=="_sf_author")
-				{
-					fieldSlug = "authors";
-				}
-				else if(fieldName=="_sf_sort_order")
-				{
-					fieldSlug = "sort_order";
-				}
-				else if(fieldName=="_sf_ppp")
-				{
-					fieldSlug = "_sf_ppp";
-				}
-				else if(fieldName=="_sf_post_type")
-				{
-					fieldSlug = "post_types";
-				}
-				else
-				{
-				
-				}
-				
-				if(fieldSlug!="")
-				{
-					//self.url_components += "&"+fieldSlug+"="+fieldVal;
-					self.url_params[fieldSlug] = fieldVal;
-				}
-			}
-		}
-		
-	},
-	processPostType : function($this){
-		
-		this.processAuthor($this);
-		
-	},
-	processPostMeta: function($container)
-	{
-		var self = this;
-		
-		var fieldType = $container.attr("data-sf-field-type");
-		var inputType = $container.attr("data-sf-field-input-type");
-		var metaType = $container.attr("data-sf-meta-type");
-
-		var fieldVal = "";
-		var $field;
-		var fieldName = "";
-		
-		if(metaType=="number")
-		{
-			if(inputType=="range-number")
-			{
-				$field = $container.find(".sf-meta-range-number input");
-				
-				var values = [];
-				$field.each(function(){
-					
-					values.push($(this).val());
-				
-				});
-				
-				fieldVal = values.join("+");
-				
-			}
-			else if(inputType=="range-slider")
-			{
-				$field = $container.find(".sf-meta-range-slider input");
-				
-				//get any number formatting stuff
-				var $meta_range = $container.find(".sf-meta-range-slider");
-				
-				var decimal_places = $meta_range.attr("data-decimal-places");
-				var thousand_seperator = $meta_range.attr("data-thousand-seperator");
-				var decimal_seperator = $meta_range.attr("data-decimal-seperator");
-
-				var field_format = wNumb({
-					mark: decimal_seperator,
-					decimals: parseFloat(decimal_places),
-					thousand: thousand_seperator
-				});
-				
-				var values = [];
-
-
-				var slider_object = $container.find(".meta-slider")[0];
-				//val from slider object
-				var slider_val = slider_object.noUiSlider.get();
-
-				values.push(field_format.from(slider_val[0]));
-				values.push(field_format.from(slider_val[1]));
-				
-				fieldVal = values.join("+");
-				
-				fieldName = $meta_range.attr("data-sf-field-name");
-				
-				
-			}
-			else if(inputType=="range-radio")
-			{
-				$field = $container.find(".sf-input-range-radio");
-				
-				if($field.length==0)
-				{
-					//then try again, we must be using a single field
-					$field = $container.find("> ul");
-				}
-
-				var $meta_range = $container.find(".sf-meta-range");
-				
-				//there is an element with a from/to class - so we need to get the values of the from & to input fields seperately
-				if($field.length>0)
-				{	
-					var field_vals = [];
-					
-					$field.each(function(){
-						
-						var $radios = $(this).find(".sf-input-radio");
-						field_vals.push(self.getMetaRadioVal($radios));
-						
-					});
-					
-					//prevent second number from being lower than the first
-					if(field_vals.length==2)
-					{
-						if(Number(field_vals[1])<Number(field_vals[0]))
-						{
-							field_vals[1] = field_vals[0];
-						}
-					}
-					
-					fieldVal = field_vals.join("+");
-				}
-								
-				if($field.length==1)
-				{
-					fieldName = $field.find(".sf-input-radio").attr("name").replace('[]', '');
-				}
-				else
-				{
-					fieldName = $meta_range.attr("data-sf-field-name");
-				}
-
-			}
-			else if(inputType=="range-select")
-			{
-				$field = $container.find(".sf-input-select");
-				var $meta_range = $container.find(".sf-meta-range");
-				
-				//there is an element with a from/to class - so we need to get the values of the from & to input fields seperately
-				
-				if($field.length>0)
-				{
-					var field_vals = [];
-					
-					$field.each(function(){
-						
-						var $this = $(this);
-						field_vals.push(self.getMetaSelectVal($this));
-						
-					});
-					
-					//prevent second number from being lower than the first
-					if(field_vals.length==2)
-					{
-						if(Number(field_vals[1])<Number(field_vals[0]))
-						{
-							field_vals[1] = field_vals[0];
-						}
-					}
-					
-					
-					fieldVal = field_vals.join("+");
-				}
-								
-				if($field.length==1)
-				{
-					fieldName = $field.attr("name").replace('[]', '');
-				}
-				else
-				{
-					fieldName = $meta_range.attr("data-sf-field-name");
-				}
-				
-			}
-			else if(inputType=="range-checkbox")
-			{
-				$field = $container.find("ul > li input:checkbox");
-				
-				if($field.length>0)
-				{
-					fieldVal = self.getCheckboxVal($field, "and");
-				}
-			}
-			
-			if(fieldName=="")
-			{
-				fieldName = $field.attr("name").replace('[]', '');
-			}
-		}
-		else if(metaType=="choice")
-		{
-			if(inputType=="select")
-			{
-				$field = $container.find("select");
-				
-				fieldVal = self.getMetaSelectVal($field); 
-				
-			}
-			else if(inputType=="multiselect")
-			{
-				$field = $container.find("select");
-				var operator = $field.attr("data-operator");
-				
-				fieldVal = self.getMetaMultiSelectVal($field, operator);
-			}
-			else if(inputType=="checkbox")
-			{
-				$field = $container.find("ul > li input:checkbox");
-				
-				if($field.length>0)
-				{
-					var operator = $container.find("> ul").attr("data-operator");
-					fieldVal = self.getMetaCheckboxVal($field, operator);
-				}
-			}
-			else if(inputType=="radio")
-			{
-				$field = $container.find("ul > li input:radio");
-				
-				if($field.length>0)
-				{
-					fieldVal = self.getMetaRadioVal($field);
-				}
-			}
-			
-			fieldVal = encodeURIComponent(fieldVal);
-			if(typeof($field)!=="undefined")
-			{
-				if($field.length>0)
-				{
-					fieldName = $field.attr("name").replace('[]', '');
-					
-					//for those who insist on using & ampersands in the name of the custom field (!)
-					fieldName = (fieldName);
-				}
-			}
-			
-		}
-		else if(metaType=="date")
-		{
-			self.processPostDate($container);
-		}
-		
-		if(typeof(fieldVal)!="undefined")
-		{
-			if(fieldVal!="")
-			{
-				//self.url_components += "&"+encodeURIComponent(fieldName)+"="+(fieldVal);
-				self.url_params[encodeURIComponent(fieldName)] = (fieldVal);
-			}
-		}
-	},
-	processPostDate: function($container)
-	{
-		var self = this;
-		
-		var fieldType = $container.attr("data-sf-field-type");
-		var inputType = $container.attr("data-sf-field-input-type");
-		
-		var $field;
-		var fieldName = "";
-		var fieldVal = "";
-		
-		$field = $container.find("ul > li input:text");
-		fieldName = $field.attr("name").replace('[]', '');
-		
-		var dates = [];
-		$field.each(function(){
-			
-			dates.push($(this).val());
-		
-		});
-		
-		if($field.length==2)
-		{
-			if((dates[0]!="")||(dates[1]!=""))
-			{
-				fieldVal = dates.join("+");
-				fieldVal = fieldVal.replace(/\//g,'');
-			}
-		}
-		else if($field.length==1)
-		{
-			if(dates[0]!="")
-			{
-				fieldVal = dates.join("+");
-				fieldVal = fieldVal.replace(/\//g,'');
-			}
-		}
-		
-		if(typeof(fieldVal)!="undefined")
-		{
-			if(fieldVal!="")
-			{
-				var fieldSlug = "";
-				
-				if(fieldName=="_sf_post_date")
-				{
-					fieldSlug = "post_date";
-				}
-				else
-				{
-					fieldSlug = fieldName;
-				}
-				
-				if(fieldSlug!="")
-				{
-					//self.url_components += "&"+fieldSlug+"="+fieldVal;
-					self.url_params[fieldSlug] = fieldVal;
-				}
-			}
-		}
-		
-	},
-	processTaxonomy: function($container, return_object)
-	{
-        if(typeof(return_object)=="undefined")
-        {
-            return_object = false;
-        }
-
-		//if()					
-		//var fieldName = $(this).attr("data-sf-field-name");
-		var self = this;
-	
-		var fieldType = $container.attr("data-sf-field-type");
-		var inputType = $container.attr("data-sf-field-input-type");
-		
-		var $field;
-		var fieldName = "";
-		var fieldVal = "";
-		
-		if(inputType=="select")
-		{
-			$field = $container.find("select");
-			fieldName = $field.attr("name").replace('[]', '');
-			
-			fieldVal = self.getSelectVal($field); 
-		}
-		else if(inputType=="multiselect")
-		{
-			$field = $container.find("select");
-			fieldName = $field.attr("name").replace('[]', '');
-			var operator = $field.attr("data-operator");
-			
-			fieldVal = self.getMultiSelectVal($field, operator);
-		}
-		else if(inputType=="checkbox")
-		{
-			$field = $container.find("ul > li input:checkbox");
-			if($field.length>0)
-			{
-				fieldName = $field.attr("name").replace('[]', '');
-										
-				var operator = $container.find("> ul").attr("data-operator");
-				fieldVal = self.getCheckboxVal($field, operator);
-			}
-		}
-		else if(inputType=="radio")
-		{
-			$field = $container.find("ul > li input:radio");
-			if($field.length>0)
-			{
-				fieldName = $field.attr("name").replace('[]', '');
-				
-				fieldVal = self.getRadioVal($field);
-			}
-		}
-		
-		if(typeof(fieldVal)!="undefined")
-		{
-			if(fieldVal!="")
-			{
-                if(return_object==true)
-                {
-                    return {name: fieldName, value: fieldVal};
-                }
-                else
-                {
-                    //self.url_components += "&"+fieldName+"="+fieldVal;
-                    self.url_params[fieldName] = fieldVal;
-                }
-
-			}
-		}
-
-        if(return_object==true)
-        {
-            return false;
-        }
-	}
+
+var $ = (typeof window !== "undefined" ? window['jQuery'] : typeof global !== "undefined" ? global['jQuery'] : null);
+
+module.exports = {
+
+	taxonomy_archives: 0,
+    url_params: {},
+    tax_archive_results_url: "",
+    active_tax: "",
+    fields: {},
+	init: function(taxonomy_archives, current_taxonomy_archive){
+
+        this.taxonomy_archives = 0;
+        this.url_params = {};
+        this.tax_archive_results_url = "";
+        this.active_tax = "";
+
+		//this.$fields = $fields;
+        this.taxonomy_archives = taxonomy_archives;
+        this.current_taxonomy_archive = current_taxonomy_archive;
+
+		this.clearUrlComponents();
+
+	},
+    setTaxArchiveResultsUrl: function($form, current_results_url, get_active) {
+
+        var self = this;
+		this.clearTaxArchiveResultsUrl();
+        //var current_results_url = "";
+        if(this.taxonomy_archives!=1)
+        {
+            return;
+        }
+
+        if(typeof(get_active)=="undefined")
+		{
+			var get_active = false;
+		}
+
+        //check to see if we have any taxonomies selected
+        //if so, check their rewrites and use those as the results url
+        var $field = false;
+        var field_name = "";
+        var field_value = "";
+
+        var $active_taxonomy = $form.$fields.parent().find("[data-sf-taxonomy-archive='1']");
+        if($active_taxonomy.length==1)
+        {
+            $field = $active_taxonomy;
+
+            var fieldType = $field.attr("data-sf-field-type");
+
+            if ((fieldType == "tag") || (fieldType == "category") || (fieldType == "taxonomy")) {
+                var taxonomy_value = self.processTaxonomy($field, true);
+                field_name = $field.attr("data-sf-field-name");
+                var taxonomy_name = field_name.replace("_sft_", "");
+
+                if (taxonomy_value) {
+                    field_value = taxonomy_value.value;
+                }
+            }
+
+            if(field_value=="")
+            {
+                $field = false;
+            }
+        }
+
+        if((self.current_taxonomy_archive!="")&&(self.current_taxonomy_archive!=taxonomy_name))
+        {
+
+            this.tax_archive_results_url = current_results_url;
+            return;
+        }
+
+        if(((field_value=="")||(!$field) ))
+        {
+            $form.$fields.each(function () {
+
+                if (!$field) {
+
+                    var fieldType = $(this).attr("data-sf-field-type");
+
+                    if ((fieldType == "tag") || (fieldType == "category") || (fieldType == "taxonomy")) {
+                        var taxonomy_value = self.processTaxonomy($(this), true);
+                        field_name = $(this).attr("data-sf-field-name");
+
+                        if (taxonomy_value) {
+
+                            field_value = taxonomy_value.value;
+
+                            if (field_value != "") {
+
+                                $field = $(this);
+                            }
+
+                        }
+                    }
+                }
+            });
+        }
+
+        if( ($field) && (field_value != "" )) {
+            //if we found a field
+			var rewrite_attr = ($field.attr("data-sf-term-rewrite"));
+
+            if(rewrite_attr!="") {
+
+                var rewrite = JSON.parse(rewrite_attr);
+                var input_type = $field.attr("data-sf-field-input-type");
+                self.active_tax = field_name;
+
+                //find the active element
+                if ((input_type == "radio") || (input_type == "checkbox")) {
+
+                    //var $active = $field.find(".sf-option-active");
+                    //explode the values if there is a delim
+                    //field_value
+
+                    var is_single_value = true;
+                    var field_values = field_value.split(",").join("+").split("+");
+                    if (field_values.length > 1) {
+                        is_single_value = false;
+                    }
+
+                    if (is_single_value) {
+
+                        var $input = $field.find("input[value='" + field_value + "']");
+                        var $active = $input.parent();
+                        var depth = $active.attr("data-sf-depth");
+
+                        //now loop through parents to grab their names
+                        var values = new Array();
+                        values.push(field_value);
+
+                        for (var i = depth; i > 0; i--) {
+                            $active = $active.parent().parent();
+                            values.push($active.find("input").val());
+                        }
+
+                        values.reverse();
+
+                        //grab the rewrite for this depth
+                        var active_rewrite = rewrite[depth];
+                        var url = active_rewrite;
+
+
+                        //then map from the parents to the depth
+                        $(values).each(function (index, value) {
+
+                            url = url.replace("[" + index + "]", value);
+
+                        });
+                        this.tax_archive_results_url = url;
+                    }
+                    else {
+
+                        //if there are multiple values,
+                        //then we need to check for 3 things:
+
+                        //if the values selected are all in the same tree then we can do some clever rewrite stuff
+                        //merge all values in same level, then combine the levels
+
+                        //if they are from different trees then just combine them or just use `field_value`
+                        /*
+
+                         var depths = new Array();
+                         $(field_values).each(function (index, val) {
+
+                         var $input = $field.find("input[value='" + field_value + "']");
+                         var $active = $input.parent();
+
+                         var depth = $active.attr("data-sf-depth");
+                         //depths.push(depth);
+
+                         });*/
+
+                    }
+                }
+                else if ((input_type == "select") || (input_type == "multiselect")) {
+
+                    var is_single_value = true;
+                    var field_values = field_value.split(",").join("+").split("+");
+                    if (field_values.length > 1) {
+                        is_single_value = false;
+                    }
+
+                    if (is_single_value) {
+
+                        var $active = $field.find("option[value='" + field_value + "']");
+                        var depth = $active.attr("data-sf-depth");
+
+                        var values = new Array();
+                        values.push(field_value);
+
+                        for (var i = depth; i > 0; i--) {
+                            $active = $active.prevAll("option[data-sf-depth='" + (i - 1) + "']");
+                            values.push($active.val());
+                        }
+
+                        values.reverse();
+                        var active_rewrite = rewrite[depth];
+                        var url = active_rewrite;
+                        $(values).each(function (index, value) {
+
+                            url = url.replace("[" + index + "]", value);
+
+                        });
+                        this.tax_archive_results_url = url;
+                    }
+
+                }
+            }
+
+        }
+        //this.tax_archive_results_url = current_results_url;
+    },
+    getResultsUrl: function($form, current_results_url) {
+
+        //this.setTaxArchiveResultsUrl($form, current_results_url);
+
+        if(this.tax_archive_results_url=="")
+        {
+            return current_results_url;
+        }
+
+        return this.tax_archive_results_url;
+    },
+	getUrlParams: function($form){
+
+		this.buildUrlComponents($form, true);
+
+        if(this.tax_archive_results_url!="")
+        {
+
+            if(this.active_tax!="")
+            {
+                var field_name = this.active_tax;
+
+                if(typeof(this.url_params[field_name])!="undefined")
+                {
+                    delete this.url_params[field_name];
+                }
+            }
+        }
+
+		return this.url_params;
+	},
+	clearUrlComponents: function(){
+		//this.url_components = "";
+		this.url_params = {};
+	},
+	clearTaxArchiveResultsUrl: function() {
+		this.tax_archive_results_url = '';
+	},
+	disableInputs: function($form){
+		var self = this;
+		
+		$form.$fields.each(function(){
+			
+			var $inputs = $(this).find("input, select, .meta-slider");
+			$inputs.attr("disabled", "disabled");
+			$inputs.attr("disabled", true);
+			$inputs.prop("disabled", true);
+			$inputs.trigger("chosen:updated");
+			
+		});
+		
+		
+	},
+	enableInputs: function($form){
+		var self = this;
+		$form.$fields.each(function(){
+			var $inputs = $(this).find("input, select, .meta-slider");
+			$inputs.prop("disabled", false);
+			$inputs.attr("disabled", false);
+			$inputs.trigger("chosen:updated");			
+		});
+		
+		
+	},
+	buildUrlComponents: function($form, clear_components){
+		
+		var self = this;
+		
+		if(typeof(clear_components)!="undefined")
+		{
+			if(clear_components==true)
+			{
+				this.clearUrlComponents();
+			}
+		}
+		
+		$form.$fields.each(function(){
+			
+			var fieldName = $(this).attr("data-sf-field-name");
+			var fieldType = $(this).attr("data-sf-field-type");
+			
+			if(fieldType=="search")
+			{
+				self.processSearchField($(this));
+			}
+			else if((fieldType=="tag")||(fieldType=="category")||(fieldType=="taxonomy"))
+			{
+				self.processTaxonomy($(this));
+			}
+			else if(fieldType=="sort_order")
+			{
+				self.processSortOrderField($(this));
+			}
+			else if(fieldType=="posts_per_page")
+			{
+				self.processResultsPerPageField($(this));
+			}
+			else if(fieldType=="author")
+			{
+				self.processAuthor($(this));
+			}
+			else if(fieldType=="post_type")
+			{
+				self.processPostType($(this));
+			}
+			else if(fieldType=="post_date")
+			{
+				self.processPostDate($(this));
+			}
+			else if(fieldType=="post_meta")
+			{
+				self.processPostMeta($(this));
+				
+			}
+			else
+			{
+				
+			}
+			
+		});
+		
+	},
+	processSearchField: function($container)
+	{
+		var self = this;
+		
+		var $field = $container.find("input[name^='_sf_search']");
+		
+		if($field.length>0)
+		{
+			var fieldName = $field.attr("name").replace('[]', '');
+			var fieldVal = $field.val();
+			
+			if(fieldVal!="")
+			{
+				//self.url_components += "&_sf_s="+encodeURIComponent(fieldVal);
+				self.url_params['_sf_s'] = encodeURIComponent(fieldVal);
+			}
+		}
+	},
+	processSortOrderField: function($container)
+	{
+		this.processAuthor($container);
+		
+	},
+	processResultsPerPageField: function($container)
+	{
+		this.processAuthor($container);
+		
+	},
+	getActiveTax: function($field) {
+		return this.active_tax;
+	},
+	getSelectVal: function($field){
+
+		var fieldVal = "";
+		
+		if($field.val()!=0)
+		{
+			fieldVal = $field.val();
+		}
+		
+		if(fieldVal==null)
+		{
+			fieldVal = "";
+		}
+		
+		return fieldVal;
+	},
+	getMetaSelectVal: function($field){
+		
+		var fieldVal = "";
+		
+		fieldVal = $field.val();
+						
+		if(fieldVal==null)
+		{
+			fieldVal = "";
+		}
+		
+		return fieldVal;
+	},
+	getMultiSelectVal: function($field, operator){
+		
+		var delim = "+";
+		if(operator=="or")
+		{
+			delim = ",";
+		}
+		
+		if(typeof($field.val())=="object")
+		{
+			if($field.val()!=null)
+			{
+				return $field.val().join(delim);
+			}
+		}
+		
+	},
+	getMetaMultiSelectVal: function($field, operator){
+		
+		var delim = "-+-";
+		if(operator=="or")
+		{
+			delim = "-,-";
+		}
+				
+		if(typeof($field.val())=="object")
+		{
+			if($field.val()!=null)
+			{
+				
+				var fieldval = [];
+				
+				$($field.val()).each(function(index,value){
+					
+					fieldval.push((value));
+				});
+				
+				return fieldval.join(delim);
+			}
+		}
+		
+		return "";
+		
+	},
+	getCheckboxVal: function($field, operator){
+		
+		
+		var fieldVal = $field.map(function(){
+			if($(this).prop("checked")==true)
+			{
+				return $(this).val();
+			}
+		}).get();
+		
+		var delim = "+";
+		if(operator=="or")
+		{
+			delim = ",";
+		}
+		
+		return fieldVal.join(delim);
+	},
+	getMetaCheckboxVal: function($field, operator){
+		
+		
+		var fieldVal = $field.map(function(){
+			if($(this).prop("checked")==true)
+			{
+				return ($(this).val());
+			}
+		}).get();
+		
+		var delim = "-+-";
+		if(operator=="or")
+		{
+			delim = "-,-";
+		}
+		
+		return fieldVal.join(delim);
+	},
+	getRadioVal: function($field){
+							
+		var fieldVal = $field.map(function()
+		{
+			if($(this).prop("checked")==true)
+			{
+				return $(this).val();
+			}
+			
+		}).get();
+		
+		
+		if(fieldVal[0]!=0)
+		{
+			return fieldVal[0];
+		}
+	},
+	getMetaRadioVal: function($field){
+							
+		var fieldVal = $field.map(function()
+		{
+			if($(this).prop("checked")==true)
+			{
+				return $(this).val();
+			}
+			
+		}).get();
+		
+		return fieldVal[0];
+	},
+	processAuthor: function($container)
+	{
+		var self = this;
+		
+		
+		var fieldType = $container.attr("data-sf-field-type");
+		var inputType = $container.attr("data-sf-field-input-type");
+		
+		var $field;
+		var fieldName = "";
+		var fieldVal = "";
+		
+		if(inputType=="select")
+		{
+			$field = $container.find("select");
+			fieldName = $field.attr("name").replace('[]', '');
+			
+			fieldVal = self.getSelectVal($field); 
+		}
+		else if(inputType=="multiselect")
+		{
+			$field = $container.find("select");
+			fieldName = $field.attr("name").replace('[]', '');
+			var operator = $field.attr("data-operator");
+			
+			fieldVal = self.getMultiSelectVal($field, "or");
+			
+		}
+		else if(inputType=="checkbox")
+		{
+			$field = $container.find("ul > li input:checkbox");
+			
+			if($field.length>0)
+			{
+				fieldName = $field.attr("name").replace('[]', '');
+										
+				var operator = $container.find("> ul").attr("data-operator");
+				fieldVal = self.getCheckboxVal($field, "or");
+			}
+			
+		}
+		else if(inputType=="radio")
+		{
+			
+			$field = $container.find("ul > li input:radio");
+						
+			if($field.length>0)
+			{
+				fieldName = $field.attr("name").replace('[]', '');
+				
+				fieldVal = self.getRadioVal($field);
+			}
+		}
+		
+		if(typeof(fieldVal)!="undefined")
+		{
+			if(fieldVal!="")
+			{
+				var fieldSlug = "";
+				
+				if(fieldName=="_sf_author")
+				{
+					fieldSlug = "authors";
+				}
+				else if(fieldName=="_sf_sort_order")
+				{
+					fieldSlug = "sort_order";
+				}
+				else if(fieldName=="_sf_ppp")
+				{
+					fieldSlug = "_sf_ppp";
+				}
+				else if(fieldName=="_sf_post_type")
+				{
+					fieldSlug = "post_types";
+				}
+				else
+				{
+				
+				}
+				
+				if(fieldSlug!="")
+				{
+					//self.url_components += "&"+fieldSlug+"="+fieldVal;
+					self.url_params[fieldSlug] = fieldVal;
+				}
+			}
+		}
+		
+	},
+	processPostType : function($this){
+		
+		this.processAuthor($this);
+		
+	},
+	processPostMeta: function($container)
+	{
+		var self = this;
+		
+		var fieldType = $container.attr("data-sf-field-type");
+		var inputType = $container.attr("data-sf-field-input-type");
+		var metaType = $container.attr("data-sf-meta-type");
+
+		var fieldVal = "";
+		var $field;
+		var fieldName = "";
+		
+		if(metaType=="number")
+		{
+			if(inputType=="range-number")
+			{
+				$field = $container.find(".sf-meta-range-number input");
+				
+				var values = [];
+				$field.each(function(){
+					
+					values.push($(this).val());
+				
+				});
+				
+				fieldVal = values.join("+");
+				
+			}
+			else if(inputType=="range-slider")
+			{
+				$field = $container.find(".sf-meta-range-slider input");
+				
+				//get any number formatting stuff
+				var $meta_range = $container.find(".sf-meta-range-slider");
+				
+				var decimal_places = $meta_range.attr("data-decimal-places");
+				var thousand_seperator = $meta_range.attr("data-thousand-seperator");
+				var decimal_seperator = $meta_range.attr("data-decimal-seperator");
+
+				var field_format = wNumb({
+					mark: decimal_seperator,
+					decimals: parseFloat(decimal_places),
+					thousand: thousand_seperator
+				});
+				
+				var values = [];
+
+
+				var slider_object = $container.find(".meta-slider")[0];
+				//val from slider object
+				var slider_val = slider_object.noUiSlider.get();
+
+				values.push(field_format.from(slider_val[0]));
+				values.push(field_format.from(slider_val[1]));
+				
+				fieldVal = values.join("+");
+				
+				fieldName = $meta_range.attr("data-sf-field-name");
+				
+				
+			}
+			else if(inputType=="range-radio")
+			{
+				$field = $container.find(".sf-input-range-radio");
+				
+				if($field.length==0)
+				{
+					//then try again, we must be using a single field
+					$field = $container.find("> ul");
+				}
+
+				var $meta_range = $container.find(".sf-meta-range");
+				
+				//there is an element with a from/to class - so we need to get the values of the from & to input fields seperately
+				if($field.length>0)
+				{	
+					var field_vals = [];
+					
+					$field.each(function(){
+						
+						var $radios = $(this).find(".sf-input-radio");
+						field_vals.push(self.getMetaRadioVal($radios));
+						
+					});
+					
+					//prevent second number from being lower than the first
+					if(field_vals.length==2)
+					{
+						if(Number(field_vals[1])<Number(field_vals[0]))
+						{
+							field_vals[1] = field_vals[0];
+						}
+					}
+					
+					fieldVal = field_vals.join("+");
+				}
+								
+				if($field.length==1)
+				{
+					fieldName = $field.find(".sf-input-radio").attr("name").replace('[]', '');
+				}
+				else
+				{
+					fieldName = $meta_range.attr("data-sf-field-name");
+				}
+
+			}
+			else if(inputType=="range-select")
+			{
+				$field = $container.find(".sf-input-select");
+				var $meta_range = $container.find(".sf-meta-range");
+				
+				//there is an element with a from/to class - so we need to get the values of the from & to input fields seperately
+				
+				if($field.length>0)
+				{
+					var field_vals = [];
+					
+					$field.each(function(){
+						
+						var $this = $(this);
+						field_vals.push(self.getMetaSelectVal($this));
+						
+					});
+					
+					//prevent second number from being lower than the first
+					if(field_vals.length==2)
+					{
+						if(Number(field_vals[1])<Number(field_vals[0]))
+						{
+							field_vals[1] = field_vals[0];
+						}
+					}
+					
+					
+					fieldVal = field_vals.join("+");
+				}
+								
+				if($field.length==1)
+				{
+					fieldName = $field.attr("name").replace('[]', '');
+				}
+				else
+				{
+					fieldName = $meta_range.attr("data-sf-field-name");
+				}
+				
+			}
+			else if(inputType=="range-checkbox")
+			{
+				$field = $container.find("ul > li input:checkbox");
+				
+				if($field.length>0)
+				{
+					fieldVal = self.getCheckboxVal($field, "and");
+				}
+			}
+			
+			if(fieldName=="")
+			{
+				fieldName = $field.attr("name").replace('[]', '');
+			}
+		}
+		else if(metaType=="choice")
+		{
+			if(inputType=="select")
+			{
+				$field = $container.find("select");
+				
+				fieldVal = self.getMetaSelectVal($field); 
+				
+			}
+			else if(inputType=="multiselect")
+			{
+				$field = $container.find("select");
+				var operator = $field.attr("data-operator");
+				
+				fieldVal = self.getMetaMultiSelectVal($field, operator);
+			}
+			else if(inputType=="checkbox")
+			{
+				$field = $container.find("ul > li input:checkbox");
+				
+				if($field.length>0)
+				{
+					var operator = $container.find("> ul").attr("data-operator");
+					fieldVal = self.getMetaCheckboxVal($field, operator);
+				}
+			}
+			else if(inputType=="radio")
+			{
+				$field = $container.find("ul > li input:radio");
+				
+				if($field.length>0)
+				{
+					fieldVal = self.getMetaRadioVal($field);
+				}
+			}
+			
+			fieldVal = encodeURIComponent(fieldVal);
+			if(typeof($field)!=="undefined")
+			{
+				if($field.length>0)
+				{
+					fieldName = $field.attr("name").replace('[]', '');
+					
+					//for those who insist on using & ampersands in the name of the custom field (!)
+					fieldName = (fieldName);
+				}
+			}
+			
+		}
+		else if(metaType=="date")
+		{
+			self.processPostDate($container);
+		}
+		
+		if(typeof(fieldVal)!="undefined")
+		{
+			if(fieldVal!="")
+			{
+				//self.url_components += "&"+encodeURIComponent(fieldName)+"="+(fieldVal);
+				self.url_params[encodeURIComponent(fieldName)] = (fieldVal);
+			}
+		}
+	},
+	processPostDate: function($container)
+	{
+		var self = this;
+		
+		var fieldType = $container.attr("data-sf-field-type");
+		var inputType = $container.attr("data-sf-field-input-type");
+		
+		var $field;
+		var fieldName = "";
+		var fieldVal = "";
+		
+		$field = $container.find("ul > li input:text");
+		fieldName = $field.attr("name").replace('[]', '');
+		
+		var dates = [];
+		$field.each(function(){
+			
+			dates.push($(this).val());
+		
+		});
+		
+		if($field.length==2)
+		{
+			if((dates[0]!="")||(dates[1]!=""))
+			{
+				fieldVal = dates.join("+");
+				fieldVal = fieldVal.replace(/\//g,'');
+			}
+		}
+		else if($field.length==1)
+		{
+			if(dates[0]!="")
+			{
+				fieldVal = dates.join("+");
+				fieldVal = fieldVal.replace(/\//g,'');
+			}
+		}
+		
+		if(typeof(fieldVal)!="undefined")
+		{
+			if(fieldVal!="")
+			{
+				var fieldSlug = "";
+				
+				if(fieldName=="_sf_post_date")
+				{
+					fieldSlug = "post_date";
+				}
+				else
+				{
+					fieldSlug = fieldName;
+				}
+				
+				if(fieldSlug!="")
+				{
+					//self.url_components += "&"+fieldSlug+"="+fieldVal;
+					self.url_params[fieldSlug] = fieldVal;
+				}
+			}
+		}
+		
+	},
+	processTaxonomy: function($container, return_object)
+	{
+        if(typeof(return_object)=="undefined")
+        {
+            return_object = false;
+        }
+
+		//if()					
+		//var fieldName = $(this).attr("data-sf-field-name");
+		var self = this;
+	
+		var fieldType = $container.attr("data-sf-field-type");
+		var inputType = $container.attr("data-sf-field-input-type");
+		
+		var $field;
+		var fieldName = "";
+		var fieldVal = "";
+		
+		if(inputType=="select")
+		{
+			$field = $container.find("select");
+			fieldName = $field.attr("name").replace('[]', '');
+			
+			fieldVal = self.getSelectVal($field); 
+		}
+		else if(inputType=="multiselect")
+		{
+			$field = $container.find("select");
+			fieldName = $field.attr("name").replace('[]', '');
+			var operator = $field.attr("data-operator");
+			
+			fieldVal = self.getMultiSelectVal($field, operator);
+		}
+		else if(inputType=="checkbox")
+		{
+			$field = $container.find("ul > li input:checkbox");
+			if($field.length>0)
+			{
+				fieldName = $field.attr("name").replace('[]', '');
+										
+				var operator = $container.find("> ul").attr("data-operator");
+				fieldVal = self.getCheckboxVal($field, operator);
+			}
+		}
+		else if(inputType=="radio")
+		{
+			$field = $container.find("ul > li input:radio");
+			if($field.length>0)
+			{
+				fieldName = $field.attr("name").replace('[]', '');
+				
+				fieldVal = self.getRadioVal($field);
+			}
+		}
+		
+		if(typeof(fieldVal)!="undefined")
+		{
+			if(fieldVal!="")
+			{
+                if(return_object==true)
+                {
+                    return {name: fieldName, value: fieldVal};
+                }
+                else
+                {
+                    //self.url_components += "&"+fieldName+"="+fieldVal;
+                    self.url_params[fieldName] = fieldVal;
+                }
+
+			}
+		}
+
+        if(return_object==true)
+        {
+            return false;
+        }
+	}
 };
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 //# sourceMappingURL=data:application/json;charset:utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9wdWJsaWMvYXNzZXRzL2pzL2luY2x1ZGVzL3Byb2Nlc3NfZm9ybS5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EiLCJmaWxlIjoiZ2VuZXJhdGVkLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXNDb250ZW50IjpbIlxyXG52YXIgJCA9ICh0eXBlb2Ygd2luZG93ICE9PSBcInVuZGVmaW5lZFwiID8gd2luZG93WydqUXVlcnknXSA6IHR5cGVvZiBnbG9iYWwgIT09IFwidW5kZWZpbmVkXCIgPyBnbG9iYWxbJ2pRdWVyeSddIDogbnVsbCk7XHJcblxyXG5tb2R1bGUuZXhwb3J0cyA9IHtcclxuXHJcblx0dGF4b25vbXlfYXJjaGl2ZXM6IDAsXHJcbiAgICB1cmxfcGFyYW1zOiB7fSxcclxuICAgIHRheF9hcmNoaXZlX3Jlc3VsdHNfdXJsOiBcIlwiLFxyXG4gICAgYWN0aXZlX3RheDogXCJcIixcclxuICAgIGZpZWxkczoge30sXHJcblx0aW5pdDogZnVuY3Rpb24odGF4b25vbXlfYXJjaGl2ZXMsIGN1cnJlbnRfdGF4b25vbXlfYXJjaGl2ZSl7XHJcblxyXG4gICAgICAgIHRoaXMudGF4b25vbXlfYXJjaGl2ZXMgPSAwO1xyXG4gICAgICAgIHRoaXMudXJsX3BhcmFtcyA9IHt9O1xyXG4gICAgICAgIHRoaXMudGF4X2FyY2hpdmVfcmVzdWx0c191cmwgPSBcIlwiO1xyXG4gICAgICAgIHRoaXMuYWN0aXZlX3RheCA9IFwiXCI7XHJcblxyXG5cdFx0Ly90aGlzLiRmaWVsZHMgPSAkZmllbGRzO1xyXG4gICAgICAgIHRoaXMudGF4b25vbXlfYXJjaGl2ZXMgPSB0YXhvbm9teV9hcmNoaXZlcztcclxuICAgICAgICB0aGlzLmN1cnJlbnRfdGF4b25vbXlfYXJjaGl2ZSA9IGN1cnJlbnRfdGF4b25vbXlfYXJjaGl2ZTtcclxuXHJcblx0XHR0aGlzLmNsZWFyVXJsQ29tcG9uZW50cygpO1xyXG5cclxuXHR9LFxyXG4gICAgc2V0VGF4QXJjaGl2ZVJlc3VsdHNVcmw6IGZ1bmN0aW9uKCRmb3JtLCBjdXJyZW50X3Jlc3VsdHNfdXJsLCBnZXRfYWN0aXZlKSB7XHJcblxyXG4gICAgICAgIHZhciBzZWxmID0gdGhpcztcclxuXHRcdHRoaXMuY2xlYXJUYXhBcmNoaXZlUmVzdWx0c1VybCgpO1xyXG4gICAgICAgIC8vdmFyIGN1cnJlbnRfcmVzdWx0c191cmwgPSBcIlwiO1xyXG4gICAgICAgIGlmKHRoaXMudGF4b25vbXlfYXJjaGl2ZXMhPTEpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICByZXR1cm47XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICBpZih0eXBlb2YoZ2V0X2FjdGl2ZSk9PVwidW5kZWZpbmVkXCIpXHJcblx0XHR7XHJcblx0XHRcdHZhciBnZXRfYWN0aXZlID0gZmFsc2U7XHJcblx0XHR9XHJcblxyXG4gICAgICAgIC8vY2hlY2sgdG8gc2VlIGlmIHdlIGhhdmUgYW55IHRheG9ub21pZXMgc2VsZWN0ZWRcclxuICAgICAgICAvL2lmIHNvLCBjaGVjayB0aGVpciByZXdyaXRlcyBhbmQgdXNlIHRob3NlIGFzIHRoZSByZXN1bHRzIHVybFxyXG4gICAgICAgIHZhciAkZmllbGQgPSBmYWxzZTtcclxuICAgICAgICB2YXIgZmllbGRfbmFtZSA9IFwiXCI7XHJcbiAgICAgICAgdmFyIGZpZWxkX3ZhbHVlID0gXCJcIjtcclxuXHJcbiAgICAgICAgdmFyICRhY3RpdmVfdGF4b25vbXkgPSAkZm9ybS4kZmllbGRzLnBhcmVudCgpLmZpbmQoXCJbZGF0YS1zZi10YXhvbm9teS1hcmNoaXZlPScxJ11cIik7XHJcbiAgICAgICAgaWYoJGFjdGl2ZV90YXhvbm9teS5sZW5ndGg9PTEpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICAkZmllbGQgPSAkYWN0aXZlX3RheG9ub215O1xyXG5cclxuICAgICAgICAgICAgdmFyIGZpZWxkVHlwZSA9ICRmaWVsZC5hdHRyKFwiZGF0YS1zZi1maWVsZC10eXBlXCIpO1xyXG5cclxuICAgICAgICAgICAgaWYgKChmaWVsZFR5cGUgPT0gXCJ0YWdcIikgfHwgKGZpZWxkVHlwZSA9PSBcImNhdGVnb3J5XCIpIHx8IChmaWVsZFR5cGUgPT0gXCJ0YXhvbm9teVwiKSkge1xyXG4gICAgICAgICAgICAgICAgdmFyIHRheG9ub215X3ZhbHVlID0gc2VsZi5wcm9jZXNzVGF4b25vbXkoJGZpZWxkLCB0cnVlKTtcclxuICAgICAgICAgICAgICAgIGZpZWxkX25hbWUgPSAkZmllbGQuYXR0cihcImRhdGEtc2YtZmllbGQtbmFtZVwiKTtcclxuICAgICAgICAgICAgICAgIHZhciB0YXhvbm9teV9uYW1lID0gZmllbGRfbmFtZS5yZXBsYWNlKFwiX3NmdF9cIiwgXCJcIik7XHJcblxyXG4gICAgICAgICAgICAgICAgaWYgKHRheG9ub215X3ZhbHVlKSB7XHJcbiAgICAgICAgICAgICAgICAgICAgZmllbGRfdmFsdWUgPSB0YXhvbm9teV92YWx1ZS52YWx1ZTtcclxuICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgaWYoZmllbGRfdmFsdWU9PVwiXCIpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgICRmaWVsZCA9IGZhbHNlO1xyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICBpZigoc2VsZi5jdXJyZW50X3RheG9ub215X2FyY2hpdmUhPVwiXCIpJiYoc2VsZi5jdXJyZW50X3RheG9ub215X2FyY2hpdmUhPXRheG9ub215X25hbWUpKVxyXG4gICAgICAgIHtcclxuXHJcbiAgICAgICAgICAgIHRoaXMudGF4X2FyY2hpdmVfcmVzdWx0c191cmwgPSBjdXJyZW50X3Jlc3VsdHNfdXJsO1xyXG4gICAgICAgICAgICByZXR1cm47XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICBpZigoKGZpZWxkX3ZhbHVlPT1cIlwiKXx8KCEkZmllbGQpICkpXHJcbiAgICAgICAge1xyXG4gICAgICAgICAgICAkZm9ybS4kZmllbGRzLmVhY2goZnVuY3Rpb24gKCkge1xyXG5cclxuICAgICAgICAgICAgICAgIGlmICghJGZpZWxkKSB7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIHZhciBmaWVsZFR5cGUgPSAkKHRoaXMpLmF0dHIoXCJkYXRhLXNmLWZpZWxkLXR5cGVcIik7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIGlmICgoZmllbGRUeXBlID09IFwidGFnXCIpIHx8IChmaWVsZFR5cGUgPT0gXCJjYXRlZ29yeVwiKSB8fCAoZmllbGRUeXBlID09IFwidGF4b25vbXlcIikpIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgdmFyIHRheG9ub215X3ZhbHVlID0gc2VsZi5wcm9jZXNzVGF4b25vbXkoJCh0aGlzKSwgdHJ1ZSk7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGZpZWxkX25hbWUgPSAkKHRoaXMpLmF0dHIoXCJkYXRhLXNmLWZpZWxkLW5hbWVcIik7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICBpZiAodGF4b25vbXlfdmFsdWUpIHtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBmaWVsZF92YWx1ZSA9IHRheG9ub215X3ZhbHVlLnZhbHVlO1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmIChmaWVsZF92YWx1ZSAhPSBcIlwiKSB7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICRmaWVsZCA9ICQodGhpcyk7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICB9KTtcclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIGlmKCAoJGZpZWxkKSAmJiAoZmllbGRfdmFsdWUgIT0gXCJcIiApKSB7XHJcbiAgICAgICAgICAgIC8vaWYgd2UgZm91bmQgYSBmaWVsZFxyXG5cdFx0XHR2YXIgcmV3cml0ZV9hdHRyID0gKCRmaWVsZC5hdHRyKFwiZGF0YS1zZi10ZXJtLXJld3JpdGVcIikpO1xyXG5cclxuICAgICAgICAgICAgaWYocmV3cml0ZV9hdHRyIT1cIlwiKSB7XHJcblxyXG4gICAgICAgICAgICAgICAgdmFyIHJld3JpdGUgPSBKU09OLnBhcnNlKHJld3JpdGVfYXR0cik7XHJcbiAgICAgICAgICAgICAgICB2YXIgaW5wdXRfdHlwZSA9ICRmaWVsZC5hdHRyKFwiZGF0YS1zZi1maWVsZC1pbnB1dC10eXBlXCIpO1xyXG4gICAgICAgICAgICAgICAgc2VsZi5hY3RpdmVfdGF4ID0gZmllbGRfbmFtZTtcclxuXHJcbiAgICAgICAgICAgICAgICAvL2ZpbmQgdGhlIGFjdGl2ZSBlbGVtZW50XHJcbiAgICAgICAgICAgICAgICBpZiAoKGlucHV0X3R5cGUgPT0gXCJyYWRpb1wiKSB8fCAoaW5wdXRfdHlwZSA9PSBcImNoZWNrYm94XCIpKSB7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIC8vdmFyICRhY3RpdmUgPSAkZmllbGQuZmluZChcIi5zZi1vcHRpb24tYWN0aXZlXCIpO1xyXG4gICAgICAgICAgICAgICAgICAgIC8vZXhwbG9kZSB0aGUgdmFsdWVzIGlmIHRoZXJlIGlzIGEgZGVsaW1cclxuICAgICAgICAgICAgICAgICAgICAvL2ZpZWxkX3ZhbHVlXHJcblxyXG4gICAgICAgICAgICAgICAgICAgIHZhciBpc19zaW5nbGVfdmFsdWUgPSB0cnVlO1xyXG4gICAgICAgICAgICAgICAgICAgIHZhciBmaWVsZF92YWx1ZXMgPSBmaWVsZF92YWx1ZS5zcGxpdChcIixcIikuam9pbihcIitcIikuc3BsaXQoXCIrXCIpO1xyXG4gICAgICAgICAgICAgICAgICAgIGlmIChmaWVsZF92YWx1ZXMubGVuZ3RoID4gMSkge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBpc19zaW5nbGVfdmFsdWUgPSBmYWxzZTtcclxuICAgICAgICAgICAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgICAgICAgICAgIGlmIChpc19zaW5nbGVfdmFsdWUpIHtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHZhciAkaW5wdXQgPSAkZmllbGQuZmluZChcImlucHV0W3ZhbHVlPSdcIiArIGZpZWxkX3ZhbHVlICsgXCInXVwiKTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgdmFyICRhY3RpdmUgPSAkaW5wdXQucGFyZW50KCk7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHZhciBkZXB0aCA9ICRhY3RpdmUuYXR0cihcImRhdGEtc2YtZGVwdGhcIik7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICAvL25vdyBsb29wIHRocm91Z2ggcGFyZW50cyB0byBncmFiIHRoZWlyIG5hbWVzXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHZhciB2YWx1ZXMgPSBuZXcgQXJyYXkoKTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgdmFsdWVzLnB1c2goZmllbGRfdmFsdWUpO1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgZm9yICh2YXIgaSA9IGRlcHRoOyBpID4gMDsgaS0tKSB7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAkYWN0aXZlID0gJGFjdGl2ZS5wYXJlbnQoKS5wYXJlbnQoKTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIHZhbHVlcy5wdXNoKCRhY3RpdmUuZmluZChcImlucHV0XCIpLnZhbCgpKTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgdmFsdWVzLnJldmVyc2UoKTtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIC8vZ3JhYiB0aGUgcmV3cml0ZSBmb3IgdGhpcyBkZXB0aFxyXG4gICAgICAgICAgICAgICAgICAgICAgICB2YXIgYWN0aXZlX3Jld3JpdGUgPSByZXdyaXRlW2RlcHRoXTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgdmFyIHVybCA9IGFjdGl2ZV9yZXdyaXRlO1xyXG5cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIC8vdGhlbiBtYXAgZnJvbSB0aGUgcGFyZW50cyB0byB0aGUgZGVwdGhcclxuICAgICAgICAgICAgICAgICAgICAgICAgJCh2YWx1ZXMpLmVhY2goZnVuY3Rpb24gKGluZGV4LCB2YWx1ZSkge1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIHVybCA9IHVybC5yZXBsYWNlKFwiW1wiICsgaW5kZXggKyBcIl1cIiwgdmFsdWUpO1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgfSk7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHRoaXMudGF4X2FyY2hpdmVfcmVzdWx0c191cmwgPSB1cmw7XHJcbiAgICAgICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgICAgIGVsc2Uge1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgLy9pZiB0aGVyZSBhcmUgbXVsdGlwbGUgdmFsdWVzLFxyXG4gICAgICAgICAgICAgICAgICAgICAgICAvL3RoZW4gd2UgbmVlZCB0byBjaGVjayBmb3IgMyB0aGluZ3M6XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICAvL2lmIHRoZSB2YWx1ZXMgc2VsZWN0ZWQgYXJlIGFsbCBpbiB0aGUgc2FtZSB0cmVlIHRoZW4gd2UgY2FuIGRvIHNvbWUgY2xldmVyIHJld3JpdGUgc3R1ZmZcclxuICAgICAgICAgICAgICAgICAgICAgICAgLy9tZXJnZSBhbGwgdmFsdWVzIGluIHNhbWUgbGV2ZWwsIHRoZW4gY29tYmluZSB0aGUgbGV2ZWxzXHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICAvL2lmIHRoZXkgYXJlIGZyb20gZGlmZmVyZW50IHRyZWVzIHRoZW4ganVzdCBjb21iaW5lIHRoZW0gb3IganVzdCB1c2UgYGZpZWxkX3ZhbHVlYFxyXG4gICAgICAgICAgICAgICAgICAgICAgICAvKlxyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgIHZhciBkZXB0aHMgPSBuZXcgQXJyYXkoKTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICQoZmllbGRfdmFsdWVzKS5lYWNoKGZ1bmN0aW9uIChpbmRleCwgdmFsKSB7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICAgdmFyICRpbnB1dCA9ICRmaWVsZC5maW5kKFwiaW5wdXRbdmFsdWU9J1wiICsgZmllbGRfdmFsdWUgKyBcIiddXCIpO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgdmFyICRhY3RpdmUgPSAkaW5wdXQucGFyZW50KCk7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICAgdmFyIGRlcHRoID0gJGFjdGl2ZS5hdHRyKFwiZGF0YS1zZi1kZXB0aFwiKTtcclxuICAgICAgICAgICAgICAgICAgICAgICAgIC8vZGVwdGhzLnB1c2goZGVwdGgpO1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgIH0pOyovXHJcblxyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgIGVsc2UgaWYgKChpbnB1dF90eXBlID09IFwic2VsZWN0XCIpIHx8IChpbnB1dF90eXBlID09IFwibXVsdGlzZWxlY3RcIikpIHtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgdmFyIGlzX3NpbmdsZV92YWx1ZSA9IHRydWU7XHJcbiAgICAgICAgICAgICAgICAgICAgdmFyIGZpZWxkX3ZhbHVlcyA9IGZpZWxkX3ZhbHVlLnNwbGl0KFwiLFwiKS5qb2luKFwiK1wiKS5zcGxpdChcIitcIik7XHJcbiAgICAgICAgICAgICAgICAgICAgaWYgKGZpZWxkX3ZhbHVlcy5sZW5ndGggPiAxKSB7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGlzX3NpbmdsZV92YWx1ZSA9IGZhbHNlO1xyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgaWYgKGlzX3NpbmdsZV92YWx1ZSkge1xyXG5cclxuICAgICAgICAgICAgICAgICAgICAgICAgdmFyICRhY3RpdmUgPSAkZmllbGQuZmluZChcIm9wdGlvblt2YWx1ZT0nXCIgKyBmaWVsZF92YWx1ZSArIFwiJ11cIik7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHZhciBkZXB0aCA9ICRhY3RpdmUuYXR0cihcImRhdGEtc2YtZGVwdGhcIik7XHJcblxyXG4gICAgICAgICAgICAgICAgICAgICAgICB2YXIgdmFsdWVzID0gbmV3IEFycmF5KCk7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHZhbHVlcy5wdXNoKGZpZWxkX3ZhbHVlKTtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGZvciAodmFyIGkgPSBkZXB0aDsgaSA+IDA7IGktLSkge1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgJGFjdGl2ZSA9ICRhY3RpdmUucHJldkFsbChcIm9wdGlvbltkYXRhLXNmLWRlcHRoPSdcIiArIChpIC0gMSkgKyBcIiddXCIpO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgdmFsdWVzLnB1c2goJGFjdGl2ZS52YWwoKSk7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHZhbHVlcy5yZXZlcnNlKCk7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHZhciBhY3RpdmVfcmV3cml0ZSA9IHJld3JpdGVbZGVwdGhdO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICB2YXIgdXJsID0gYWN0aXZlX3Jld3JpdGU7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICQodmFsdWVzKS5lYWNoKGZ1bmN0aW9uIChpbmRleCwgdmFsdWUpIHtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB1cmwgPSB1cmwucmVwbGFjZShcIltcIiArIGluZGV4ICsgXCJdXCIsIHZhbHVlKTtcclxuXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIH0pO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICB0aGlzLnRheF9hcmNoaXZlX3Jlc3VsdHNfdXJsID0gdXJsO1xyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgfVxyXG4gICAgICAgIC8vdGhpcy50YXhfYXJjaGl2ZV9yZXN1bHRzX3VybCA9IGN1cnJlbnRfcmVzdWx0c191cmw7XHJcbiAgICB9LFxyXG4gICAgZ2V0UmVzdWx0c1VybDogZnVuY3Rpb24oJGZvcm0sIGN1cnJlbnRfcmVzdWx0c191cmwpIHtcclxuXHJcbiAgICAgICAgLy90aGlzLnNldFRheEFyY2hpdmVSZXN1bHRzVXJsKCRmb3JtLCBjdXJyZW50X3Jlc3VsdHNfdXJsKTtcclxuXHJcbiAgICAgICAgaWYodGhpcy50YXhfYXJjaGl2ZV9yZXN1bHRzX3VybD09XCJcIilcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIHJldHVybiBjdXJyZW50X3Jlc3VsdHNfdXJsO1xyXG4gICAgICAgIH1cclxuXHJcbiAgICAgICAgcmV0dXJuIHRoaXMudGF4X2FyY2hpdmVfcmVzdWx0c191cmw7XHJcbiAgICB9LFxyXG5cdGdldFVybFBhcmFtczogZnVuY3Rpb24oJGZvcm0pe1xyXG5cclxuXHRcdHRoaXMuYnVpbGRVcmxDb21wb25lbnRzKCRmb3JtLCB0cnVlKTtcclxuXHJcbiAgICAgICAgaWYodGhpcy50YXhfYXJjaGl2ZV9yZXN1bHRzX3VybCE9XCJcIilcclxuICAgICAgICB7XHJcblxyXG4gICAgICAgICAgICBpZih0aGlzLmFjdGl2ZV90YXghPVwiXCIpXHJcbiAgICAgICAgICAgIHtcclxuICAgICAgICAgICAgICAgIHZhciBmaWVsZF9uYW1lID0gdGhpcy5hY3RpdmVfdGF4O1xyXG5cclxuICAgICAgICAgICAgICAgIGlmKHR5cGVvZih0aGlzLnVybF9wYXJhbXNbZmllbGRfbmFtZV0pIT1cInVuZGVmaW5lZFwiKVxyXG4gICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgIGRlbGV0ZSB0aGlzLnVybF9wYXJhbXNbZmllbGRfbmFtZV07XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICB9XHJcblxyXG5cdFx0cmV0dXJuIHRoaXMudXJsX3BhcmFtcztcclxuXHR9LFxyXG5cdGNsZWFyVXJsQ29tcG9uZW50czogZnVuY3Rpb24oKXtcclxuXHRcdC8vdGhpcy51cmxfY29tcG9uZW50cyA9IFwiXCI7XHJcblx0XHR0aGlzLnVybF9wYXJhbXMgPSB7fTtcclxuXHR9LFxyXG5cdGNsZWFyVGF4QXJjaGl2ZVJlc3VsdHNVcmw6IGZ1bmN0aW9uKCkge1xyXG5cdFx0dGhpcy50YXhfYXJjaGl2ZV9yZXN1bHRzX3VybCA9ICcnO1xyXG5cdH0sXHJcblx0ZGlzYWJsZUlucHV0czogZnVuY3Rpb24oJGZvcm0pe1xyXG5cdFx0dmFyIHNlbGYgPSB0aGlzO1xyXG5cdFx0XHJcblx0XHQkZm9ybS4kZmllbGRzLmVhY2goZnVuY3Rpb24oKXtcclxuXHRcdFx0XHJcblx0XHRcdHZhciAkaW5wdXRzID0gJCh0aGlzKS5maW5kKFwiaW5wdXQsIHNlbGVjdCwgLm1ldGEtc2xpZGVyXCIpO1xyXG5cdFx0XHQkaW5wdXRzLmF0dHIoXCJkaXNhYmxlZFwiLCBcImRpc2FibGVkXCIpO1xyXG5cdFx0XHQkaW5wdXRzLmF0dHIoXCJkaXNhYmxlZFwiLCB0cnVlKTtcclxuXHRcdFx0JGlucHV0cy5wcm9wKFwiZGlzYWJsZWRcIiwgdHJ1ZSk7XHJcblx0XHRcdCRpbnB1dHMudHJpZ2dlcihcImNob3Nlbjp1cGRhdGVkXCIpO1xyXG5cdFx0XHRcclxuXHRcdH0pO1xyXG5cdFx0XHJcblx0XHRcclxuXHR9LFxyXG5cdGVuYWJsZUlucHV0czogZnVuY3Rpb24oJGZvcm0pe1xyXG5cdFx0dmFyIHNlbGYgPSB0aGlzO1xyXG5cdFx0JGZvcm0uJGZpZWxkcy5lYWNoKGZ1bmN0aW9uKCl7XHJcblx0XHRcdHZhciAkaW5wdXRzID0gJCh0aGlzKS5maW5kKFwiaW5wdXQsIHNlbGVjdCwgLm1ldGEtc2xpZGVyXCIpO1xyXG5cdFx0XHQkaW5wdXRzLnByb3AoXCJkaXNhYmxlZFwiLCBmYWxzZSk7XHJcblx0XHRcdCRpbnB1dHMuYXR0cihcImRpc2FibGVkXCIsIGZhbHNlKTtcclxuXHRcdFx0JGlucHV0cy50cmlnZ2VyKFwiY2hvc2VuOnVwZGF0ZWRcIik7XHRcdFx0XHJcblx0XHR9KTtcclxuXHRcdFxyXG5cdFx0XHJcblx0fSxcclxuXHRidWlsZFVybENvbXBvbmVudHM6IGZ1bmN0aW9uKCRmb3JtLCBjbGVhcl9jb21wb25lbnRzKXtcclxuXHRcdFxyXG5cdFx0dmFyIHNlbGYgPSB0aGlzO1xyXG5cdFx0XHJcblx0XHRpZih0eXBlb2YoY2xlYXJfY29tcG9uZW50cykhPVwidW5kZWZpbmVkXCIpXHJcblx0XHR7XHJcblx0XHRcdGlmKGNsZWFyX2NvbXBvbmVudHM9PXRydWUpXHJcblx0XHRcdHtcclxuXHRcdFx0XHR0aGlzLmNsZWFyVXJsQ29tcG9uZW50cygpO1xyXG5cdFx0XHR9XHJcblx0XHR9XHJcblx0XHRcclxuXHRcdCRmb3JtLiRmaWVsZHMuZWFjaChmdW5jdGlvbigpe1xyXG5cdFx0XHRcclxuXHRcdFx0dmFyIGZpZWxkTmFtZSA9ICQodGhpcykuYXR0cihcImRhdGEtc2YtZmllbGQtbmFtZVwiKTtcclxuXHRcdFx0dmFyIGZpZWxkVHlwZSA9ICQodGhpcykuYXR0cihcImRhdGEtc2YtZmllbGQtdHlwZVwiKTtcclxuXHRcdFx0XHJcblx0XHRcdGlmKGZpZWxkVHlwZT09XCJzZWFyY2hcIilcclxuXHRcdFx0e1xyXG5cdFx0XHRcdHNlbGYucHJvY2Vzc1NlYXJjaEZpZWxkKCQodGhpcykpO1xyXG5cdFx0XHR9XHJcblx0XHRcdGVsc2UgaWYoKGZpZWxkVHlwZT09XCJ0YWdcIil8fChmaWVsZFR5cGU9PVwiY2F0ZWdvcnlcIil8fChmaWVsZFR5cGU9PVwidGF4b25vbXlcIikpXHJcblx0XHRcdHtcclxuXHRcdFx0XHRzZWxmLnByb2Nlc3NUYXhvbm9teSgkKHRoaXMpKTtcclxuXHRcdFx0fVxyXG5cdFx0XHRlbHNlIGlmKGZpZWxkVHlwZT09XCJzb3J0X29yZGVyXCIpXHJcblx0XHRcdHtcclxuXHRcdFx0XHRzZWxmLnByb2Nlc3NTb3J0T3JkZXJGaWVsZCgkKHRoaXMpKTtcclxuXHRcdFx0fVxyXG5cdFx0XHRlbHNlIGlmKGZpZWxkVHlwZT09XCJwb3N0c19wZXJfcGFnZVwiKVxyXG5cdFx0XHR7XHJcblx0XHRcdFx0c2VsZi5wcm9jZXNzUmVzdWx0c1BlclBhZ2VGaWVsZCgkKHRoaXMpKTtcclxuXHRcdFx0fVxyXG5cdFx0XHRlbHNlIGlmKGZpZWxkVHlwZT09XCJhdXRob3JcIilcclxuXHRcdFx0e1xyXG5cdFx0XHRcdHNlbGYucHJvY2Vzc0F1dGhvcigkKHRoaXMpKTtcclxuXHRcdFx0fVxyXG5cdFx0XHRlbHNlIGlmKGZpZWxkVHlwZT09XCJwb3N0X3R5cGVcIilcclxuXHRcdFx0e1xyXG5cdFx0XHRcdHNlbGYucHJvY2Vzc1Bvc3RUeXBlKCQodGhpcykpO1xyXG5cdFx0XHR9XHJcblx0XHRcdGVsc2UgaWYoZmllbGRUeXBlPT1cInBvc3RfZGF0ZVwiKVxyXG5cdFx0XHR7XHJcblx0XHRcdFx0c2VsZi5wcm9jZXNzUG9zdERhdGUoJCh0aGlzKSk7XHJcblx0XHRcdH1cclxuXHRcdFx0ZWxzZSBpZihmaWVsZFR5cGU9PVwicG9zdF9tZXRhXCIpXHJcblx0XHRcdHtcclxuXHRcdFx0XHRzZWxmLnByb2Nlc3NQb3N0TWV0YSgkKHRoaXMpKTtcclxuXHRcdFx0XHRcclxuXHRcdFx0fVxyXG5cdFx0XHRlbHNlXHJcblx0XHRcdHtcclxuXHRcdFx0XHRcclxuXHRcdFx0fVxyXG5cdFx0XHRcclxuXHRcdH0pO1xyXG5cdFx0XHJcblx0fSxcclxuXHRwcm9jZXNzU2VhcmNoRmllbGQ6IGZ1bmN0aW9uKCRjb250YWluZXIpXHJcblx0e1xyXG5cdFx0dmFyIHNlbGYgPSB0aGlzO1xyXG5cdFx0XHJcblx0XHR2YXIgJGZpZWxkID0gJGNvbnRhaW5lci5maW5kKFwiaW5wdXRbbmFtZV49J19zZl9zZWFyY2gnXVwiKTtcclxuXHRcdFxyXG5cdFx0aWYoJGZpZWxkLmxlbmd0aD4wKVxyXG5cdFx0e1xyXG5cdFx0XHR2YXIgZmllbGROYW1lID0gJGZpZWxkLmF0dHIoXCJuYW1lXCIpLnJlcGxhY2UoJ1tdJywgJycpO1xyXG5cdFx0XHR2YXIgZmllbGRWYWwgPSAkZmllbGQudmFsKCk7XHJcblx0XHRcdFxyXG5cdFx0XHRpZihmaWVsZFZhbCE9XCJcIilcclxuXHRcdFx0e1xyXG5cdFx0XHRcdC8vc2VsZi51cmxfY29tcG9uZW50cyArPSBcIiZfc2Zfcz1cIitlbmNvZGVVUklDb21wb25lbnQoZmllbGRWYWwpO1xyXG5cdFx0XHRcdHNlbGYudXJsX3BhcmFtc1snX3NmX3MnXSA9IGVuY29kZVVSSUNvbXBvbmVudChmaWVsZFZhbCk7XHJcblx0XHRcdH1cclxuXHRcdH1cclxuXHR9LFxyXG5cdHByb2Nlc3NTb3J0T3JkZXJGaWVsZDogZnVuY3Rpb24oJGNvbnRhaW5lcilcclxuXHR7XHJcblx0XHR0aGlzLnByb2Nlc3NBdXRob3IoJGNvbnRhaW5lcik7XHJcblx0XHRcclxuXHR9LFxyXG5cdHByb2Nlc3NSZXN1bHRzUGVyUGFnZUZpZWxkOiBmdW5jdGlvbigkY29udGFpbmVyKVxyXG5cdHtcclxuXHRcdHRoaXMucHJvY2Vzc0F1dGhvcigkY29udGFpbmVyKTtcclxuXHRcdFxyXG5cdH0sXHJcblx0Z2V0QWN0aXZlVGF4OiBmdW5jdGlvbigkZmllbGQpIHtcclxuXHRcdHJldHVybiB0aGlzLmFjdGl2ZV90YXg7XHJcblx0fSxcclxuXHRnZXRTZWxlY3RWYWw6IGZ1bmN0aW9uKCRmaWVsZCl7XHJcblxyXG5cdFx0dmFyIGZpZWxkVmFsID0gXCJcIjtcclxuXHRcdFxyXG5cdFx0aWYoJGZpZWxkLnZhbCgpIT0wKVxyXG5cdFx0e1xyXG5cdFx0XHRmaWVsZFZhbCA9ICRmaWVsZC52YWwoKTtcclxuXHRcdH1cclxuXHRcdFxyXG5cdFx0aWYoZmllbGRWYWw9PW51bGwpXHJcblx0XHR7XHJcblx0XHRcdGZpZWxkVmFsID0gXCJcIjtcclxuXHRcdH1cclxuXHRcdFxyXG5cdFx0cmV0dXJuIGZpZWxkVmFsO1xyXG5cdH0sXHJcblx0Z2V0TWV0YVNlbGVjdFZhbDogZnVuY3Rpb24oJGZpZWxkKXtcclxuXHRcdFxyXG5cdFx0dmFyIGZpZWxkVmFsID0gXCJcIjtcclxuXHRcdFxyXG5cdFx0ZmllbGRWYWwgPSAkZmllbGQudmFsKCk7XHJcblx0XHRcdFx0XHRcdFxyXG5cdFx0aWYoZmllbGRWYWw9PW51bGwpXHJcblx0XHR7XHJcblx0XHRcdGZpZWxkVmFsID0gXCJcIjtcclxuXHRcdH1cclxuXHRcdFxyXG5cdFx0cmV0dXJuIGZpZWxkVmFsO1xyXG5cdH0sXHJcblx0Z2V0TXVsdGlTZWxlY3RWYWw6IGZ1bmN0aW9uKCRmaWVsZCwgb3BlcmF0b3Ipe1xyXG5cdFx0XHJcblx0XHR2YXIgZGVsaW0gPSBcIitcIjtcclxuXHRcdGlmKG9wZXJhdG9yPT1cIm9yXCIpXHJcblx0XHR7XHJcblx0XHRcdGRlbGltID0gXCIsXCI7XHJcblx0XHR9XHJcblx0XHRcclxuXHRcdGlmKHR5cGVvZigkZmllbGQudmFsKCkpPT1cIm9iamVjdFwiKVxyXG5cdFx0e1xyXG5cdFx0XHRpZigkZmllbGQudmFsKCkhPW51bGwpXHJcblx0XHRcdHtcclxuXHRcdFx0XHRyZXR1cm4gJGZpZWxkLnZhbCgpLmpvaW4oZGVsaW0pO1xyXG5cdFx0XHR9XHJcblx0XHR9XHJcblx0XHRcclxuXHR9LFxyXG5cdGdldE1ldGFNdWx0aVNlbGVjdFZhbDogZnVuY3Rpb24oJGZpZWxkLCBvcGVyYXRvcil7XHJcblx0XHRcclxuXHRcdHZhciBkZWxpbSA9IFwiLSstXCI7XHJcblx0XHRpZihvcGVyYXRvcj09XCJvclwiKVxyXG5cdFx0e1xyXG5cdFx0XHRkZWxpbSA9IFwiLSwtXCI7XHJcblx0XHR9XHJcblx0XHRcdFx0XHJcblx0XHRpZih0eXBlb2YoJGZpZWxkLnZhbCgpKT09XCJvYmplY3RcIilcclxuXHRcdHtcclxuXHRcdFx0aWYoJGZpZWxkLnZhbCgpIT1udWxsKVxyXG5cdFx0XHR7XHJcblx0XHRcdFx0XHJcblx0XHRcdFx0dmFyIGZpZWxkdmFsID0gW107XHJcblx0XHRcdFx0XHJcblx0XHRcdFx0JCgkZmllbGQudmFsKCkpLmVhY2goZnVuY3Rpb24oaW5kZXgsdmFsdWUpe1xyXG5cdFx0XHRcdFx0XHJcblx0XHRcdFx0XHRmaWVsZHZhbC5wdXNoKCh2YWx1ZSkpO1xyXG5cdFx0XHRcdH0pO1xyXG5cdFx0XHRcdFxyXG5cdFx0XHRcdHJldHVybiBmaWVsZHZhbC5qb2luKGRlbGltKTtcclxuXHRcdFx0fVxyXG5cdFx0fVxyXG5cdFx0XHJcblx0XHRyZXR1cm4gXCJcIjtcclxuXHRcdFxyXG5cdH0sXHJcblx0Z2V0Q2hlY2tib3hWYWw6IGZ1bmN0aW9uKCRmaWVsZCwgb3BlcmF0b3Ipe1xyXG5cdFx0XHJcblx0XHRcclxuXHRcdHZhciBmaWVsZFZhbCA9ICRmaWVsZC5tYXAoZnVuY3Rpb24oKXtcclxuXHRcdFx0aWYoJCh0aGlzKS5wcm9wKFwiY2hlY2tlZFwiKT09dHJ1ZSlcclxuXHRcdFx0e1xyXG5cdFx0XHRcdHJldHVybiAkKHRoaXMpLnZhbCgpO1xyXG5cdFx0XHR9XHJcblx0XHR9KS5nZXQoKTtcclxuXHRcdFxyXG5cdFx0dmFyIGRlbGltID0gXCIrXCI7XHJcblx0XHRpZihvcGVyYXRvcj09XCJvclwiKVxyXG5cdFx0e1xyXG5cdFx0XHRkZWxpbSA9IFwiLFwiO1xyXG5cdFx0fVxyXG5cdFx0XHJcblx0XHRyZXR1cm4gZmllbGRWYWwuam9pbihkZWxpbSk7XHJcblx0fSxcclxuXHRnZXRNZXRhQ2hlY2tib3hWYWw6IGZ1bmN0aW9uKCRmaWVsZCwgb3BlcmF0b3Ipe1xyXG5cdFx0XHJcblx0XHRcclxuXHRcdHZhciBmaWVsZFZhbCA9ICRmaWVsZC5tYXAoZnVuY3Rpb24oKXtcclxuXHRcdFx0aWYoJCh0aGlzKS5wcm9wKFwiY2hlY2tlZFwiKT09dHJ1ZSlcclxuXHRcdFx0e1xyXG5cdFx0XHRcdHJldHVybiAoJCh0aGlzKS52YWwoKSk7XHJcblx0XHRcdH1cclxuXHRcdH0pLmdldCgpO1xyXG5cdFx0XHJcblx0XHR2YXIgZGVsaW0gPSBcIi0rLVwiO1xyXG5cdFx0aWYob3BlcmF0b3I9PVwib3JcIilcclxuXHRcdHtcclxuXHRcdFx0ZGVsaW0gPSBcIi0sLVwiO1xyXG5cdFx0fVxyXG5cdFx0XHJcblx0XHRyZXR1cm4gZmllbGRWYWwuam9pbihkZWxpbSk7XHJcblx0fSxcclxuXHRnZXRSYWRpb1ZhbDogZnVuY3Rpb24oJGZpZWxkKXtcclxuXHRcdFx0XHRcdFx0XHRcclxuXHRcdHZhciBmaWVsZFZhbCA9ICRmaWVsZC5tYXAoZnVuY3Rpb24oKVxyXG5cdFx0e1xyXG5cdFx0XHRpZigkKHRoaXMpLnByb3AoXCJjaGVja2VkXCIpPT10cnVlKVxyXG5cdFx0XHR7XHJcblx0XHRcdFx0cmV0dXJuICQodGhpcykudmFsKCk7XHJcblx0XHRcdH1cclxuXHRcdFx0XHJcblx0XHR9KS5nZXQoKTtcclxuXHRcdFxyXG5cdFx0XHJcblx0XHRpZihmaWVsZFZhbFswXSE9MClcclxuXHRcdHtcclxuXHRcdFx0cmV0dXJuIGZpZWxkVmFsWzBdO1xyXG5cdFx0fVxyXG5cdH0sXHJcblx0Z2V0TWV0YVJhZGlvVmFsOiBmdW5jdGlvbigkZmllbGQpe1xyXG5cdFx0XHRcdFx0XHRcdFxyXG5cdFx0dmFyIGZpZWxkVmFsID0gJGZpZWxkLm1hcChmdW5jdGlvbigpXHJcblx0XHR7XHJcblx0XHRcdGlmKCQodGhpcykucHJvcChcImNoZWNrZWRcIik9PXRydWUpXHJcblx0XHRcdHtcclxuXHRcdFx0XHRyZXR1cm4gJCh0aGlzKS52YWwoKTtcclxuXHRcdFx0fVxyXG5cdFx0XHRcclxuXHRcdH0pLmdldCgpO1xyXG5cdFx0XHJcblx0XHRyZXR1cm4gZmllbGRWYWxbMF07XHJcblx0fSxcclxuXHRwcm9jZXNzQXV0aG9yOiBmdW5jdGlvbigkY29udGFpbmVyKVxyXG5cdHtcclxuXHRcdHZhciBzZWxmID0gdGhpcztcclxuXHRcdFxyXG5cdFx0XHJcblx0XHR2YXIgZmllbGRUeXBlID0gJGNvbnRhaW5lci5hdHRyKFwiZGF0YS1zZi1maWVsZC10eXBlXCIpO1xyXG5cdFx0dmFyIGlucHV0VHlwZSA9ICRjb250YWluZXIuYXR0cihcImRhdGEtc2YtZmllbGQtaW5wdXQtdHlwZVwiKTtcclxuXHRcdFxyXG5cdFx0dmFyICRmaWVsZDtcclxuXHRcdHZhciBmaWVsZE5hbWUgPSBcIlwiO1xyXG5cdFx0dmFyIGZpZWxkVmFsID0gXCJcIjtcclxuXHRcdFxyXG5cdFx0aWYoaW5wdXRUeXBlPT1cInNlbGVjdFwiKVxyXG5cdFx0e1xyXG5cdFx0XHQkZmllbGQgPSAkY29udGFpbmVyLmZpbmQoXCJzZWxlY3RcIik7XHJcblx0XHRcdGZpZWxkTmFtZSA9ICRmaWVsZC5hdHRyKFwibmFtZVwiKS5yZXBsYWNlKCdbXScsICcnKTtcclxuXHRcdFx0XHJcblx0XHRcdGZpZWxkVmFsID0gc2VsZi5nZXRTZWxlY3RWYWwoJGZpZWxkKTsgXHJcblx0XHR9XHJcblx0XHRlbHNlIGlmKGlucHV0VHlwZT09XCJtdWx0aXNlbGVjdFwiKVxyXG5cdFx0e1xyXG5cdFx0XHQkZmllbGQgPSAkY29udGFpbmVyLmZpbmQoXCJzZWxlY3RcIik7XHJcblx0XHRcdGZpZWxkTmFtZSA9ICRmaWVsZC5hdHRyKFwibmFtZVwiKS5yZXBsYWNlKCdbXScsICcnKTtcclxuXHRcdFx0dmFyIG9wZXJhdG9yID0gJGZpZWxkLmF0dHIoXCJkYXRhLW9wZXJhdG9yXCIpO1xyXG5cdFx0XHRcclxuXHRcdFx0ZmllbGRWYWwgPSBzZWxmLmdldE11bHRpU2VsZWN0VmFsKCRmaWVsZCwgXCJvclwiKTtcclxuXHRcdFx0XHJcblx0XHR9XHJcblx0XHRlbHNlIGlmKGlucHV0VHlwZT09XCJjaGVja2JveFwiKVxyXG5cdFx0e1xyXG5cdFx0XHQkZmllbGQgPSAkY29udGFpbmVyLmZpbmQoXCJ1bCA+IGxpIGlucHV0OmNoZWNrYm94XCIpO1xyXG5cdFx0XHRcclxuXHRcdFx0aWYoJGZpZWxkLmxlbmd0aD4wKVxyXG5cdFx0XHR7XHJcblx0XHRcdFx0ZmllbGROYW1lID0gJGZpZWxkLmF0dHIoXCJuYW1lXCIpLnJlcGxhY2UoJ1tdJywgJycpO1xyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFxyXG5cdFx0XHRcdHZhciBvcGVyYXRvciA9ICRjb250YWluZXIuZmluZChcIj4gdWxcIikuYXR0cihcImRhdGEtb3BlcmF0b3JcIik7XHJcblx0XHRcdFx0ZmllbGRWYWwgPSBzZWxmLmdldENoZWNrYm94VmFsKCRmaWVsZCwgXCJvclwiKTtcclxuXHRcdFx0fVxyXG5cdFx0XHRcclxuXHRcdH1cclxuXHRcdGVsc2UgaWYoaW5wdXRUeXBlPT1cInJhZGlvXCIpXHJcblx0XHR7XHJcblx0XHRcdFxyXG5cdFx0XHQkZmllbGQgPSAkY29udGFpbmVyLmZpbmQoXCJ1bCA+IGxpIGlucHV0OnJhZGlvXCIpO1xyXG5cdFx0XHRcdFx0XHRcclxuXHRcdFx0aWYoJGZpZWxkLmxlbmd0aD4wKVxyXG5cdFx0XHR7XHJcblx0XHRcdFx0ZmllbGROYW1lID0gJGZpZWxkLmF0dHIoXCJuYW1lXCIpLnJlcGxhY2UoJ1tdJywgJycpO1xyXG5cdFx0XHRcdFxyXG5cdFx0XHRcdGZpZWxkVmFsID0gc2VsZi5nZXRSYWRpb1ZhbCgkZmllbGQpO1xyXG5cdFx0XHR9XHJcblx0XHR9XHJcblx0XHRcclxuXHRcdGlmKHR5cGVvZihmaWVsZFZhbCkhPVwidW5kZWZpbmVkXCIpXHJcblx0XHR7XHJcblx0XHRcdGlmKGZpZWxkVmFsIT1cIlwiKVxyXG5cdFx0XHR7XHJcblx0XHRcdFx0dmFyIGZpZWxkU2x1ZyA9IFwiXCI7XHJcblx0XHRcdFx0XHJcblx0XHRcdFx0aWYoZmllbGROYW1lPT1cIl9zZl9hdXRob3JcIilcclxuXHRcdFx0XHR7XHJcblx0XHRcdFx0XHRmaWVsZFNsdWcgPSBcImF1dGhvcnNcIjtcclxuXHRcdFx0XHR9XHJcblx0XHRcdFx0ZWxzZSBpZihmaWVsZE5hbWU9PVwiX3NmX3NvcnRfb3JkZXJcIilcclxuXHRcdFx0XHR7XHJcblx0XHRcdFx0XHRmaWVsZFNsdWcgPSBcInNvcnRfb3JkZXJcIjtcclxuXHRcdFx0XHR9XHJcblx0XHRcdFx0ZWxzZSBpZihmaWVsZE5hbWU9PVwiX3NmX3BwcFwiKVxyXG5cdFx0XHRcdHtcclxuXHRcdFx0XHRcdGZpZWxkU2x1ZyA9IFwiX3NmX3BwcFwiO1xyXG5cdFx0XHRcdH1cclxuXHRcdFx0XHRlbHNlIGlmKGZpZWxkTmFtZT09XCJfc2ZfcG9zdF90eXBlXCIpXHJcblx0XHRcdFx0e1xyXG5cdFx0XHRcdFx0ZmllbGRTbHVnID0gXCJwb3N0X3R5cGVzXCI7XHJcblx0XHRcdFx0fVxyXG5cdFx0XHRcdGVsc2VcclxuXHRcdFx0XHR7XHJcblx0XHRcdFx0XHJcblx0XHRcdFx0fVxyXG5cdFx0XHRcdFxyXG5cdFx0XHRcdGlmKGZpZWxkU2x1ZyE9XCJcIilcclxuXHRcdFx0XHR7XHJcblx0XHRcdFx0XHQvL3NlbGYudXJsX2NvbXBvbmVudHMgKz0gXCImXCIrZmllbGRTbHVnK1wiPVwiK2ZpZWxkVmFsO1xyXG5cdFx0XHRcdFx0c2VsZi51cmxfcGFyYW1zW2ZpZWxkU2x1Z10gPSBmaWVsZFZhbDtcclxuXHRcdFx0XHR9XHJcblx0XHRcdH1cclxuXHRcdH1cclxuXHRcdFxyXG5cdH0sXHJcblx0cHJvY2Vzc1Bvc3RUeXBlIDogZnVuY3Rpb24oJHRoaXMpe1xyXG5cdFx0XHJcblx0XHR0aGlzLnByb2Nlc3NBdXRob3IoJHRoaXMpO1xyXG5cdFx0XHJcblx0fSxcclxuXHRwcm9jZXNzUG9zdE1ldGE6IGZ1bmN0aW9uKCRjb250YWluZXIpXHJcblx0e1xyXG5cdFx0dmFyIHNlbGYgPSB0aGlzO1xyXG5cdFx0XHJcblx0XHR2YXIgZmllbGRUeXBlID0gJGNvbnRhaW5lci5hdHRyKFwiZGF0YS1zZi1maWVsZC10eXBlXCIpO1xyXG5cdFx0dmFyIGlucHV0VHlwZSA9ICRjb250YWluZXIuYXR0cihcImRhdGEtc2YtZmllbGQtaW5wdXQtdHlwZVwiKTtcclxuXHRcdHZhciBtZXRhVHlwZSA9ICRjb250YWluZXIuYXR0cihcImRhdGEtc2YtbWV0YS10eXBlXCIpO1xyXG5cclxuXHRcdHZhciBmaWVsZFZhbCA9IFwiXCI7XHJcblx0XHR2YXIgJGZpZWxkO1xyXG5cdFx0dmFyIGZpZWxkTmFtZSA9IFwiXCI7XHJcblx0XHRcclxuXHRcdGlmKG1ldGFUeXBlPT1cIm51bWJlclwiKVxyXG5cdFx0e1xyXG5cdFx0XHRpZihpbnB1dFR5cGU9PVwicmFuZ2UtbnVtYmVyXCIpXHJcblx0XHRcdHtcclxuXHRcdFx0XHQkZmllbGQgPSAkY29udGFpbmVyLmZpbmQoXCIuc2YtbWV0YS1yYW5nZS1udW1iZXIgaW5wdXRcIik7XHJcblx0XHRcdFx0XHJcblx0XHRcdFx0dmFyIHZhbHVlcyA9IFtdO1xyXG5cdFx0XHRcdCRmaWVsZC5lYWNoKGZ1bmN0aW9uKCl7XHJcblx0XHRcdFx0XHRcclxuXHRcdFx0XHRcdHZhbHVlcy5wdXNoKCQodGhpcykudmFsKCkpO1xyXG5cdFx0XHRcdFxyXG5cdFx0XHRcdH0pO1xyXG5cdFx0XHRcdFxyXG5cdFx0XHRcdGZpZWxkVmFsID0gdmFsdWVzLmpvaW4oXCIrXCIpO1xyXG5cdFx0XHRcdFxyXG5cdFx0XHR9XHJcblx0XHRcdGVsc2UgaWYoaW5wdXRUeXBlPT1cInJhbmdlLXNsaWRlclwiKVxyXG5cdFx0XHR7XHJcblx0XHRcdFx0JGZpZWxkID0gJGNvbnRhaW5lci5maW5kKFwiLnNmLW1ldGEtcmFuZ2Utc2xpZGVyIGlucHV0XCIpO1xyXG5cdFx0XHRcdFxyXG5cdFx0XHRcdC8vZ2V0IGFueSBudW1iZXIgZm9ybWF0dGluZyBzdHVmZlxyXG5cdFx0XHRcdHZhciAkbWV0YV9yYW5nZSA9ICRjb250YWluZXIuZmluZChcIi5zZi1tZXRhLXJhbmdlLXNsaWRlclwiKTtcclxuXHRcdFx0XHRcclxuXHRcdFx0XHR2YXIgZGVjaW1hbF9wbGFjZXMgPSAkbWV0YV9yYW5nZS5hdHRyKFwiZGF0YS1kZWNpbWFsLXBsYWNlc1wiKTtcclxuXHRcdFx0XHR2YXIgdGhvdXNhbmRfc2VwZXJhdG9yID0gJG1ldGFfcmFuZ2UuYXR0cihcImRhdGEtdGhvdXNhbmQtc2VwZXJhdG9yXCIpO1xyXG5cdFx0XHRcdHZhciBkZWNpbWFsX3NlcGVyYXRvciA9ICRtZXRhX3JhbmdlLmF0dHIoXCJkYXRhLWRlY2ltYWwtc2VwZXJhdG9yXCIpO1xyXG5cclxuXHRcdFx0XHR2YXIgZmllbGRfZm9ybWF0ID0gd051bWIoe1xyXG5cdFx0XHRcdFx0bWFyazogZGVjaW1hbF9zZXBlcmF0b3IsXHJcblx0XHRcdFx0XHRkZWNpbWFsczogcGFyc2VGbG9hdChkZWNpbWFsX3BsYWNlcyksXHJcblx0XHRcdFx0XHR0aG91c2FuZDogdGhvdXNhbmRfc2VwZXJhdG9yXHJcblx0XHRcdFx0fSk7XHJcblx0XHRcdFx0XHJcblx0XHRcdFx0dmFyIHZhbHVlcyA9IFtdO1xyXG5cclxuXHJcblx0XHRcdFx0dmFyIHNsaWRlcl9vYmplY3QgPSAkY29udGFpbmVyLmZpbmQoXCIubWV0YS1zbGlkZXJcIilbMF07XHJcblx0XHRcdFx0Ly92YWwgZnJvbSBzbGlkZXIgb2JqZWN0XHJcblx0XHRcdFx0dmFyIHNsaWRlcl92YWwgPSBzbGlkZXJfb2JqZWN0Lm5vVWlTbGlkZXIuZ2V0KCk7XHJcblxyXG5cdFx0XHRcdHZhbHVlcy5wdXNoKGZpZWxkX2Zvcm1hdC5mcm9tKHNsaWRlcl92YWxbMF0pKTtcclxuXHRcdFx0XHR2YWx1ZXMucHVzaChmaWVsZF9mb3JtYXQuZnJvbShzbGlkZXJfdmFsWzFdKSk7XHJcblx0XHRcdFx0XHJcblx0XHRcdFx0ZmllbGRWYWwgPSB2YWx1ZXMuam9pbihcIitcIik7XHJcblx0XHRcdFx0XHJcblx0XHRcdFx0ZmllbGROYW1lID0gJG1ldGFfcmFuZ2UuYXR0cihcImRhdGEtc2YtZmllbGQtbmFtZVwiKTtcclxuXHRcdFx0XHRcclxuXHRcdFx0XHRcclxuXHRcdFx0fVxyXG5cdFx0XHRlbHNlIGlmKGlucHV0VHlwZT09XCJyYW5nZS1yYWRpb1wiKVxyXG5cdFx0XHR7XHJcblx0XHRcdFx0JGZpZWxkID0gJGNvbnRhaW5lci5maW5kKFwiLnNmLWlucHV0LXJhbmdlLXJhZGlvXCIpO1xyXG5cdFx0XHRcdFxyXG5cdFx0XHRcdGlmKCRmaWVsZC5sZW5ndGg9PTApXHJcblx0XHRcdFx0e1xyXG5cdFx0XHRcdFx0Ly90aGVuIHRyeSBhZ2Fpbiwgd2UgbXVzdCBiZSB1c2luZyBhIHNpbmdsZSBmaWVsZFxyXG5cdFx0XHRcdFx0JGZpZWxkID0gJGNvbnRhaW5lci5maW5kKFwiPiB1bFwiKTtcclxuXHRcdFx0XHR9XHJcblxyXG5cdFx0XHRcdHZhciAkbWV0YV9yYW5nZSA9ICRjb250YWluZXIuZmluZChcIi5zZi1tZXRhLXJhbmdlXCIpO1xyXG5cdFx0XHRcdFxyXG5cdFx0XHRcdC8vdGhlcmUgaXMgYW4gZWxlbWVudCB3aXRoIGEgZnJvbS90byBjbGFzcyAtIHNvIHdlIG5lZWQgdG8gZ2V0IHRoZSB2YWx1ZXMgb2YgdGhlIGZyb20gJiB0byBpbnB1dCBmaWVsZHMgc2VwZXJhdGVseVxyXG5cdFx0XHRcdGlmKCRmaWVsZC5sZW5ndGg+MClcclxuXHRcdFx0XHR7XHRcclxuXHRcdFx0XHRcdHZhciBmaWVsZF92YWxzID0gW107XHJcblx0XHRcdFx0XHRcclxuXHRcdFx0XHRcdCRmaWVsZC5lYWNoKGZ1bmN0aW9uKCl7XHJcblx0XHRcdFx0XHRcdFxyXG5cdFx0XHRcdFx0XHR2YXIgJHJhZGlvcyA9ICQodGhpcykuZmluZChcIi5zZi1pbnB1dC1yYWRpb1wiKTtcclxuXHRcdFx0XHRcdFx0ZmllbGRfdmFscy5wdXNoKHNlbGYuZ2V0TWV0YVJhZGlvVmFsKCRyYWRpb3MpKTtcclxuXHRcdFx0XHRcdFx0XHJcblx0XHRcdFx0XHR9KTtcclxuXHRcdFx0XHRcdFxyXG5cdFx0XHRcdFx0Ly9wcmV2ZW50IHNlY29uZCBudW1iZXIgZnJvbSBiZWluZyBsb3dlciB0aGFuIHRoZSBmaXJzdFxyXG5cdFx0XHRcdFx0aWYoZmllbGRfdmFscy5sZW5ndGg9PTIpXHJcblx0XHRcdFx0XHR7XHJcblx0XHRcdFx0XHRcdGlmKE51bWJlcihmaWVsZF92YWxzWzFdKTxOdW1iZXIoZmllbGRfdmFsc1swXSkpXHJcblx0XHRcdFx0XHRcdHtcclxuXHRcdFx0XHRcdFx0XHRmaWVsZF92YWxzWzFdID0gZmllbGRfdmFsc1swXTtcclxuXHRcdFx0XHRcdFx0fVxyXG5cdFx0XHRcdFx0fVxyXG5cdFx0XHRcdFx0XHJcblx0XHRcdFx0XHRmaWVsZFZhbCA9IGZpZWxkX3ZhbHMuam9pbihcIitcIik7XHJcblx0XHRcdFx0fVxyXG5cdFx0XHRcdFx0XHRcdFx0XHJcblx0XHRcdFx0aWYoJGZpZWxkLmxlbmd0aD09MSlcclxuXHRcdFx0XHR7XHJcblx0XHRcdFx0XHRmaWVsZE5hbWUgPSAkZmllbGQuZmluZChcIi5zZi1pbnB1dC1yYWRpb1wiKS5hdHRyKFwibmFtZVwiKS5yZXBsYWNlKCdbXScsICcnKTtcclxuXHRcdFx0XHR9XHJcblx0XHRcdFx0ZWxzZVxyXG5cdFx0XHRcdHtcclxuXHRcdFx0XHRcdGZpZWxkTmFtZSA9ICRtZXRhX3JhbmdlLmF0dHIoXCJkYXRhLXNmLWZpZWxkLW5hbWVcIik7XHJcblx0XHRcdFx0fVxyXG5cclxuXHRcdFx0fVxyXG5cdFx0XHRlbHNlIGlmKGlucHV0VHlwZT09XCJyYW5nZS1zZWxlY3RcIilcclxuXHRcdFx0e1xyXG5cdFx0XHRcdCRmaWVsZCA9ICRjb250YWluZXIuZmluZChcIi5zZi1pbnB1dC1zZWxlY3RcIik7XHJcblx0XHRcdFx0dmFyICRtZXRhX3JhbmdlID0gJGNvbnRhaW5lci5maW5kKFwiLnNmLW1ldGEtcmFuZ2VcIik7XHJcblx0XHRcdFx0XHJcblx0XHRcdFx0Ly90aGVyZSBpcyBhbiBlbGVtZW50IHdpdGggYSBmcm9tL3RvIGNsYXNzIC0gc28gd2UgbmVlZCB0byBnZXQgdGhlIHZhbHVlcyBvZiB0aGUgZnJvbSAmIHRvIGlucHV0IGZpZWxkcyBzZXBlcmF0ZWx5XHJcblx0XHRcdFx0XHJcblx0XHRcdFx0aWYoJGZpZWxkLmxlbmd0aD4wKVxyXG5cdFx0XHRcdHtcclxuXHRcdFx0XHRcdHZhciBmaWVsZF92YWxzID0gW107XHJcblx0XHRcdFx0XHRcclxuXHRcdFx0XHRcdCRmaWVsZC5lYWNoKGZ1bmN0aW9uKCl7XHJcblx0XHRcdFx0XHRcdFxyXG5cdFx0XHRcdFx0XHR2YXIgJHRoaXMgPSAkKHRoaXMpO1xyXG5cdFx0XHRcdFx0XHRmaWVsZF92YWxzLnB1c2goc2VsZi5nZXRNZXRhU2VsZWN0VmFsKCR0aGlzKSk7XHJcblx0XHRcdFx0XHRcdFxyXG5cdFx0XHRcdFx0fSk7XHJcblx0XHRcdFx0XHRcclxuXHRcdFx0XHRcdC8vcHJldmVudCBzZWNvbmQgbnVtYmVyIGZyb20gYmVpbmcgbG93ZXIgdGhhbiB0aGUgZmlyc3RcclxuXHRcdFx0XHRcdGlmKGZpZWxkX3ZhbHMubGVuZ3RoPT0yKVxyXG5cdFx0XHRcdFx0e1xyXG5cdFx0XHRcdFx0XHRpZihOdW1iZXIoZmllbGRfdmFsc1sxXSk8TnVtYmVyKGZpZWxkX3ZhbHNbMF0pKVxyXG5cdFx0XHRcdFx0XHR7XHJcblx0XHRcdFx0XHRcdFx0ZmllbGRfdmFsc1sxXSA9IGZpZWxkX3ZhbHNbMF07XHJcblx0XHRcdFx0XHRcdH1cclxuXHRcdFx0XHRcdH1cclxuXHRcdFx0XHRcdFxyXG5cdFx0XHRcdFx0XHJcblx0XHRcdFx0XHRmaWVsZFZhbCA9IGZpZWxkX3ZhbHMuam9pbihcIitcIik7XHJcblx0XHRcdFx0fVxyXG5cdFx0XHRcdFx0XHRcdFx0XHJcblx0XHRcdFx0aWYoJGZpZWxkLmxlbmd0aD09MSlcclxuXHRcdFx0XHR7XHJcblx0XHRcdFx0XHRmaWVsZE5hbWUgPSAkZmllbGQuYXR0cihcIm5hbWVcIikucmVwbGFjZSgnW10nLCAnJyk7XHJcblx0XHRcdFx0fVxyXG5cdFx0XHRcdGVsc2VcclxuXHRcdFx0XHR7XHJcblx0XHRcdFx0XHRmaWVsZE5hbWUgPSAkbWV0YV9yYW5nZS5hdHRyKFwiZGF0YS1zZi1maWVsZC1uYW1lXCIpO1xyXG5cdFx0XHRcdH1cclxuXHRcdFx0XHRcclxuXHRcdFx0fVxyXG5cdFx0XHRlbHNlIGlmKGlucHV0VHlwZT09XCJyYW5nZS1jaGVja2JveFwiKVxyXG5cdFx0XHR7XHJcblx0XHRcdFx0JGZpZWxkID0gJGNvbnRhaW5lci5maW5kKFwidWwgPiBsaSBpbnB1dDpjaGVja2JveFwiKTtcclxuXHRcdFx0XHRcclxuXHRcdFx0XHRpZigkZmllbGQubGVuZ3RoPjApXHJcblx0XHRcdFx0e1xyXG5cdFx0XHRcdFx0ZmllbGRWYWwgPSBzZWxmLmdldENoZWNrYm94VmFsKCRmaWVsZCwgXCJhbmRcIik7XHJcblx0XHRcdFx0fVxyXG5cdFx0XHR9XHJcblx0XHRcdFxyXG5cdFx0XHRpZihmaWVsZE5hbWU9PVwiXCIpXHJcblx0XHRcdHtcclxuXHRcdFx0XHRmaWVsZE5hbWUgPSAkZmllbGQuYXR0cihcIm5hbWVcIikucmVwbGFjZSgnW10nLCAnJyk7XHJcblx0XHRcdH1cclxuXHRcdH1cclxuXHRcdGVsc2UgaWYobWV0YVR5cGU9PVwiY2hvaWNlXCIpXHJcblx0XHR7XHJcblx0XHRcdGlmKGlucHV0VHlwZT09XCJzZWxlY3RcIilcclxuXHRcdFx0e1xyXG5cdFx0XHRcdCRmaWVsZCA9ICRjb250YWluZXIuZmluZChcInNlbGVjdFwiKTtcclxuXHRcdFx0XHRcclxuXHRcdFx0XHRmaWVsZFZhbCA9IHNlbGYuZ2V0TWV0YVNlbGVjdFZhbCgkZmllbGQpOyBcclxuXHRcdFx0XHRcclxuXHRcdFx0fVxyXG5cdFx0XHRlbHNlIGlmKGlucHV0VHlwZT09XCJtdWx0aXNlbGVjdFwiKVxyXG5cdFx0XHR7XHJcblx0XHRcdFx0JGZpZWxkID0gJGNvbnRhaW5lci5maW5kKFwic2VsZWN0XCIpO1xyXG5cdFx0XHRcdHZhciBvcGVyYXRvciA9ICRmaWVsZC5hdHRyKFwiZGF0YS1vcGVyYXRvclwiKTtcclxuXHRcdFx0XHRcclxuXHRcdFx0XHRmaWVsZFZhbCA9IHNlbGYuZ2V0TWV0YU11bHRpU2VsZWN0VmFsKCRmaWVsZCwgb3BlcmF0b3IpO1xyXG5cdFx0XHR9XHJcblx0XHRcdGVsc2UgaWYoaW5wdXRUeXBlPT1cImNoZWNrYm94XCIpXHJcblx0XHRcdHtcclxuXHRcdFx0XHQkZmllbGQgPSAkY29udGFpbmVyLmZpbmQoXCJ1bCA+IGxpIGlucHV0OmNoZWNrYm94XCIpO1xyXG5cdFx0XHRcdFxyXG5cdFx0XHRcdGlmKCRmaWVsZC5sZW5ndGg+MClcclxuXHRcdFx0XHR7XHJcblx0XHRcdFx0XHR2YXIgb3BlcmF0b3IgPSAkY29udGFpbmVyLmZpbmQoXCI+IHVsXCIpLmF0dHIoXCJkYXRhLW9wZXJhdG9yXCIpO1xyXG5cdFx0XHRcdFx0ZmllbGRWYWwgPSBzZWxmLmdldE1ldGFDaGVja2JveFZhbCgkZmllbGQsIG9wZXJhdG9yKTtcclxuXHRcdFx0XHR9XHJcblx0XHRcdH1cclxuXHRcdFx0ZWxzZSBpZihpbnB1dFR5cGU9PVwicmFkaW9cIilcclxuXHRcdFx0e1xyXG5cdFx0XHRcdCRmaWVsZCA9ICRjb250YWluZXIuZmluZChcInVsID4gbGkgaW5wdXQ6cmFkaW9cIik7XHJcblx0XHRcdFx0XHJcblx0XHRcdFx0aWYoJGZpZWxkLmxlbmd0aD4wKVxyXG5cdFx0XHRcdHtcclxuXHRcdFx0XHRcdGZpZWxkVmFsID0gc2VsZi5nZXRNZXRhUmFkaW9WYWwoJGZpZWxkKTtcclxuXHRcdFx0XHR9XHJcblx0XHRcdH1cclxuXHRcdFx0XHJcblx0XHRcdGZpZWxkVmFsID0gZW5jb2RlVVJJQ29tcG9uZW50KGZpZWxkVmFsKTtcclxuXHRcdFx0aWYodHlwZW9mKCRmaWVsZCkhPT1cInVuZGVmaW5lZFwiKVxyXG5cdFx0XHR7XHJcblx0XHRcdFx0aWYoJGZpZWxkLmxlbmd0aD4wKVxyXG5cdFx0XHRcdHtcclxuXHRcdFx0XHRcdGZpZWxkTmFtZSA9ICRmaWVsZC5hdHRyKFwibmFtZVwiKS5yZXBsYWNlKCdbXScsICcnKTtcclxuXHRcdFx0XHRcdFxyXG5cdFx0XHRcdFx0Ly9mb3IgdGhvc2Ugd2hvIGluc2lzdCBvbiB1c2luZyAmIGFtcGVyc2FuZHMgaW4gdGhlIG5hbWUgb2YgdGhlIGN1c3RvbSBmaWVsZCAoISlcclxuXHRcdFx0XHRcdGZpZWxkTmFtZSA9IChmaWVsZE5hbWUpO1xyXG5cdFx0XHRcdH1cclxuXHRcdFx0fVxyXG5cdFx0XHRcclxuXHRcdH1cclxuXHRcdGVsc2UgaWYobWV0YVR5cGU9PVwiZGF0ZVwiKVxyXG5cdFx0e1xyXG5cdFx0XHRzZWxmLnByb2Nlc3NQb3N0RGF0ZSgkY29udGFpbmVyKTtcclxuXHRcdH1cclxuXHRcdFxyXG5cdFx0aWYodHlwZW9mKGZpZWxkVmFsKSE9XCJ1bmRlZmluZWRcIilcclxuXHRcdHtcclxuXHRcdFx0aWYoZmllbGRWYWwhPVwiXCIpXHJcblx0XHRcdHtcclxuXHRcdFx0XHQvL3NlbGYudXJsX2NvbXBvbmVudHMgKz0gXCImXCIrZW5jb2RlVVJJQ29tcG9uZW50KGZpZWxkTmFtZSkrXCI9XCIrKGZpZWxkVmFsKTtcclxuXHRcdFx0XHRzZWxmLnVybF9wYXJhbXNbZW5jb2RlVVJJQ29tcG9uZW50KGZpZWxkTmFtZSldID0gKGZpZWxkVmFsKTtcclxuXHRcdFx0fVxyXG5cdFx0fVxyXG5cdH0sXHJcblx0cHJvY2Vzc1Bvc3REYXRlOiBmdW5jdGlvbigkY29udGFpbmVyKVxyXG5cdHtcclxuXHRcdHZhciBzZWxmID0gdGhpcztcclxuXHRcdFxyXG5cdFx0dmFyIGZpZWxkVHlwZSA9ICRjb250YWluZXIuYXR0cihcImRhdGEtc2YtZmllbGQtdHlwZVwiKTtcclxuXHRcdHZhciBpbnB1dFR5cGUgPSAkY29udGFpbmVyLmF0dHIoXCJkYXRhLXNmLWZpZWxkLWlucHV0LXR5cGVcIik7XHJcblx0XHRcclxuXHRcdHZhciAkZmllbGQ7XHJcblx0XHR2YXIgZmllbGROYW1lID0gXCJcIjtcclxuXHRcdHZhciBmaWVsZFZhbCA9IFwiXCI7XHJcblx0XHRcclxuXHRcdCRmaWVsZCA9ICRjb250YWluZXIuZmluZChcInVsID4gbGkgaW5wdXQ6dGV4dFwiKTtcclxuXHRcdGZpZWxkTmFtZSA9ICRmaWVsZC5hdHRyKFwibmFtZVwiKS5yZXBsYWNlKCdbXScsICcnKTtcclxuXHRcdFxyXG5cdFx0dmFyIGRhdGVzID0gW107XHJcblx0XHQkZmllbGQuZWFjaChmdW5jdGlvbigpe1xyXG5cdFx0XHRcclxuXHRcdFx0ZGF0ZXMucHVzaCgkKHRoaXMpLnZhbCgpKTtcclxuXHRcdFxyXG5cdFx0fSk7XHJcblx0XHRcclxuXHRcdGlmKCRmaWVsZC5sZW5ndGg9PTIpXHJcblx0XHR7XHJcblx0XHRcdGlmKChkYXRlc1swXSE9XCJcIil8fChkYXRlc1sxXSE9XCJcIikpXHJcblx0XHRcdHtcclxuXHRcdFx0XHRmaWVsZFZhbCA9IGRhdGVzLmpvaW4oXCIrXCIpO1xyXG5cdFx0XHRcdGZpZWxkVmFsID0gZmllbGRWYWwucmVwbGFjZSgvXFwvL2csJycpO1xyXG5cdFx0XHR9XHJcblx0XHR9XHJcblx0XHRlbHNlIGlmKCRmaWVsZC5sZW5ndGg9PTEpXHJcblx0XHR7XHJcblx0XHRcdGlmKGRhdGVzWzBdIT1cIlwiKVxyXG5cdFx0XHR7XHJcblx0XHRcdFx0ZmllbGRWYWwgPSBkYXRlcy5qb2luKFwiK1wiKTtcclxuXHRcdFx0XHRmaWVsZFZhbCA9IGZpZWxkVmFsLnJlcGxhY2UoL1xcLy9nLCcnKTtcclxuXHRcdFx0fVxyXG5cdFx0fVxyXG5cdFx0XHJcblx0XHRpZih0eXBlb2YoZmllbGRWYWwpIT1cInVuZGVmaW5lZFwiKVxyXG5cdFx0e1xyXG5cdFx0XHRpZihmaWVsZFZhbCE9XCJcIilcclxuXHRcdFx0e1xyXG5cdFx0XHRcdHZhciBmaWVsZFNsdWcgPSBcIlwiO1xyXG5cdFx0XHRcdFxyXG5cdFx0XHRcdGlmKGZpZWxkTmFtZT09XCJfc2ZfcG9zdF9kYXRlXCIpXHJcblx0XHRcdFx0e1xyXG5cdFx0XHRcdFx0ZmllbGRTbHVnID0gXCJwb3N0X2RhdGVcIjtcclxuXHRcdFx0XHR9XHJcblx0XHRcdFx0ZWxzZVxyXG5cdFx0XHRcdHtcclxuXHRcdFx0XHRcdGZpZWxkU2x1ZyA9IGZpZWxkTmFtZTtcclxuXHRcdFx0XHR9XHJcblx0XHRcdFx0XHJcblx0XHRcdFx0aWYoZmllbGRTbHVnIT1cIlwiKVxyXG5cdFx0XHRcdHtcclxuXHRcdFx0XHRcdC8vc2VsZi51cmxfY29tcG9uZW50cyArPSBcIiZcIitmaWVsZFNsdWcrXCI9XCIrZmllbGRWYWw7XHJcblx0XHRcdFx0XHRzZWxmLnVybF9wYXJhbXNbZmllbGRTbHVnXSA9IGZpZWxkVmFsO1xyXG5cdFx0XHRcdH1cclxuXHRcdFx0fVxyXG5cdFx0fVxyXG5cdFx0XHJcblx0fSxcclxuXHRwcm9jZXNzVGF4b25vbXk6IGZ1bmN0aW9uKCRjb250YWluZXIsIHJldHVybl9vYmplY3QpXHJcblx0e1xyXG4gICAgICAgIGlmKHR5cGVvZihyZXR1cm5fb2JqZWN0KT09XCJ1bmRlZmluZWRcIilcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIHJldHVybl9vYmplY3QgPSBmYWxzZTtcclxuICAgICAgICB9XHJcblxyXG5cdFx0Ly9pZigpXHRcdFx0XHRcdFxyXG5cdFx0Ly92YXIgZmllbGROYW1lID0gJCh0aGlzKS5hdHRyKFwiZGF0YS1zZi1maWVsZC1uYW1lXCIpO1xyXG5cdFx0dmFyIHNlbGYgPSB0aGlzO1xyXG5cdFxyXG5cdFx0dmFyIGZpZWxkVHlwZSA9ICRjb250YWluZXIuYXR0cihcImRhdGEtc2YtZmllbGQtdHlwZVwiKTtcclxuXHRcdHZhciBpbnB1dFR5cGUgPSAkY29udGFpbmVyLmF0dHIoXCJkYXRhLXNmLWZpZWxkLWlucHV0LXR5cGVcIik7XHJcblx0XHRcclxuXHRcdHZhciAkZmllbGQ7XHJcblx0XHR2YXIgZmllbGROYW1lID0gXCJcIjtcclxuXHRcdHZhciBmaWVsZFZhbCA9IFwiXCI7XHJcblx0XHRcclxuXHRcdGlmKGlucHV0VHlwZT09XCJzZWxlY3RcIilcclxuXHRcdHtcclxuXHRcdFx0JGZpZWxkID0gJGNvbnRhaW5lci5maW5kKFwic2VsZWN0XCIpO1xyXG5cdFx0XHRmaWVsZE5hbWUgPSAkZmllbGQuYXR0cihcIm5hbWVcIikucmVwbGFjZSgnW10nLCAnJyk7XHJcblx0XHRcdFxyXG5cdFx0XHRmaWVsZFZhbCA9IHNlbGYuZ2V0U2VsZWN0VmFsKCRmaWVsZCk7IFxyXG5cdFx0fVxyXG5cdFx0ZWxzZSBpZihpbnB1dFR5cGU9PVwibXVsdGlzZWxlY3RcIilcclxuXHRcdHtcclxuXHRcdFx0JGZpZWxkID0gJGNvbnRhaW5lci5maW5kKFwic2VsZWN0XCIpO1xyXG5cdFx0XHRmaWVsZE5hbWUgPSAkZmllbGQuYXR0cihcIm5hbWVcIikucmVwbGFjZSgnW10nLCAnJyk7XHJcblx0XHRcdHZhciBvcGVyYXRvciA9ICRmaWVsZC5hdHRyKFwiZGF0YS1vcGVyYXRvclwiKTtcclxuXHRcdFx0XHJcblx0XHRcdGZpZWxkVmFsID0gc2VsZi5nZXRNdWx0aVNlbGVjdFZhbCgkZmllbGQsIG9wZXJhdG9yKTtcclxuXHRcdH1cclxuXHRcdGVsc2UgaWYoaW5wdXRUeXBlPT1cImNoZWNrYm94XCIpXHJcblx0XHR7XHJcblx0XHRcdCRmaWVsZCA9ICRjb250YWluZXIuZmluZChcInVsID4gbGkgaW5wdXQ6Y2hlY2tib3hcIik7XHJcblx0XHRcdGlmKCRmaWVsZC5sZW5ndGg+MClcclxuXHRcdFx0e1xyXG5cdFx0XHRcdGZpZWxkTmFtZSA9ICRmaWVsZC5hdHRyKFwibmFtZVwiKS5yZXBsYWNlKCdbXScsICcnKTtcclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcclxuXHRcdFx0XHR2YXIgb3BlcmF0b3IgPSAkY29udGFpbmVyLmZpbmQoXCI+IHVsXCIpLmF0dHIoXCJkYXRhLW9wZXJhdG9yXCIpO1xyXG5cdFx0XHRcdGZpZWxkVmFsID0gc2VsZi5nZXRDaGVja2JveFZhbCgkZmllbGQsIG9wZXJhdG9yKTtcclxuXHRcdFx0fVxyXG5cdFx0fVxyXG5cdFx0ZWxzZSBpZihpbnB1dFR5cGU9PVwicmFkaW9cIilcclxuXHRcdHtcclxuXHRcdFx0JGZpZWxkID0gJGNvbnRhaW5lci5maW5kKFwidWwgPiBsaSBpbnB1dDpyYWRpb1wiKTtcclxuXHRcdFx0aWYoJGZpZWxkLmxlbmd0aD4wKVxyXG5cdFx0XHR7XHJcblx0XHRcdFx0ZmllbGROYW1lID0gJGZpZWxkLmF0dHIoXCJuYW1lXCIpLnJlcGxhY2UoJ1tdJywgJycpO1xyXG5cdFx0XHRcdFxyXG5cdFx0XHRcdGZpZWxkVmFsID0gc2VsZi5nZXRSYWRpb1ZhbCgkZmllbGQpO1xyXG5cdFx0XHR9XHJcblx0XHR9XHJcblx0XHRcclxuXHRcdGlmKHR5cGVvZihmaWVsZFZhbCkhPVwidW5kZWZpbmVkXCIpXHJcblx0XHR7XHJcblx0XHRcdGlmKGZpZWxkVmFsIT1cIlwiKVxyXG5cdFx0XHR7XHJcbiAgICAgICAgICAgICAgICBpZihyZXR1cm5fb2JqZWN0PT10cnVlKVxyXG4gICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgIHJldHVybiB7bmFtZTogZmllbGROYW1lLCB2YWx1ZTogZmllbGRWYWx9O1xyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgZWxzZVxyXG4gICAgICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgICAgICAgIC8vc2VsZi51cmxfY29tcG9uZW50cyArPSBcIiZcIitmaWVsZE5hbWUrXCI9XCIrZmllbGRWYWw7XHJcbiAgICAgICAgICAgICAgICAgICAgc2VsZi51cmxfcGFyYW1zW2ZpZWxkTmFtZV0gPSBmaWVsZFZhbDtcclxuICAgICAgICAgICAgICAgIH1cclxuXHJcblx0XHRcdH1cclxuXHRcdH1cclxuXHJcbiAgICAgICAgaWYocmV0dXJuX29iamVjdD09dHJ1ZSlcclxuICAgICAgICB7XHJcbiAgICAgICAgICAgIHJldHVybiBmYWxzZTtcclxuICAgICAgICB9XHJcblx0fVxyXG59OyJdfQ==
 },{}],7:[function(require,module,exports){
-
-module.exports = {
-	
-	searchForms: {},
-	
-	init: function(){
-		
-		
-	},
-	addSearchForm: function(id, object){
-		
-		this.searchForms[id] = object;
-	},
-	getSearchForm: function(id)
-	{
-		return this.searchForms[id];	
-	}
-	
+
+module.exports = {
+	
+	searchForms: {},
+	
+	init: function(){
+		
+		
+	},
+	addSearchForm: function(id, object){
+		
+		this.searchForms[id] = object;
+	},
+	getSearchForm: function(id)
+	{
+		return this.searchForms[id];	
+	}
+	
 };
 },{}],8:[function(require,module,exports){
 (function (global){

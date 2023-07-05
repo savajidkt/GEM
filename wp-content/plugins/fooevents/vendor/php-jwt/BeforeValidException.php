@@ -1,7 +1,7 @@
-<?php
-namespace Firebase\FooEvents_JWT;
-
-class BeforeValidException extends \UnexpectedValueException
-{
-
-}
+<?php
+namespace Firebase\FooEvents_JWT;
+
+class BeforeValidException extends \UnexpectedValueException
+{
+
+}

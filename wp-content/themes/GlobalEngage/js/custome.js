@@ -1188,91 +1188,13 @@ jQuery(function ($) {
 
   });
 });
-//----------------------------------------------------------------------------- // Sign Up & Stay Informed-------------------------------------------------
-// jQuery(function ($) {
-//     jQuery(document).ready(function () {
-       
-// selectOption(".show-me-customselect-3 .wpcf7-form-control-wrap")
-// selectOption(".show-me-customselect2")
-// selectOption(".show-me-customselect1")
-// selectOption(".show-me-customselect")
-// selectOption(".customselect .wpcf7-form-control-wrap")
-//   });
-// });
-// function selectOption(className){
-//       var customSelectEle, i, j, selElmnt, divEle, divEleSelected, c;
-//   customSelectEle = document.querySelector(className);
-//   selElmnt = customSelectEle.getElementsByTagName("select")[0];
-//   divEle = document.createElement("DIV");
-//   divEle.setAttribute("class", "select-selected");
-//   divEle.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-//   customSelectEle.appendChild(divEle);
-//   divEleSelected = document.createElement("DIV");
-//   divEleSelected.setAttribute("class", "select-items select-hide");
-//   Array.from(selElmnt).forEach((item, index) => {
-//       c = document.createElement("DIV");
-//       c.innerHTML = selElmnt.options[index].innerHTML;
-//       c.addEventListener("click", function(e) {
-//          var y, i, k, selEleParent, selEleSibling;
-//          selEleParent = this.parentNode.parentNode.getElementsByTagName( "select" )[0];
-//          selEleSibling = this.parentNode.previousSibling;
-//          for (i = 0; i < selEleParent.length; i++) {
-//             if (selEleParent.options[i].innerHTML == this.innerHTML) {
-//               selEleParent.selectedIndex = i;
-//               selEleSibling.innerHTML = this.innerHTML;
-//               y = this.parentNode.getElementsByClassName("sameSelected");
-//               for (k = 0; k < y.length; k++) {
-//                   y[k].removeAttribute("class");
-//               }
-//               this.setAttribute("class", "sameSelected");
-//               break;
-//             }
-//          }
-//          selEleSibling.click();
-//       });
-//       divEleSelected.appendChild(c);
-//   });
-//   customSelectEle.appendChild(divEleSelected);
-//   divEle.addEventListener("click", function(e) {
-//       e.stopPropagation();
-//       closeSelect(this);
-//       this.nextSibling.classList.toggle("select-hide");
-//       this.classList.toggle("select-arrow-active");
-//   });
-//   function closeSelect(elmnt) {
-//       var customSelectEle,
-//       y,
-//       i,
-//       arrNo = [];
-//       customSelectEle = document.getElementsByClassName("select-items");
-//       y = document.getElementsByClassName("select-selected");
-//       for (i = 0; i < y.length; i++) {
-//          if (elmnt == y[i]) {
-//             arrNo.push(i);
-//          }
-//          else {
-//             y[i].classList.remove("select-arrow-active");
-//          }
-//       }
-//       for (i = 0; i < customSelectEle.length; i++) {
-//          if (arrNo.indexOf(i)) {
-//             customSelectEle[i].classList.add("select-hide");
-//          }
-//       }
-//   }
-//   document.addEventListener("click", closeSelect);
-// }
 
 //----------------------------------------------------------------------------- // become sponser custom select -------------------------------------------------
 
 
 jQuery(function ($) {
     jQuery(document).ready(function () {
-
-
-
-
-      var customSelectEle, i, j, selElmnt, divEle, divEleSelected, c;
+  var customSelectEle, i, j, selElmnt, divEle, divEleSelected, c;
   customSelectEle = document.querySelector(".show-me-customselect-4");
   selElmnt = customSelectEle.getElementsByTagName("select")[0];
   divEle = document.createElement("DIV");
@@ -1390,4 +1312,104 @@ jQuery(function ($) {
 });
 
 
-        
+
+
+//  checkout page
+
+jQuery(function ($) {
+jQuery(document).ready(function () {
+	jQuery(document).on('click', '.billing_info #apply-btn', function() {
+    var coupon = jQuery( '.billing_info #apply' ).val();
+    var data = {
+        action: "checkout_apply_coupon_code",
+        coupon_code: coupon
+    };
+    
+    jQuery.ajax({
+        type: 'POST',
+        dataType: 'html',
+        url: xoo_cp_localize.wc_ajax_url.toString().replace( '%%endpoint%%','apply_coupon'),
+        data: data,
+        success: function (response) {
+
+        },
+        error: function (errorThrown) {
+               $( document.body ).trigger( 'wc_fragments_loaded' );
+        }
+    });
+});
+
+document.getElementById("nextBtn").addEventListener("click",nextBTN);
+
+function nextBTN(){
+ //jQuery("#checkout-frm").valid(); 
+ nextPrev(1)
+}
+document.getElementById("prevBtn").addEventListener("click",prevBTN);
+
+function prevBTN(){
+ nextPrev(-1)
+}
+
+
+             var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+console.log(p)
+
+   function nextPrev(n) {
+    console.log("hi")
+  // This function will figure out which tab to display
+  var x = document.querySelectorAll(".tab");
+  // Exit the function if any field in the current tab is invalid:
+//   if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form... :
+  if (currentTab >= x.length) {
+    //...the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+function showTab(n) {
+  // This function will display the specified tab of the form ...
+  var alltabs = document.querySelectorAll(".tab");
+
+  alltabs[n].style.display = "block";
+  // ... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } 
+  else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (alltabs.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } 
+  else {
+    document.getElementById("nextBtn").innerHTML = "Proceed To Payment";
+  }
+  // ... and run a function that displays the correct step indicator:
+  fixStepIndicator(n)
+}
+
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, allsteps = document.querySelectorAll(".step");
+  for (i = 0; i < allsteps.length; i++) {
+    allsteps[i].className = allsteps[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class to the current step:
+  allsteps[n].className += " active";
+}
+
+
+
+    });
+});
+

@@ -1241,39 +1241,118 @@ class Survey_Maker_Public {
 
                  //echo "<pre>";
                  //print_r($_GET['event-id']); exit;
-                $content[] = '<div id="questionnaire" class="">
-                <div class="badge_detail">
-                  <h1 class="heading">'.stripslashes( $section['title'] ).'</h1>
-                  <h2 class="subheading">
-                  ' . stripslashes( $section['description'] ) . '
-                  </h2>
-                  <div class="badge_detail_form">         
-                      <div class="form_sec1">
-                      <select class="" name="title">
-                      <option value="mr"> Mr.</option>
-                      <option value="mrs"> Mrs.</option>
-                      <option value="miss"> Miss</option>
-                      <option value="ms"> Ms.</option>  
-                  </select>                        
-                        <input placeholder="Your Name*" type="text" placeholder="Your name*" name="your_name" />
-                        <input placeholder="Company*" type="text" placeholder="Comapny*" name="your_company_name"/>
-                        <input type="hidden" name="event_pro_id" value='.$_GET['event-id'].'/>
+                $content[] = '<div class="header-questionnaire">
+                <div id="questionnaire">
+                <div class="container">
+                   <div class="badge_detail">
+                      <h1 class="heading">'.stripslashes( $section['title'] ).'</h1>
+                      <h2 class="subheading">
+                         ' . stripslashes( $section['description'] ) . '
+                      </h2>
+                      <div class="badge_detail_form">
+                         <div class="form_sec1">
+                            <select class="" name="title">
+                               <option value="mr"> Mr.</option>
+                               <option value="mrs"> Mrs.</option>
+                               <option value="miss"> Miss</option>
+                               <option value="ms"> Ms.</option>
+                            </select>
+                            <div data-required="true" data-type="short_text" data-is-min="false">
+                               <div class="ays-survey-question-content">
+                                  <div class="ays-survey-question-answers ays-survey-question-answers-grid">
+                                     <div class="ays-survey-answer">
+                                        <div class="ays-survey-question-box ays-survey-question-type-text-box">
+                                           <div class="ays-survey-question-input-box">
+                                              <input class="ays-survey-remove-default-border ays-survey-question-input ays-survey-input    ays-survey-answer-text-inputs" type="text" placeholder="Your Name*" name="your_name" autocomplete="off">
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                               <div class="ays-survey-question-footer">
+                                  <div class="ays-survey-question-validation-error" role="alert"></div>
+                               </div>
+                            </div>
+                            <div data-required="true" data-type="short_text" data-is-min="false">
+                               <div class="ays-survey-question-content">
+                                  <div class="ays-survey-question-answers ays-survey-question-answers-grid">
+                                     <div class="ays-survey-answer">
+                                        <div class="ays-survey-question-box ays-survey-question-type-text-box">
+                                           <div class="ays-survey-question-input-box">
+                                              <input class="ays-survey-remove-default-border ays-survey-question-input ays-survey-input ays-survey-answer-text-inputs" type="text" placeholder="Comapny*" name="your_company_name" autocomplete="off">
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                               <div class="ays-survey-question-footer">
+                                  <div class="ays-survey-question-validation-error" role="alert"></div>
+                               </div>
+                            </div>
+                            <input type="hidden" name="event_pro_id" value='.$_GET['event-id'].'/>
+                         </div>
+                         <div class="form_sec2">
+                            <div data-required="true" data-type="short_text" data-is-min="false">
+                               <div class="ays-survey-question-content">
+                                  <div class="ays-survey-question-answers ays-survey-question-answers-grid">
+                                     <div class="ays-survey-answer">
+                                        <div class="ays-survey-question-box ays-survey-question-type-text-box">
+                                           <div class="ays-survey-question-input-box">
+                                              <input class="ays-survey-remove-default-border ays-survey-question-input ays-survey-input ays-survey-answer-text-inputs" type="text" placeholder="Job Title*" name="your_job_title" autocomplete="off">
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                               <div class="ays-survey-question-footer">
+                                  <div class="ays-survey-question-validation-error" role="alert"></div>
+                               </div>
+                            </div>
+                            <div data-required="true" data-type="number" data-is-min="false">
+                               <div class="ays-survey-question-content">
+                                  <div class="ays-survey-question-answers ays-survey-question-answers-grid">
+                                     <div class="ays-survey-answer">
+                                        <div class="ays-survey-question-box ays-survey-question-type-text-box">
+                                           <div class="ays-survey-question-input-box">
+                                              <input class="ays-survey-remove-default-border ays-survey-question-input ays-survey-input ays-survey-answer-text-inputs" type="number" placeholder="Mobile number*" name="your_mobile_number" autocomplete="off">
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                               <div class="ays-survey-question-footer">
+                                  <div class="ays-survey-question-validation-error" role="alert"></div>
+                               </div>
+                            </div>
+                         </div>
                       </div>
-                      <div class="form_sec2">
-                        <input placeholder="Job Title*" type="text" placeholder="Job Title*" name="your_job_title"/>
-                        <input placeholder="Mobile Number*" type="number" placeholder="Mobile number*" name="your_mobile_number"/>
-                      </div>         
-                  </div>
+                   </div>
+                   <div class="dietary">
+                      <h1 class="heading">Do you have any dietary requirements?</h1>
+                      <div class=" ays-survey-question" data-required="true" data-type="text" data-is-min="false">
+                         <div class="ays-survey-question-content">
+                            <div class="ays-survey-question-answers ays-survey-question-answers-grid">
+                               <div class="ays-survey-answer">
+                                  <div class="ays-survey-question-box ays-survey-question-type-text-box">
+                                     <div class="ays-survey-question-input-box">
+                                        <textarea class="ays-survey-remove-default-border ays-survey-question-input-textarea ays-survey-question-input ays-survey-input ays-survey-answer-text-inputs" placeholder="Your message" name="your_message" autocomplete="off"></textarea>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                         <div class="ays-survey-question-footer">
+                            <div class="ays-survey-question-validation-error" role="alert"></div>
+                         </div>
+                      </div>
+                   </div>
                 </div>
-                <div class="dietary">
-                  <h1 class="heading">Do you have any dietary requirements?</h1>
-                  <textarea  cols="30" rows="5" placeholder="Your message" name="your_message"></textarea>
-                </div>
-              </div>           
-             ';
+             </div>
+             </div>';
                
 
                 $loop_count = 1;
+                $content[] = '<div class="middle-questionnaire">';
 		    	foreach ( $section['questions'] as $key => $question ) {
                     $numbering = "";
                     if(isset($this->options[ $this->name_prefix . 'question_numbering_array' ]) && !empty($this->options[ $this->name_prefix . 'question_numbering_array' ])){
@@ -1283,6 +1362,7 @@ class Survey_Maker_Public {
                     $loop_count++;
 		    	}
 		    	$content[] = '</div>';
+		    	$content[] = '</div>';
 
 	    	$content[] = '</div>';
 
@@ -1291,8 +1371,9 @@ class Survey_Maker_Public {
                 $footer_class_with_bar = "ays-survey-footer-with-live-bar";
             }
 	    	$content[] = '<div class="' . $this->html_class_prefix . 'section-footer '.$footer_class_with_bar.'">';
-
+            $content[] = '<div class="container">';
 		    	$content[] = '<div class="' . $this->html_class_prefix . 'section-buttons">';
+		    	
 
                     if( ! $first ){
                         if( $this->options[ $this->name_prefix . 'enable_previous_button' ] ){
@@ -1333,6 +1414,7 @@ class Survey_Maker_Public {
 
 	    	$content[] = '</div>';
     	
+    	$content[] = '</div>';
     	$content[] = '</div>';
 
     	$content = implode( '', $content );
@@ -1460,13 +1542,21 @@ class Survey_Maker_Public {
         }
         
 		$content = array();
-    	$content[] = '<div id="questionnaire">';
+    	
+        $content[] = '<div id="questionnaire">';
+        $content[] = '<div class="container">';
+        
+        
+
     	//$content[] = '<div class="badge_detail " data-required="' . $data_required . '" data-type="' . $question_type . '" data-is-min="'.$is_minimum.'">';
     	$content[] = '<div class="badge_detail ' . $this->html_class_prefix . 'question" data-required="' . $data_required . '" data-type="' . $question_type . '" data-is-min="'.$is_minimum.'">';
 
 	    	$content[] = '<div class="' . $this->html_class_prefix . 'question-header">';
-
+            if( $loop_count == 1 ){
+                $content[] = '<h1 class="heading questions-title">Questions</h1>';
+            }
                 $content[] = '<div class="' . $this->html_class_prefix . 'question-header-content">';
+                
 
                     $content[] = '<div class="' . $this->html_class_prefix . 'question-title">' . Survey_Maker_Data::ays_autoembed( $question_title );
 
@@ -1528,6 +1618,8 @@ class Survey_Maker_Public {
 
     	$content[] = '</div>';
     	$content[] = '</div>';
+    	$content[] = '</div>';
+    	
 
     	$content = implode( '', $content );
 

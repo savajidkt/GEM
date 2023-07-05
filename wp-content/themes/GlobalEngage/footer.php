@@ -163,9 +163,11 @@
                 var gap = 50;
                 if ($(window).scrollTop() > gap) {
                     $('.main-header').addClass('header-fixed');
+                    $('.main-header').removeClass('myCls');
         
                 } else {
                     $('.main-header').removeClass('header-fixed');
+                    $('.main-header').removeClass('myCls');
                 }
         
             });
@@ -280,6 +282,10 @@ for (i = 0; i < accd.length; i++) {
   } );
   
  
+</script>
+
+<script>
+    $('.filter-item.checkbox').removeClass('disabled');
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.js" integrity="sha512-UU0D/t+4/SgJpOeBYkY+lG16MaNF8aqmermRIz8dlmQhOlBnw6iQrnt4Ijty513WB3w+q4JO75IX03lDj6qQNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

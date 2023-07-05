@@ -24,20 +24,20 @@
         $swap_image_left_or_right = $section_data['swap_image_left_or_right'];
             if($swap_image_left_or_right == 'right') {  // image right side
         ?>
-        <div class="featured_event_slider_text">
-            <?php if(!empty($heading)) { ?>
-                <h3><?php echo $heading;?></h3>
-            <?php } if(!empty($description)) { ?>
-                <p class="event-sub-text"><?php echo $description;?></p>
-            <?php } ?>
-             <?php if(!empty($button_text)) { ?> 
-            <div class="featured_event_slider_button">
-                <a href="<?php echo $btnurl;?>" target="<?php echo $target;?>" class="btn"><?php echo $button_text;?></a>
+            <div class="featured_event_slider_text">
+                <?php if(!empty($heading)) { ?>
+                    <h3><?php echo $heading;?></h3>
+                <?php } if(!empty($description)) { ?>
+                    <p class="event-sub-text"><?php echo $description;?></p>
+                <?php } ?>
+                 <?php if(!empty($button_text)) { ?> 
+                <div class="featured_event_slider_button">
+                    <a href="<?php echo $btnurl;?>" target="<?php echo $target;?>" class="btn"><?php echo $button_text;?></a>
+                </div>
+                <?php } else { ?>
+                         
+                 <?php }?>
             </div>
-            <?php } else { ?>
-                     
-             <?php }?>
-        </div>
         <div class="featured_event_slider_image">
             <?php if(!empty($image)) { ?>
                 <div class="event-slider-blocks">
@@ -64,7 +64,7 @@
                          <a href="<?php echo $btnurl;?>" type="button" target="<?php echo $target;?>" class="btn"><?php echo $button_text;?></a>
                      </div>
             <?php } else { ?>
-                      text
+                    
              <?php }?>
         </div>
     <?php } ?>   

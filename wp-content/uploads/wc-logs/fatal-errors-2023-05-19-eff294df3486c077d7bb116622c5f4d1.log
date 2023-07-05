@@ -1,0 +1,28 @@
+2023-05-19T10:30:47+00:00 CRITICAL Uncaught Error: Object of class WP_Term could not be converted to string in /home/gemaincdadevelop/public_html/wp-content/themes/GlobalEngage/template-conference_and_training.php:57
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#3 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/themes/GlobalEngage/template-conference_and_training.php on line 57
+
+2023-05-19T10:34:39+00:00 CRITICAL Uncaught Error: Object of class WP_Term could not be converted to string in /home/gemaincdadevelop/public_html/wp-content/themes/GlobalEngage/template-conference_and_training.php:36
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#3 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/themes/GlobalEngage/template-conference_and_training.php on line 36
+
+2023-05-19T10:36:38+00:00 CRITICAL Uncaught Error: Object of class WP_Term could not be converted to string in /home/gemaincdadevelop/public_html/wp-content/themes/GlobalEngage/template-conference_and_training.php:39
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#3 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/themes/GlobalEngage/template-conference_and_training.php on line 39
+
+2023-05-19T10:39:06+00:00 CRITICAL syntax error, unexpected token "=" in /home/gemaincdadevelop/public_html/wp-content/themes/GlobalEngage/template-conference_and_training.php on line 13
+
+2023-05-19T10:39:54+00:00 CRITICAL syntax error, unexpected token "=" in /home/gemaincdadevelop/public_html/wp-content/themes/GlobalEngage/template-conference_and_training.php on line 13
+

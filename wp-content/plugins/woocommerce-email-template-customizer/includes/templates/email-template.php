@@ -1,2 +1,2 @@
-<?php
-do_action( 'viwec_email_template', $args );
+<?php
+do_action( 'viwec_email_template', $args );

@@ -1,5 +1,5 @@
-(function($) {
-    
-    jQuery('.fooevents-search-list').select2();
-    
+(function($) {
+    
+    jQuery('.fooevents-search-list').select2();
+    
 })(jQuery);

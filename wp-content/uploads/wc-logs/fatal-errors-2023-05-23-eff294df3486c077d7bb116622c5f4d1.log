@@ -1,0 +1,29 @@
+2023-05-23T11:12:16+00:00 CRITICAL Uncaught Error: Undefined constant "php" in /home/gemaincdadevelop/public_html/wp-content/themes/GlobalEngage/template-about.php:127
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#2 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#3 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/themes/GlobalEngage/template-about.php on line 127
+
+2023-05-23T11:28:01+00:00 CRITICAL Uncaught Error: Object of class WP_Term could not be converted to string in /home/gemaincdadevelop/public_html/wp-content/plugins/search-filter-pro/public/includes/class-search-filter-taxonomy-object-walker.php:45
+Stack trace:
+#0 /home/gemaincdadevelop/public_html/wp-includes/class-wp-walker.php(147): Search_Filter_Taxonomy_Object_Walker->start_el('', Object(WP_Term), 0, Array)
+#1 /home/gemaincdadevelop/public_html/wp-content/plugins/search-filter-pro/public/includes/class-search-filter-taxonomy-object-walker.php(38): Walker->display_element(Object(WP_Term), Array, 0, 0, Array, '')
+#2 /home/gemaincdadevelop/public_html/wp-includes/class-wp-walker.php(247): Search_Filter_Taxonomy_Object_Walker->display_element(Object(WP_Term), Array, 0, 0, Array, '')
+#3 /home/gemaincdadevelop/public_html/wp-includes/category-template.php(1121): Walker->walk(Array, 0, Array)
+#4 /home/gemaincdadevelop/public_html/wp-includes/category-template.php(663): walk_category_tree(Array, 0, Array)
+#5 /home/gemaincdadevelop/public_html/wp-content/plugins/search-filter-pro/public/includes/fields/taxonomy.php(336): wp_list_categories(Array)
+#6 /home/gemaincdadevelop/public_html/wp-content/plugins/search-filter-pro/public/includes/fields/taxonomy.php(263): Search_Filter_Field_Taxonomy->get_options(Array)
+#7 /home/gemaincdadevelop/public_html/wp-content/plugins/search-filter-pro/public/includes/class-search-filter-display-shortcode.php(1002): Search_Filter_Field_Taxonomy->get(Array)
+#8 /home/gemaincdadevelop/public_html/wp-content/plugins/search-filter-pro/public/includes/class-search-filter-display-shortcode.php(837): Search_Filter_Display_Shortcode->get_field(Array, Array, 497)
+#9 /home/gemaincdadevelop/public_html/wp-includes/shortcodes.php(355): Search_Filter_Display_Shortcode->display_shortcode(Array, '', 'searchandfilter')
+#10 [internal function]: do_shortcode_tag(Array)
+#11 /home/gemaincdadevelop/public_html/wp-includes/shortcodes.php(227): preg_replace_callback('/\\[(\\[?)(search...', 'do_shortcode_ta...', '[searchandfilte...')
+#12 /home/gemaincdadevelop/public_html/wp-content/themes/GlobalEngage/template-conference_and_training.php(11): do_shortcode('[searchandfilte...')
+#13 /home/gemaincdadevelop/public_html/wp-includes/template-loader.php(106): include('/home/gemaincda...')
+#14 /home/gemaincdadevelop/public_html/wp-blog-header.php(19): require_once('/home/gemaincda...')
+#15 /home/gemaincdadevelop/public_html/index.php(17): require('/home/gemaincda...')
+#16 {main}
+  thrown in /home/gemaincdadevelop/public_html/wp-content/plugins/search-filter-pro/public/includes/class-search-filter-taxonomy-object-walker.php on line 45
+

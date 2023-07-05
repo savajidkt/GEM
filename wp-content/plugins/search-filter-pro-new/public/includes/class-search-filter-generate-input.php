@@ -192,7 +192,7 @@ class Search_Filter_Generate_Input {
 
 		ob_start();
 
-		?>
+		?>
 		<?php echo $prefix; ?><label>
 				   <?php
 					if ( $accessibility_label != '' ) {
@@ -200,7 +200,7 @@ class Search_Filter_Generate_Input {
 			<span class="screen-reader-text"><?php echo $accessibility_label; ?></span>
 						<?php
 					}
-					?>
+					?>
 		<select<?php echo $attibutes_html; ?>>
 						  <?php
 							foreach ( $input_args['options'] as $option ) {
@@ -243,7 +243,7 @@ class Search_Filter_Generate_Input {
 			<option<?php echo $option_attibutes_html; ?> value="<?php echo esc_attr( $option->value ); ?>"><?php echo $option_label; ?></option>
 								<?php
 							}
-							?>
+							?>
 			</select></label><?php echo $postfix; ?>
 										<?php
 
@@ -272,7 +272,7 @@ class Search_Filter_Generate_Input {
 
 		ob_start();
 
-		?>
+		?>
 		<ul<?php echo $attibutes_html; ?>>
 					  <?php
 
@@ -382,7 +382,7 @@ class Search_Filter_Generate_Input {
 						$str_repeat = str_repeat( '</ul></li>', (int) $open_child_count );
 						echo $str_repeat;
 
-						?>
+						?>
 		</ul>
 		<?php
 
@@ -410,7 +410,7 @@ class Search_Filter_Generate_Input {
 
 		ob_start();
 
-		?>
+		?>
 		<ul<?php echo $attibutes_html; ?>>
 					  <?php
 
@@ -522,7 +522,7 @@ class Search_Filter_Generate_Input {
 						$str_repeat = str_repeat( '</ul></li>', (int) $open_child_count );
 						echo $str_repeat;
 
-						?>
+						?>
 		</ul>
 		<?php
 

@@ -433,7 +433,7 @@ $survey_data_formated_for_clipboard = Survey_Maker_Data::ays_survey_copy_text_fo
                     <div class="form-group row">
                        
                         <div class="col-sm-6 ays-survey-question-action-butons">
-                           
+                        <input type="hidden" class="ays_submissions_id_str" value="<?php echo esc_attr($submission_count_and_ids['submission_ids']); ?>">
                             <button type="submit" class="button button-primary"><?php echo __( 'Update', "survey-maker"); ?></button>
                         </div>
 

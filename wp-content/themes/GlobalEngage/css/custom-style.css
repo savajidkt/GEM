@@ -15,6 +15,10 @@ a:focus, a:hover {
     outline:none !important;
    
 }
+a:hover {
+  text-decoration-skip-ink: unset !important;
+}
+.wpcf7-not-valid-tip:not(:nth-child(1)):not(:nth-child(2)) {display:none !important;}
 hr {
     border-style: none;
     border-bottom: 1px solid rgba(51,51,51, 0.10) !important;
@@ -68,6 +72,16 @@ p {
 }
 p:empty{
   display: none;
+}
+
+#headers::before {
+  content: "";
+  background-color: #000;
+  opacity: 50%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
 }
 
 img {
@@ -448,8 +462,8 @@ button:hover{
     }
     .my-carousel-item::before {
     content: "";
-    background-color: #000;
-    opacity: 50%;
+    background-color: #333333;
+    opacity: 25%;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -615,7 +629,7 @@ button:hover{
     position: absolute;
     bottom: 0;
     color: #fff;
-    margin-bottom: 6.2%;
+    margin-bottom: 4%;
     display: flex;
     gap: 30px;
     width: 100%;
@@ -748,6 +762,10 @@ footer {
     background: #333333;
     padding: 100px 0 50px;
     margin-top: 50px;
+}
+
+.page-id-159 footer {
+ margin-top: 100px;
 }
 /*footer top*/
 .footer-top {
@@ -2343,8 +2361,8 @@ a.legal_btn {
 
 /******************************************************************************/
 section#wbs {
-    padding: 5.2% 0;
-    margin: 50px 0;
+  padding: 49px 0;
+  margin: 50px 0;
 }
 .wbs-main-text {
     display: flex;
@@ -2505,17 +2523,19 @@ a.new-btn.btn-x.gal-web {
     margin-right: 0px;
 }
 .gallery-slider .slick-dots {
-    position: absolute;
-    bottom: -80px;
-    width: 100%;
-    list-style: none;
-    text-align: center;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    left: 50%;
-    padding: 10px 0;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  bottom: -100px;
+  width: 100%;
+  list-style: none;
+  text-align: center;
+  margin: 0 auto;
+    margin-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  left: 50%;
+  padding: 0px 0;
+  transform: translate(-50%, -50%);
+  margin-bottom: 50px;
 }
 .gallery-slider.li.slick-active[button]{
     width: 18px;
@@ -2786,12 +2806,12 @@ select#select {
 /* CSS */
 
 .legal-page-content {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 113.5px;
-    padding: 2.3% 0 0;
-        flex-wrap: wrap;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 113.5px;
+  padding: 2.3% 0 50px;
+  flex-wrap: wrap;
 }
 .legal_policy {
     padding: 8px 0 0;
@@ -2907,13 +2927,13 @@ section.our_lr {
    
 }
 .gallery_title_content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 50px;
-    gap: 30px;
-   
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+  gap: 30px;
+  margin-top: 50px;
 }
 
 
@@ -3842,12 +3862,13 @@ vertical-align: middle;
  font-size:17px;
 }
 .p_i_s_i_banner ul {
-    display: flex;
-    gap: 26px;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-    align-items: center;
+  display: flex;
+  gap: 26px;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .banner_product_items_block {
     display: flex;
@@ -5435,14 +5456,14 @@ button.woocommerce-button.button.woocommerce-form-login__submit.wp-element-butto
     background-color: #EAEAEA;
     padding: 60px;
 }
-.logged-in  .woocommerce {
-    display: grid;
-    width: 85%;
-    margin-inline: auto;
-    grid-template-columns: 20% 75%;
-    margin-top: 3.23%;
-    gap: 5%;
-}
+/*.logged-in .woocommerce {*/
+/*    display: grid;*/
+/*    width: 85%;*/
+/*    margin-inline: auto;*/
+/*    grid-template-columns: 20% 75%;*/
+/*    margin-top: 3.23%;*/
+/*    gap: 5%;*/
+/*}*/
 
 #popupForm form.wpcf7-form.invalid {
     position: relative;
@@ -5637,8 +5658,9 @@ div#wpcf7-f948-o1  input.wpcf7-form-control.wpcf7dtx-dynamictext.wpcf7-dynamicte
 /*end*/
 
 .featured_event_slider_button p.view_events {
-    text-decoration: underline;
-    font-family: 'Montserrat', sans-serif !important;
+  text-decoration: underline;
+  font-family: 'Montserrat', sans-serif !important;
+  text-decoration-color: #333;
 }
 /**/
 .resource-center-content-overlay {
@@ -5875,7 +5897,7 @@ button.search_btn:hover{
 /*    width: 100%;*/
 /*}*/
 .gallery-slider.slick-initialized.slick-slider.slick-dotted {
-    margin-bottom: 70px;
+  margin-bottom: 90px;
 }
 div#wpcf7-f171-o1 {
     position: relative;
@@ -7064,11 +7086,12 @@ section.desktop-blog-sec.our_lr .gallery_title_content .gallery-left-btn-event .
     font-family: 'Open Sans' !important;
     font-size: 17px;
     }
-    a.btn_web-spon.download_agenda {
+    a.btn_web-spon.download_agenda,a.btn_web-spon.download_agenda:visited,a.btn_web-spon.download_agenda:focus,a.btn_web-spon.download_agenda:active{
         background-color: #F15D23;
         color: #fff;
         border: none;
     }
+    
     a.btn_web-spon.download_agenda:hover {
         background-color: #F15D23 !important;
         color: #fff;
@@ -7704,4 +7727,24 @@ span.sign_here {
 
 .woocommerce-checkout form[name=checkout] {
      display: unset !important; 
+}
+.speaker_top {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  margin: 50px 0;
+}
+.btn_group.tab {
+  display: flex;
+  gap: 40px;
+  align-content: center;
+}
+
+.gallery_main-slider {
+  padding-top: 0 !important;
+}
+
+.book_place_main .card_sec_2 .card_sec_2_discount .regular-price span.woocommerce-Price-currencySymbol {
+  font-size: 17px;
+  color: #33333;
 }

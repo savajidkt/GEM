@@ -1,0 +1,2046 @@
+********************************************************************************
+* DUPLICATOR LITE: Install-Log
+* STEP-0 START @ 06:52:06
+* NOTICE: Do NOT post to public sites or forums!!
+********************************************************************************
+PACKAGE INFO________ ORIGINAL SERVER                        |CURRENT SERVER
+OS__________________: Linux                                 |WINNT
+PHP VERSION_________: 8.1.20                                |8.1.6
+********************************************************************************
+CURRENT SERVER INFO
+PHP_________________: 8.1.6 | SAPI: apache2handler
+PHP MEMORY__________: 4294967296 | SUHOSIN: disabled
+ARCHITECTURE________: 64-bit
+SERVER______________: Apache/2.4.53 (Win64) OpenSSL/1.1.1n PHP/8.1.6
+DOC ROOT____________: "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+REQUEST URL_________: "http://localhost/gemain.cda-development3.co.uk"
+********************************************************************************
+OVERWRITE PARAMS
+ *** FROM PACKAGE
+PARAM SET KEY[blogname]
+********************************************************************************
+MAINTENANCE MODE DISABLE
+INSTALLER INFO
+
+TEMPLATE____________: "base"
+VALIDATE ON START___: "normal"
+PATH_NEW____________: "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+URL_NEW_____________: "http://localhost/gemain.cda-development3.co.uk"
+********************************************************************************
+ARCHIVE INFO
+
+ARCHIVE NAME________: "D:/xampp/htdocs/gemain.cda-development3.co.uk/20230627_globalengage_[HASH]_20230627062908_archive.zip"
+ARCHIVE SIZE________: 203.48MB
+CREATED_____________: 2023-06-27 06:29:08
+WP VERSION__________: 6.2.2
+DUP VERSION_________: 1.5.5
+LICENSE_____________: Free version
+DB VERSION__________: 10.6.14
+DB FILE SIZE________: 21.42MB
+DB TABLES___________: 113
+DB ROWS_____________: 134051
+URL HOME____________: https://gemain.cda-development3.co.uk
+URL CORE____________: https://gemain.cda-development3.co.uk
+URL CONTENT_________: https://gemain.cda-development3.co.uk/wp-content
+URL UPLOAD__________: https://gemain.cda-development3.co.uk/wp-content/uploads
+URL PLUGINS_________: https://gemain.cda-development3.co.uk/wp-content/plugins
+URL MU PLUGINS______: https://gemain.cda-development3.co.uk/wp-content/mu-plugins
+URL THEMES__________: https://gemain.cda-development3.co.uk/wp-content/themes
+PATH HOME___________: /home/gemaincdadevelop/public_html
+PATH ABS____________: /home/gemaincdadevelop/public_html
+PATH WPCONFIG_______: /home/gemaincdadevelop/public_html
+PATH WPCONTENT______: /home/gemaincdadevelop/public_html/wp-content
+PATH UPLOADS________: /home/gemaincdadevelop/public_html/wp-content/uploads
+PATH PLUGINS________: /home/gemaincdadevelop/public_html/wp-content/plugins
+PATH MUPLUGINS______: /home/gemaincdadevelop/public_html/wp-content/mu-plugins
+PATH THEMES_________: /home/gemaincdadevelop/public_html/wp-content/themes
+
+SUBSITES
+SUBSITE [ID:   1] "gemain.cda-development3.co.uk/"
+
+PLUGINS
+PLUGIN [SLUG:advanced-custom-fields-pro/acf.php                ][ON:true ]  Advanced Custom Fields PRO
+PLUGIN [SLUG:contact-form-7/wp-contact-form-7.php              ][ON:true ]  Contact Form 7
+PLUGIN [SLUG:contact-form-7-dynamic-text-extension/contact-form-7-dynamic-text-extension.php][ON:true ]  Contact Form 7 - Dynamic Text Extension
+PLUGIN [SLUG:contact-form-cfdb7/contact-form-cfdb-7.php        ][ON:true ]  Contact Form CFDB7
+PLUGIN [SLUG:custom-post-type-ui/custom-post-type-ui.php       ][ON:true ]  Custom Post Type UI
+PLUGIN [SLUG:duplicate-wp-page-post/duplicate-wp-page-post.php ][ON:true ]  Duplicate Page and Post
+PLUGIN [SLUG:duplicator/duplicator.php                         ][ON:true ]  Duplicator
+PLUGIN [SLUG:fooevents_bookings/fooevents-bookings.php         ][ON:true ]  FooEvents Bookings
+PLUGIN [SLUG:fooevents_custom_attendee_fields/fooevents-custom-attendee-fields.php][ON:true ]  FooEvents Custom Attendee Fields
+PLUGIN [SLUG:fooevents/fooevents.php                           ][ON:true ]  FooEvents for WooCommerce
+PLUGIN [SLUG:fooevents_multi_day/fooevents-multi-day.php       ][ON:true ]  FooEvents Multi-Day
+PLUGIN [SLUG:fooevents_pdf_tickets/fooevents-pdf-tickets.php   ][ON:true ]  FooEvents PDF Tickets
+PLUGIN [SLUG:fooevents_seating/fooevents-seating.php           ][ON:true ]  FooEvents Seating
+PLUGIN [SLUG:formidable/formidable.php                         ][ON:true ]  Formidable Forms
+PLUGIN [SLUG:mailin/sendinblue.php                             ][ON:true ]  Newsletter, SMTP, Email marketing and Subscribe forms by Sendinblue
+PLUGIN [SLUG:woocommerce-product-filters/woocommerce-product-filters.php][ON:true ]  Product Filters for WooCommerce
+PLUGIN [SLUG:wpcf7-recaptcha/wpcf7-recaptcha.php               ][ON:true ]  ReCaptcha v2 for Contact Form 7
+PLUGIN [SLUG:sassy-social-share/sassy-social-share.php         ][ON:true ]  Sassy Social Share
+PLUGIN [SLUG:search-filter-pro-new/search-filter-pro.php       ][ON:false]  Search & Filter Pro
+PLUGIN [SLUG:search-filter-pro/search-filter-pro.php           ][ON:true ]  Search & Filter Pro
+PLUGIN [SLUG:woocommerce/woocommerce.php                       ][ON:true ]  WooCommerce
+PLUGIN [SLUG:added-to-cart-popup-woocommerce/xoo-cp-main.php   ][ON:true ]  WooCommerce added to cart popup (Ajax)
+PLUGIN [SLUG:woocommerce-dynamic-pricing-master/woocommerce-dynamic-pricing.php][ON:true ]  WooCommerce Dynamic Pricing
+PLUGIN [SLUG:woocommerce-email-template-customizer/woocommerce-email-template-customizer.php][ON:true ]  WooCommerce Email Template Customizer Premium
+PLUGIN [SLUG:load-more-products-for-woocommerce/load-more-products.php][ON:true ]  WooCommerce Load More Products
+PLUGIN [SLUG:woocommerce-xero/woocommerce-xero.php             ][ON:true ]  WooCommerce Xero Integration
+PLUGIN [SLUG:wp-pagenavi/wp-pagenavi.php                       ][ON:true ]  WP-PageNavi
+PLUGIN [SLUG:woocommerce-menu-bar-cart/wp-menu-cart.php        ][ON:true ]  WP Menu Cart
+PLUGIN [SLUG:yith-woocommerce-ajax-product-filter-premium/init.php][ON:true ]  YITH WooCommerce Ajax Product Filter Premium
+PLUGIN [SLUG:wordpress-seo/wp-seo.php                          ][ON:true ]  Yoast SEO
+
+********************************************************************************
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\ctrls\ctrl.base.php:227][DELTA:   3.13247]  MESSAGE:END RENDER PAGE
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [sparam_s1] START
+AJAX ACTION [sparam_s1] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+STEP ACTION: "on-validate"
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\ctrls\ctrl.base.php:227][DELTA:   2.46115]  MESSAGE:END RENDER PAGE
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [validate] START
+START TEST "Archive Check" [CLASS: DUPX_Validation_test_archive_check]
+LOG-TIME[DELTA:   0.00020]  MESSAGE:TEST "Archive Check" RESULT: passed
+
+START TEST "Duplicator importer version" [CLASS: DUPX_Validation_test_importer_version]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "Duplicator importer version" RESULT: skip
+
+START TEST "Overwrite Install" [CLASS: DUPX_Validation_test_owrinstall]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "Overwrite Install" RESULT: skip
+
+START TEST "Recovery Point" [CLASS: DUPX_Validation_test_recovery]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "Recovery Point" RESULT: skip
+
+START TEST "Package is Importable" [CLASS: DUPX_Validation_test_importable]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "Package is Importable" RESULT: skip
+
+START TEST "REST API test" [CLASS: DUPX_Validation_test_rest_api]
+LOG-TIME[DELTA:   0.00002]  MESSAGE:TEST "REST API test" RESULT: skip
+
+START TEST "Manual extraction detected" [CLASS: DUPX_Validation_test_manual_extraction]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "Manual extraction detected" RESULT: good
+
+START TEST "Database Only" [CLASS: DUPX_Validation_test_dbonly_iswordpress]
+LOG-TIME[DELTA:   0.00004]  MESSAGE:TEST "Database Only" RESULT: skip
+
+START TEST "Package Age" [CLASS: DUPX_Validation_test_package_age]
+LOG-TIME[DELTA:   0.00006]  MESSAGE:TEST "Package Age" RESULT: good
+
+START TEST "Package Size" [CLASS: DUPX_Validation_test_package_size]
+LOG-TIME[DELTA:   0.00017]  MESSAGE:TEST "Package Size" RESULT: good
+
+START TEST "Replace PATHs in database" [CLASS: DUPX_Validation_test_replace_paths]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "Replace PATHs in database" RESULT: skip
+
+START TEST "Managed hosting supported" [CLASS: DUPX_Validation_test_managed_supported]
+LOG-TIME[DELTA:   0.00036]  MESSAGE:TEST "Managed hosting supported" RESULT: skip
+
+START TEST "Siteground" [CLASS: DUPX_Validation_test_siteground]
+LOG-TIME[DELTA:   0.00022]  MESSAGE:TEST "Siteground" RESULT: skip
+
+START TEST "Addon Sites" [CLASS: DUPX_Validation_test_addon_sites]
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+LOG-TIME[DELTA:   0.15090]  MESSAGE:TEST "Addon Sites" RESULT: good
+
+START TEST "Wordfence" [CLASS: DUPX_Validation_test_wordfence]
+LOG-TIME[DELTA:   0.00102]  MESSAGE:TEST "Wordfence" RESULT: good
+
+START TEST "Table prefix of managed hosting" [CLASS: DUPX_Validation_test_managed_tprefix]
+LOG-TIME[DELTA:   0.00033]  MESSAGE:TEST "Table prefix of managed hosting" RESULT: skip
+
+START TEST "PHP Version Mismatch" [CLASS: DUPX_Validation_test_php_version]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "PHP Version Mismatch" RESULT: good
+
+START TEST "PHP Open Base" [CLASS: DUPX_Validation_test_open_basedir]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "PHP Open Base" RESULT: good
+
+START TEST "PHP Memory Limit" [CLASS: DUPX_Validation_test_memory_limit]
+LOG-TIME[DELTA:   0.00005]  MESSAGE:TEST "PHP Memory Limit" RESULT: good
+
+START TEST "PHP Extensions" [CLASS: DUPX_Validation_test_extensions]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "PHP Extensions" RESULT: good
+
+START TEST "PHP Mysqli" [CLASS: DUPX_Validation_test_mysql_connect]
+LOG-TIME[DELTA:   0.00002]  MESSAGE:TEST "PHP Mysqli" RESULT: passed
+
+START TEST "PHP Tokenizer" [CLASS: DUPX_Validation_test_tokenizer]
+LOG-TIME[DELTA:   0.00002]  MESSAGE:TEST "PHP Tokenizer" RESULT: passed
+
+START TEST "PHP Timeout" [CLASS: DUPX_Validation_test_timeout]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "PHP Timeout" RESULT: good
+
+START TEST "Disk Space" [CLASS: DUPX_Validation_test_disk_space]
+LOG-TIME[DELTA:   0.02399]  MESSAGE:TEST "Disk Space" RESULT: good
+
+START TEST "Permissions: General" [CLASS: DUPX_Validation_test_iswritable]
+LOG-TIME[DELTA:   0.10677]  MESSAGE:TEST "Permissions: General" RESULT: passed
+
+START TEST "Permissions: Configs Files " [CLASS: DUPX_Validation_test_iswritable_configs]
+LOG-TIME[DELTA:   0.00131]  MESSAGE:TEST "Permissions: Configs Files " RESULT: passed
+
+START TEST "Host Name" [CLASS: DUPX_Validation_test_db_host_name]
+LOG-TIME[DELTA:   0.00007]  MESSAGE:TEST "Host Name" RESULT: passed
+
+START TEST "Host Connection" [CLASS: DUPX_Validation_test_db_connection]
+LOG-TIME[DELTA:   0.01215]  MESSAGE:TEST "Host Connection" RESULT: passed
+
+START TEST "Database Version" [CLASS: DUPX_Validation_test_db_version]
+LOG-TIME[DELTA:   0.00262]  MESSAGE:TEST "Database Version" RESULT: passed
+
+START TEST "Create New Database" [CLASS: DUPX_Validation_test_db_create]
+LOG-TIME[DELTA:   0.00004]  MESSAGE:TEST "Create New Database" RESULT: skip
+
+START TEST "Database Engine Support" [CLASS: DUPX_Validation_test_db_supported_engine]
+LOG-TIME[DELTA:   0.00037]  MESSAGE:TEST "Database Engine Support" RESULT: passed
+
+START TEST "Database GTID Mode" [CLASS: DUPX_Validation_test_db_gtid_mode]
+LOG-TIME[DELTA:   0.00022]  MESSAGE:TEST "Database GTID Mode" RESULT: passed
+
+START TEST "Privileges: User Visibility" [CLASS: DUPX_Validation_test_db_visibility]
+LOG-TIME[DELTA:   0.00023]  MESSAGE:TEST "Privileges: User Visibility" RESULT: passed
+
+START TEST "Manual Table Check" [CLASS: DUPX_Validation_test_db_manual_tabels_count]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "Manual Table Check" RESULT: skip
+
+START TEST "Multiple WordPress Installs" [CLASS: DUPX_Validation_test_db_multiple_wp_installs]
+LOG-TIME[DELTA:   0.00108]  MESSAGE:TEST "Multiple WordPress Installs" RESULT: passed
+
+START TEST "Privileges: User Resources" [CLASS: DUPX_Validation_test_db_user_resources]
+LOG-TIME[DELTA:   0.00120]  MESSAGE:TEST "Privileges: User Resources" RESULT: passed
+
+START TEST "Privileges: User Table Access" [CLASS: DUPX_Validation_test_db_user_perms]
+LOG-TIME[DELTA:   0.10930]  MESSAGE:TEST "Privileges: User Table Access" RESULT: passed
+
+START TEST "Privileges: 'Show Variables' Query" [CLASS: DUPX_Validation_test_db_custom_queries]
+LOG-TIME[DELTA:   0.00081]  MESSAGE:TEST "Privileges: 'Show Variables' Query" RESULT: passed
+
+START TEST "Source Database Triggers" [CLASS: DUPX_Validation_test_db_triggers]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "Source Database Triggers" RESULT: passed
+
+START TEST "Character Set and Collation Support" [CLASS: DUPX_Validation_test_db_supported_default_charset]
+LOG-TIME[DELTA:   0.00208]  MESSAGE:TEST "Character Set and Collation Support" RESULT: passed
+
+START TEST "Character Set and  Collation Capability" [CLASS: DUPX_Validation_test_db_supported_charset]
+LOG-TIME[DELTA:   0.00015]  MESSAGE:TEST "Character Set and  Collation Capability" RESULT: hard warning
+
+START TEST "Tables Case Sensitivity" [CLASS: DUPX_Validation_test_db_case_sensitive_tables]
+LOG-TIME[DELTA:   0.00146]  MESSAGE:TEST "Tables Case Sensitivity" RESULT: passed
+
+START TEST "Tables Flagged for Removal or Backup" [CLASS: DUPX_Validation_test_db_affected_tables]
+LOG-TIME[DELTA:   0.00133]  MESSAGE:TEST "Tables Flagged for Removal or Backup" RESULT: passed
+
+START TEST "Prefix too long" [CLASS: DUPX_Validation_test_db_prefix_too_long]
+LOG-TIME[DELTA:   0.00038]  MESSAGE:TEST "Prefix too long" RESULT: passed
+
+START TEST "Database cleanup" [CLASS: DUPX_Validation_test_db_cleanup]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "Database cleanup" RESULT: skip
+
+
+CTRL PARAMS AFTER VALIDATION
+AJAX ACTION [validate] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [proceed_confirm_dialog] START
+AJAX ACTION [proceed_confirm_dialog] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [sparam_s1] START
+AJAX ACTION [sparam_s1] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+INITIALIZE FILTERS
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+********************************************************************************
+* DUPLICATOR LITE: Install-Log
+* STEP-1 START @ 06:52:45
+* NOTICE: Do NOT post to public sites or forums!!
+********************************************************************************
+USER INPUTS
+INSTALL TYPE________: single site
+BLOG NAME___________: "Global Engage"
+HOME URL NEW________: "http://localhost/gemain.cda-development3.co.uk"
+SITE URL NEW________: "http://localhost/gemain.cda-development3.co.uk/"
+CONTENT URL NEW_____: "http://localhost/gemain.cda-development3.co.uk/wp-content"
+UPLOAD URL NEW______: "http://localhost/gemain.cda-development3.co.uk/wp-content/uploads"
+PLUGINS URL NEW_____: "http://localhost/gemain.cda-development3.co.uk/wp-content/plugins"
+MUPLUGINS URL NEW___: "http://localhost/gemain.cda-development3.co.uk/wp-content/mu-plugins"
+HOME PATH NEW_______: "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+SITE PATH NEW_______: "D:/xampp/htdocs/gemain.cda-development3.co.uk/"
+CONTENT PATH NEW____: "D:/xampp/htdocs/gemain.cda-development3.co.uk/wp-content"
+UPLOAD PATH NEW_____: "D:/xampp/htdocs/gemain.cda-development3.co.uk/wp-content/uploads"
+PLUGINS PATH NEW____: "D:/xampp/htdocs/gemain.cda-development3.co.uk/wp-content/plugins"
+MUPLUGINS PATH NEW__: "D:/xampp/htdocs/gemain.cda-development3.co.uk/wp-content/mu-plugins"
+ARCHIVE ACTION______: "donothing"
+SKIP WP FILES_______: "none"
+ARCHIVE ENGINE______: "ziparchivechunking"
+SET DIR PERMS_______: false
+DIR PERMS VALUE_____: 0755
+SET FILE PERMS______: false
+FILE PERMS VALUE____: 0644
+SAFE MODE___________: 0
+LOGGING_____________: 1
+ZIP THROTTLING______: false
+WP CONFIG___________: "modify"
+HTACCESS CONFIG_____: "new"
+OTHER CONFIG________: "new"
+FILE TIME___________: "current"
+********************************************************************************
+
+REMOVE FILTERS
+	DIR : "D:/xampp/htdocs/gemain.cda-development3.co.uk/dup-installer"
+	FILE: "D:/xampp/htdocs/gemain.cda-development3.co.uk/20230627_globalengage_[HASH]_20230627062908_installer-backup.php"
+	FILE: "D:/xampp/htdocs/gemain.cda-development3.co.uk/20230627_globalengage_[HASH]_20230627062908_archive.zip"
+	FILE: "D:/xampp/htdocs/gemain.cda-development3.co.uk/installer.php"
+	FILE: "D:/xampp/htdocs/gemain.cda-development3.co.uk/dup-installer-bootlog__bd3fb60-27062908.txt"
+EXTRACTION FILTERS
+	DIR : "dup-installer"
+	FILE: "20230627_globalengage_[HASH]_20230627062908_installer-backup.php"
+--------------------------------------
+
+
+EXTRACTION: ZIP CHUNKING >>> START
+MAINTENANCE MODE ENABLE
+BEFORE EXTRACION ACTIONS
+
+*** RESET CONFIG FILES IN CURRENT HOSTING >>> START
+
+*** RESET CONFIG FILES IN CURRENT HOSTING >>> END
+MAINTENANCE MODE ENABLE
+
+*** CREATE FOLDER AND PERMISSION PREPARE
+FOLDER PREPARE DONE
+ARCHIVE OFFSET 0
+CHUNK COMPLETE - RUNTIME: 5.0149 sec. - Files processed: 2,632 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 2632
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0104 sec. - Files processed: 3,418 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 3418
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0150 sec. - Files processed: 4,517 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 4517
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0185 sec. - Files processed: 5,237 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 5237
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0317 sec. - Files processed: 5,957 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 5957
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0274 sec. - Files processed: 6,949 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 6949
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.2519 sec. - Files processed: 7,605 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 7605
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0933 sec. - Files processed: 8,212 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 8212
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0288 sec. - Files processed: 8,812 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 8812
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.1276 sec. - Files processed: 9,433 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 9433
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0468 sec. - Files processed: 10,119 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 10119
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0133 sec. - Files processed: 10,620 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 10620
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0238 sec. - Files processed: 11,884 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 11884
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0148 sec. - Files processed: 12,862 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 12862
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0222 sec. - Files processed: 13,565 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 13565
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0340 sec. - Files processed: 14,137 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 14137
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0214 sec. - Files processed: 14,505 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 14505
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0353 sec. - Files processed: 15,059 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 15059
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0168 sec. - Files processed: 15,673 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 15673
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0240 sec. - Files processed: 16,504 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 16504
+--------------------------------------
+PATHS MAPPING : "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+--------------------------------------
+FILE EXTRACTION: done processing last file in list of 17754
+
+EXTRACTION: ZIP CHUNKING >>> DONE
+
+EXTRACTION COMPLETE @ 06:54:45 - RUNTIME: 120.8789 sec. - Files processed: 17,146 of 17,146
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+ADD PREFIX META MAP ID 0 wp_
+
+
+
+********************************************************************************
+* DUPLICATOR LITE: INSTALL-LOG
+* STEP-2 START @ 06:54:46
+* NOTICE: Do NOT post to public sites or forums!!
+********************************************************************************
+USER INPUTS
+DB ENGINE___________: "chunk"
+VIEW MODE___________: "basic"
+DB ACTION___________: "empty"
+DB HOST_____________: "**OBSCURED**"
+DB NAME_____________: "**OBSCURED**"
+DB PASS_____________: "**OBSCURED**"
+DB PORT_____________: "**OBSCURED**"
+USER MODE___________: "overwrite"
+TABLE PREFIX________: "wp_"
+MYSQL MODE__________: "DEFAULT"
+MYSQL MODE OPTS_____: ""
+CHARSET_____________: "utf8mb4"
+COLLATE_____________: ""
+CUNKING_____________: true
+VIEW CREATION_______: true
+STORED PROCEDURE____: true
+FUNCTIONS___________: true
+REMOVE DEFINER______: false
+SPLIT CREATES_______: true
+--------------------------------------
+TABLES
+--------------------------------------
+TABLE "wp_actionscheduler_actions"______________________[ROWS:     469] [EXTRACT|REPLACE] [INST NAME: wp_actionscheduler_actions]
+TABLE "wp_actionscheduler_claims"_______________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_actionscheduler_claims]
+TABLE "wp_actionscheduler_groups"_______________________[ROWS:       8] [EXTRACT|REPLACE] [INST NAME: wp_actionscheduler_groups]
+TABLE "wp_actionscheduler_logs"_________________________[ROWS:    1259] [EXTRACT|REPLACE] [INST NAME: wp_actionscheduler_logs]
+TABLE "wp_commentmeta"__________________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_commentmeta]
+TABLE "wp_comments"_____________________________________[ROWS:       3] [EXTRACT|REPLACE] [INST NAME: wp_comments]
+TABLE "wp_db7_forms"____________________________________[ROWS:      31] [EXTRACT|REPLACE] [INST NAME: wp_db7_forms]
+TABLE "wp_duplicator_packages"__________________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_duplicator_packages]
+TABLE "wp_fooevents_check_in"___________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_fooevents_check_in]
+TABLE "wp_frm_fields"___________________________________[ROWS:       5] [EXTRACT|REPLACE] [INST NAME: wp_frm_fields]
+TABLE "wp_frm_forms"____________________________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_frm_forms]
+TABLE "wp_frm_items"____________________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_frm_items]
+TABLE "wp_frm_item_metas"_______________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_frm_item_metas]
+TABLE "wp_gla_attribute_mapping_rules"__________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_gla_attribute_mapping_rules]
+TABLE "wp_gla_budget_recommendations"___________________[ROWS:    4230] [EXTRACT|REPLACE] [INST NAME: wp_gla_budget_recommendations]
+TABLE "wp_gla_merchant_issues"__________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_gla_merchant_issues]
+TABLE "wp_gla_shipping_rates"___________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_gla_shipping_rates]
+TABLE "wp_gla_shipping_times"___________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_gla_shipping_times]
+TABLE "wp_links"________________________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_links]
+TABLE "wp_mailpoet_automations"_________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_automations]
+TABLE "wp_mailpoet_automation_runs"_____________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_automation_runs]
+TABLE "wp_mailpoet_automation_run_logs"_________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_automation_run_logs]
+TABLE "wp_mailpoet_automation_run_subjects"_____________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_automation_run_subjects]
+TABLE "wp_mailpoet_automation_triggers"_________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_automation_triggers]
+TABLE "wp_mailpoet_automation_versions"_________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_automation_versions]
+TABLE "wp_mailpoet_custom_fields"_______________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_custom_fields]
+TABLE "wp_mailpoet_dynamic_segment_filters"_____________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_dynamic_segment_filters]
+TABLE "wp_mailpoet_feature_flags"_______________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_feature_flags]
+TABLE "wp_mailpoet_forms"_______________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_forms]
+TABLE "wp_mailpoet_log"_________________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_log]
+TABLE "wp_mailpoet_migrations"__________________________[ROWS:       8] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_migrations]
+TABLE "wp_mailpoet_newsletters"_________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_newsletters]
+TABLE "wp_mailpoet_newsletter_links"____________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_newsletter_links]
+TABLE "wp_mailpoet_newsletter_option"___________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_newsletter_option]
+TABLE "wp_mailpoet_newsletter_option_fields"____________[ROWS:      24] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_newsletter_option_fields]
+TABLE "wp_mailpoet_newsletter_posts"____________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_newsletter_posts]
+TABLE "wp_mailpoet_newsletter_segment"__________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_newsletter_segment]
+TABLE "wp_mailpoet_newsletter_templates"________________[ROWS:      76] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_newsletter_templates]
+TABLE "wp_mailpoet_scheduled_tasks"_____________________[ROWS:      13] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_scheduled_tasks]
+TABLE "wp_mailpoet_scheduled_task_subscribers"__________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_scheduled_task_subscribers]
+TABLE "wp_mailpoet_segments"____________________________[ROWS:       3] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_segments]
+TABLE "wp_mailpoet_sending_queues"______________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_sending_queues]
+TABLE "wp_mailpoet_settings"____________________________[ROWS:      16] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_settings]
+TABLE "wp_mailpoet_statistics_bounces"__________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_statistics_bounces]
+TABLE "wp_mailpoet_statistics_clicks"___________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_statistics_clicks]
+TABLE "wp_mailpoet_statistics_forms"____________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_statistics_forms]
+TABLE "wp_mailpoet_statistics_newsletters"______________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_statistics_newsletters]
+TABLE "wp_mailpoet_statistics_opens"____________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_statistics_opens]
+TABLE "wp_mailpoet_statistics_unsubscribes"_____________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_statistics_unsubscribes]
+TABLE "wp_mailpoet_statistics_woocommerce_purchases"____[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_statistics_woocommerce_purchases]
+TABLE "wp_mailpoet_stats_notifications"_________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_stats_notifications]
+TABLE "wp_mailpoet_subscribers"_________________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_subscribers]
+TABLE "wp_mailpoet_subscriber_custom_field"_____________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_subscriber_custom_field]
+TABLE "wp_mailpoet_subscriber_ips"______________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_subscriber_ips]
+TABLE "wp_mailpoet_subscriber_segment"__________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_subscriber_segment]
+TABLE "wp_mailpoet_subscriber_tag"______________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_subscriber_tag]
+TABLE "wp_mailpoet_tags"________________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_tags]
+TABLE "wp_mailpoet_user_agents"_________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_user_agents]
+TABLE "wp_mailpoet_user_flags"__________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_mailpoet_user_flags]
+TABLE "wp_options"______________________________________[ROWS:    1372] [EXTRACT|REPLACE] [INST NAME: wp_options]
+TABLE "wp_postmeta"_____________________________________[ROWS:  123202] [EXTRACT|REPLACE] [INST NAME: wp_postmeta]
+TABLE "wp_posts"________________________________________[ROWS:    1699] [EXTRACT|REPLACE] [INST NAME: wp_posts]
+TABLE "wp_search_filter_cache"__________________________[ROWS:     235] [EXTRACT|REPLACE] [INST NAME: wp_search_filter_cache]
+TABLE "wp_search_filter_term_results"___________________[ROWS:      45] [EXTRACT|REPLACE] [INST NAME: wp_search_filter_term_results]
+TABLE "wp_termmeta"_____________________________________[ROWS:      27] [EXTRACT|REPLACE] [INST NAME: wp_termmeta]
+TABLE "wp_terms"________________________________________[ROWS:      82] [EXTRACT|REPLACE] [INST NAME: wp_terms]
+TABLE "wp_term_relationships"___________________________[ROWS:     258] [EXTRACT|REPLACE] [INST NAME: wp_term_relationships]
+TABLE "wp_term_taxonomy"________________________________[ROWS:      82] [EXTRACT|REPLACE] [INST NAME: wp_term_taxonomy]
+TABLE "wp_usermeta"_____________________________________[ROWS:     282] [EXTRACT|REPLACE] [INST NAME: wp_usermeta]
+TABLE "wp_users"________________________________________[ROWS:      10] [EXTRACT|REPLACE] [INST NAME: wp_users]
+TABLE "wp_viwec_clicked"________________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_viwec_clicked]
+TABLE "wp_wc_admin_notes"_______________________________[ROWS:      83] [EXTRACT|REPLACE] [INST NAME: wp_wc_admin_notes]
+TABLE "wp_wc_admin_note_actions"________________________[ROWS:     109] [EXTRACT|REPLACE] [INST NAME: wp_wc_admin_note_actions]
+TABLE "wp_wc_category_lookup"___________________________[ROWS:      11] [EXTRACT|REPLACE] [INST NAME: wp_wc_category_lookup]
+TABLE "wp_wc_customer_lookup"___________________________[ROWS:       9] [EXTRACT|REPLACE] [INST NAME: wp_wc_customer_lookup]
+TABLE "wp_wc_download_log"______________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wc_download_log]
+TABLE "wp_wc_order_coupon_lookup"_______________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wc_order_coupon_lookup]
+TABLE "wp_wc_order_product_lookup"______________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_wc_order_product_lookup]
+TABLE "wp_wc_order_stats"_______________________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_wc_order_stats]
+TABLE "wp_wc_order_tax_lookup"__________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wc_order_tax_lookup]
+TABLE "wp_wc_product_attributes_lookup"_________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wc_product_attributes_lookup]
+TABLE "wp_wc_product_download_directories"______________[ROWS:       2] [EXTRACT|REPLACE] [INST NAME: wp_wc_product_download_directories]
+TABLE "wp_wc_product_meta_lookup"_______________________[ROWS:      31] [EXTRACT|REPLACE] [INST NAME: wp_wc_product_meta_lookup]
+TABLE "wp_wc_rate_limits"_______________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wc_rate_limits]
+TABLE "wp_wc_reserved_stock"____________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wc_reserved_stock]
+TABLE "wp_wc_tax_rate_classes"__________________________[ROWS:       2] [EXTRACT|REPLACE] [INST NAME: wp_wc_tax_rate_classes]
+TABLE "wp_wc_webhooks"__________________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wc_webhooks]
+TABLE "wp_wdp_orders"___________________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wdp_orders]
+TABLE "wp_wdp_order_items"______________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wdp_order_items]
+TABLE "wp_wdp_persistent_rules_cache"___________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wdp_persistent_rules_cache]
+TABLE "wp_wdp_rules"____________________________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_wdp_rules]
+TABLE "wp_woocommerce_api_keys"_________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_api_keys]
+TABLE "wp_woocommerce_attribute_taxonomies"_____________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_attribute_taxonomies]
+TABLE "wp_woocommerce_downloadable_product_permissions"_[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_downloadable_product_permissions]
+TABLE "wp_woocommerce_log"______________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_log]
+TABLE "wp_woocommerce_order_itemmeta"___________________[ROWS:      15] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_order_itemmeta]
+TABLE "wp_woocommerce_order_items"______________________[ROWS:       2] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_order_items]
+TABLE "wp_woocommerce_payment_tokenmeta"________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_payment_tokenmeta]
+TABLE "wp_woocommerce_payment_tokens"___________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_payment_tokens]
+TABLE "wp_woocommerce_sessions"_________________________[ROWS:      72] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_sessions]
+TABLE "wp_woocommerce_shipping_zones"___________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_shipping_zones]
+TABLE "wp_woocommerce_shipping_zone_locations"__________[ROWS:       2] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_shipping_zone_locations]
+TABLE "wp_woocommerce_shipping_zone_methods"____________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_shipping_zone_methods]
+TABLE "wp_woocommerce_tax_rates"________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_tax_rates]
+TABLE "wp_woocommerce_tax_rate_locations"_______________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_tax_rate_locations]
+TABLE "wp_wpmailsmtp_debug_events"______________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wpmailsmtp_debug_events]
+TABLE "wp_wpmailsmtp_tasks_meta"________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wpmailsmtp_tasks_meta]
+TABLE "wp_yith_wcan_filter_sessions"____________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_yith_wcan_filter_sessions]
+TABLE "wp_yoast_indexable"______________________________[ROWS:     108] [EXTRACT|REPLACE] [INST NAME: wp_yoast_indexable]
+TABLE "wp_yoast_indexable_hierarchy"____________________[ROWS:     104] [EXTRACT|REPLACE] [INST NAME: wp_yoast_indexable_hierarchy]
+TABLE "wp_yoast_migrations"_____________________________[ROWS:      24] [EXTRACT|REPLACE] [INST NAME: wp_yoast_migrations]
+TABLE "wp_yoast_primary_term"___________________________[ROWS:      28] [EXTRACT|REPLACE] [INST NAME: wp_yoast_primary_term]
+TABLE "wp_yoast_seo_links"______________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_yoast_seo_links]
+********************************************************************************
+
+--------------------------------------
+DATABASE-ENVIRONMENT
+--------------------------------------
+MYSQL VERSION:	This Server: 10.4.24 -- Build Server: 10.6.14
+FILE SIZE:	dup-database__[HASH].sql (20.62MB)
+TIMEOUT:	5000
+MAXPACK:	1048576
+SQLMODE-GLOBAL:	NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION
+SQLMODE-SESSION:NO_AUTO_VALUE_ON_ZERO
+DROP ALL TABLES
+--------------------------------------
+DATABASE RESULTS
+--------------------------------------
+QUERY FIXES
+GLOBAL RULES ADDED: PROC AND VIEWS
+GLOBAL RULES ADDED: INVALID CHARSETS
+GLOBAL RULES ADDED: INVALID COLLATIONS
+
+QUERY FIXES GLOBAL RULES
+	SEARCH  => /^(\s*(?:\/\*!\d+\s)?\s*(?:CREATE.+)?DEFINER\s*=)([^\*\s]+)(.*)$/m
+	REPLACE => $1`root`@`localhost`$3
+
+	SEARCH  => /^(\s*CREATE.+(?:PROCEDURE|FUNCTION)[\s\S]*)(BEGIN)([\s\S]*)$/
+	REPLACE => $1SQL SECURITY INVOKER
+$2$3
+
+	SEARCH  => /(^.*(?:CHARSET|CHARACTER SET)\s*[\s=]\s*[`'"]?)((?:utf8mb3))([`'"]?\s.*COLLATE\s*[\s=]\s*[`'"]?)([^`'"\s;,]+)([`'"]?.*$)/m
+	REPLACE => $1utf8mb4$3utf8mb4_general_ci$5
+
+	SEARCH  => /(^.*COLLATE\s*[\s=]\s*[`'"]?)([^`'"\s;,]+)([`'"]?\s.*(?:CHARSET|CHARACTER SET)\s*[\s=]\s*[`'"]?)((?:utf8mb3))([`'"]?[\s;,].*$)/m
+	REPLACE => $1utf8mb4_general_ci$3utf8mb4$5
+
+	SEARCH  => /(^.*(?:CHARSET|CHARACTER SET)\s*[\s=]\s*[`'"]?)((?:utf8mb3))([`'"]?[\s;,].*$)/m
+	REPLACE => $1utf8mb4$3
+
+	SEARCH  => /(^.*(?:CHARSET|CHARACTER SET)\s*[\s=]\s*[`'"]?)([^`'"\s;,]+)([`'"]?\s.*COLLATE\s*[\s=]\s*[`'"]?)((?:utf8mb3_general_ci))([`'"]?[\s;,].*$)/m
+	REPLACE => $1utf8mb4$3utf8mb4_general_ci$5
+
+	SEARCH  => /(^.*COLLATE\s*[\s=]\s*[`'"]?)((?:utf8mb3_general_ci))([`'"]?\s.*(?:CHARSET|CHARACTER SET)\s*[\s=]\s*[`'"]?)([^`'"\s;,]+)([`'"]?.*$)/m
+	REPLACE => $1utf8mb4_general_ci$3utf8mb4$5
+
+	SEARCH  => /(^.*COLLATE\s*[\s=]\s*[`'"]?)((?:utf8mb3_general_ci))([`'"]?[\s;,].*$)/m
+	REPLACE => $1utf8mb4_general_ci$3
+
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 0
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+DATABASE CHUNK: CREATION TABLE MARKER FOUND
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 561154
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 5061740
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 5732874
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 6630481
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 7300842
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 8009501
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 8677779
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 9370917
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 10060143
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 10733007
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 11511180
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 12287229
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 13055486
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 13768098
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 14577156
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 15241380
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 16104820
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 16909705
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 17758035
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 18592364
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 19293184
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 20016795
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+ERRORS FOUND:	0
+DROPPED TABLES:	0
+RENAMED TABLES:	0
+QUERIES RAN:	134189
+
+TABLES ROWS IN DATABASE AFTER EXTRACTION
+
+TABLE "wp_actionscheduler_actions"______________________[ROWS:   469]
+TABLE "wp_actionscheduler_claims"_______________________[ROWS:     0]
+TABLE "wp_actionscheduler_groups"_______________________[ROWS:     8]
+TABLE "wp_actionscheduler_logs"_________________________[ROWS:  1259]
+TABLE "wp_commentmeta"__________________________________[ROWS:     0]
+TABLE "wp_comments"_____________________________________[ROWS:     3]
+TABLE "wp_db7_forms"____________________________________[ROWS:    31]
+TABLE "wp_duplicator_packages"__________________________[ROWS:     1]
+TABLE "wp_fooevents_check_in"___________________________[ROWS:     0]
+TABLE "wp_frm_fields"___________________________________[ROWS:     5]
+TABLE "wp_frm_forms"____________________________________[ROWS:     1]
+TABLE "wp_frm_item_metas"_______________________________[ROWS:     0]
+TABLE "wp_frm_items"____________________________________[ROWS:     0]
+TABLE "wp_gla_attribute_mapping_rules"__________________[ROWS:     0]
+TABLE "wp_gla_budget_recommendations"___________________[ROWS:  4230]
+TABLE "wp_gla_merchant_issues"__________________________[ROWS:     0]
+TABLE "wp_gla_shipping_rates"___________________________[ROWS:     0]
+TABLE "wp_gla_shipping_times"___________________________[ROWS:     0]
+TABLE "wp_links"________________________________________[ROWS:     0]
+TABLE "wp_mailpoet_automation_run_logs"_________________[ROWS:     0]
+TABLE "wp_mailpoet_automation_run_subjects"_____________[ROWS:     0]
+TABLE "wp_mailpoet_automation_runs"_____________________[ROWS:     0]
+TABLE "wp_mailpoet_automation_triggers"_________________[ROWS:     0]
+TABLE "wp_mailpoet_automation_versions"_________________[ROWS:     0]
+TABLE "wp_mailpoet_automations"_________________________[ROWS:     0]
+TABLE "wp_mailpoet_custom_fields"_______________________[ROWS:     0]
+TABLE "wp_mailpoet_dynamic_segment_filters"_____________[ROWS:     0]
+TABLE "wp_mailpoet_feature_flags"_______________________[ROWS:     0]
+TABLE "wp_mailpoet_forms"_______________________________[ROWS:     0]
+TABLE "wp_mailpoet_log"_________________________________[ROWS:     0]
+TABLE "wp_mailpoet_migrations"__________________________[ROWS:     8]
+TABLE "wp_mailpoet_newsletter_links"____________________[ROWS:     0]
+TABLE "wp_mailpoet_newsletter_option"___________________[ROWS:     0]
+TABLE "wp_mailpoet_newsletter_option_fields"____________[ROWS:    24]
+TABLE "wp_mailpoet_newsletter_posts"____________________[ROWS:     0]
+TABLE "wp_mailpoet_newsletter_segment"__________________[ROWS:     0]
+TABLE "wp_mailpoet_newsletter_templates"________________[ROWS:    76]
+TABLE "wp_mailpoet_newsletters"_________________________[ROWS:     0]
+TABLE "wp_mailpoet_scheduled_task_subscribers"__________[ROWS:     0]
+TABLE "wp_mailpoet_scheduled_tasks"_____________________[ROWS:    13]
+TABLE "wp_mailpoet_segments"____________________________[ROWS:     3]
+TABLE "wp_mailpoet_sending_queues"______________________[ROWS:     0]
+TABLE "wp_mailpoet_settings"____________________________[ROWS:    16]
+TABLE "wp_mailpoet_statistics_bounces"__________________[ROWS:     0]
+TABLE "wp_mailpoet_statistics_clicks"___________________[ROWS:     0]
+TABLE "wp_mailpoet_statistics_forms"____________________[ROWS:     0]
+TABLE "wp_mailpoet_statistics_newsletters"______________[ROWS:     0]
+TABLE "wp_mailpoet_statistics_opens"____________________[ROWS:     0]
+TABLE "wp_mailpoet_statistics_unsubscribes"_____________[ROWS:     0]
+TABLE "wp_mailpoet_statistics_woocommerce_purchases"____[ROWS:     0]
+TABLE "wp_mailpoet_stats_notifications"_________________[ROWS:     0]
+TABLE "wp_mailpoet_subscriber_custom_field"_____________[ROWS:     0]
+TABLE "wp_mailpoet_subscriber_ips"______________________[ROWS:     0]
+TABLE "wp_mailpoet_subscriber_segment"__________________[ROWS:     1]
+TABLE "wp_mailpoet_subscriber_tag"______________________[ROWS:     0]
+TABLE "wp_mailpoet_subscribers"_________________________[ROWS:     1]
+TABLE "wp_mailpoet_tags"________________________________[ROWS:     0]
+TABLE "wp_mailpoet_user_agents"_________________________[ROWS:     0]
+TABLE "wp_mailpoet_user_flags"__________________________[ROWS:     0]
+TABLE "wp_options"______________________________________[ROWS:  1372]
+TABLE "wp_postmeta"_____________________________________[ROWS:123202]
+TABLE "wp_posts"________________________________________[ROWS:  1699]
+TABLE "wp_search_filter_cache"__________________________[ROWS:   235]
+TABLE "wp_search_filter_term_results"___________________[ROWS:    45]
+TABLE "wp_term_relationships"___________________________[ROWS:   258]
+TABLE "wp_term_taxonomy"________________________________[ROWS:    82]
+TABLE "wp_termmeta"_____________________________________[ROWS:    27]
+TABLE "wp_terms"________________________________________[ROWS:    82]
+TABLE "wp_usermeta"_____________________________________[ROWS:   282]
+TABLE "wp_users"________________________________________[ROWS:    10]
+TABLE "wp_viwec_clicked"________________________________[ROWS:     0]
+TABLE "wp_wc_admin_note_actions"________________________[ROWS:   109]
+TABLE "wp_wc_admin_notes"_______________________________[ROWS:    83]
+TABLE "wp_wc_category_lookup"___________________________[ROWS:    11]
+TABLE "wp_wc_customer_lookup"___________________________[ROWS:     9]
+TABLE "wp_wc_download_log"______________________________[ROWS:     0]
+TABLE "wp_wc_order_coupon_lookup"_______________________[ROWS:     0]
+TABLE "wp_wc_order_product_lookup"______________________[ROWS:     1]
+TABLE "wp_wc_order_stats"_______________________________[ROWS:     1]
+TABLE "wp_wc_order_tax_lookup"__________________________[ROWS:     0]
+TABLE "wp_wc_product_attributes_lookup"_________________[ROWS:     0]
+TABLE "wp_wc_product_download_directories"______________[ROWS:     2]
+TABLE "wp_wc_product_meta_lookup"_______________________[ROWS:    31]
+TABLE "wp_wc_rate_limits"_______________________________[ROWS:     0]
+TABLE "wp_wc_reserved_stock"____________________________[ROWS:     0]
+TABLE "wp_wc_tax_rate_classes"__________________________[ROWS:     2]
+TABLE "wp_wc_webhooks"__________________________________[ROWS:     0]
+TABLE "wp_wdp_order_items"______________________________[ROWS:     0]
+TABLE "wp_wdp_orders"___________________________________[ROWS:     0]
+TABLE "wp_wdp_persistent_rules_cache"___________________[ROWS:     0]
+TABLE "wp_wdp_rules"____________________________________[ROWS:     1]
+TABLE "wp_woocommerce_api_keys"_________________________[ROWS:     0]
+TABLE "wp_woocommerce_attribute_taxonomies"_____________[ROWS:     1]
+TABLE "wp_woocommerce_downloadable_product_permissions"_[ROWS:     0]
+TABLE "wp_woocommerce_log"______________________________[ROWS:     0]
+TABLE "wp_woocommerce_order_itemmeta"___________________[ROWS:    15]
+TABLE "wp_woocommerce_order_items"______________________[ROWS:     2]
+TABLE "wp_woocommerce_payment_tokenmeta"________________[ROWS:     0]
+TABLE "wp_woocommerce_payment_tokens"___________________[ROWS:     0]
+TABLE "wp_woocommerce_sessions"_________________________[ROWS:    72]
+TABLE "wp_woocommerce_shipping_zone_locations"__________[ROWS:     2]
+TABLE "wp_woocommerce_shipping_zone_methods"____________[ROWS:     1]
+TABLE "wp_woocommerce_shipping_zones"___________________[ROWS:     1]
+TABLE "wp_woocommerce_tax_rate_locations"_______________[ROWS:     0]
+TABLE "wp_woocommerce_tax_rates"________________________[ROWS:     0]
+TABLE "wp_wpmailsmtp_debug_events"______________________[ROWS:     0]
+TABLE "wp_wpmailsmtp_tasks_meta"________________________[ROWS:     0]
+TABLE "wp_yith_wcan_filter_sessions"____________________[ROWS:     0]
+TABLE "wp_yoast_indexable"______________________________[ROWS:   108]
+TABLE "wp_yoast_indexable_hierarchy"____________________[ROWS:   104]
+TABLE "wp_yoast_migrations"_____________________________[ROWS:    24]
+TABLE "wp_yoast_primary_term"___________________________[ROWS:    28]
+TABLE "wp_yoast_seo_links"______________________________[ROWS:     0]
+
+INSERT DATA RUNTIME: 119.6590 sec.
+STEP-2 COMPLETE @ 06:56:46 - RUNTIME: 119.6596 sec.
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [webupdate] START
+
+====================================
+SET SEARCH AND REPLACE LIST INSTALL TYPE single site
+====================================
+SEARCH ITEM[T:path |P:12] SEARCH: /home/gemaincdadevelop/public_html REPLACE: D:/xampp/htdocs/gemain.cda-development3.co.uk/ [SCOPE: ALL]
+SEARCH ITEM[T:path |P:12] SEARCH: /home/gemaincdadevelop/public_html REPLACE: D:/xampp/htdocs/gemain.cda-development3.co.uk [SCOPE: ALL]
+SEARCH ITEM[T:urlnd|P:12] SEARCH: https://gemain.cda-development3.co.uk REPLACE: http://localhost/gemain.cda-development3.co.uk/ [SCOPE: ALL]
+SEARCH ITEM[T:urlnd|P:12] SEARCH: https://gemain.cda-development3.co.uk REPLACE: http://localhost/gemain.cda-development3.co.uk [SCOPE: ALL]
+CHUNK LOAD DATA: IS NULL 
+CHUNK ACTION: CURRENT [start][][]
+
+
+********************************************************************************
+DUPLICATOR LITE: INSTALL-LOG
+STEP-3 START @ 06:56:46
+NOTICE: Do NOT post to public sites or forums
+********************************************************************************
+CHARSET SERVER:	"utf8mb4"
+CHARSET CLIENT:	"utf8mb4"
+********************************************************************************
+OPTIONS:
+SKIP PATH REPLACE_____: false
+DISALLOW_FILE_EDIT____: [value = ], [inWpConfig = ]
+DISALLOW_FILE_MODS____: [value = ], [inWpConfig = ]
+AUTOSAVE_INTERVAL_____: [value = 60], [inWpConfig = ]
+WP_POST_REVISIONS_____: [value = 1], [inWpConfig = ]
+FORCE_SSL_ADMIN_______: [value = 1], [inWpConfig = ]
+WP_AUTO_UPDATE_CORE___: [value = false], [inWpConfig = ]
+WP_CACHE______________: [value = ], [inWpConfig = ]
+WPCACHEHOME___________: [value = /], [inWpConfig = ]
+WP_DEBUG______________: [value = ], [inWpConfig = 1]
+WP_DEBUG_LOG__________: [value = ], [inWpConfig = ]
+WP_DEBUG_DISPLAY______: [value = ], [inWpConfig = 1]
+WP_DISABLE_FATAL_ERROR_HANDLER: [value = ], [inWpConfig = ]
+SCRIPT_DEBUG__________: [value = ], [inWpConfig = ]
+CONCATENATE_SCRIPTS___: [value = ], [inWpConfig = ]
+SAVEQUERIES___________: [value = ], [inWpConfig = ]
+ALTERNATE_WP_CRON_____: [value = ], [inWpConfig = ]
+DISABLE_WP_CRON_______: [value = ], [inWpConfig = ]
+WP_CRON_LOCK_TIMEOUT__: [value = 60], [inWpConfig = ]
+COOKIE_DOMAIN_________: [value = ], [inWpConfig = ]
+WP_MEMORY_LIMIT_______: [value = 512M], [inWpConfig = 1]
+WP_MAX_MEMORY_LIMIT___: [value = 256M], [inWpConfig = ]
+WP_TEMP_DIR___________: [value = ], [inWpConfig = ]
+********************************************************************************
+
+********************************************************************************
+CHUNK PARAMS:
+maxIteration__________: 0
+timeOut_______________: 5000
+throttling____________: 2
+rowsPerPage___________: 1000
+********************************************************************************
+
+CHUNK ACTION: CURRENT [cleanup_trans][][]
+CLEAN OPTIONS [wp_options]
+	`option_name` LIKE "\_transient%"
+	`option_name` LIKE "\_site\_transient%"
+	`option_name` IN ("duplicator_ui_view_state","duplicator_package_active","duplicator_settings","duplicator_is_pro_enable_notice_dismissed")
+DATABASE OPTIONS DELETED [ROWS:   680]
+CHUNK ACTION: CURRENT [cleanup_extra][][]
+CLEANUP EXTRA
+	- SKIP DROP VIEWS
+	- SKIP DROP PROCS
+	- SKIP DROP FUNCS
+CHUNK ACTION: CURRENT [cleanup_packages][][]
+EMPTY PACKAGES TABLE
+CLEAN PACKAGES
+DATABASE PACKAGE DELETED [ROWS:     1]
+CHUNK ACTION: CURRENT [init][][]
+
+EVALUATE TABLE: "wp_actionscheduler_actions"______________________[ROWS:   469][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_actionscheduler_actions][0]
+
+EVALUATE TABLE: "wp_actionscheduler_claims"_______________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_actionscheduler_groups"_______________________[ROWS:     8][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_actionscheduler_groups][0]
+
+EVALUATE TABLE: "wp_actionscheduler_logs"_________________________[ROWS:  1259][PG:   2][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_actionscheduler_logs][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_actionscheduler_logs][1]
+
+EVALUATE TABLE: "wp_commentmeta"__________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_comments"_____________________________________[ROWS:     3][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_comments][0]
+
+EVALUATE TABLE: "wp_db7_forms"____________________________________[ROWS:    31][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_db7_forms][0]
+
+EVALUATE TABLE: "wp_duplicator_packages"__________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_fooevents_check_in"___________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_frm_fields"___________________________________[ROWS:     5][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_frm_fields][0]
+
+EVALUATE TABLE: "wp_frm_forms"____________________________________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_frm_forms][0]
+
+EVALUATE TABLE: "wp_frm_items"____________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_frm_item_metas"_______________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_gla_attribute_mapping_rules"__________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_gla_budget_recommendations"___________________[ROWS:  4230][PG:   5][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_gla_budget_recommendations][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_gla_budget_recommendations][1]
+	CHUNK ACTION: CURRENT [search_replace][wp_gla_budget_recommendations][2]
+	CHUNK ACTION: CURRENT [search_replace][wp_gla_budget_recommendations][3]
+	CHUNK ACTION: CURRENT [search_replace][wp_gla_budget_recommendations][4]
+
+EVALUATE TABLE: "wp_gla_merchant_issues"__________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_gla_shipping_rates"___________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_gla_shipping_times"___________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_links"________________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_automations"_________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_automation_runs"_____________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_automation_run_logs"_________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_automation_run_subjects"_____________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_automation_triggers"_________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_automation_versions"_________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_custom_fields"_______________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_dynamic_segment_filters"_____________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_feature_flags"_______________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_forms"_______________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_log"_________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_migrations"__________________________[ROWS:     8][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_mailpoet_migrations][0]
+
+EVALUATE TABLE: "wp_mailpoet_newsletters"_________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_newsletter_links"____________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_newsletter_option"___________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_newsletter_option_fields"____________[ROWS:    24][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_mailpoet_newsletter_option_fields][0]
+
+EVALUATE TABLE: "wp_mailpoet_newsletter_posts"____________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_newsletter_segment"__________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_newsletter_templates"________________[ROWS:    76][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_mailpoet_newsletter_templates][0]
+
+EVALUATE TABLE: "wp_mailpoet_scheduled_tasks"_____________________[ROWS:    13][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_mailpoet_scheduled_tasks][0]
+
+EVALUATE TABLE: "wp_mailpoet_scheduled_task_subscribers"__________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_segments"____________________________[ROWS:     3][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_mailpoet_segments][0]
+
+EVALUATE TABLE: "wp_mailpoet_sending_queues"______________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_settings"____________________________[ROWS:    16][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_mailpoet_settings][0]
+
+EVALUATE TABLE: "wp_mailpoet_statistics_bounces"__________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_statistics_clicks"___________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_statistics_forms"____________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_statistics_newsletters"______________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_statistics_opens"____________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_statistics_unsubscribes"_____________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_statistics_woocommerce_purchases"____[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_stats_notifications"_________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_subscribers"_________________________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_mailpoet_subscribers][0]
+
+EVALUATE TABLE: "wp_mailpoet_subscriber_custom_field"_____________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_subscriber_ips"______________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_subscriber_segment"__________________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_mailpoet_subscriber_segment][0]
+
+EVALUATE TABLE: "wp_mailpoet_subscriber_tag"______________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_tags"________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_user_agents"_________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_mailpoet_user_flags"__________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_options"______________________________________[ROWS:   692][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_options][0]
+
+EVALUATE TABLE: "wp_postmeta"_____________________________________[ROWS:123202][PG: 124][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][1]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][2]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][3]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][4]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][5]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][6]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][7]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][8]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][9]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][10]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][11]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][12]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][13]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][14]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][15]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][16]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][17]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][18]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][19]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][20]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][21]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][22]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][23]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][24]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][25]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][26]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][27]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][28]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][29]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][30]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][31]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][32]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][33]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][34]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][35]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][36]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][37]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][38]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][39]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][40]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][41]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][42]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][43]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][44]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][45]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][46]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][47]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][48]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][49]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][50]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][51]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][52]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][53]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][54]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][55]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][56]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][57]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][58]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][59]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][60]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][61]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][62]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][63]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][64]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][65]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][66]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][67]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][68]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][69]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][70]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][71]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][72]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][73]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][74]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][75]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][76]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][77]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][78]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][79]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][80]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][81]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][82]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][83]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][84]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][85]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][86]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][87]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][88]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][89]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][90]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][91]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][92]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][93]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][94]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][95]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][96]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][97]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][98]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][99]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][100]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][101]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][102]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][103]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][104]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][105]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][106]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][107]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][108]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][109]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][110]
+	
+STEP-3 CHUNK STOP @ 06:56:51 - RUNTIME: 5.0061 sec. 
+
+
+	AJAX ACTION [webupdate] SUCCESS
+	-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [webupdate] START
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][111]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][112]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][113]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][114]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][115]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][116]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][117]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][118]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][119]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][120]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][121]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][122]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][123]
+
+EVALUATE TABLE: "wp_posts"________________________________________[ROWS:  1699][PG:   2][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_posts][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_posts][1]
+
+EVALUATE TABLE: "wp_search_filter_cache"__________________________[ROWS:   235][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_search_filter_cache][0]
+
+EVALUATE TABLE: "wp_search_filter_term_results"___________________[ROWS:    45][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_search_filter_term_results][0]
+
+EVALUATE TABLE: "wp_termmeta"_____________________________________[ROWS:    27][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_termmeta][0]
+
+EVALUATE TABLE: "wp_terms"________________________________________[ROWS:    82][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_terms][0]
+
+EVALUATE TABLE: "wp_term_relationships"___________________________[ROWS:   258][PG:   1][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_term_taxonomy"________________________________[ROWS:    82][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_term_taxonomy][0]
+
+EVALUATE TABLE: "wp_usermeta"_____________________________________[ROWS:   282][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_usermeta][0]
+
+EVALUATE TABLE: "wp_users"________________________________________[ROWS:    10][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_users][0]
+
+EVALUATE TABLE: "wp_viwec_clicked"________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wc_admin_notes"_______________________________[ROWS:    83][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_wc_admin_notes][0]
+
+EVALUATE TABLE: "wp_wc_admin_note_actions"________________________[ROWS:   109][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_wc_admin_note_actions][0]
+
+EVALUATE TABLE: "wp_wc_category_lookup"___________________________[ROWS:    11][PG:   1][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wc_customer_lookup"___________________________[ROWS:     9][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_wc_customer_lookup][0]
+
+EVALUATE TABLE: "wp_wc_download_log"______________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wc_order_coupon_lookup"_______________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wc_order_product_lookup"______________________[ROWS:     1][PG:   1][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wc_order_stats"_______________________________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_wc_order_stats][0]
+
+EVALUATE TABLE: "wp_wc_order_tax_lookup"__________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wc_product_attributes_lookup"_________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wc_product_download_directories"______________[ROWS:     2][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_wc_product_download_directories][0]
+
+EVALUATE TABLE: "wp_wc_product_meta_lookup"_______________________[ROWS:    31][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_wc_product_meta_lookup][0]
+
+EVALUATE TABLE: "wp_wc_rate_limits"_______________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wc_reserved_stock"____________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wc_tax_rate_classes"__________________________[ROWS:     2][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_wc_tax_rate_classes][0]
+
+EVALUATE TABLE: "wp_wc_webhooks"__________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wdp_orders"___________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wdp_order_items"______________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wdp_persistent_rules_cache"___________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wdp_rules"____________________________________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_wdp_rules][0]
+
+EVALUATE TABLE: "wp_woocommerce_api_keys"_________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_woocommerce_attribute_taxonomies"_____________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_woocommerce_attribute_taxonomies][0]
+
+EVALUATE TABLE: "wp_woocommerce_downloadable_product_permissions"_[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_woocommerce_log"______________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_woocommerce_order_itemmeta"___________________[ROWS:    15][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_woocommerce_order_itemmeta][0]
+
+EVALUATE TABLE: "wp_woocommerce_order_items"______________________[ROWS:     2][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_woocommerce_order_items][0]
+
+EVALUATE TABLE: "wp_woocommerce_payment_tokenmeta"________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_woocommerce_payment_tokens"___________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_woocommerce_sessions"_________________________[ROWS:    72][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_woocommerce_sessions][0]
+
+EVALUATE TABLE: "wp_woocommerce_shipping_zones"___________________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_woocommerce_shipping_zones][0]
+
+EVALUATE TABLE: "wp_woocommerce_shipping_zone_locations"__________[ROWS:     2][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_woocommerce_shipping_zone_locations][0]
+
+EVALUATE TABLE: "wp_woocommerce_shipping_zone_methods"____________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_woocommerce_shipping_zone_methods][0]
+
+EVALUATE TABLE: "wp_woocommerce_tax_rates"________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_woocommerce_tax_rate_locations"_______________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wpmailsmtp_debug_events"______________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wpmailsmtp_tasks_meta"________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_yith_wcan_filter_sessions"____________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_yoast_indexable"______________________________[ROWS:   108][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_yoast_indexable][0]
+
+EVALUATE TABLE: "wp_yoast_indexable_hierarchy"____________________[ROWS:   104][PG:   1][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_yoast_migrations"_____________________________[ROWS:    24][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_yoast_migrations][0]
+
+EVALUATE TABLE: "wp_yoast_primary_term"___________________________[ROWS:    28][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home/gemaincdadevelop/public_html" ==============> "D:/xampp/htdocs/gemain.cda-development3.co.uk"
+	SEARCH[urlnd]  2:"https://gemain.cda-development3.co.uk" ===========> "http://localhost/gemain.cda-development3.co.uk"
+	CHUNK ACTION: CURRENT [search_replace][wp_yoast_primary_term][0]
+
+EVALUATE TABLE: "wp_yoast_seo_links"______________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+--------------------------------------
+SCANNED:	Tables:113 	|	 Rows:132996 	|	 Cells:583342 
+UPDATED:	Tables:10 	|	 Rows:2868 	|	 Cells:2974 
+ERRORS:		0 
+RUNTIME:	7.198800 sec
+CHUNK ACTION: CURRENT [rem_maintenance][][]
+
+====================================
+REMOVE MAINTENANCE MODE
+====================================
+MAINTENANCE MODE DISABLE
+CHUNK ACTION: CURRENT [config_update][][]
+SET CONFIG FILES
+Retained original entry wpconfig target:D:/xampp/htdocs/gemain.cda-development3.co.uk/wp-config.php
+New htaccess file created:D:/xampp/htdocs/gemain.cda-development3.co.uk/.htaccess
+
+====================================
+CONFIGURATION FILE UPDATES
+====================================
+	UPDATE ABSPATH "dirname(__FILE__) . '/'"
+	UPDATE WP_SITEURL "http://localhost/gemain.cda-development3.co.uk/"
+	UPDATE DB_NAME ""globalengage""
+	UPDATE DB_USER "** OBSCURED **"
+	UPDATE DB_PASSWORD "** OBSCURED **"
+	UPDATE DB_HOST ""localhost""
+	UPDATE DB_CHARSET "utf8mb4"
+	UPDATE DB_COLLATE ""
+	WP CONFIG UPDATE WP_DEBUG "false"
+	WP CONFIG UPDATE WP_DEBUG_DISPLAY "false"
+	WP CONFIG UPDATE WP_MEMORY_LIMIT "512M"
+	
+*** UPDATED WP CONFIG FILE ***
+
+====================================
+HTACCESS UPDATE
+====================================
+
+WEB SERVER CONFIGURATION FILE UPDATED:
+- Preparing .htaccess file with basic setup.
+HTACCESS FILE - Successfully updated the .htaccess file setting.
+
+====================================
+INDEX.PHP UPDATE
+====================================
+INDEX.PHP updated with new blog header "dirname(__FILE__) . '/wp-blog-header.php'"
+
+CHUNK ACTION: CURRENT [gen_update][][]
+
+====================================
+GENERAL UPDATES
+====================================
+
+====================================
+MANAGE PLUGINS
+====================================
+CHUNK ACTION: CURRENT [gen_clean][][]
+
+====================================
+GENERAL CLEANUP
+====================================
+RESET ALL USERS SESSION TOKENS
+MIGRATION INFO SET
+CHUNK ACTION: CURRENT [create_admin][][]
+
+====================================
+RESET USERS PASSWORD
+====================================
+CHUNK ACTION: CURRENT [notice_test][][]
+
+====================================
+CHECK FOR INDEX.HTML
+====================================
+NO INDEX.HTML WAS FOUND
+
+====================================
+NOTICES TEST
+====================================
+No General Notices Found
+
+CHUNK ACTION: CURRENT [cleanup_tmp_files][][]
+
+====================================
+CLEANUP TMP FILES
+====================================
+CHUNK ACTION: CURRENT [set_files_perms][][]
+
+====================================
+SET PARAMS PERMISSION
+====================================
+\n SKIP FOLDER PERMISSION AFTER EXTRACTION
+CHUNK ACTION: CURRENT [final_report][][]
+
+====================================
+FINAL REPORT NOTICES
+====================================
+
+STEP-3 COMPLETE @ 06:56:54 - RUNTIME: 2.5896 sec. 
+
+
+AJAX ACTION [webupdate] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [finalpre] START
+AJAX ACTION [finalpre] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [finalafter] START
+AJAX ACTION [finalafter] SUCCESS
+-------------------------
+
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+====================================
+FINAL REPORT NOTICES LIST
+====================================
+====================================
+LOG-TIME[D:\xampp\htdocs\gemain.cda-development3.co.uk\dup-installer\ctrls\ctrl.base.php:227][DELTA:   0.15796]  MESSAGE:END RENDER PAGE
