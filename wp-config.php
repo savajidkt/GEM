@@ -42,7 +42,7 @@ ob_start();
 
 /** The name of the database for WordPress */
 
-define( 'DB_NAME', "globalengage" );
+define( 'DB_NAME', "gem" );
 
 
 
@@ -173,7 +173,7 @@ define( 'WP_DEBUG_DISPLAY', false );
 
 
 
-define( 'WP_SITEURL', 'http://localhost/gemain.cda-development3.co.uk/' );
+//define( 'WP_SITEURL', 'http://localhost/gemain.cda-development3.co.uk/' );
 /* That's all, stop editing! Happy publishing. */
 
 
