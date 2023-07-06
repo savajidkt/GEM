@@ -59,8 +59,8 @@ class FooEvents_Checkout_Helper {
 		}
 
 		add_action( $woocommerce_checkout_position[ $global_woocommerce_events_attendee_fields_pos ], array( $this, 'attendee_checkout' ) );
-		add_action( 'woocommerce_checkout_process', array( $this, 'attendee_checkout_process' ) );
-		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'woocommerce_events_process' ) );
+		//add_action( 'woocommerce_checkout_process', array( $this, 'attendee_checkout_process' ) );
+		//add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'woocommerce_events_process' ) );
 
 	}
 
@@ -609,6 +609,7 @@ class FooEvents_Checkout_Helper {
 		}
 
 		$events = $this->get_order_events( $woocommerce );
+		
 		$x      = 1;
 		foreach ( $events as $event => $tickets ) {
 
@@ -624,7 +625,6 @@ class FooEvents_Checkout_Helper {
 			$unique_emails = array();
 			$y             = 1;
 			foreach ( $tickets as $ticket ) {
-
 				$woocommerce_events_capture_attendee_details     = get_post_meta( $ticket['product_id'], 'WooCommerceEventsCaptureAttendeeDetails', true );
 				$woocommerce_events_capture_attendee_email       = get_post_meta( $ticket['product_id'], 'WooCommerceEventsCaptureAttendeeEmail', true );
 				$woocommerce_events_capture_attendee_telephone   = get_post_meta( $ticket['product_id'], 'WooCommerceEventsCaptureAttendeeTelephone', true );

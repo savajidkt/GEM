@@ -1346,7 +1346,7 @@ jQuery(function ($) {
 
 
 
-  var customSelectEle, i, j, selElmnt, divEle, divEleSelected, c;
+      var customSelectEle, i, j, selElmnt, divEle, divEleSelected, c;
   customSelectEle = document.querySelector(".show-me-customselect-4");
   selElmnt = customSelectEle.getElementsByTagName("select")[0];
   divEle = document.createElement("DIV");
@@ -1470,152 +1470,33 @@ jQuery(function ($) {
 // -------------------------------------------------- checkout page 3 step form js--------------------
 
 jQuery(function ($) {
-jQuery(document).ready(function () {
-
-	jQuery(document).on('click', '.billing_info #apply', function() {
-    var coupon = jQuery( '.billing_info #coupon' ).val();
-    console.log(coupon);
-    jQuery('#coupon_code').val(coupon);
-    jQuery('.checkout_coupon').submit();
-});
-
+    jQuery(document).ready(function () {
+        
+             
 document.getElementById("nextBtn").addEventListener("click",nextBTN);
 
 function nextBTN(){
-  
-      $nextis = $('#nextBtn').attr('data-step');
-      if ($nextis == 0) {
-        if (checkValidationStep1()) {
-          $newNext = parseInt($nextis) + parseInt(1);
-          $('#nextBtn').attr('data-step', $newNext);
-          nextPrev(1)
-        }
-      } else if ($nextis == 1) {
-        if (checkValidationStep2()) {
-          $newNext = parseInt($nextis) + parseInt(1);
-          $('#nextBtn').attr('data-step', $newNext);
-          $('.normalbtn').hide();
-          $('.submitbtn').show();
-              nextPrev(1);
-      }
-      } 
-    }
 
-    $(function () {
-      $("#billing_phone").keypress(function (e) {
-        $(".error").remove();
-        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-          $('#billing_phone').after('<span class="error">Please enter valid phone number</span>');
-          return false;
-        }
-      });
-    });
 
-    function checkValidationStep1() {
-      $(".error").remove();
 
-      var billing_first_name = $('#billing_first_name').val();
-      if (billing_first_name.length < 1) {
-        $('#billing_first_name').after('<span class="error">This field is required</span>');
-        return false;
-      }
-      var billing_last_name = $('#billing_last_name').val();
-      if (billing_last_name.length < 1) {
-        $('#billing_last_name').after('<span class="error">This field is required</span>');
-        return false;
-      }
-      var billing_company = $('#billing_company').val();
-      if (billing_company.length < 1) {
-        $('#billing_company').after('<span class="error">This field is required</span>');
-        return false;
-      }
-      var billing_job_title = $('#billing_job_title').val();
-      if (billing_job_title.length < 1) {
-        $('#billing_job_title').after('<span class="error">This field is required</span>');
-        return false;
-      }
-
-      var billing_phone = $('#billing_phone').val();
-      if (billing_phone.length < 1) {
-        $('#billing_phone').after('<span class="error">This field is required</span>');
-        return false;
-      }
-      var billing_email = $('#billing_email').val();
-
-      if (billing_email.length < 1) {
-        $('#billing_email').after('<span class="error">This field is required</span>');
-        return false;
-      } else {
-        var regEx = /^[a-zA-Z0-9_\.%\+\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}$/;
-        var validEmail = billing_email.match(/^[a-zA-Z0-9_\.%\+\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}$/);
-        if (!validEmail) {
-          $('#billing_email').after('<span class="error">Please enter a valid email</span>');
-          return false;
-        }
-      }
-      return true;
-
-    }
-
-    function checkValidationStep2() {
-      $(".error").remove();
-
-      var billing_country = $('#billing_country').val();
-      if (billing_country.length < 1) {
-        $('#billing_country').after('<span class="error">This field is required</span>');
-        return false;
-      }
-      var billing_address_1 = $('#billing_address_1').val();
-      if (billing_address_1.length < 1) {
-        $('#billing_address_1').after('<span class="error">This field is required</span>');
-        return false;
-      }
-      var billing_address_2 = $('#billing_address_2').val();
-      if (billing_address_2.length < 1) {
-        $('#billing_address_2').after('<span class="error">This field is required</span>');
-        return false;
-      }
-
-      var billing_city = $('#billing_city').val();
-      if (billing_city.length < 1) {
-        $('#billing_city').after('<span class="error">This field is required</span>');
-        return false;
-      }
-      var billing_state = $('#billing_state').val();
-      if (billing_state.length < 1) {
-        $('#billing_state').after('<span class="error">This field is required</span>');
-        return false;
-      }
-      var billing_postcode = $('#billing_postcode').val();
-      if (billing_postcode.length < 1) {
-        $('#billing_postcode').after('<span class="error">This field is required</span>');
-        return false;
-      }
-
-      return true;
-
-    }
-
+ nextPrev(1)
+}
 document.getElementById("prevBtn").addEventListener("click",prevBTN);
 
 function prevBTN(){
-  $('.normalbtn').show();
-  $('.submitbtn').hide();
 
-  $('#nextBtn').attr('type', 'button');
-      $nextis = $('#nextBtn').attr('data-step');      
-      $newNext = parseInt($nextis) - parseInt(1);
-      $('#nextBtn').attr('data-step', $newNext);
+
+
  nextPrev(-1)
 }
 
 
-var currentTab = 0; // Current tab is set to be the first tab (0)
+             var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 console.log(p)
 
    function nextPrev(n) {
-
+    console.log("hi")
   // This function will figure out which tab to display
   var x = document.querySelectorAll(".tab");
   // Exit the function if any field in the current tab is invalid:
@@ -1644,13 +1525,12 @@ function showTab(n) {
   } 
   else {
     document.getElementById("prevBtn").style.display = "inline";
-
   }
   if (n == (alltabs.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
   } 
   else {
-    document.getElementById("nextBtn").innerHTML = "Proceed To Payment";
+    document.getElementById("nextBtn").innerHTML = "proceed to payment";
   }
   // ... and run a function that displays the correct step indicator:
   fixStepIndicator(n)
@@ -1661,11 +1541,9 @@ function fixStepIndicator(n) {
   // This function removes the "active" class of all steps...
   var i, allsteps = document.querySelectorAll(".step");
   for (i = 0; i < allsteps.length; i++) {
-
     allsteps[i].className = allsteps[i].className.replace(" active", "");
   }
   //... and adds the "active" class to the current step:
-      console.log(allsteps[allsteps[n].className]);
   allsteps[n].className += " active";
 }
 
@@ -1673,4 +1551,4 @@ function fixStepIndicator(n) {
 
     });
 });
-
+// -------------------------------------------------- checkout page 3 step form js end--------------------

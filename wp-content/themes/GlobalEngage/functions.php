@@ -8,6 +8,9 @@
  * @subpackage Twenty_Twenty_One
  * @since Twenty Twenty-One 1.0
  */
+
+require_once('event-functions.php');
+
 add_theme_support( 'woocommerce' );
 if ( ! function_exists( 'twenty_twenty_one_setup' ) ) {
     /**
@@ -1005,4 +1008,5 @@ function cart_item_product_description( $item_name, $cart_item, $cart_item_key )
     }
     return $item_name;
 }
+
 
